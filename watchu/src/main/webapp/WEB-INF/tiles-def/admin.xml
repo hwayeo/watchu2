@@ -12,6 +12,10 @@
 		<put-attribute name="body" value="/WEB-INF/views/admin/main.jsp"/>
 		<put-attribute name="footer" value="/WEB-INF/views/template/footer-admin.jsp"/>
 	</definition>
+	<definition name="movieList" extends="admin">
+		<put-attribute name="title" value="왓츄 - 영화목록"/>
+		<put-attribute name="body" value="/WEB-INF/views/admin/s.jsp"/>
+	</definition>
 </tiles-definitions>
 
 
