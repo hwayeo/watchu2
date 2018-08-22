@@ -1,0 +1,33 @@
+/*ÇªÅÍ °íÁ¤*/
+#footer {
+	position:relative;
+	top:500px;
+	left:0px;
+	bottom:0px;
+	height:150x;
+ 	width:100%;
+   	background:#f8f8f8;
+}
+.navbar{
+	vertical-align:middle;
+	margin-bottom:0;
+	padding-top:5px;
+	padding-bottom:10px;
+	width:100%;
+	border-bottom:1px solid rgba(120,120,120,0.2);
+	box-shadow:2px 2px 5px rgba(120,120,120,0.1);
+}
+.custom-icon{
+	background-color:#f74788;
+}
+.nav > li a{
+	padding-top:20px;
+	font-size:1.0em;
+	color:black;
+}
+#brand_text{
+	color:#f74788;
+	font-size:1.5em;	
+	margin-top:10px;
+	padding-left:20px;
+}
