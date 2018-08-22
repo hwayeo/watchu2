@@ -9,6 +9,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<context:component-scan base-package="kr.watchu.main.controller" />
+	<context:component-scan base-package="kr.watchu.admin.controller" />
 	<context:component-scan base-package="kr.watchu.user.controller" />
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
