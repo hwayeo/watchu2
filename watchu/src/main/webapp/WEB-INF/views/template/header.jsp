@@ -9,7 +9,7 @@
 				<span class="icon-bar custom-icon"></span>
 				<span class="icon-bar custom-icon"></span>
 			</button>		
-			<a href="#" class="navbar-brand hidden-xs" id="brand_text"><b>WATCHA</b></a>
+			<a href="${pageContext.request.contextPath}/main/main.do" class="navbar-brand hidden-xs" id="brand_text"><b>WATCHA</b></a>
 		</div>
 		<div class="collapse navbar-collapse navbar-main">
 				<div class="form-group search-form">
@@ -19,10 +19,10 @@
 				</div>
 				</div>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">영화목록</a></li>
+				<li><a href="${pageContext.request.contextPath}/movie/list.do">영화목록</a></li>
 			<c:if test="${empty user_id}">
-				<li><a href="#">로그인</a></li>
-				<li><a href="#">회원가입</a></li>
+				<li><a data-toggle="modal" data-target="#loginModal" id="login-btn">로그인</a></li>
+				<li><a href="${pageContext.request.contextPath}/user/write.do">회원가입</a></li>
 			</c:if>
 			<c:if test="${!empty user_id}">
 				<img src="${pageContext.request.contextPath}/resources/images/default-profile.jpg" class="img-responsive img-circle" id="profile_img">

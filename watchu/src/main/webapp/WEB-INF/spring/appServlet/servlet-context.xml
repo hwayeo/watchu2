@@ -11,6 +11,7 @@
 	<context:component-scan base-package="kr.watchu.main.controller" />
 	<context:component-scan base-package="kr.watchu.admin.controller" />
 	<context:component-scan base-package="kr.watchu.user.controller" />
+	<context:component-scan base-package="kr.watchu.movie.controller" />
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
@@ -30,6 +31,7 @@
 				<beans:value>/WEB-INF/tiles-def/main.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/admin.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/user.xml</beans:value>
+				<beans:value>/WEB-INF/tiles-def/movie.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>
