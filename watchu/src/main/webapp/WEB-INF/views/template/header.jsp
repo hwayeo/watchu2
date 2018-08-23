@@ -32,7 +32,7 @@
         <li><a href="${pageContext.request.contextPath}/movie/list.do">영화목록</a></li>
         <li><a href="${pageContext.request.contextPath}/movie/list.do">로그인</a></li>
         <li><a href="${pageContext.request.contextPath}/movie/list.do">회원가입</a></li>
-      </ul>
+      </ul> 
     </div><!-- /.navbar-collapse -->
 </nav>
 
