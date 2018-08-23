@@ -1,0 +1,39 @@
+.drop{
+	margin-right:30px;
+	padding-right:30px;
+}
+.home-text1{
+	font-size:30px;
+	font-weight:bold;
+}
+.home-text2{
+	text-align:right;
+	font-size:20px;
+	float:right;
+}
+
+#category-menu{
+	padding:5px;
+}
+
+.category-right{
+	float:right;
+}
+
+#main-category{
+	margin:0;
+	padding:10px;
+}
+
+#thumbnail{
+	margin:0;
+	padding:0;
+}
+
+.sub-category h4{
+	font-weight:bold;
+}
+
+.sub-category span{
+	color:#999;
+}
