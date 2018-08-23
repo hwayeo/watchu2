@@ -47,13 +47,14 @@
 }
 
 .navbar {
-	vertical-align: middle;
+	position: fixed; vertical-align : middle;
 	margin-bottom: 0;
 	padding-top: 5px;
 	padding-bottom: 10px;
 	width: 100%;
 	border-bottom: 1px solid rgba(120, 120, 120, 0.3);
 	box-shadow: 2px 2px 5px rgba(120, 120, 120, 0.2);
+	vertical-align: middle;
 }
 
 .nav>li a {
@@ -66,7 +67,7 @@
 	color: #f74788;
 	font-size: 1.5em;
 	margin-top: 10px;
-	padding-left: 20px;
+	padding-left: 25px;
 }
 
 #profile_img {
@@ -93,7 +94,7 @@
 	border-radius: 5px;
 }
 /*데스크탑*/
-@media screen and (min-width:425px) and (max-width:2550px) {
+@media screen and (min-width:1281px) and (max-width:2550px) {
 	/*메인페이지*/
 	#main_banner {
 		top: 0;
@@ -113,41 +114,130 @@
 	}
 	.search-form {
 		position: absolute;
-		top:375px;
+		top: 375px;
 		width: 45%;
-		transform: translateX(-50%);	
+		transform: translateX(-50%);
 		left: 50%;
 	}
-	.input-group input[type=text] {
+	.search-form input[type=text] {
 		width: 100%;
 	}
 	.custom-icon {
 		background-color: #f74788;
 	}
-	.header-menu{
-		position:fixed;
-		top:0px;
-		right:10px;
+	.header-menu {
+		position: fixed;
+		top: 0px;
+		right: 10px;
 	}
-	.header-item{
-		font-size:1.1em;
-		padding:10px 10px 10px 10px;
+	.header-item {
+		font-size: 1.1em;
+		padding: 10px 10px 10px 10px;
+	}
+	#search-field {
+		padding-top: 5px;
+		margin-left: 20%;
+		float: left;
+		width: 50%;
+	}
+	#main-content{
+		top:100px;
+		position:relative;
 	}
 }
-@media screen and (min-width:425px) and (max-width:768px){
+
+@media screen and (min-width:769px) and (max-width:1280px) {
+	/*메인페이지*/
+	#main_banner {
+		top: 0;
+		position: absoulte;
+		width: 100%;
+		height: 400px;
+		background-color: #333;
+	}
+	#banner-text {
+		position: absoulte;
+		top: 200px;
+		text-align: center;
+		margin: 0;
+		padding-top: 160px;
+		font-size: 3.5em;
+		color: white;
+	}
 	.search-form {
-		width:80%;
-		transform: translateX(-50%);	
-		left: 50%;
 		position: absolute;
+		top: 375px;
+		width: 60%;
+		transform: translateX(-50%);
+		left: 50%;
 	}
-	.input-group input[type=text] {
+	.search-form input[type=text] {
 		width: 100%;
 	}
 	.custom-icon {
 		background-color: #f74788;
 	}
+	.header-menu {
+		position: fixed;
+		top: 0px;
+		right: 10px;
+	}
+	.header-item {
+		font-size: 1.1em;
+		padding: 10px 10px 10px 10px;
+	}
+	#search-field {
+		padding-top: 5px;
+		margin-left: 8%;
+		float: left;
+		width: 40%;
+	}
+	#main-content{
+		top:100px;
+		position:absoulte;
+	}
 }
+
+@media screen and (min-width:425px) and (max-width:768px) {
+	/*메인페이지*/
+	#main_banner {
+		top: 0;
+		position: absoulte;
+		width: 100%;
+		height: 250px;
+		background-color: #333;
+	}
+	#banner-text {
+		position: absoulte;
+		top: 100px;
+		text-align: center;
+		margin: 0;
+		padding-top: 100px;
+		color: white;
+	}
+	.search-form {
+		width: 100%;
+		position: fixed;
+		padding-top: 8px;
+		padding-left: 5px;
+		padding-right: 5px;
+		padding-bottom: 8px;
+		background-color: white;
+		border-bottom: 1px solid #222;
+	}
+	.search-form . input-group-addon .input-group input[type=text] {
+		width: 90%;
+		transform: translateX(-50%);
+		left: 50%;
+		margin: 0 auto;
+	}
+	#md-search{
+		position:fixed;
+		background-color:white;
+		padding:10px 8px 
+	}
+}
+
 @media screen and (min-width:0px) and (max-width:424px) {
 	/*메인페이지*/
 	#main_banner {
@@ -166,22 +256,26 @@
 		color: white;
 	}
 	.search-form {
-		width:100%;
-		position:fixed;
-		padding-top:8px;
-		padding-left:5px;
-		padding-right:5px;
-		padding-bottom:8px;
-		background-color:white;
-		border-bottom:1px solid #222;
+		width: 100%;
+		position: fixed;
+		padding-top: 8px;
+		padding-left: 5px;
+		padding-right: 5px;
+		padding-bottom: 8px;
+		background-color: white;
+		border-bottom: 1px solid #222;
 	}
-	.input-group-addon .input-group input[type=text] {
-		width:90%;
-		transform: translateX(-50%);	
+	.search-form . input-group-addon .input-group input[type=text] {
+		width: 90%;
+		transform: translateX(-50%);
 		left: 50%;
-		margin:0 auto;
+		margin: 0 auto;
 	}
-	.custom-icon {
-		background-color: #f74788;
+	#md-search{
+		position:fixed;
+		width:95%;
+		background-color:white;
+		margin:0 auto;
+		padding:10px 8px 10px 8px;
 	}
 }
