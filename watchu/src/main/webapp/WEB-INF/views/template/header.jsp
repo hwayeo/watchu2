@@ -1,32 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	<nav class="navbar" >
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar custom-icon"></span>
-				<span class="icon-bar custom-icon"></span>
-				<span class="icon-bar custom-icon"></span>
-			</button>		
-			<a href="${pageContext.request.contextPath}/main/main.do" class="navbar-brand hidden-xs" id="brand_text"><b>WATCHA</b></a>
+<!-- 모바일 환경의 상단 -->
+<div class="visible-xs">
+	<form>
+		<div class="input-group input-group-lg" id="md-search">
+			<input type="text" class="form-control" placeholder="작품 제목,배우,감독 검색">
+			<span class="input-group-btn">
+        		<button class="btn btn-default" type="button"><span id="search-icon" class="glyphicon glyphicon-search"></span></button>
+      		</span>
 		</div>
-		<div class="collapse navbar-collapse navbar-main">
-				<div class="form-group search-form">
-				<div class="input-group input-group-lg">
-						<span class="input-group-addon"><span class="glyphicon glyphicon-search" id="search-icon"></span></span>
-						<input type="text" class="form-control" placeholder="영화 제목,배우,감독을 검색해보세요.">
-				</div>
-				</div>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="${pageContext.request.contextPath}/movie/list.do">영화목록</a></li>
-			<c:if test="${empty user_id}">
-				<li><a data-toggle="modal" data-target="#loginModal" id="login-btn">로그인</a></li>
-				<li><a href="${pageContext.request.contextPath}/user/write.do">회원가입</a></li>
-			</c:if>
-			<c:if test="${!empty user_id}">
-				<img src="${pageContext.request.contextPath}/resources/images/default-profile.jpg" class="img-responsive img-circle" id="profile_img">
-			</c:if>
-			</ul>
-		</div><!-- .navbar-collapse -->
-	</nav>
+	</form>
+</div>
+<!-- 모바일 환경에서 사라짐 -->
+<nav class="navbar hidden-xs">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="${pageContext.request.contextPath}/main/main.do" id="brand_text"><b>WATCHU</b></a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-main">
+      <form class="navbar-form" role="search">
+        <div id="search-field" class="input-group input-group-lg">
+      		<input type="text" class="form-control" placeholder="검색">
+      		<span class="input-group-btn">
+        		<button class="btn btn-default" type="button"><span id="search-icon" class="glyphicon glyphicon-search"></span></button>
+      		</span>
+      </div>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="${pageContext.request.contextPath}/movie/list.do">영화목록</a></li>
+        <li><a href="${pageContext.request.contextPath}/movie/list.do">로그인</a></li>
+        <li><a href="${pageContext.request.contextPath}/movie/list.do">회원가입</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+</nav>
+

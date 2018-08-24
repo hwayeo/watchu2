@@ -15,7 +15,9 @@
 </head>
 <body>
 	<tiles:insertAttribute name="header"/>
-	<tiles:insertAttribute name="body"/>
+	<div id="main-content">
+		<tiles:insertAttribute name="body"/>
+	</div>
 	<tiles:insertAttribute name="footer"/>
 </body>
 </html>
