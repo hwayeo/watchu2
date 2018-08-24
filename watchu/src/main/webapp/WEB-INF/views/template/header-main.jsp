@@ -10,7 +10,9 @@
 </div>
 	<div class="form-group search-form">
 		<div class="input-group input-group-lg">
-			<span class="input-group-addon"><span class="glyphicon glyphicon-search" id="search-icon"></span></span>
-			<input type="text" class="form-control" placeholder="검색">
-		</div>
+      		<input type="text" class="form-control" placeholder="작품 제목,배우,감독 검색">
+      		<span class="input-group-btn">
+        		<button class="btn btn-default" type="button"><span id="search-icon" class="glyphicon glyphicon-search"></span></button>
+      		</span>
+      	</div>
 	</div>
