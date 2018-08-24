@@ -5,7 +5,7 @@
 	<div class="header-menu hidden-xs">
 		<a href="${pageContext.request.contextPath}/movie/list.do" class="header-item">영화목록</a>
 		<a href="#" class="header-item">로그인</a>
-		<a href="#" class="header-item">회원가입</a>
+		<a href="${pageContext.request.contextPath}/user/write.do" class="header-item">회원가입</a>
 	</div>
 </div>
 	<div class="form-group search-form">
