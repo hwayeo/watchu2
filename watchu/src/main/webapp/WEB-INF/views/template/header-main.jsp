@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="text-right">
 	<div class="header-menu hidden-xs">
-		<a href="#" class="header-item">영화목록</a>
+		<a href="${pageContext.request.contextPath}/movie/list.do" class="header-item">영화목록</a>
 		<a href="#" class="header-item">로그인</a>
 		<a href="#" class="header-item">회원가입</a>
 	</div>
