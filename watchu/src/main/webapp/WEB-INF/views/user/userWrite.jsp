@@ -194,7 +194,7 @@
                                         </div>
                                         <div class="col-md-4">
                                         	<input type="submit" class="btn btn-primary" value="가입">
-                                        	<input type="button" class="btn btn-primary"value="취소" onclick="location.href='list.do'">
+                                        	<input type="button" class="btn btn-primary" value="취소" onclick="location.href='list.do'">
                                         </div>
                                     </div>                               
                             </div>  
