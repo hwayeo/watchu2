@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta charset="UTF-8">
 <title><tiles:getAsString name="title"></tiles:getAsString></title>
@@ -15,20 +14,20 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div id="main">
 	<div id="main_header">
 		<tiles:insertAttribute name="header"/>
 	</div>
+	<div id="admin">
 	<div id="main_menu">
 		<tiles:insertAttribute name="menu"/>
 	</div>
 	<div id="main_body">
 		<tiles:insertAttribute name="body"/>
 	</div>
+	</div>
 	<div id="main_footer">
 		<tiles:insertAttribute name="footer"/>
 	</div>
-</div>
 </body>
 </html>
 

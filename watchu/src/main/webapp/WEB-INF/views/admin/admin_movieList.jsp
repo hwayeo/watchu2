@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%-- <%@ include file="menu.jsp" %> --%>
 <!-- 영화 목록(관리자 메인) -->
 <div class="admin_main">
 	<div id="movie_list">
@@ -43,7 +42,7 @@
 
 			<!-- 페이지버튼 -->
 			<nav align="center">
-				<ul class="pagination pagination-sm paging">
+				<ul class="pagination pagination-sm">
 					<li class="disabled"><a href="#" aria-label="Previous"> <spanaria-hidden="true">&laquo;</span></a></li>
 					<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
 				</ul>
