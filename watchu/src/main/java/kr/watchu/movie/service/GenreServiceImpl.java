@@ -3,6 +3,8 @@ package kr.watchu.movie.service;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 
 import kr.watchu.movie.dao.GenreMapper;
@@ -10,12 +12,12 @@ import kr.watchu.movie.domain.GenreCommand;
 
 @Service("genreService")
 public class GenreServiceImpl implements GenreService{
+	@Resource
 	private GenreMapper genreMapper;
 
 	@Override
 	public void insertGenre(GenreCommand genre) {
-		// TODO Auto-generated method stub
-		
+		genreMapper.insertGenre(genre);
 	}
 
 	@Override
