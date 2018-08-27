@@ -30,7 +30,7 @@ public class UserCommand {
 	
 	public void setUpload(MultipartFile upload) throws IOException{
 		this.upload = upload;
-		setProfile_img(upload.getBytes());
+		setProfile_img(upload.getBytes()); 
 	}
 	
 	public String getId() {

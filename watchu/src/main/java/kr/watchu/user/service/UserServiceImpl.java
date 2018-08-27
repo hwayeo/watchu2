@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void insertUser(UserCommand user) {
 		userMapper.insertUser(user);
-		userMapper.insertUserDetail(user);	
+		userMapper.insertUserDetail(user);	 
 	}
 
 

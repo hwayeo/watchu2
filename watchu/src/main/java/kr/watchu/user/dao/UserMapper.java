@@ -6,7 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Insert;
 
 import kr.watchu.user.domain.UserCommand;
-
+ 
 public interface UserMapper {
 	//회원등록
 	@Insert("INSERT INTO user_basic (id,auth) VALUES (#{id},1)")
