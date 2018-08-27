@@ -9,10 +9,10 @@ import kr.watchu.user.domain.UserCommand;
 
 public interface UserMapper {
 	//회원등록
-	@Insert("INSERT INTO user_basic (id) VALUES (#{id})")
+	@Insert("INSERT INTO user_basic (id,auth) VALUES (#{id},1)")
 	public void insertUser(UserCommand user);
 	//상세정보등록
-	@Insert("INSERT INTO user_info (id,name,passwd,phone,email,profile_img,reg_date) VALUES (#{id},#{name},#{passwd},#{phone},#{email},#{profile_img},SYSDATE)")
+	@Insert("INSERT INTO user_info (id,passwd,name,phone,email,profile_img,reg_date) VALUES (#{id},#{passwd},#{name},#{phone},#{email},#{profile_img},SYSDATE)")
 	public void insertUserDetail(UserCommand user);
 	
 	//회원상세정보확인

@@ -34,6 +34,8 @@ public class UserController {
 	@RequestMapping(value="/user/write.do",method=RequestMethod.POST)
 	public String insertSubmit(@ModelAttribute("command") UserCommand user) {
 		
+		UserCommand userCommand = new UserCommand();
+		//userCommand.setUpload(upload);
 		userService.insertUser(user);
 		
 		return "user/userWrite2";

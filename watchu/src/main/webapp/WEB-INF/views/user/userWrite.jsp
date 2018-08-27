@@ -108,7 +108,7 @@
 												<ul class="dropdown-menu">
 													<li><a href="#" class="rollbackImage">기본이미지</a></li>
 													<li><a href="#" class="modifyImage" >앨범에서 선택
-													<input type="file" name="profile_img" id="profile_img">
+													<input type="file" name="upload" id="upload">
 													</a></li>
 												</ul>
 											</div>

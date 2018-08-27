@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class UserCommand {
 	
 	private String id;
-	private Integer auth;
+	private int auth;
 	private String passwd;
 	private String name;
 	private String phone;
@@ -39,12 +39,15 @@ public class UserCommand {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public Integer getAuth() {
+	
+	public int getAuth() {
 		return auth;
 	}
-	public void setAuth(Integer auth) {
+
+	public void setAuth(int auth) {
 		this.auth = auth;
 	}
+
 	public String getPasswd() {
 		return passwd;
 	}

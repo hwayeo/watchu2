@@ -22,11 +22,6 @@ public class UserServiceImpl implements UserService {
 		userMapper.insertUserDetail(user);	
 	}
 
-	@Override
-	public void insertUserDetail(UserCommand user) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public UserCommand selectUser(String id) {

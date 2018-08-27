@@ -9,8 +9,6 @@ public interface UserService {
 	//회원등록
 	public void insertUser(UserCommand user);
 	//상세정보등록
-	public void insertUserDetail(UserCommand user);
-	//회원상세정보확인
 	public UserCommand selectUser(String id);
 	//수정
 	public void updateUser(UserCommand user);
