@@ -22,7 +22,7 @@
     <div class="collapse navbar-collapse" id="navbar-main">
       <form class="navbar-form" role="search">
         <div id="search-field" class="input-group input-group-lg">
-      		<input type="text" class="form-control" placeholder="검색">
+      		<input type="text" class="form-control" placeholder="작품 제목,배우,감독 검색">
       		<span class="input-group-btn">
         		<button class="btn btn-default" type="button"><span id="search-icon" class="glyphicon glyphicon-search"></span></button>
       		</span>
@@ -31,7 +31,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="${pageContext.request.contextPath}/movie/list.do">영화목록</a></li>
         <li><a href="${pageContext.request.contextPath}/movie/list.do">로그인</a></li>
-        <li><a href="${pageContext.request.contextPath}/movie/list.do">회원가입</a></li>
+        <li><a href="${pageContext.request.contextPath}/user/write.do">회원가입</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
 </nav>
