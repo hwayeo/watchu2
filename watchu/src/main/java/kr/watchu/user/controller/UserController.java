@@ -30,16 +30,4 @@ public class UserController {
 	public String form() {
 		return "userWrite";
 	}
-	
-	//·Î±×ÀÎ
-	@RequestMapping(value="/user/login.do",method=RequestMethod.GET)
-	public String loginForm() {
-		return "";
-	}
-
-	@RequestMapping(value="/user/login.do",method=RequestMethod.POST)
-	public String submitLogin(@ModelAttribute("command") @Valid UserCommand userCommand, BindingResult result, HttpSession session) {
-		
-		return "redirect:/main/main.do";
-	}
 }
