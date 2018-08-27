@@ -15,16 +15,23 @@ public class UserServiceImpl implements UserService {
 	
 	@Resource
 	private UserMapper userMapper;
-	
+
 	@Override
 	public void insertUser(UserCommand user) {
 		userMapper.insertUser(user);
+		userMapper.insertUserDetail(user);	
 	}
 
 	@Override
-	public UserCommand insertUserDetail(String id) {
+	public void insertUserDetail(UserCommand user) {
+		// TODO Auto-generated method stub
 		
-		return userMapper.insertUserDetail(id);
+	}
+
+	@Override
+	public UserCommand selectUser(String id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
@@ -50,8 +57,8 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-		
 	
+
 
 	
 	

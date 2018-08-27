@@ -20,6 +20,14 @@ public class UserCommand {
 	private String follower;
 	private String block;
 	
+	//비밀번호 체크
+	public boolean isCheckedPasswd(String userPasswd) {
+		if(auth > 0 && passwd.equals(userPasswd)) {
+			return true;
+		}
+		return false;
+	}
+	
 	public void setUpload(MultipartFile upload) throws IOException{
 		this.upload = upload;
 		setProfile_img(upload.getBytes());

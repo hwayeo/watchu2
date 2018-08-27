@@ -108,7 +108,7 @@
 												<ul class="dropdown-menu">
 													<li><a href="#" class="rollbackImage">기본이미지</a></li>
 													<li><a href="#" class="modifyImage" >앨범에서 선택
-													<input type="file" name="upload" id="upload">
+													<input type="file" name="profile_img" id="profile_img">
 													</a></li>
 												</ul>
 											</div>
@@ -124,6 +124,7 @@
                                         </div>
                                         <div class="col-md-8">
                                             <input type="text" id="id" class="form-control"> 
+                                          <%--   <form:input path="id"/> --%>
                                             <input type="button" value="ID중복체크" id="id_check"
 												class="btn btn-default"> <span id="message_id">
 												</span> <img src="${pageContext.request.contextPath}/images/ajax-loader.gif" width="16" height="16"
