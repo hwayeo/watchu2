@@ -30,11 +30,13 @@
         </div>
       </div>
       <div class="modal-body">	
-      	<form:form commandName="command" action="login.do">
+      	<form:form commandName="command" action="${pageContext.request.contextPath}/main/login.do">
 	      	<div class="text-center">
-		      	<form:input path="id"/>
-		      	<form:password path="passwd"/>
-		      	<input type="submit" value="로그인">
+		      	<form:input path="id" cssClass="form-control"/>
+		      	<form:errors path="id"/>
+		      	<form:password path="passwd" cssClass="form-control"/>
+		      	<form:errors path="passwd"/>
+		      	<input type="submit" class="btn btn-primary" value="로그인">
 		        <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
       		</div>
       	</form:form>
