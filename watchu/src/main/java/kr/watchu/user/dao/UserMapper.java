@@ -6,7 +6,6 @@ import java.util.Map;
 import kr.watchu.user.domain.UserCommand;
 
 public interface UserMapper {
-	
 	//회원등록
 	public void insertUser(UserCommand user);
 	//상세정보
