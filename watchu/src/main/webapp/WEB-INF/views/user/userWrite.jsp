@@ -188,15 +188,17 @@
 
 									<div class="form-group row">
                                         <p class="text-center">welcom! </p>
-                                    </div>
-                                    <div class="form-group row">
+                                    	<div class="form-group row">
                                         <div class="col-md-4">
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-8">
                                         	<input type="submit" class="btn btn-primary" value="가입">
                                         	<input type="button" class="btn btn-primary" value="취소" onclick="location.href='list.do'">
                                         </div>
-                                    </div>                               
+                                    	</div>    
+                                    
+                                    </div>
+                                                               
                             </div>  
                     </form:form>
                     
