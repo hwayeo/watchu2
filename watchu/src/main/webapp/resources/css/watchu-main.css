@@ -1,10 +1,48 @@
-/*푸터 고정*/
+/*푸터*/
+#xs-footer{
+	widht:100%;
+	border-top:1px solid rgba(120,120,120,0.2);
+	background-color:white;
+}
+.items-area{
+	padding-top:7px;
+}
+.items-area:hover{
+	border-radius:5px;
+	background-color:rgba(100,100,100,0.1);
+}
+.footer-item{
+	color:#f74788;
+}
+.footer-item:hover{
+	color:#f74788;
+	text-decoration:none;
+}
+.footer-item:link{
+	color:#f74788;
+	text-decoration:none;
+}
+.footer-item:visited{
+	color:#f74788;
+	text-decoration:none;
+}
+.footer-item:active{
+	color:#f74788;
+	text-decoration:none;
+}
+.footer-item .glyphicon{
+	font-size:1.5em;
+}
+.item-font{
+	margin-top:-3px;
+	font-size:0.9em;
+}
 #footer {
 	position: relative;
 	top: 650px;
 	left: 0px;
 	bottom: 0px;
-	height: 150x;
+	min-height: 150x;
 	width: 100%;
 	background: #f8f8f8;
 }
@@ -47,14 +85,14 @@
 }
 
 .navbar {
-	position: fixed; vertical-align : middle;
+	vertical-align : middle;
 	margin-bottom: 0;
 	padding-top: 5px;
 	padding-bottom: 10px;
 	width: 100%;
 	border-bottom: 1px solid rgba(120, 120, 120, 0.3);
 	box-shadow: 2px 2px 5px rgba(120, 120, 120, 0.2);
-	vertical-align: middle;
+	z-index:2;
 }
 
 .nav>li a {
@@ -78,31 +116,22 @@
 #search-icon {
 	color: #878787;
 }
-/*메인헤더*/
-#login-btn {
-	cursor: pointer;
-}
-
 /*회원가입*/
 #page-register {
 	body {
         font-family: 'PT Sans', sans-serif;
     }
-
     hr {
         border: 1px solid #354458;
     }
-
     .panel {
         margin-top: 50px;
         margin-right: 10px;
     }
-
     .col-md-8 > button {
         display: block;
         margin: auto;
     }
-
     .social > a {
         width: 100%;
     }
@@ -150,12 +179,13 @@
 	}
 	.header-menu {
 		position: fixed;
-		top: 0px;
+		top: 10px;
 		right: 10px;
 	}
 	.header-item {
 		font-size: 1.1em;
 		padding: 10px 10px 10px 10px;
+		background-color:white;
 	}
 	#search-field {
 		padding-top: 5px;
@@ -202,12 +232,14 @@
 	}
 	.header-menu {
 		position: fixed;
-		top: 0px;
+		top: 10px;
 		right: 10px;
 	}
 	.header-item {
 		font-size: 1.1em;
 		padding: 10px 10px 10px 10px;
+		border-radius:5px;
+		background-color:white;
 	}
 	#search-field {
 		padding-top: 5px;
@@ -257,7 +289,12 @@
 	#md-search{
 		position:fixed;
 		background-color:white;
-		padding:10px 8px 
+		padding:10px 8px;
+		z-index:1;
+	}
+	#main-content{
+		top:100px;
+		position:relative;
 	}
 }
 
@@ -296,9 +333,15 @@
 	}
 	#md-search{
 		position:fixed;
-		width:95%;
+		width:100%;
 		background-color:white;
 		margin:0 auto;
 		padding:10px 8px 10px 8px;
+		z-index:1;
+	}
+	#main-content{
+		top:100px;
+		position:relative;
 	}
 }
+
