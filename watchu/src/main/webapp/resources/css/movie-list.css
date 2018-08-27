@@ -3,10 +3,12 @@
 	padding-right:30px;
 }
 .home-text1{
+	padding:15px;
 	font-size:30px;
 	font-weight:bold;
 }
 .home-text2{
+	padding:10px;
 	text-align:right;
 	font-size:20px;
 	float:right;
@@ -36,4 +38,10 @@
 
 .sub-category span{
 	color:#999;
+}
+
+#navline{
+	padding:0 20px;
+	margin:0;
+	width:1170px;
 }

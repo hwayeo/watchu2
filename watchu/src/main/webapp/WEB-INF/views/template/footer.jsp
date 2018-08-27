@@ -24,7 +24,7 @@
 				<span class="glyphicon glyphicon-home"></span><br><span class="item-font">홈</span></a>
 			</div>		
 			<div class="col-xs-3 text-center items-area">
-				<a href="${pageContext.request.contextPath}/movie/list.do" class="footer-item">
+				<a href="${pageContext.request.contextPath}/movie/movieHome.do" class="footer-item">
 				<span class="glyphicon glyphicon-th-list"></span><br><span class="item-font">영화</span></a>
 			</div>
 		<c:if test="${!empty user_id}">
