@@ -9,7 +9,7 @@ public interface UserService {
 	//회원등록
 	public void insertUser(UserCommand user);
 	//상세정보
-	public UserCommand selectUser(String id);
+	public UserCommand insertUserDetail(String id);
 	//수정
 	public void updateUser(UserCommand user);
 	//삭제
