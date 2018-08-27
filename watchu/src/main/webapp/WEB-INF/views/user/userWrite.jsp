@@ -81,9 +81,9 @@
          <div class="row"> 
             <div class="col-md-10 col-md-offset-2">
     
-                     <form:form action="write.do" id="insert_Form" enctype="multipart/form-data">
+                     <form:form commandName="" action="write.do" id="insert_Form" enctype="multipart/form-data">
                      
-                        	 <div class="col-md-4">
+                        	 <div class="col-md-6">
                                 
                                     <div class="form-group row">
                                         <div class="col-xs-8 col-xs-offset-2 col-md-8 col-md-offset-3">
@@ -108,7 +108,7 @@
 												<ul class="dropdown-menu">
 													<li><a href="#" class="rollbackImage">기본이미지</a></li>
 													<li><a href="#" class="modifyImage" >앨범에서 선택
-													<input type="file" name="filename" id="filename">
+													<input type="file" name="profile_img" id="profile_img">
 													</a></li>
 												</ul>
 											</div>
@@ -120,13 +120,14 @@
                             <div class="col-md-6">
                                     <div class="form-group row">
                                         <div class="col-md-4">
-                                            <label for="name">아이디</label>
+                                            <label for="id">아이디</label>
                                         </div>
                                         <div class="col-md-8">
-                                            <input type="text" id="name" class="form-control"> 
+                                            <input type="text" id="id" class="form-control"> 
+                                          <%--   <form:input path="id"/> --%>
                                             <input type="button" value="ID중복체크" id="id_check"
 												class="btn btn-default"> <span id="message_id">
-												</span> <img src="../images/ajax-loader.gif" width="16" height="16"
+												</span> <img src="${pageContext.request.contextPath}/images/ajax-loader.gif" width="16" height="16"
 												id="loading" style="display: none;">
 										</div>
                                        
@@ -134,10 +135,10 @@
                                     
                                     <div class="form-group row">
                                         <div class="col-md-4">
-                                            <label for="lastName">이름</label>
+                                            <label for="name">이름</label>
                                         </div>
                                         <div class="col-md-8">
-                                            <input type="text" id="lastName" class="form-control">
+                                            <input type="text" id="name" class="form-control">
                                         </div>
                                     </div>
   
@@ -188,16 +189,20 @@
 
 									<div class="form-group row">
                                         <p class="text-center">welcom! </p>
-                                    	<div class="form-group row">
+                                    	<!-- <div class="form-group row"> -->
                                         <div class="col-md-4">
+                                        
                                         </div>
                                         <div class="col-md-8">
                                         	<input type="submit" class="btn btn-primary" value="가입">
-                                        	<input type="button" class="btn btn-primary" value="취소" onclick="location.href='list.do'">
+                                        	<input type="button" class="btn btn-primary" value="취소" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
                                         </div>
-                                    	</div>    
+                                    	<!-- </div>  -->   
                                     
                                     </div>
+                                    <br>
+                                    <br>
+                                    <br>
                                                                
                             </div>  
                     </form:form>

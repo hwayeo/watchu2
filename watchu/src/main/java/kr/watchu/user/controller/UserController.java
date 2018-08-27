@@ -27,7 +27,27 @@ public class UserController {
 	
 	//회원가입 폼 호출
 	@RequestMapping(value="/user/write.do",method=RequestMethod.GET)
-	public String form() {
+	public String insertForm() {
 		return "userWrite";
+	}
+	//회원가입 데이터 전송
+	@RequestMapping(value="/user/write.do",method=RequestMethod.POST)
+	public String insertSubmit(@ModelAttribute("command") UserCommand user) {
+		
+		userService.insertUser(user);
+		
+		return "user/userWrite2";
+	}
+	
+	//로그인
+	@RequestMapping(value="/user/login.do",method=RequestMethod.GET)
+	public String loginForm() {
+		return "";
+	}
+
+	@RequestMapping(value="/user/login.do",method=RequestMethod.POST)
+	public String submitLogin(@ModelAttribute("command") @Valid UserCommand userCommand, BindingResult result, HttpSession session) {
+		
+		return "redirect:/main/main.do";
 	}
 }

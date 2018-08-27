@@ -3,12 +3,19 @@ package kr.watchu.user.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Insert;
+
 import kr.watchu.user.domain.UserCommand;
 
 public interface UserMapper {
 	//회원등록
+	@Insert("INSERT INTO user_basic (id) VALUES (#{id})")
 	public void insertUser(UserCommand user);
-	//상세정보
+	//상세정보등록
+	@Insert("INSERT INTO user_info (id,name,passwd,phone,email,profile_img,reg_date) VALUES (#{id},#{name},#{passwd},#{phone},#{email},#{profile_img},SYSDATE)")
+	public void insertUserDetail(UserCommand user);
+	
+	//회원상세정보확인
 	public UserCommand selectUser(String id);
 	//수정
 	public void updateUser(UserCommand user);
