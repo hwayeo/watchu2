@@ -8,11 +8,7 @@
 		<div class="col-xs-12 col-md-12"><br><br>
 			<div class="col-xs-12 col-md-12">
 			<div class="col-xs-9 col-md-9">
-				<img class="rounded-circle" src="${pageContext.request.contextPath}/resources/images/img3.png" width="100" height="100">
-				
-				<!-- 확인해야 함 -->
-				${profile_img} 
-				
+				<img src="imageView.do?id=${user_id}" width="35" height="35" class="img-circle">
 			<hr></div>
 			<div class="col-xs-1 col-md-1">
 				<a href="following.do" class="glyphicon glyphicon-user"></a> 
@@ -28,14 +24,14 @@
 				<ul class="wcPc-Arrange">
 				<li class="wcPc-ArrangeSizeFit">
 				<a href="https://watcha.com/ko-KR" title="885 Following">
-					<span class="wcPc-StatLabel wcPc-block">Following</span>&emsp;
-					<span class="wcPc-StatValue text-center">885</span>
+					<a href="#">Following&emsp;</a>&emsp;
+					<a href="#">885&emsp;</a>
 				</a>
 				</li>
 				<li class="wcPc-ArrangeSizeFit">
 				<a href="https://watcha.com/ko-KR" title="1.810 Followers">
-					<span class="wcPc-StatLabel wcPc-block">Followers</span>
-					<span class="wcPc-StatValue text-center">1.810</span><br><br>
+					<a href="#">Followers&emsp;</a>
+					<a href="#">1.810&emsp;</a><br><br>
 				</a>
 				</li>
 				</ul>

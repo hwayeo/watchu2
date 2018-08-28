@@ -72,10 +72,16 @@ public class MyPageController {
 		return "userLikeComment";
 	}
 	
-	// 좋아요한 코멘트
+	//보고싶어요
 	@RequestMapping("/user/userWish.do")
 	public String wish() {
 		return "userWish";
+	}
+	
+	//보는중
+	@RequestMapping("/user/userWatching.do")
+	public String watching() {
+		return "userWatching";
 	}
 	
 	//톱니바퀴(설정모달창)

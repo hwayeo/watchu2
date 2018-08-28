@@ -40,6 +40,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/user/userWish.jsp"/>
 	</definition>
 	
+	<definition name="userWatching" extends="userWrite">
+		<put-attribute name="title" value="왓츄 - 보는중"/>
+		<put-attribute name="body" value="/WEB-INF/views/user/userWatching.jsp"/>
+	</definition>
+	
 	<definition name="userfollowing" extends="userWrite">
 		<put-attribute name="title" value="팔로잉페이지"/>
 		<put-attribute name="body" value="/WEB-INF/views/user/userfollowing.jsp"/>
