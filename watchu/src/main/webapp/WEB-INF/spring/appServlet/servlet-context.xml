@@ -32,6 +32,7 @@
 				<beans:value>/WEB-INF/tiles-def/admin.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/user.xml</beans:value>
 				<beans:value>/WEB-INF/tiles-def/movie.xml</beans:value>
+				<beans:value>/WEB-INF/tiles-def/mypage.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>
