@@ -38,7 +38,7 @@
 				</div>
 				
 				<div class="col-xs-4 col-md-4"><br>
-					<button class="btn btn-md btn-primary active" type="button">프로필 수정</button>
+					<button class="btn btn-md btn-primary active" type="button" onclick="location.href='userModify.do'">프로필 수정</button>
 				</div><hr><br><br>
 		</div>
 		

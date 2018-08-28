@@ -1,41 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-
-<!-- <style>
-    body {
-        font-family: 'PT Sans', sans-serif;
-    }
-
-    hr {
-        border: 1px solid #354458;
-    }
-
-    .panel {
-        margin-top: 50px;
-        margin-right: 10px;
-    }
-
-    .col-md-8 > button {
-        display: block;
-        margin: auto;
-    }
-
-    .social > a {
-        width: 100%;
-    }
-    .img-size{
-    	width:250px;
-    	height:250px; 
-    }
-</style> -->
 
 
 <div id="page-register">
 	<div id="form-register">
 		<div class="text-center">
-			<h3><b>회원가입</b></h3>			
+			<h3><b>프로필 수정</b></h3>			
 		</div>				
 	</div>
 
@@ -174,6 +146,3 @@
             </div>
         </div>
     </div>
-    
-    
-   

@@ -30,7 +30,7 @@ public class UserController {
 	public UserCommand initCommand() {
 		return new UserCommand();
 	}
-	
+	//==========================================회원가입========================================
 	//회원가입 폼 호출
 	@RequestMapping(value="/user/write.do",method=RequestMethod.GET)
 	public String insertForm() {
@@ -57,7 +57,12 @@ public class UserController {
 		//회원가입시 초기 auth 값 1을 등록해준다
 		session.setAttribute("user_auth", 1);
 		
-		return "user/userWrite2";
+		return "userWrite2";
 	}
-	
+	//==========================================회원수정========================================
+	//회원가입 폼 호출
+		@RequestMapping(value="/user/userModify.do",method=RequestMethod.GET)
+		public String modifyForm() {
+			return "userModify";
+		}
 }
