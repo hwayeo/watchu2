@@ -27,7 +27,7 @@
                 
                     <li class="list-group-item">
                         <div class="">
-                             <a href="#"><label>내 설정</label></a>
+                             <a href="updateUser.do"><label>내 설정</label></a>
                         </div>                    
                     </li>
                     
@@ -55,7 +55,7 @@
                     
                     <li class="list-group-item">    
 	                        <div class="">
-	                            <a href="#"><label>로그아웃</label></a>
+	                            <a href="logout.do"><label>로그아웃</label></a>
 	                        </div>                    
 	                          
                     </li>

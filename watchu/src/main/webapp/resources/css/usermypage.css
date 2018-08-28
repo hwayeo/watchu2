@@ -52,7 +52,13 @@ ul.wcPc-Arrange {
 .tab-pane { padding: 5px 0; }
 .tab-content{padding:5px}
 
-
+.user_name{
+    font-size:14px;
+    font-weight: bold;
+}
+.comments-list .media{
+    border-bottom: 1px dotted #ccc;
+}
 
 
 

@@ -36,6 +36,7 @@
         </c:if>
         <c:if test="${!empty user_id}">
     	    <li><a href="${pageContext.request.contextPath}/user/logout.do">로그아웃</a></li>
+    	    <li><a href="${pageContext.request.contextPath}/user/userMypage.do">마이페이지</a></li>
         </c:if>
       </ul>
     </div><!-- /.navbar-collapse -->

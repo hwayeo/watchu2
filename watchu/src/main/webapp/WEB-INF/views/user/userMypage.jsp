@@ -1,36 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/setup.css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/mypage.js"></script>
+    
 <div class="container-fluid">
 	<div class="row">
 	<div>
 		<div class="col-xs-12 col-md-12"><br><br>
 			<div class="col-xs-12 col-md-12">
 			<div class="col-xs-9 col-md-9">
-				<img class="rounded-circle" src="${pageContext.request.contextPath}/resources/images/img3.png" width="100" height="100">
+				<img src="imageView.do?id=${user_id}" width="35" height="35" class="img-circle">
 			<hr></div>
 			<div class="col-xs-1 col-md-1">
-				<a href="#" class="glyphicon glyphicon-user"></a> 
+				<a href="following.do" class="glyphicon glyphicon-user"></a> 
 			</div>
 			<div class="col-xs-1 col-md-1">
-				<a href="#" class="glyphicon glyphicon-cog"></a>
+				<a href="setup.do" class="glyphicon glyphicon-cog" data-toggle="modal" data-target="#myModal2"></a>
 			</div>
 			</div>
 			
 				<div class="col-xs-8 col-md-8">
-					<h2 class="text-left">홍길동</h2>
-					
+					<h2 class="text-left"> ${user.name}</h2>
 				<div>
 				<ul class="wcPc-Arrange">
 				<li class="wcPc-ArrangeSizeFit">
 				<a href="https://watcha.com/ko-KR" title="885 Following">
-					<span class="wcPc-StatLabel wcPc-block">Following</span>&emsp;
-					<span class="wcPc-StatValue text-center">885</span>
+					<a href="#">Following&emsp;</a>&emsp;
+					<a href="#">885&emsp;</a>
 				</a>
 				</li>
 				<li class="wcPc-ArrangeSizeFit">
 				<a href="https://watcha.com/ko-KR" title="1.810 Followers">
-					<span class="wcPc-StatLabel wcPc-block">Followers</span>
-					<span class="wcPc-StatValue text-center">1.810</span><br><br>
+					<a href="#">Followers&emsp;</a>
+					<a href="#">1.810&emsp;</a><br><br>
 				</a>
 				</li>
 				</ul>
@@ -38,20 +41,20 @@
 				</div>
 				
 				<div class="col-xs-4 col-md-4"><br>
-					<button class="btn btn-md btn-primary active" type="button">프로필 수정</button>
+					<button class="btn btn-md btn-primary active" type="button" onclick="location.href='updateUser.do'">프로필 수정</button>
 				</div><hr><br><br>
 		</div>
 		
 		<div class="col-xs-12 col-md-12"> 
 		<div class="container" style="border:1px solid gray"><br><br>
 				<div class="col-xs-7 col-md-7 text-center">
-					<span class="wc-StatLabel2 wcPc-block"><a href="#">영화</a></span> 234<br>
-					<span class="wc-StatLabel wcPc-block"><a href="#">보고싶어요</a></span> 12
+					<span class="wc-StatLabel2 wcPc-block"><a onclick="location.href='userMypage_movie.do'">영화</a></span> 234<br>
+					<span class="wc-StatLabel wcPc-block"><a onclick="location.href='userWish.do'">보고싶어요</a></span> 12
 					
 				</div>
 				<div class="col-xs-5 col-md-5">
-					<span class="wc-StatLabel wcPc-block"><a href="#">코멘트</a></span> 11<br>
-					<span class="wc-StatLabel wcPc-block"><a href="#">좋아요</a></span> 120<br><br><br>
+					<span class="wc-StatLabel wcPc-block"><a onclick="location.href='userComment.do'">코멘트</a></span> 11<br>
+					<span class="wc-StatLabel wcPc-block"><a onclick="location.href='userLikeComment.do'">좋아요</a></span> 120<br><br><br>
 				</div>
 		</div>
 		</div>
@@ -89,3 +92,73 @@
 	</div>
 </div>
 </div>
+
+
+<!-- 톱니바퀴 누르면 나오는 모달 -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">설정</h4>
+				</div>
+				<div class="modal-body">
+					<form class="pb-modalreglog-form-reg">
+					<!--     여기부터 넣어라 -->
+					<ul class="list-group">
+
+						<li class="list-group-item">
+							<div class="">
+								<a href="updateUser.do"><label>내 설정</label></a>
+							</div>
+						</li>
+
+						<li class="list-group-item"></li>
+
+
+						<li class="list-group-item">
+
+							<div class="">
+								<a href="#"><label>공지사항</label></a>
+							</div>
+						</li>
+
+
+						<li class="list-group-item">
+							<div class="">
+								<a href="#"><label>고객센터</label></a>
+							</div>
+
+						</li>
+
+						<li class="list-group-item"></li>
+
+						<li class="list-group-item">
+							<div class="">
+								<a href="logout.do"><label>로그아웃</label></a>
+							</div>
+
+						</li>
+
+						<li class="list-group-item">
+							<div class="">
+								<a href="deleteUser.do"><label>회원탈퇴</label></a>
+							</div>
+
+						</li>
+
+
+
+					</ul>
+
+					<!--     여기까지다 -->
+					</form>
+				</div>
+				<div class="modal-footer text-center">Watchu♥</div>
+			</div>
+		</div>
+	</div>
