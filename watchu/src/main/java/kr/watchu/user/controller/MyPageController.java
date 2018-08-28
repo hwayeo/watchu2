@@ -49,19 +49,19 @@ public class MyPageController {
 	}
 	
 	//평가한 영화 목록 더보기
-	@RequestMapping("/user/mypage_movielist.do")
+	@RequestMapping("/user/userMypage_movielist.do")
 	public String mypage_movielist() {
 		return "userMypage_movielist";
 	}
 	
 	//코멘트
-	@RequestMapping("/user/comment.do")
+	@RequestMapping("/user/userComment.do")
 	public String comment() {
 		return "userComment";
 	}
 	
 	//코멘트 상세페이지
-	@RequestMapping("/user/comment_detail.do")
+	@RequestMapping("/user/userComment_detail.do")
 	public String comment_detail() {
 		return "userComment_detail";
 	}
