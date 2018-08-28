@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import kr.watchu.user.domain.UserCommand;
  
@@ -20,6 +21,7 @@ public interface UserMapper {
 	@Select("SELECT * FROM user_basic b LEFT OUTER JOIN user_info i ON b.id=i.id WHERE i.id=#{id}")
 	public UserCommand selectUser(String id);
 	//수정
+	@Update("update user_info set passwd=#{passwd},name=#{name},phone=#{phone},email=#{email},profile_img=#{profile_img} where id=#{id}")
 	public void updateUser(UserCommand user);
 	//삭제
 	public void deleteUser(String id);

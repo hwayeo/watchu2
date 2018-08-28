@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+    
 <div class="container-fluid">
 	<div class="row">
 	<div>
@@ -7,18 +9,21 @@
 			<div class="col-xs-12 col-md-12">
 			<div class="col-xs-9 col-md-9">
 				<img class="rounded-circle" src="${pageContext.request.contextPath}/resources/images/img3.png" width="100" height="100">
+				
+				<!-- 확인해야 함 -->
+				${profile_img} 
+				
 			<hr></div>
 			<div class="col-xs-1 col-md-1">
-				<a href="#" class="glyphicon glyphicon-user"></a> 
+				<a href="following.do" class="glyphicon glyphicon-user"></a> 
 			</div>
 			<div class="col-xs-1 col-md-1">
-				<a href="#" class="glyphicon glyphicon-cog"></a>
+				<a href="setup.do" class="glyphicon glyphicon-cog"></a>
 			</div>
 			</div>
 			
 				<div class="col-xs-8 col-md-8">
-					<h2 class="text-left">홍길동</h2>
-					
+					<h2 class="text-left"> ${user.name}</h2>
 				<div>
 				<ul class="wcPc-Arrange">
 				<li class="wcPc-ArrangeSizeFit">
@@ -38,14 +43,14 @@
 				</div>
 				
 				<div class="col-xs-4 col-md-4"><br>
-					<button class="btn btn-md btn-primary active" type="button">프로필 수정</button>
+					<button class="btn btn-md btn-primary active" type="button" onclick="location.href='updateUser.do'">프로필 수정</button>
 				</div><hr><br><br>
 		</div>
 		
 		<div class="col-xs-12 col-md-12"> 
 		<div class="container" style="border:1px solid gray"><br><br>
 				<div class="col-xs-7 col-md-7 text-center">
-					<span class="wc-StatLabel2 wcPc-block"><a href="#">영화</a></span> 234<br>
+					<span class="wc-StatLabel2 wcPc-block"><a onclick="location.href='userMypage_movie.do'">영화</a></span> 234<br>
 					<span class="wc-StatLabel wcPc-block"><a href="#">보고싶어요</a></span> 12
 					
 				</div>
