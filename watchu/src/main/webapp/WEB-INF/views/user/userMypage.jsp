@@ -18,7 +18,7 @@
 				<a href="following.do" class="glyphicon glyphicon-user"></a> 
 			</div>
 			<div class="col-xs-1 col-md-1">
-				<a href="setup.do" class="glyphicon glyphicon-cog"></a>
+				<a href="setup.do" class="glyphicon glyphicon-cog" data-toggle="modal" data-target="#myModal2"></a>
 			</div>
 			</div>
 			
@@ -94,3 +94,71 @@
 	</div>
 </div>
 </div>
+
+
+<!-- 톱니바퀴 누르면 나오는 모달 -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">설정</h4>
+				</div>
+				<div class="modal-body">
+					<!--     여기부터 넣어라 -->
+					<ul class="list-group">
+
+						<li class="list-group-item">
+							<div class="">
+								<a href="updateUser.do"><label>내 설정</label></a>
+							</div>
+						</li>
+
+						<li class="list-group-item"></li>
+
+
+						<li class="list-group-item">
+
+							<div class="">
+								<a href="#"><label>공지사항</label></a>
+							</div>
+						</li>
+
+
+						<li class="list-group-item">
+							<div class="">
+								<a href="#"><label>고객센터</label></a>
+							</div>
+
+						</li>
+
+						<li class="list-group-item"></li>
+
+						<li class="list-group-item">
+							<div class="">
+								<a href="logout.do"><label>로그아웃</label></a>
+							</div>
+
+						</li>
+
+						<li class="list-group-item">
+							<div class="">
+								<a href="#"><label>회원탈퇴</label></a>
+							</div>
+
+						</li>
+
+
+
+					</ul>
+
+					<!--     여기까지다 -->
+				</div>
+				<div class="modal-footer text-center">Watchu♥</div>
+			</div>
+		</div>
+	</div>
