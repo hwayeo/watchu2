@@ -1,23 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 	<div class="container text-center">
-		<h2>코멘트</h2><hr/>
+		<h2>좋아요</h2><hr/>
 	</div>
-		<div class="nav-collapse">
-			<ul class="nav">
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown"><b class="caret"></b>&nbsp;작성 순</a>
-					<ul class="dropdown-menu">
-						<li class="dropdown-header">작성 순</li>
-						<li><a href="#">나의 별점 높은 순</a></li>
-						<li><a href="#">나의 별점 낮은 순</a></li>
-						<li><a href="#">평균 별점 순</a></li>
-						<li><a href="#">신작 순</a></li>
-					</ul></li>
-			</ul>
-		</div><hr/>
+
 	<div class="container">
-		<div class="well" onclick="location.href='userComment_detail.do'" style="cursor:pointer;"> 
+		<div class="well"> 
 			<div class="media">
 				<div class="media-body">
 					<div class="container">

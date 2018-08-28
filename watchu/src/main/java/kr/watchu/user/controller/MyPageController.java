@@ -66,6 +66,12 @@ public class MyPageController {
 		return "userComment_detail";
 	}
 	
+	//좋아요한 코멘트
+	@RequestMapping("/user/userLikeComment.do")
+	public String likeComment() {
+		return "userLikeComment";
+	}
+	
 	//톱니바퀴(설정모달창)
 	@RequestMapping("/user/setup.do")
 	public String setup() {
@@ -78,5 +84,4 @@ public class MyPageController {
 	public String follow() {
 		return "userfollowing";
 	}
-		
 }
