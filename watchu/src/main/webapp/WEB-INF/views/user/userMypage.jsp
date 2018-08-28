@@ -15,7 +15,7 @@
 				
 			<hr></div>
 			<div class="col-xs-1 col-md-1">
-				<a href="#" class="glyphicon glyphicon-user"></a> 
+				<a href="following.do" class="glyphicon glyphicon-user"></a> 
 			</div>
 			<div class="col-xs-1 col-md-1">
 				<a href="setup.do" class="glyphicon glyphicon-cog"></a>

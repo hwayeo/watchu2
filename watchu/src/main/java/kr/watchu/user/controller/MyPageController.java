@@ -28,7 +28,7 @@ public class MyPageController {
 	}
 	
 	//마이페이지 메인
-	@RequestMapping("/user/mypage.do")
+	@RequestMapping("/user/userMypage.do")
 	public String mypage(HttpSession session,Model model) {
 		String id = (String)session.getAttribute("user_id");
 		UserCommand user = userService.selectUser(id);
@@ -69,8 +69,14 @@ public class MyPageController {
 	//톱니바퀴(설정모달창)
 	@RequestMapping("/user/setup.do")
 	public String setup() {
-		return "userSetup";
+		return "user/userSetup";
 	}
 	
+	
+	//팔로잉
+	@RequestMapping("/user/following.do")
+	public String follow() {
+		return "userfollowing";
+	}
 		
 }
