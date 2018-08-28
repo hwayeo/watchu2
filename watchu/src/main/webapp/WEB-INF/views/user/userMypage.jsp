@@ -18,7 +18,7 @@
 				<a href="#" class="glyphicon glyphicon-user"></a> 
 			</div>
 			<div class="col-xs-1 col-md-1">
-				<a href="톱니바퀴" class="glyphicon glyphicon-cog"></a>
+				<a href="setup.do" class="glyphicon glyphicon-cog"></a>
 			</div>
 			</div>
 			
