@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void updateUser(UserCommand user) {
-		// TODO Auto-generated method stub
+		userMapper.updateUser(user);
 		
 	}
 
