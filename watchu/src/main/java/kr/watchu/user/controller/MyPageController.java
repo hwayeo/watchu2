@@ -28,7 +28,7 @@ public class MyPageController {
 	}
 	
 	//마이페이지 메인
-	@RequestMapping("/user/mypage.do")
+	@RequestMapping("/user/userMypage.do")
 	public String mypage(HttpSession session,Model model) {
 		String id = (String)session.getAttribute("user_id");
 		UserCommand user = userService.selectUser(id);
@@ -72,5 +72,11 @@ public class MyPageController {
 		return "user/userSetup";
 	}
 	
+	
+	//팔로잉
+	@RequestMapping("/user/following.do")
+	public String follow() {
+		return "userfollowing";
+	}
 		
 }
