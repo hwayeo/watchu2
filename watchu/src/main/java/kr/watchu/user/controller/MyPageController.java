@@ -69,7 +69,7 @@ public class MyPageController {
 	//Åé´Ï¹ÙÄû(¼³Á¤¸ğ´ŞÃ¢)
 	@RequestMapping("/user/setup.do")
 	public String setup() {
-		return "userSetup";
+		return "user/userSetup";
 	}
 	
 		
