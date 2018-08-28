@@ -51,7 +51,7 @@
 		<div class="container" style="border:1px solid gray"><br><br>
 				<div class="col-xs-7 col-md-7 text-center">
 					<span class="wc-StatLabel2 wcPc-block"><a onclick="location.href='userMypage_movie.do'">영화</a></span> 234<br>
-					<span class="wc-StatLabel wcPc-block"><a href="#">보고싶어요</a></span> 12
+					<span class="wc-StatLabel wcPc-block"><a onclick="location.href='userWish.do'">보고싶어요</a></span> 12
 					
 				</div>
 				<div class="col-xs-5 col-md-5">

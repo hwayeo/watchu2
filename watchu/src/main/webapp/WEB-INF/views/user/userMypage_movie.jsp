@@ -31,7 +31,7 @@
 					<div class="col-xs-1 col-md-4"></div>
 					<div class="col-xs-4 col-md-1">
 						<br>
-						<button class="btn btn-md btn-primary active" type="button">더보기</button>
+						<button class="btn btn-md btn-primary active" type="button" onclick="location.href='userMypage_movielist.do'">더보기</button>
 						<br> <br>
 					</div>
 				</div>
@@ -55,7 +55,7 @@
 			</div>
 		</div>
 
-		<div class="row container">
+		<div class="row container" onclick="location.href='userWish.do'" style="cursor:pointer;">
 			<div class="col-xs-10 col-md-11">
 				<hr>
 				<h3>보고싶어요</h3>
