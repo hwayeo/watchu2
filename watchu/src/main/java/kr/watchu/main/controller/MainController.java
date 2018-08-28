@@ -114,8 +114,8 @@ public class MainController {
 		}
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("imageView");
-		mav.addObject("profile_img", user.getProfile_img());
-		
-		return mav;
+		mav.addObject("filename","profile.jpg");
+		mav.addObject("imageFile", user.getProfile_img());
+		return mav; 
 	}
 }
