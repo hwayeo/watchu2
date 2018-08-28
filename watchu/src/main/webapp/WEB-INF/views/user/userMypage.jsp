@@ -146,7 +146,7 @@
 
 						<li class="list-group-item">
 							<div class="">
-								<a href="#"><label>회원탈퇴</label></a>
+								<a href="deleteUser.do"><label>회원탈퇴</label></a>
 							</div>
 
 						</li>

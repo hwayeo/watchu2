@@ -93,5 +93,20 @@ public class UserController {
 		
 	}
 	
+	//==========================================회원수정========================================
+	//회원삭제 폼 호출
+	@RequestMapping(value="/user/deleteUser.do",method=RequestMethod.GET)
+	public String deleteForm(HttpSession session,Model model) {
+		
+		String id = (String)session.getAttribute("user_id");
+		
+		UserCommand user = new UserCommand();
+		user.setId(id);
+		
+		model.addAttribute("command",user);
+		
+		return "userDelete";
+	}
+	
 	
 }
