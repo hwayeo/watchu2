@@ -16,7 +16,7 @@
 			<img src="imageView.do?id=${user_id}" width="35" height="35" class="img-circle">
 			</a>
 			<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="mainMenu">
-   				<li role="presentation"><a role="menuitem" tabindex="-1" href="${pageContext.request.contextPath}/movie/list.do">영화목록</a></li>
+   				<li role="presentation"><a role="menuitem" tabindex="-1" href="${pageContext.request.contextPath}/movie/movieHome.do">영화목록</a></li>
     			<li role="presentation"><a role="menuitem" tabindex="-1" href="${pageContext.request.contextPath}/user/mypage.do">마이페이지</a></li>
     			<li role="presentation"><a role="menuitem" tabindex="-1" href="${pageContext.request.contextPath}/user/logout.do">로그아웃</a></li>
   			</ul>
