@@ -52,7 +52,7 @@
 			</div>
 		</div>
 
-		<div class="row container">
+		<div class="row container" onclick="location.href='userWatching.do'" style="cursor:pointer;">
 			<div class="col-xs-10 col-md-11">
 				<hr>
 				<h3>보는중</h3>
