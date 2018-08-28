@@ -8,7 +8,7 @@
 		<br>
 		<div class="content-header">
 			<!-- 검색 -->
-			<select name="category">
+			<select name="category"> 
 				<option value="movie_name">영화명</option>
 				<option value="movie_director">감독명</option>
 				<option value="movie_actor">배우명</option>

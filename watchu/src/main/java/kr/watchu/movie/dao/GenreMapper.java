@@ -3,10 +3,13 @@ package kr.watchu.movie.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Insert;
+
 import kr.watchu.movie.domain.GenreCommand;
 
 public interface GenreMapper {
 	//장르추가
+	@Insert("INSERT INTO movie_genre (genre_num, genre) VALUES (genre_seq.nextval, #{genre})")
 	public void insertGenre(GenreCommand genre);
 	//상세정보 -> 없어도 무관할것 같은
 	//수정

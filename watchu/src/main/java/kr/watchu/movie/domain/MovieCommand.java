@@ -17,8 +17,10 @@ public class MovieCommand {
 	private byte[] poster_img;
 	private MultipartFile uploadBanner;
 	private byte[] banner_img;
-	private String genre;
+	private Integer main_genre;
+	private Integer sub_genre;
 	private String trailer;
+	private Date reg_date;
 	private float rate;
 	private Integer rated_cnt;
 	
@@ -91,11 +93,17 @@ public class MovieCommand {
 	public void setBanner_img(byte[] banner_img) {
 		this.banner_img = banner_img;
 	}
-	public String getGenre() {
-		return genre;
+	public Integer getMain_genre() {
+		return main_genre;
 	}
-	public void setGenre(String genre) {
-		this.genre = genre;
+	public void setMain_genre(Integer main_genre) {
+		this.main_genre = main_genre;
+	}
+	public Integer getSub_genre() {
+		return sub_genre;
+	}
+	public void setSub_genre(Integer sub_genre) {
+		this.sub_genre = sub_genre;
 	}
 	public String getTrailer() {
 		return trailer;
@@ -114,5 +122,20 @@ public class MovieCommand {
 	}
 	public void setRated_cnt(Integer rated_cnt) {
 		this.rated_cnt = rated_cnt;
+	}
+		
+	public Date getReg_date() {
+		return reg_date;
+	}
+	public void setReg_date(Date reg_date) {
+		this.reg_date = reg_date;
+	}
+	@Override
+	public String toString() {
+		return "MovieCommand [movie_num=" + movie_num + ", title=" + title + ", country=" + country + ", released="
+				+ released + ", director=" + director + ", actors=" + actors + ", summary=" + summary
+				+ ", uploadPoster=" + uploadPoster + ", uploadBanner=" + uploadBanner + ", main_genre=" + main_genre
+				+ ", sub_genre=" + sub_genre + ", trailer=" + trailer + ", reg_date=" + reg_date + ", rate=" + rate
+				+ ", rated_cnt=" + rated_cnt + "]";
 	}
 }

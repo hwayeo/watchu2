@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!-- 영화 관계자 등록 및 수정 -->
 <div class="admin_main">
 	<div id="official_list">
 		<h2>영화 관계자 목록</h2>
 		<br>
-		<div class="content-header">
+		<div class="content-header"> 
 			<!-- 검색 -->
 			<select name="category">
 				<option value="movie_name">주요영화명</option>
@@ -58,21 +59,44 @@
 </div>
 
 
-<!-- 영화관계자 등록 모달창 -->
-<div class="modal fade" id="officialsModal" tabindex="-1" role="dialog"
-	aria-labelledby="officialsModalLabel" aria-hidden="true">
+<div class="modal fade" id="officialsModal" tabindex="-1" role="dialog" aria-labelledby="officialsModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
+			<form:form commandName="official_command" action="officialList.do" id="official_form" enctype="multipart/form-data">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal"
-					aria-label="Close">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-				<h4 class="modal-title" id="officialsModalLabel">영화 등록</h4>
+				<h4 class="modal-title" id="officialsModalLabel">영화 관계자 등록</h4>
 			</div>
-
 			<div class="modal-body">
-				<form id="officials_form" enctype="multipart/form-data">
+				<div class="form-group">
+					<label for="name">이름</label>
+	         		<form:input path="name"/>
+	         		<form:errors path="name" cssClass="error-color"/>
+				</div>
+				<div class="form-group">
+					<label for="jobs">구분</label>
+	         		<form:input path="jobs"/>
+	         		<form:errors path="jobs" cssClass="error-color"/>
+				</div>
+				<div class="form-group">
+					<label for="filmograp">필모그래피</label>
+	         		<form:input path="filmograp"/>
+	         		<form:errors path="filmograp" cssClass="error-color"/>
+				</div>
+				<div class="form-group">
+					<label for="upload">사진</label>
+	         		<input type="file" name="upload" id="upload"/>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+				<button type="submit" class="btn btn-default">등록</button>
+			</div>
+			</form:form>
+			
+<!-- 				<form id="officials_form" enctype="multipart/form-data">
 					<div class="form-group">
 						<label for="jobs">직업</label> <select name="main_category">
 							<option value="movie_director">영화감독</option>
@@ -93,17 +117,7 @@
 						<label for="movie_photo">사진</label> <input type="file"
 							name="movie_photo" class="form-control">
 					</div>
-
-				</form>
-			</div>
-
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-				<button type="button" class="btn btn-primary">등록</button>
-			</div>
+				</form>-->
 		</div>
 	</div>
-</div>
-
-
 </div>

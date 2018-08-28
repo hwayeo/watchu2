@@ -7,4 +7,10 @@ $(document).ready(function(){
 		if(windowHeight == 0){
 		}
  	});
+	
+	function showBannerImage(){
+		$('#img-test').css('background-image','url(imageView.do?id=deft)');
+	};
+	
+	showBannerImage();
 });

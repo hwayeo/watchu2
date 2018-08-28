@@ -6,7 +6,7 @@
 <body>
 	<div class="content-body">
 		<div class="tab-pane active" id="movie_list">
-			<h2>영화 목록</h2>
+			<h2>영화 목록</h2> 
 			<br>
 			<div class="content-header">
 				<!-- 검색 -->

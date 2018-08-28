@@ -3,6 +3,8 @@ package kr.watchu.movie.service;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 
 import kr.watchu.movie.dao.OfficialsMapper;
@@ -10,13 +12,12 @@ import kr.watchu.movie.domain.OfficialsCommand;
 
 @Service("officialsService")
 public class OfficialsServiceImpl implements OfficialsService {
-
-	private OfficialsMapper OfficialsMapper;
+	@Resource
+	private OfficialsMapper officialsMapper;
 	
 	@Override
 	public void insert(OfficialsCommand officials) {
-		// TODO Auto-generated method stub
-		
+		officialsMapper.insert(officials);
 	}
 
 	@Override

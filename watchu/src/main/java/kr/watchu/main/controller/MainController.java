@@ -75,6 +75,11 @@ public class MainController {
 				//인증 성공 로그인
 				session.setAttribute("user_id", user.getId());
 				session.setAttribute("user_auth", user.getAuth());
+				if(user.getProfile_img() == null) {
+					session.setAttribute("profile", null);
+				}else if(user.getProfile_img() != null) {
+					session.setAttribute("profile", "found");
+				}
 				if(log.isDebugEnabled()) {
 					log.debug("<<인증 성공>>");
 					log.debug("<<user_id>> : " + user.getId());
@@ -118,4 +123,16 @@ public class MainController {
 		mav.addObject("imageFile", user.getProfile_img());
 		return mav; 
 	}
+	
+/*	@RequestMapping("/main/imageView.do")
+	public ModelAndView viewImage(@RequestParam("movie_num") Integer movie_num) {
+		
+		if(log.isDebugEnabled()) {
+		}
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("imageView");
+		mav.addObject("filename","profile.jpg");
+		mav.addObject("imageFile");
+		return mav; 
+	}*/
 }

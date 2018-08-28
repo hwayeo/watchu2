@@ -11,7 +11,7 @@
 			<select name="category">
 				<option value="genre_num">장르 코드</option>
 				<option value="genre_name">장르명</option>
-			</select> <input type="text"> <input type="button" value="검색"><br>
+			</select> <input type="text"> <input type="button" value="검색"><br> 
 			<Br>
 		</div>
 
@@ -55,6 +55,7 @@
 <div class="modal fade" id="genreModal" tabindex="-1" role="dialog" aria-labelledby="genreModalLabel" aria-hidden="true">
    <div class="modal-dialog">
       <div class="modal-content">
+		<form:form commandName="genre_command" action="genreList.do" id="genre_form">
         <div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
                <span aria-hidden="true">&times;</span>
@@ -63,22 +64,19 @@
         </div>
         <div class="modal-body">
         
-		<form:form commandName="command" action="genreList.do" id="genre_form">
-         	<div class="form-group">
-         		<form:hidden path="genre_num"/>
-         	</div>
          	<div class="form-group">
          		<label for="genre">장르명</label>
          		<form:input path="genre"/>
          		<form:errors path="genre" cssClass="error-color"/>
-         		<!-- 장르명 중복체크 -->
          	</div>
+        </div>
          	
         <div class="modal-footer">
         	<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-        	<button type="submit" class="btn btn-default">전송</button>
+        	<button type="submit" class="btn btn-default">등록</button>
         </div>
-		</form:form>
+        </form:form>
+		
 		
 			<%-- <form id="genre_form">
                <div class="form-group">
@@ -97,7 +95,6 @@
             <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
             <button type="button" class="btn btn-primary">등록</button>
          </div> --%>
-      </div>
    </div>
-</div>
+   </div>
 </div>
