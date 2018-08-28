@@ -11,7 +11,7 @@
 			<a href="${pageContext.request.contextPath}/user/write.do" class="btn header-item">회원가입</a>
 		</c:if>
 		<c:if test="${!empty user_id}">
-		<div class="dropdown">
+		<div class="dropdown hidden-xs">
 			<a href="" class="dropdown-toggle" id="mainMenu" data-toggle="dropdown" aria-expanded="true">
 			<c:if test="${empty profile}">
 				<img src="${pageContext.request.contextPath}/resources/images/default-profile.jpg" width="35" height="35" class="img-circle">

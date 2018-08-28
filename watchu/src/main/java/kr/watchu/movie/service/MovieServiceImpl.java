@@ -41,14 +41,12 @@ public class MovieServiceImpl implements MovieService {
 
 	@Override
 	public int selectMovieCnt(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return movieMapper.selectMovieCnt(map);
 	}
 
 	@Override
 	public List<MovieCommand> selectMovieList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+		return movieMapper.selectMovieList(map);
 	}
 
 }
