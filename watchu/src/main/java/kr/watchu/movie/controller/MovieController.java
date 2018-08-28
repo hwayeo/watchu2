@@ -40,6 +40,33 @@ public class MovieController {
 	public String movieEva() {
 		return "movieEva";
 	}
+	
+	@RequestMapping("/movie/movieMlist.do")
+	@ResponseBody
+	public ModelAndView process(
+			@RequestParam(value="pageNum",defaultValue="1") int currentPage,
+			@RequestParam(value="keyfield",defaultValue="") String keyfield,
+			@RequestParam(value="keyword",defaultValue="" ) String keyword) {
+		
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
+		
+		//ÃÑ ±ÛÀÇ °¹¼ö
+		int count = movieService.selectMovieCnt(map);
+		
+		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,rowCount,pageCount,"movieMlist.do");
+		map.put("start", page.getStartCount());
+		map.put("end", page.getEndCount());
+		
+		List<MovieCommand> list = null;
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("");
+		
+		
+		
+	}
 	    
 	@RequestMapping("/movie/movieMlist.do")
 	@ResponseBody
