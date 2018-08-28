@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>모달테스트</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/setup.css">
+<%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/setup.css"> --%>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/admin-main.css">
@@ -34,7 +34,7 @@
                         </div>
                         <div class="modal-body">
                         <!--     여기부터 넣어라 -->
-                        	 <ul class="list-group">
+                        	<!--  <ul class="list-group">
                 
                     <li class="list-group-item">
                         <div class="">
@@ -80,52 +80,53 @@
       				
       				
       				
-                </ul>
-                            <!-- <form class="pb-modalreglog-form-reg">
+                </ul> -->
+					<form class="pb-modalreglog-form-reg">
                                 <div class="form-group">
                                     <div id="pb-modalreglog-progressbar"></div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="email">Email address</label>
+                                    <label for="email">email address</label>
                                     <div class="input-group pb-modalreglog-input-group">
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                                        <input type="email" class="form-control" id="inputemail" placeholder="email">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="password">Password</label>
+                                    <label for="password">password</label>
                                     <div class="input-group pb-modalreglog-input-group">
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                        <input type="password" class="form-control" id="inputPws" placeholder="Password">
+                                        <input type="password" class="form-control" id="inputpws" placeholder="password">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="confirmpassword">Confirm password</label>
+                                    <label for="confirmpassword">confirm password</label>
                                     <div class="input-group pb-modalreglog-input-group">
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                        <input type="password" class="form-control" id="inputConfirmPws" placeholder="Confirm Password">
+                                        <input type="password" class="form-control" id="inputconfirmpws" placeholder="confirm password">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="country">Country</label>
+                                    <label for="country">country</label>
                                     <div class="input-group pb-modalreglog-input-group">
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-globe"></span></span>
-                                        <input type="text" class="form-control" id="countries" placeholder="Country">
+                                        <input type="text" class="form-control" id="countries" placeholder="country">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="age">Age</label>
+                                    <label for="age">age</label>
                                     <div class="input-group pb-modalreglog-input-group">
                                         <input id="age">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <input type="checkbox" id="ch" name="chs">
-                                    I agree with <a href="#">terms and conditions.</a>
+                                    i agree with <a href="#">terms and conditions.</a>
                                 </div>
-                            </form> -->
-                            <!--     여기까지다 -->
-                        </div>
+                            </form>
+                               <!--  여기까지다 -->
+					
+				</div>
                         <div class="modal-footer text-center">
                             Watchu♥
                         </div>

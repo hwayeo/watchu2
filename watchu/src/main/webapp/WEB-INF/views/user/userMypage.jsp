@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/setup.css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/mypage.js"></script>
     
 <div class="container-fluid">
 	<div class="row">
@@ -105,6 +107,7 @@
 					<h4 class="modal-title" id="myModalLabel">설정</h4>
 				</div>
 				<div class="modal-body">
+					<form class="pb-modalreglog-form-reg">
 					<!--     여기부터 넣어라 -->
 					<ul class="list-group">
 
@@ -153,6 +156,7 @@
 					</ul>
 
 					<!--     여기까지다 -->
+					</form>
 				</div>
 				<div class="modal-footer text-center">Watchu♥</div>
 			</div>

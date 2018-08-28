@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/confirmId.js"></script>
 
 <!-- <style>
     body {
@@ -87,10 +87,11 @@
                                         <div class="col-md-8">
 											<form:input path="id" cssClass="form-control"/>
 											<form:errors path="id"/>
-                                            <input type="button" value="ID중복체크" id="id_check"
+                                            <input type="button" value="ID중복체크" id="confirmId"
 												class="btn btn-default"> <span id="message_id">
-												</span> <img src="${pageContext.request.contextPath}/images/ajax-loader.gif" width="16" height="16"
+												</span> <img src="${pageContext.request.contextPath}/resources/images/ajax-loader.gif" width="16" height="16"
 												id="loading" style="display: none;">
+												<form:errors path="id" cssClass="error-color" id="error_id"/>
 										</div>
                                        
                                     </div>
