@@ -28,7 +28,7 @@ public class MyPageController {
 	}
 	
 	//마이페이지 메인
-	@RequestMapping("/user/userMypage.do")
+	@RequestMapping("/user/mypage.do")
 	public String mypage(HttpSession session,Model model) {
 		String id = (String)session.getAttribute("user_id");
 		UserCommand user = userService.selectUser(id);
@@ -43,7 +43,7 @@ public class MyPageController {
 	}
 	
 	//평가한 영화 목록
-	@RequestMapping("/user/userMypage_movie.do")
+	@RequestMapping("/user/mypage_movie.do")
 	public String mypage_movie() {
 		return "userMypage_movie";
 	}
