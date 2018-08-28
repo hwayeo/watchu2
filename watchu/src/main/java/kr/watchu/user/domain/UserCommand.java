@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class UserCommand {
 	
 	private String id;
-	private Integer auth;
+	private int auth;
 	private String passwd;
 	private String name;
 	private String phone;
@@ -16,27 +16,36 @@ public class UserCommand {
 	private MultipartFile upload;
 	private byte[] profile_img;
 	private Date reg_date;
-	private String follow;
-	private String follower;
-	private String block;
+	
+	//비밀번호 체크
+	public boolean isCheckedPasswd(String userPasswd) {
+		if(auth > 0 && passwd.equals(userPasswd)) {
+			return true;
+		}
+		return false;
+	}
 	
 	public void setUpload(MultipartFile upload) throws IOException{
 		this.upload = upload;
-		setProfile_img(upload.getBytes());
+		setProfile_img(upload.getBytes()); 
 	}
 	
+
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
-	public Integer getAuth() {
+	
+	public int getAuth() {
 		return auth;
 	}
-	public void setAuth(Integer auth) {
+
+	public void setAuth(int auth) {
 		this.auth = auth;
 	}
+
 	public String getPasswd() {
 		return passwd;
 	}
@@ -77,22 +86,11 @@ public class UserCommand {
 	public void setReg_date(Date reg_date) {
 		this.reg_date = reg_date;
 	}
-	public String getFollow() {
-		return follow;
+
+	@Override
+	public String toString() {
+		return "UserCommand [id=" + id + ", auth=" + auth + ", passwd=" + passwd + ", name=" + name + ", phone=" + phone
+				+ ", email=" + email + ", reg_date=" + reg_date + "]";
 	}
-	public void setFollow(String follow) {
-		this.follow = follow;
-	}
-	public String getFollower() {
-		return follower;
-	}
-	public void setFollower(String follower) {
-		this.follower = follower;
-	}
-	public String getBlock() {
-		return block;
-	}
-	public void setBlock(String block) {
-		this.block = block;
-	}
+
 }

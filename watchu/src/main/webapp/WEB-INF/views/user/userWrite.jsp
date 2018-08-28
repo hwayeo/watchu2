@@ -31,40 +31,6 @@
     }
 </style> -->
 
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('.rollbackImage').click(function(){
-			alert('기본이미지뜨ㅔ해야함');
-		});
-		
-		$('.modifyImage').click(function(){
-			//alert('변경이미지뜨ㅔ해야함');
-		});
-		
-		 /* function uploadFile(){
-            var form = $('#insert_Form')[0];
-            var formData = new FormData(form);
-            formData.append("fileObj", $("#filename")[0].files[0]);
-
-            $.ajax({
-                url: '',
-                        processData: false,
-                        contentType: false,
-                        data: formData,
-                        type: 'POST',
-                        success: function(result){
-                            alert("업로드 성공!!");
-                        }
-                }); */
-        } 
-
-
-		
-	});
-	
-	
-
-</script>
 
 <div id="page-register">
 	<div id="form-register">
@@ -73,17 +39,13 @@
 		</div>				
 	</div>
 
-
-
-
-
-<div class="container">
+<div class="container">  
          <div class="row"> 
             <div class="col-md-10 col-md-offset-2">
     
-                     <form:form action="write.do" id="insert_Form" enctype="multipart/form-data">
+                     <form:form commandName="command" action="write.do" id="insert_Form" enctype="multipart/form-data">
                      
-                        	 <div class="col-md-4">
+                        	 <div class="col-md-6">
                                 
                                     <div class="form-group row">
                                         <div class="col-xs-8 col-xs-offset-2 col-md-8 col-md-offset-3">
@@ -108,7 +70,7 @@
 												<ul class="dropdown-menu">
 													<li><a href="#" class="rollbackImage">기본이미지</a></li>
 													<li><a href="#" class="modifyImage" >앨범에서 선택
-													<input type="file" name="filename" id="filename">
+													<input type="file" name="upload" id="upload">
 													</a></li>
 												</ul>
 											</div>
@@ -120,13 +82,14 @@
                             <div class="col-md-6">
                                     <div class="form-group row">
                                         <div class="col-md-4">
-                                            <label for="name">아이디</label>
+                                            <label for="id">아이디</label>
                                         </div>
                                         <div class="col-md-8">
-                                            <input type="text" id="name" class="form-control"> 
+											<form:input path="id" cssClass="form-control"/>
+											<form:errors path="id"/>
                                             <input type="button" value="ID중복체크" id="id_check"
 												class="btn btn-default"> <span id="message_id">
-												</span> <img src="../images/ajax-loader.gif" width="16" height="16"
+												</span> <img src="${pageContext.request.contextPath}/images/ajax-loader.gif" width="16" height="16"
 												id="loading" style="display: none;">
 										</div>
                                        
@@ -134,10 +97,11 @@
                                     
                                     <div class="form-group row">
                                         <div class="col-md-4">
-                                            <label for="lastName">이름</label>
+                                            <label for="name">이름</label>
                                         </div>
                                         <div class="col-md-8">
-                                            <input type="text" id="lastName" class="form-control">
+ 											<form:input path="name" cssClass="form-control"/>
+ 											<form:errors path="name"/>
                                         </div>
                                     </div>
   
@@ -148,7 +112,7 @@
 										</div>
 										<div class="col-md-8">
 										<div class="input-group pb-modalreglog-input-group">
-											<input type="password" class="form-control" id="passwd" placeholder="6~12자리 영문,숫자 조합">
+											<form:password path="passwd" cssClass="form-control" placeholder="6~12자리 영문,숫자 조합"/>
 											 <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
 										</div>
 										</div>
@@ -172,7 +136,7 @@
                                             <label for="phone">Phone</label>
                                         </div>
                                         <div class="col-md-8">
-                                            <input type="text" id="phone" class="form-control" placeholder="ex)010-1111-1111">
+                                        	<form:input path="phone" cssClass="form-control" placeholder="ex)010-1111-1111"/>
                                         </div>
                                     </div>
                                     
@@ -181,22 +145,28 @@
                                             <label for="email">E-mail</label>
                                         </div>
                                         <div class="col-md-8">
-                                            <input type="text" id="email" class="form-control" placeholder="">
+                                        	<form:input path="email" cssClass="form-control" placeholder="ex)email@email.com"/>
                                         </div>
                                     </div>
                                     
 
 									<div class="form-group row">
-                                        <p class="text-center">welcom! </p>
-                                    </div>
-                                    <div class="form-group row">
+                                        <p class="text-center">welcome! </p>
+                                    	<!-- <div class="form-group row"> -->
                                         <div class="col-md-4">
+                                        
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-8">
                                         	<input type="submit" class="btn btn-primary" value="가입">
-                                        	<input type="button" class="btn btn-primary" value="취소" onclick="location.href='list.do'">
+                                        	<input type="button" class="btn btn-primary" value="취소" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
                                         </div>
-                                    </div>                               
+                                    	<!-- </div>  -->   
+                                    
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <br>
+                                                               
                             </div>  
                     </form:form>
                     
