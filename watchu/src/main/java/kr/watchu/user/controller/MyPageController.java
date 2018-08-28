@@ -1,9 +1,11 @@
 package kr.watchu.user.controller;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -27,7 +29,16 @@ public class MyPageController {
 	
 	//마이페이지 메인
 	@RequestMapping("/user/mypage.do")
-	public String mypage() {
+	public String mypage(HttpSession session,Model model) {
+		String id = (String)session.getAttribute("user_id");
+		UserCommand user = userService.selectUser(id);
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<userCommand>> : " + user);
+		}
+		
+		model.addAttribute("user", user);
+		
 		return "mypage";
 	}
 	
