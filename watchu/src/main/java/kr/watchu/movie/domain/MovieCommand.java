@@ -115,4 +115,12 @@ public class MovieCommand {
 	public void setRated_cnt(Integer rated_cnt) {
 		this.rated_cnt = rated_cnt;
 	}
+	
+	@Override
+	public String toString() {
+		return "MovieCommand [movie_num=" + movie_num + ", title=" + title + ", country=" + country + ", released="
+				+ released + ", director=" + director + ", actors=" + actors + ", summary=" + summary
+				+ ", uploadPoster=" + uploadPoster + ", uploadBanner=" + uploadBanner + ", genre=" + genre
+				+ ", trailer=" + trailer + ", rate=" + rate + ", rated_cnt=" + rated_cnt + "]";
+	}
 }
