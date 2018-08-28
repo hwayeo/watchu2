@@ -56,7 +56,7 @@
 				</div>
 				<div class="col-xs-5 col-md-5">
 					<span class="wc-StatLabel wcPc-block"><a onclick="location.href='userComment.do'">코멘트</a></span> 11<br>
-					<span class="wc-StatLabel wcPc-block"><a href="#">좋아요</a></span> 120<br><br><br>
+					<span class="wc-StatLabel wcPc-block"><a onclick="location.href='userLikeComment.do'">좋아요</a></span> 120<br><br><br>
 				</div>
 		</div>
 		</div>

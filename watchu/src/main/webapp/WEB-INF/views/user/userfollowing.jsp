@@ -70,10 +70,10 @@
                         </div>
                     </li>
                     <li class="list-group-item">
-                        <a href="#" class="following_profile_img"><img
-												src="${pageContext.request.contextPath}/resources/images/default-profile.jpg"
-												class="img-circle" id="following_profile_img" style="width:50px;height:50px;"></a>
-						<span class="name_span"><label class="name">홍길동</label></span>
+                        <a href="#" class="following_profile_img">
+                        <img src="${pageContext.request.contextPath}/resources/images/default-profile.jpg" class="img-circle" id="following_profile_img" style="width:50px;height:50px;"></a>
+						<span class="name_span">
+						<label class="name">홍길동</label></span>
                         <div class="pull-right">
                             <div class="" data-toggle="buttons">
 									<label class="btn btn-success "> 
