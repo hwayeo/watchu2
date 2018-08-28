@@ -58,7 +58,7 @@ public class UserController {
 		//회원가입시 초기 auth 값 1을 등록해준다
 		session.setAttribute("user_auth", 1);
 		
-		return "userWrite2";
+		return "redirect:/main/main.do";
 	}
 	//==========================================회원수정========================================
 	//회원수정 폼 호출
@@ -89,7 +89,7 @@ public class UserController {
 		//회원정보수정
 		userService.updateUser(userCommand);
 		
-		return "redirect:/user/mypage.do";
+		return "redirect:/user/userMypage.do";
 		
 	}
 	

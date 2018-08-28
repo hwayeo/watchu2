@@ -87,7 +87,7 @@
                                         <div class="col-md-8">
 											<form:input path="id" cssClass="form-control"/>
 											<form:errors path="id"/>
-                                            <input type="button" value="ID중복체크" id="id_check"
+                                            <input type="button" value="ID중복체크" id="confirmId"
 												class="btn btn-default"> <span id="message_id">
 												</span> <img src="${pageContext.request.contextPath}/images/ajax-loader.gif" width="16" height="16"
 												id="loading" style="display: none;">
