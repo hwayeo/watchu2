@@ -336,6 +336,15 @@ hr {
 		top: 100px;
 		position: relative;
 	}
+	#img-test {
+		width: 80%;
+		height: 250px;
+		margin: 0 auto;
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: 100%;
+		box-shadow: inset -70px 0 100px #333, inset 70px 0 100px #333;
+	}
 }
 
 @media screen and (min-width:0px) and (max-width:424px) {
@@ -344,12 +353,12 @@ hr {
 		top: 0;
 		position: absoulte;
 		width: 100%;
-		height: 250px;
+		height: 200px;
 		background-color: #333;
 	}
 	#banner-text {
 		position: absoulte;
-		top: 100px;
+		top: 100;
 		text-align: center;
 		margin: 0;
 		padding-top: 100px;
@@ -382,5 +391,14 @@ hr {
 	#main-content {
 		top: 100px;
 		position: relative;
+	}
+	#img-test {
+		width: 100%;
+		height: 200px;
+		margin: 0 auto;
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: 100%;
+		box-shadow: inset -70px 0 100px #333, inset 70px 0 100px #333;
 	}
 }

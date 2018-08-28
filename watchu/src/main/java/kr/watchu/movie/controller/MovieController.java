@@ -65,7 +65,7 @@ public class MovieController {
 		mav.setViewName("");
 		
 		
-		
+		return mav;
 	}
 	    
 	@RequestMapping("/movie/movieMlist.do")
