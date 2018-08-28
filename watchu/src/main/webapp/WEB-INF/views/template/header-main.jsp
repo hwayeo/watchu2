@@ -2,12 +2,26 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <div class="text-right">
 	<div class="header-menu hidden-xs">
-		<a href="${pageContext.request.contextPath}/movie/list.do" class="btn header-item">영화목록</a>
-		<a href="#" class="btn header-item" data-toggle="modal" data-target="#loginModal">로그인</a>
-		<a href="${pageContext.request.contextPath}/user/write.do" class="btn header-item">회원가입</a>
+		<c:if test="${empty user_id}">
+			<a href="${pageContext.request.contextPath}/movie/list.do" class="btn header-item">영화목록</a>
+			<a href="${pageContext.request.contextPath}/user/login.do" class="btn header-item">로그인</a>
+			<a href="${pageContext.request.contextPath}/user/write.do" class="btn header-item">회원가입</a>
+		</c:if>
+		<c:if test="${!empty user_id}">
+		<div class="dropdown">
+			<a href="" class="dropdown-toggle" id="mainMenu" data-toggle="dropdown" aria-expanded="true">
+			<img src="imageView.do?id=${user_id}" width="35" height="35" class="img-circle">
+			</a>
+			<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="mainMenu">
+   				<li role="presentation"><a role="menuitem" tabindex="-1" href="${pageContext.request.contextPath}/movie/list.do">영화목록</a></li>
+    			<li role="presentation"><a role="menuitem" tabindex="-1" href="${pageContext.request.contextPath}/user/mypage.do">마이페이지</a></li>
+    			<li role="presentation"><a role="menuitem" tabindex="-1" href="${pageContext.request.contextPath}/user/logout.do">로그아웃</a></li>
+  			</ul>
+		</div>
+		</c:if>
 	</div>
 </div>
 	<div class="form-group search-form">
@@ -18,29 +32,3 @@
       		</span>
       	</div>
 	</div>
-
-	<!-- Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <div class="text-center">
-	        <h3 class="modal-title" id="myModalLabel"><b>로그인</b></h3>
-        </div>
-      </div>
-      <div class="modal-body">	
-      	<form:form commandName="command" action="${pageContext.request.contextPath}/main/login.do">
-	      	<div class="text-center">
-		      	<form:input path="id" cssClass="form-control"/>
-		      	<form:errors path="id"/>
-		      	<form:password path="passwd" cssClass="form-control"/>
-		      	<form:errors path="passwd"/>
-		      	<input type="submit" class="btn btn-primary" value="로그인">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-      		</div>
-      	</form:form>
-      </div>
-    </div>
-  </div>
-</div>

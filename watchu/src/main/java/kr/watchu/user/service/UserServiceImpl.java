@@ -19,14 +19,14 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void insertUser(UserCommand user) {
 		userMapper.insertUser(user);
-		userMapper.insertUserDetail(user);	 
+		userMapper.insertUserDetail(user);	
+		userMapper.insertRelation(user.getId());
 	}
 
 
 	@Override
 	public UserCommand selectUser(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return userMapper.selectUser(id);
 	}
 
 	@Override
@@ -52,12 +52,6 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-
-
-	
-	
-
 	
 
 }

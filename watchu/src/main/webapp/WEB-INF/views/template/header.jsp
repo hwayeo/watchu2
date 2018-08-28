@@ -30,26 +30,13 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="${pageContext.request.contextPath}/movie/list.do">영화목록</a></li>
-        <li><a href="#" data-toggle="modal" data-target="#loginModal">로그인</a></li>
-        <li><a href="${pageContext.request.contextPath}/user/write.do">회원가입</a></li>
+        <c:if test="${empty user_id}">
+	        <li><a href="${pageContext.request.contextPath}/user/login.do">로그인</a></li>
+    	    <li><a href="${pageContext.request.contextPath}/user/write.do">회원가입</a></li>
+        </c:if>
+        <c:if test="${!empty user_id}">
+    	    <li><a href="${pageContext.request.contextPath}/user/write.do">마이페이지</a></li>
+        </c:if>
       </ul>
     </div><!-- /.navbar-collapse -->
 </nav>
-<!-- Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
