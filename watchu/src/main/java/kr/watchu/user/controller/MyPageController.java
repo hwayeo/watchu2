@@ -30,4 +30,29 @@ public class MyPageController {
 	public String mypage() {
 		return "mypage";
 	}
+	
+	//평가한 영화 목록
+	@RequestMapping("/user/mypage_movie.do")
+	public String mypage_movie() {
+		return "mypage_movie";
+	}
+	
+	//평가한 영화 목록 더보기
+	@RequestMapping("/user/mypage_movielist.do")
+	public String mypage_movielist() {
+		return "mypage_movielist";
+	}
+	
+	//코멘트
+	@RequestMapping("/user/comment.do")
+	public String comment() {
+		return "comment";
+	}
+	
+	//코멘트 상세페이지
+	@RequestMapping("/user/comment_detail.do")
+	public String comment_detail() {
+		return "comment_detail";
+	}
+		
 }
