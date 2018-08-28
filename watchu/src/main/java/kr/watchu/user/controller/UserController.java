@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -60,9 +61,37 @@ public class UserController {
 		return "userWrite2";
 	}
 	//==========================================회원수정========================================
-	//회원가입 폼 호출
-		@RequestMapping(value="/user/userModify.do",method=RequestMethod.GET)
-		public String modifyForm() {
+	//회원수정 폼 호출
+	@RequestMapping(value="/user/updateUser.do",method=RequestMethod.GET)
+	public String modifyForm(HttpSession session,Model model) {
+		
+		String id = (String)session.getAttribute("user_id");
+		
+		UserCommand user = userService.selectUser(id);
+		model.addAttribute("command",user);
+		
+		return "userModify";
+	}
+	//회원수정 데이터 전송
+	@RequestMapping(value="/user/updateUser.do",method=RequestMethod.POST)
+	public String updateSubmit(@ModelAttribute("command") @Valid UserCommand userCommand, BindingResult result) {
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<memberCommand>> :" + userCommand);
+		}
+		if(result.hasErrors()) {
 			return "userModify";
 		}
+		
+		//암호화 처리
+		userCommand.setPasswd(cipherAES.encrypt(userCommand.getPasswd()));
+		
+		//회원정보수정
+		userService.updateUser(userCommand);
+		
+		return "redirect:/user/mypage.do";
+		
+	}
+	
+	
 }

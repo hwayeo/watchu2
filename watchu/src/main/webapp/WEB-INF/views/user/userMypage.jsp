@@ -12,7 +12,7 @@
 				<a href="#" class="glyphicon glyphicon-user"></a> 
 			</div>
 			<div class="col-xs-1 col-md-1">
-				<a href="#" class="glyphicon glyphicon-cog"></a>
+				<a href="톱니바퀴" class="glyphicon glyphicon-cog"></a>
 			</div>
 			</div>
 			
@@ -38,7 +38,7 @@
 				</div>
 				
 				<div class="col-xs-4 col-md-4"><br>
-					<button class="btn btn-md btn-primary active" type="button" onclick="location.href='userModify.do'">프로필 수정</button>
+					<button class="btn btn-md btn-primary active" type="button" onclick="location.href='updateUser.do'">프로필 수정</button>
 				</div><hr><br><br>
 		</div>
 		
