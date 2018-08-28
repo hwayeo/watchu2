@@ -29,20 +29,14 @@
       </div>
       </form>
       <ul class="nav navbar-nav navbar-right">
-<<<<<<< HEAD
-        <li><a href="${pageContext.request.contextPath}/movie/movieHome.do">영화목록</a></li>
-        <li><a href="${pageContext.request.contextPath}/movie/list.do">로그인</a></li>
-        <li><a href="${pageContext.request.contextPath}/user/write.do">회원가입</a></li>
-=======
         <li><a href="${pageContext.request.contextPath}/movie/list.do">영화목록</a></li>
         <c:if test="${empty user_id}">
 	        <li><a href="${pageContext.request.contextPath}/user/login.do">로그인</a></li>
     	    <li><a href="${pageContext.request.contextPath}/user/write.do">회원가입</a></li>
         </c:if>
         <c:if test="${!empty user_id}">
-    	    <li><a href="${pageContext.request.contextPath}/user/write.do">마이페이지</a></li>
+    	    <li><a href="${pageContext.request.contextPath}/user/mypage.do">마이페이지</a></li>
         </c:if>
->>>>>>> branch 'master' of https://github.com/hwayeo/watchu2.git
       </ul>
     </div><!-- /.navbar-collapse -->
 </nav>
