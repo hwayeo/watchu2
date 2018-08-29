@@ -3,35 +3,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/confirmId.js"></script>
 
-<!-- <style>
-    body {
-        font-family: 'PT Sans', sans-serif;
-    }
-
-    hr {
-        border: 1px solid #354458;
-    }
-
-    .panel {
-        margin-top: 50px;
-        margin-right: 10px;
-    }
-
-    .col-md-8 > button {
-        display: block;
-        margin: auto;
-    }
-
-    .social > a {
-        width: 100%;
-    }
-    .img-size{
-    	width:250px;
-    	height:250px; 
-    }
-</style> -->
-
-
 <div id="page-register">
 	<div id="form-register">
 		<div class="text-center">
@@ -44,7 +15,7 @@
             <div class="col-md-10 col-md-offset-2">
     
                      <form:form commandName="command" action="write.do" id="insert_Form" enctype="multipart/form-data">
-                     
+                     <form:errors element="div" cssClass="error-color"/>	
                         	 <div class="col-md-6">
                                 
                                     <div class="form-group row">
@@ -86,12 +57,13 @@
                                         </div>
                                         <div class="col-md-8">
 											<form:input path="id" cssClass="form-control"/>
-											<form:errors path="id"/>
+											<form:errors path="id" id="error_id"/>
                                             <input type="button" value="ID중복체크" id="confirmId"
 												class="btn btn-default"> <span id="message_id">
 												</span> <img src="${pageContext.request.contextPath}/resources/images/ajax-loader.gif" width="16" height="16"
 												id="loading" style="display: none;">
-												<form:errors path="id" cssClass="error-color" id="error_id"/>
+											
+												
 										</div>
                                        
                                     </div>
@@ -113,9 +85,10 @@
 										</div>
 										<div class="col-md-8">
 										<div class="input-group pb-modalreglog-input-group">
-											<form:password path="passwd" cssClass="form-control" placeholder="6~12자리 영문,숫자 조합"/>
+											<form:password path="passwd" cssClass="form-control" placeholder="4~12자리 영문,숫자 조합"/>
 											 <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
 										</div>
+										<form:errors path="passwd" cssClass="error-color"/>
 										</div>
 									</div>
 									
@@ -138,6 +111,7 @@
                                         </div>
                                         <div class="col-md-8">
                                         	<form:input path="phone" cssClass="form-control" placeholder="ex)010-1111-1111"/>
+                                        	<form:errors path="phone"/>
                                         </div>
                                     </div>
                                     
@@ -147,6 +121,7 @@
                                         </div>
                                         <div class="col-md-8">
                                         	<form:input path="email" cssClass="form-control" placeholder="ex)email@email.com"/>
+                                        	<form:errors path="email"/>
                                         </div>
                                     </div>
                                     

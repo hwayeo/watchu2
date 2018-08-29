@@ -23,16 +23,6 @@
     transition: color 0.15s ease-in-out 0s;
     margin-bottom:4px;
 }
-.wcPc-ArrangeSizeFit {  
-    display: table-cell;
-    padding: 0;
-    vertical-align: top;
-}
-ul.wcPc-Arrange {
-    list-style: outside none none;
-    margin: 0;
-    padding: 0;
-}
 
 .wcPc-StatValue {
     display: block;

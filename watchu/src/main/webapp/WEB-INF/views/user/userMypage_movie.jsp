@@ -8,7 +8,7 @@
 			</div>
 		</div>
 
-		<div class="row container">
+		<div class="container text-center">
 			<div class="col-xs-12 col-md-12">
 				<div class="container row">
 					<div class="col-xs-7 col-md-7">
@@ -41,10 +41,10 @@
 			</div>
 		</div>
 
-		<div class="row container" onclick="location.href='userWish.do'" style="cursor:pointer;">
+		<div class="container text-center" onclick="location.href='userWish.do'" style="cursor:pointer;">
 			<div class="col-xs-10 col-md-11">
 				<hr>
-				<h3>보고싶어요</h3>
+				<h3 class="text-left">보고싶어요</h3>
 			</div>
 			<div class="col-xs-2 col-md-1">
 				<hr>
@@ -52,10 +52,10 @@
 			</div>
 		</div>
 
-		<div class="row container" onclick="location.href='userWatching.do'" style="cursor:pointer;">
+		<div class="container text-center" onclick="location.href='userWatching.do'" style="cursor:pointer;">
 			<div class="col-xs-10 col-md-11">
 				<hr>
-				<h3>보는중</h3>
+				<h3 class="text-left">보는중</h3>
 			</div>
 			<div class="col-xs-2 col-md-1">
 				<hr>

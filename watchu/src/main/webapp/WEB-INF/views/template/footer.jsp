@@ -8,7 +8,7 @@
 			<ul id="footer-list">
 				<li><a href="#">서비스 이용약관</a></li>
 				<li><a href="#">개인정보 취급 방침</a></li>
-				<li><a href="${pageContext.request.contextPath}/admin/main.do">관리자</a></li>
+				<li><a href="${pageContext.request.contextPath}/admin/login.do">관리자</a></li>
 			</ul>
 			<div>
 				<p>&copy;2018 by Watchu. Inc</p>
@@ -29,7 +29,7 @@
 			</div>
 		<c:if test="${!empty user_id}">
 			<div class="col-xs-3 text-center items-area">
-				<a href="${pageContext.request.contextPath}/main/main.do" class="footer-item">
+				<a href="${pageContext.request.contextPath}/user/userTimeline.do" class="footer-item">
 				<span class="glyphicon glyphicon-comment"></span><br><span class="item-font">소식</span></a>
 			</div>		
 			<div class="col-xs-3 text-center items-area">
