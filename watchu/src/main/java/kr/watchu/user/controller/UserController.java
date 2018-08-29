@@ -156,14 +156,9 @@ public class UserController {
 				}
 	}
 	
-	//==========================================팔로우목록(회원전체 목록,이름만 보이게,관리자는 제외)========================================
-	//팔로우
+	//==========================================추천친구목록(회원전체 목록)========================================
 	@RequestMapping("/user/following.do")
-	public ModelAndView follow() {
-		
-		//관리자 제외시켜야함//
-		
-		
+	public ModelAndView follow() {		
 		
 		List<UserCommand> list = null;
 		
