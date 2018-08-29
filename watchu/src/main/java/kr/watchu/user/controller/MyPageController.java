@@ -102,6 +102,12 @@ public class MyPageController {
 		return "userWatching";
 	}
 	
+	//´ñ±Û ¾²±â
+	@RequestMapping("/user/userCommentWrite.do")
+	public String commentWrite() {
+		return "user/userCommentWrite";
+	}
+	
 	//Åé´Ï¹ÙÄû(¼³Á¤¸ğ´ŞÃ¢)
 	@RequestMapping("/user/setup.do")
 	public String setup() {

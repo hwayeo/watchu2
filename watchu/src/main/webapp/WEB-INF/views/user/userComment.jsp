@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/setup.css">
 	<div class="container text-center">
 		<h2>코멘트</h2><hr/>
 	</div>
@@ -53,9 +54,33 @@
 					</div>
 				</div><hr/>
 				<a href="#">좋아요</a>&emsp;
-				<a href="#">댓글</a>&emsp;
+				<a href="userCommentWrite.do" data-toggle="modal" data-target="#CommentWrite">댓글</a>&emsp;
+				
 				<a href="#">공유</a>
 				<a href="#" style="text-align:right"><span class="glyphicon glyphicon-option-horizontal"></span></a>
 			</div>
 		</div>
 	</div><br>
+	
+	<!-- 댓글 쓰기 모달창 -->
+	<div class="modal fade" id="CommentWrite" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span> 
+					</button>
+					<h2 class="modal-title text-center" id="myModalLabel">댓글 쓰기</h2>
+				</div>
+				<div class="modal-body">
+					<form class="pb-modalreglog-form-reg">
+						<div class="">
+							<textarea placeholder="코멘트에 댓글을 남겨보세요" style="outline: none; margin: 0px; width: 270px; height: 349px;"></textarea>
+						</div>
+						<button class="btn btn-md btn-primary active" type="submit">전송</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
