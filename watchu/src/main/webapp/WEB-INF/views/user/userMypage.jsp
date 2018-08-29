@@ -10,7 +10,7 @@
 		<div class="col-xs-12 col-md-12"><br><br>
 			<div class="col-xs-12 col-md-12">
 			<div class="col-xs-9 col-md-9">
-				<img src="imageView.do?id=${user_id}" width="35" height="35" class="img-circle">
+				<img src="imageView.do?id=${user_id}" width="50" height="50" class="img-circle">
 			<hr></div>
 			<div class="col-xs-1 col-md-1">
 				<a href="following.do" class="glyphicon glyphicon-user"></a> 
