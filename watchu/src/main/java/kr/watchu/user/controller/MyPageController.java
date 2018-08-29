@@ -115,9 +115,5 @@ public class MyPageController {
 	}
 	
 	
-	//ÆÈ·ÎÀ×
-	@RequestMapping("/user/following.do")
-	public String follow() {
-		return "userfollowing";
-	}
+	
 }

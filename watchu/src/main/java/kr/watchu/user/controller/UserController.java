@@ -1,5 +1,9 @@
 package kr.watchu.user.controller;
 
+
+import java.util.List;
+
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -12,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.watchu.user.domain.UserCommand;
 import kr.watchu.user.service.UserService;
@@ -149,6 +154,25 @@ public class UserController {
 					result.rejectValue("passwd", "invalidPassword");
 					return "userDelete";
 				}
+	}
+	
+	//==========================================팔로우목록(회원전체 목록,이름만 보이게,관리자는 제외)========================================
+	//팔로우
+	@RequestMapping("/user/following.do")
+	public ModelAndView follow() {
+		
+		//관리자 제외시켜야함//
+		
+		
+		
+		List<UserCommand> list = null;
+		
+		list = userService.selectfollowList();
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("userfollowing");
+		mav.addObject("list",list);
+		
+		return mav;
 	}
 	
 }

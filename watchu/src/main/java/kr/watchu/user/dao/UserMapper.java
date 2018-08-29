@@ -34,8 +34,12 @@ public interface UserMapper {
 	public void deleteUserRelation(String id);
 	
 	//목록
-	public int selectUserCnt(Map<String, Object> map);
+	public int selectUserCnt(Map<String, Object> map);	
 	public List<UserCommand> selectUserList(Map<String,Object> map);
+	
+	//팔로우목록
+	@Select("select * from user_info")
+	public List<UserCommand> selectfollowList();
 	
 	//친구관계(팔로우,팔로워,블락)
 	//회원가입시 user_relation 테이블에 등록
