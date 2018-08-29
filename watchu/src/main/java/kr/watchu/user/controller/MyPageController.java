@@ -56,13 +56,31 @@ public class MyPageController {
 	
 	//코멘트
 	@RequestMapping("/user/userComment.do")
-	public String comment() {
+	public String comment(HttpSession session,Model model) {
+		String id = (String)session.getAttribute("user_id");
+		UserCommand user = userService.selectUser(id);
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<userCommand>> : " + user);
+		}
+		
+		model.addAttribute("user", user);
+		
 		return "userComment";
 	}
 	
 	//코멘트 상세페이지
 	@RequestMapping("/user/userComment_detail.do")
-	public String comment_detail() {
+	public String comment_detail(HttpSession session,Model model) {
+		String id = (String)session.getAttribute("user_id");
+		UserCommand user = userService.selectUser(id);
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<userCommand>> : " + user);
+		}
+		
+		model.addAttribute("user", user);
+		
 		return "userComment_detail";
 	}
 	

@@ -17,12 +17,12 @@
 			</ul>
 		</div><hr/>
 	<div class="container">
-		<div class="well" onclick="location.href='userComment_detail.do'" style="cursor:pointer;"> 
+		<div class="well"> 
 			<div class="media">
 				<div class="media-body">
 					<div class="container">
-						<a class="pull-left" href="#"> 
-							<img src="resources/images/img3.png" width="40" height="40">&emsp;홍길동
+						<a class="pull-left" onclick="location.href='userMypage.do'"> 
+							<img src="imageView.do?id=${user_id}" width="50" height="50" class="img-circle">&emsp;${user.name}
 						</a>
 						<p align="right"> 
 							<li>
@@ -34,7 +34,7 @@
 							</li>
 						</p>
 					</div><hr/>
-					<div class="container">  
+					<div class="container" onclick="location.href='userComment_detail.do'" style="cursor:pointer;">  
 						<a class="pull-left" href="#"> 
 							<img class="media-object" src="resources/images/gad.jpg" width="170" height="250">
 						</a>
@@ -43,7 +43,7 @@
 						<h4>&emsp;&emsp;We are groot!</h4> 
 						<br><br><br><br><br><br>
 						<ul class="list-inline list-unstyled">
-							&emsp;<li><span><i class="glyphicon glyphicon-calendar"></i> 2days, 8 hours </span></li>
+							&emsp;<li><span><i class="glyphicon glyphicon-calendar"></i> ${user.reg_date} </span></li>
 							<li>|</li>
 							<span><i class="glyphicon glyphicon-thumbs-up"></i> 12likes</span>
 							<li>|</li>

@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -22,6 +23,11 @@ public class MovieController {
 	
 	@Resource
 	private MovieService movieService;
+	
+	@ModelAttribute("command")
+	public MovieCommand initCommand() {
+		return new MovieCommand();
+	}
 	
 	//===영화 메인 목록===//
 	@RequestMapping("/movie/movieHome.do")
