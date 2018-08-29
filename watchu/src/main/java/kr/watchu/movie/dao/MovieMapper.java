@@ -3,14 +3,18 @@ package kr.watchu.movie.dao;
 import java.util.List;
 import java.util.Map;
 
-import kr.watchu.movie.domain.MovieCommand;
+import org.apache.ibatis.annotations.Insert;
 
+import kr.watchu.movie.domain.MovieCommand;
+  
 public interface MovieMapper {
 	//영화등록
+	@Insert("INSERT INTO movie_info (movie_num, title, country, released, director, actors, summary, poster_img, banner_img, main_genre, sub_genre, trailer, reg_date) VALUES (movie_seq.nextval, #{title}, "
+		+ "#{country}, #{released}, #{director}, #{actors}, #{summary}, #{poster_img}, #{banner_img}, #{main_genre}, #{sub_genre}, #{trailer}, SYSDATE)")
 	public void insertMovie(MovieCommand movie);
 	//영화 상세정보
 	public MovieCommand selectMovie(Integer num);
-	//영화 수정
+	//영화 수정 
 	public void updateMovie(MovieCommand movie);
 	//영화 삭제
 	//영화 삭제시 관련 평가 테이블도 삭제해야 함

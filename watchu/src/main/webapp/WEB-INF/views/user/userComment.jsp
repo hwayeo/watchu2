@@ -17,11 +17,11 @@
 			</ul>
 		</div><hr/>
 	<div class="container">
-		<div class="well" onclick="location.href='userComment_detail.do'" style="cursor:pointer;"> 
+		<div class="well"> 
 			<div class="media">
 				<div class="media-body">
 					<div class="container">
-						<a class="pull-left" href="#"> 
+						<a class="pull-left" onclick="location.href='userMypage.do'"> 
 							<img src="resources/images/img3.png" width="40" height="40">&emsp;홍길동
 						</a>
 						<p align="right"> 
@@ -34,7 +34,7 @@
 							</li>
 						</p>
 					</div><hr/>
-					<div class="container">  
+					<div class="container" onclick="location.href='userComment_detail.do'" style="cursor:pointer;">  
 						<a class="pull-left" href="#"> 
 							<img class="media-object" src="resources/images/gad.jpg" width="170" height="250">
 						</a>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!-- 영화 목록(관리자 메인) -->
 <div class="admin_main">
 	<div id="movie_list">
@@ -54,73 +55,93 @@
 
 
 <!-- 영화등록 모달창 -->
-<div class="modal fade" id="registerModal" tabindex="-1" role="dialog"
-	aria-labelledby="registerModalLabel" aria-hidden="true">
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
+		<form:form commandName="movie_command" action="main.do" id="movie_form" enctype="multipart/form-data">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal"
-					aria-label="Close">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 				<h4 class="modal-title" id="registerModalLabel">영화 등록</h4>
 			</div>
-
 			<div class="modal-body">
-				<form id="register_form">
-					<div class="form-group">
-						<label for="genre1">장르1</label> <select name="main_category">
-							<option value="crime">범죄</option>
-							<option value="drama">드라마</option>
-							<option value="SF">SF</option>
-							<option value="romance">로맨스</option>
-						</select> <label for="genre2">장르2</label> <select name="sub_category">
-							<option value="action">액션</option>
-							<option value="comedy">코미디</option>
-							<option value="thriller">스릴러</option>
-							<option value="adventure">모험</option>
-						</select>
-					</div>
-					<div class="form-group">
-						<label for="movie_name">영화명</label> <input type="text"
-							name="movie_name" class="form-control"> <input
-							type="button" value="중복체크">
-					</div>
-					<div class="form-group">
-						<label for="movie_country">제작 국가</label> <input type="text"
-							name="movie_country" class="form-control">
-					</div>
-					<div class="form-group">
-						<label for="movie_year">개봉연도</label> <input type="number"
-							name="movie_year" class="form-control">
-					</div>
-					<div class="form-group">
-						<label for="movie_director">감독</label> <input type="text"
-							name="movie_director" class="form-control">
-					</div>
-					<div class="form-group">
-						<label for="movie_actor">주연배우</label> <input type="text"
-							name="movie_actor" class="form-control">
-					</div>
-					<div class="form-group">
-						<label for="movie_summary">줄거리</label> <input type="text"
-							name="movie_summary" class="form-control">
-					</div>
-					<div class="form-group">
-						<label for="movie_poster_img">포스터사진</label> <input type="file"
-							name="movie_poster_img" id="movie_poster_img" />
-					</div>
-					<div class="form-group">
-						<label for="movie_banner_img">배너사진</label> <input type="file"
-							name="movie_banner_img" id="movie_banner_img" />
-					</div>
-				</form>
-			</div>
 
+				<div class="form-group">
+					<label for="title">영화명</label>
+					<form:input path="title"/>
+					<form:errors path="title" cssClass="error-color"/>
+				</div>
+				<div class="form-group">
+					<label for="country">제작 국가</label>
+					<form:input path="country"/>
+					<form:errors path="country" cssClass="error-color"/>
+				</div>
+				<div class="form-group">
+					<label for="released">개봉연도</label>
+					<input type="date" name="released" id="released">
+				</div>
+				<div class="form-group">
+					<label for="director">감독</label>
+					<form:input path="director"/>
+					<form:errors path="director" cssClass="error-color"/>
+				</div>
+				<div class="form-group">
+					<label for="actors">배우</label>
+					<form:input path="actors"/>
+					<form:errors path="actors" cssClass="error-color"/>
+				</div>
+				<div class="form-group">
+					<label for="summary">줄거리</label>
+					<form:textarea path="summary" cols="50" rows="3" />
+					<form:errors path="summary" cssClass="error-color"/>
+				</div>
+				<div class="form-group">
+					<label for="uploadPoster">포스터 사진</label>
+	         		<input type="file" name="uploadPoster" id="uploadPoster"/>
+				</div>
+				<div class="form-group">
+					<label for="uploadBanner">배너 사진</label>
+	         		<input type="file" name="uploadBanner" id="uploadBanner"/>
+				</div>
+				<div class="form-group">
+					<label for="main_genre">메인 장르</label>
+					<form:input path="main_genre"/>
+					<form:errors path="main_genre" cssClass="error-color"/>
+				</div>
+				<div class="form-group">
+					<label for="sub_genre">서브 장르</label>
+					<form:input path="sub_genre"/>
+					<form:errors path="sub_genre" cssClass="error-color"/> 
+				</div>
+				<div class="form-group">
+					<label for="trailer">예고편 코드</label>
+					<form:input path="trailer"/>
+					<form:errors path="trailer" cssClass="error-color"/>
+				</div>
+			</div>
+<!-- 			http://bbiyakbbiyak.tistory.com/1 참고	
+				<div class="form-group">
+					<label for="genre1">장르1</label>
+					<select name="main_category">
+						<option value="crime">범죄</option>
+						<option value="drama">드라마</option>
+						<option value="SF">SF</option>
+						<option value="romance">로맨스</option>
+					</select>
+					<label for="genre2">장르2</label>
+					<select name="sub_category">
+						<option value="action">액션</option>
+						<option value="comedy">코미디</option>
+						<option value="thriller">스릴러</option>
+						<option value="adventure">모험</option>
+					</select>
+				</div> -->
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-				<button type="button" class="btn btn-primary">등록</button>
+				<button type="submit" class="btn btn-primary">등록</button>
 			</div>
+		</form:form>	
 		</div>
 	</div>
 </div>

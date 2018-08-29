@@ -12,7 +12,7 @@
 			</select> <input type="text"> <input type="button" value="검색"><br>
 			<Br>
 		</div>
-
+ 
 		<div class="content-body">
 			<!-- 회원 목록 -->
 			<table class="table table-hover table-condensed">
