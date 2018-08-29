@@ -4,19 +4,21 @@
 	<div class="container text-center">
 		<h2>코멘트</h2><hr/>
 	</div>
+<div class="tab-content container">
+	<div id="home" class="tab-pane fade in active">
 		<div class="nav-collapse">
-			<ul class="nav">
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown"><b class="caret"></b>&nbsp;작성 순</a>
-					<ul class="dropdown-menu">
-						<li class="dropdown-header">작성 순</li>
-						<li><a href="#">나의 별점 높은 순</a></li>
-						<li><a href="#">나의 별점 낮은 순</a></li>
-						<li><a href="#">평균 별점 순</a></li>
-						<li><a href="#">신작 순</a></li>
-					</ul></li>
-			</ul>
-		</div><hr/>
+				<ul class="nav">
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b>&nbsp;작성 순</a>
+						<ul class="dropdown-menu">
+							<li class="dropdown-header">작성 순</li>
+							<li><a href="#">나의 별점 높은 순</a></li>
+							<li><a href="#">나의 별점 낮은 순</a></li>
+							<li><a href="#">평균 별점 순</a></li>
+							<li><a href="#">신작 순</a></li>
+						</ul></li>
+				</ul><hr>
+		</div> 
+		
 	<div class="container">
 		<div class="well"> 
 			<div class="media">
@@ -84,3 +86,4 @@
 			</div>
 		</div>
 	</div>
+</div></div>

@@ -29,7 +29,7 @@
 			</div>
 		<c:if test="${!empty user_id}">
 			<div class="col-xs-3 text-center items-area">
-				<a href="${pageContext.request.contextPath}/main/main.do" class="footer-item">
+				<a href="${pageContext.request.contextPath}/user/userTimeline.do" class="footer-item">
 				<span class="glyphicon glyphicon-comment"></span><br><span class="item-font">소식</span></a>
 			</div>		
 			<div class="col-xs-3 text-center items-area">

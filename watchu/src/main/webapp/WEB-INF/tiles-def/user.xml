@@ -29,6 +29,11 @@
 		<put-attribute name="title" value="왓츄 - 프로필삭제"/>
 		<put-attribute name="body" value="/WEB-INF/views/user/userDelete.jsp"/>
 	</definition>
+	
+	<definition name="userTimeline" extends="userTimeline">
+		<put-attribute name="title" value="왓츄 - 타임라인"/>
+		<put-attribute name="body" value="/WEB-INF/views/user/userTimeline.jsp"/>
+	</definition>
 </tiles-definitions>
 
 
