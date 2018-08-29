@@ -93,7 +93,9 @@
 #footer-list>li a:hover {
 	text-decoration: none;
 }
-
+#scroll-header{
+	position:fixed;
+}
 .navbar {
 	vertical-align: middle;
 	margin-bottom: 0;
@@ -103,6 +105,7 @@
 	border-bottom: 1px solid rgba(120, 120, 120, 0.3);
 	box-shadow: 2px 2px 5px rgba(120, 120, 120, 0.2);
 	z-index: 2;
+	background-color:white;
 }
 
 .nav>li a {
@@ -161,7 +164,7 @@ hr {
 }
 
 /*데스크탑*/
-@media screen and (min-width:1281px) and (max-width:2550px) {
+@media screen and (min-width:1201px) and (max-width:2550px) {
 	/*메인페이지*/
 	#main_banner {
 		top: 0;
@@ -200,7 +203,8 @@ hr {
 		background-color: #f74788;
 	}
 	.header-menu {
-		position: fixed;
+		position: absolute;
+		z-index:3;
 		top: 10px;
 		right: 10px;
 	}
@@ -230,7 +234,7 @@ hr {
 	}
 }
 
-@media screen and (min-width:769px) and (max-width:1280px) {
+@media screen and (min-width:768px) and (max-width:1200px) {
 	/*메인페이지*/
 	#main_banner {
 		top: 0;
@@ -250,7 +254,7 @@ hr {
 	}
 	.search-form {
 		position: absolute;
-		top: 375px;
+		top: 310px;
 		width: 60%;
 		transform: translateX(-50%);
 		left: 50%;
@@ -263,6 +267,7 @@ hr {
 	}
 	.header-menu {
 		position: fixed;
+		z-index:3;
 		top: 10px;
 		right: 10px;
 	}
@@ -293,7 +298,7 @@ hr {
 	}	
 }
 
-@media screen and (min-width:425px) and (max-width:768px) {
+@media screen and (min-width:425px) and (max-width:767px) {
 	/*메인페이지*/
 	#main_banner {
 		top: 0;
@@ -318,13 +323,47 @@ hr {
 		padding-right: 5px;
 		padding-bottom: 8px;
 		background-color: white;
-		border-bottom: 1px solid #222;
+		border-bottom:1px solid rgba(120,120,120,0.4);
+		box-shadow: 2px 2px 5px rgba(120, 120, 120, 0.2);
 	}
-	.search-form . input-group-addon .input-group input[type=text] {
+	.search-form-top {
+		width: 100%;
+		position: fixed;
+		padding-top: 8px;
+		padding-left: 5px;
+		padding-right: 5px;
+		padding-bottom: 8px;
+		background-color: transparent;
+	}
+	.search-form .input-group-addon .input-group input[type=text] {
 		width: 90%;
 		transform: translateX(-50%);
 		left: 50%;
 		margin: 0 auto;
+	}
+	.search-form-top .input-group-addon .input-group input[type=text] {
+		width: 90%;
+		transform: translateX(-50%);
+		left: 50%;
+		margin: 0 auto;
+	}
+	.search-form-top > div .form-control{
+		background-color:rgba(0,0,0,0.2);
+		border-top:1px solid rgba(255,255,255,0.5);
+		border-left:1px solid rgba(255,255,255,0.5);
+		border-right:1px solid rgba(0,0,0,0);
+		border-bottom:1px solid rgba(255,255,255,0.5);
+		color:#fff;
+	}
+	.search-form-top > #xs-search input[type=text]::placeholder{
+		color:rgba(255,255,255,0.8);
+	}
+	.search-form-top > div .search-btn {
+		background-color:rgba(0,0,0,0.2);
+		border-top:1px solid rgba(255,255,255,0.5);
+		border-left:1px solid rgba(0,0,0,0);
+		border-right:1px solid rgba(255,255,255,0.5);
+		border-bottom:1px solid rgba(255,255,255,0.5);
 	}
 	#md-search {
 		position: fixed;
@@ -372,13 +411,47 @@ hr {
 		padding-right: 5px;
 		padding-bottom: 8px;
 		background-color: white;
-		border-bottom: 1px solid #222;
+		border-bottom:1px solid rgba(120,120,120,0.2);
+		box-shadow: 2px 2px 5px rgba(120, 120, 120, 0.2);
+	}
+	.search-form-top {
+		width: 100%;
+		position: fixed;
+		padding-top: 8px;
+		padding-left: 5px;
+		padding-right: 5px;
+		padding-bottom: 8px;
+		background-color: transparent;
 	}
 	.search-form . input-group-addon .input-group input[type=text] {
 		width: 90%;
 		transform: translateX(-50%);
 		left: 50%;
 		margin: 0 auto;
+	}
+	.search-form-top . input-group-addon .input-group input[type=text] {
+		width: 90%;
+		transform: translateX(-50%);
+		left: 50%;
+		margin: 0 auto;
+	}
+	.search-form-top > div .form-control{
+		background-color:rgba(0,0,0,0.2);
+		border-top:1px solid rgba(255,255,255,0.5);
+		border-left:1px solid rgba(255,255,255,0.5);
+		border-right:1px solid rgba(0,0,0,0);
+		border-bottom:1px solid rgba(255,255,255,0.5);
+		color:#fff;
+	}
+	.search-form-top > #xs-search input[type=text]::placeholder{
+		color:rgba(255,255,255,0.8);
+	}
+	.search-form-top > div .search-btn {
+		background-color:rgba(0,0,0,0.2);
+		border-top:1px solid rgba(255,255,255,0.5);
+		border-left:1px solid rgba(0,0,0,0);
+		border-right:1px solid rgba(255,255,255,0.5);
+		border-bottom:1px solid rgba(255,255,255,0.5);
 	}
 	#md-search {
 		position: fixed;
@@ -400,5 +473,6 @@ hr {
 		background-position: center center;
 		background-size: 100%;
 		box-shadow: inset -70px 0 100px #333, inset 70px 0 100px #333;
+		filter:alpha(opacity=20);
 	}
 }
