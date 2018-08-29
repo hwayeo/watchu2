@@ -1,5 +1,7 @@
 $(document).ready(function(){
 	
+	//=========================================회원가입 유효성체크====================================================
+	
 	var checkId = 0;
 	
 	
@@ -79,10 +81,31 @@ $(document).ready(function(){
 		if($('#passwd').val()!= $('#cpasswd').val()){
 			alert('비밀번호와 비밀번호확인이 불일치 합니다');
 			$('#passwd').val('').focus();
+			$('#cpasswd').val('');
 			return false;
 		}
 	});
 	
+	//=========================================회원수정 유효성체크====================================================
 	
+	$('#updateUser_Form').submit(function(){
+				
+		if($('#passwd').val()!= $('#cpasswd').val()){
+			alert('비밀번호와 비밀번호확인이 불일치 합니다');
+			$('#passwd').val('').focus();
+			$('#cpasswd').val('');
+			return false;
+		}
+	});
 	
+	//=========================================회원삭제 유효성체크====================================================
+	$('#deleteUser_Form').submit(function(){
+		
+		if($('#passwd').val()!= $('#cpasswd').val()){
+			alert('비밀번호와 비밀번호확인이 불일치 합니다');
+			$('#passwd').val('').focus();
+			$('#cpasswd').val('');
+			return false;
+		}
+	});
 });

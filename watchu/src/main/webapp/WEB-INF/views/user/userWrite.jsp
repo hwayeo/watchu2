@@ -3,35 +3,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/confirmId.js"></script>
 
-<!-- <style>
-    body {
-        font-family: 'PT Sans', sans-serif;
-    }
-
-    hr {
-        border: 1px solid #354458;
-    }
-
-    .panel {
-        margin-top: 50px;
-        margin-right: 10px;
-    }
-
-    .col-md-8 > button {
-        display: block;
-        margin: auto;
-    }
-
-    .social > a {
-        width: 100%;
-    }
-    .img-size{
-    	width:250px;
-    	height:250px; 
-    }
-</style> -->
-
-
 <div id="page-register">
 	<div id="form-register">
 		<div class="text-center">

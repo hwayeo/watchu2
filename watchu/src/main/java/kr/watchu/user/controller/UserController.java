@@ -94,7 +94,7 @@ public class UserController {
 		
 	}
 	
-	//==========================================회원수정========================================
+	//==========================================회원삭제========================================
 	//회원삭제 폼 호출
 	@RequestMapping(value="/user/deleteUser.do",method=RequestMethod.GET)
 	public String deleteForm(HttpSession session,Model model) {
@@ -116,10 +116,6 @@ public class UserController {
 			log.debug("<<userCommand>>:"+ userCommand);
 		}
 		
-		/*userService.deleteUser(userCommand.getId());
-		//로그아웃
-		session.invalidate();
-		return "redirect:/main/main.do";*/
 		//passwd 필드의 에러만 체크
 		if(result.hasFieldErrors("passwd")) {
 			return "userDelete";
