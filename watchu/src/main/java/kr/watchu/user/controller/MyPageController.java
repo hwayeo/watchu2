@@ -56,13 +56,31 @@ public class MyPageController {
 	
 	//ÄÚ¸àÆ®
 	@RequestMapping("/user/userComment.do")
-	public String comment() {
+	public String comment(HttpSession session,Model model) {
+		String id = (String)session.getAttribute("user_id");
+		UserCommand user = userService.selectUser(id);
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<userCommand>> : " + user);
+		}
+		
+		model.addAttribute("user", user);
+		
 		return "userComment";
 	}
 	
 	//ÄÚ¸àÆ® »ó¼¼ÆäÀÌÁö
 	@RequestMapping("/user/userComment_detail.do")
-	public String comment_detail() {
+	public String comment_detail(HttpSession session,Model model) {
+		String id = (String)session.getAttribute("user_id");
+		UserCommand user = userService.selectUser(id);
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<userCommand>> : " + user);
+		}
+		
+		model.addAttribute("user", user);
+		
 		return "userComment_detail";
 	}
 	
@@ -84,6 +102,12 @@ public class MyPageController {
 		return "userWatching";
 	}
 	
+	//´ñ±Û ¾²±â
+	@RequestMapping("/user/userCommentWrite.do")
+	public String commentWrite() {
+		return "user/userCommentWrite";
+	}
+	
 	//Åé´Ï¹ÙÄû(¼³Á¤¸ğ´ŞÃ¢)
 	@RequestMapping("/user/setup.do")
 	public String setup() {
@@ -91,9 +115,5 @@ public class MyPageController {
 	}
 	
 	
-	//ÆÈ·ÎÀ×
-	@RequestMapping("/user/following.do")
-	public String follow() {
-		return "userfollowing";
-	}
+	
 }

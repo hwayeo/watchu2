@@ -1,5 +1,7 @@
 $(document).ready(function(){
 	
+	//=========================================회원가입 유효성체크====================================================
+	
 	var checkId = 0;
 	
 	
@@ -39,7 +41,7 @@ $(document).ready(function(){
 				$('#loading').hide();//로딩이미지 감추기
 				
 				if(data.result == 'idNotFound'){				
-					$('#message_id').css('color','#000')
+					$('#message_id').css('color','blue')
 					                .text('등록가능 ID');
 					checkId =1;
 					
@@ -62,12 +64,12 @@ $(document).ready(function(){
 	});
 	
 	//아이디 중복 안내 메시지 초기화 및 아이디 중복 값 초기화
-	$('#register_form #id').keyup(function(){
+	$('#insert_Form #id').keyup(function(){
 		$('#message_id').text('');
 	});
 	
-	//submit 이벤트 발생시 아이디 중복 체크 여부 확인
-	$('#register_form').submit(function(){
+	//submit 이벤트 발생시 아이디 중복 체크 여부/비밀번호일치여부 확인
+	$('#insert_Form').submit(function(){
 		if(checkId==0){
 			alert('아이디 중복 체크 필수');
 			if($('#id').val()==''){
@@ -75,8 +77,35 @@ $(document).ready(function(){
 			}
 			return false;
 		}
+		
+		if($('#passwd').val()!= $('#cpasswd').val()){
+			alert('비밀번호와 비밀번호확인이 불일치 합니다');
+			$('#passwd').val('').focus();
+			$('#cpasswd').val('');
+			return false;
+		}
 	});
 	
+	//=========================================회원수정 유효성체크====================================================
 	
+	$('#updateUser_Form').submit(function(){
+				
+		if($('#passwd').val()!= $('#cpasswd').val()){
+			alert('비밀번호와 비밀번호확인이 불일치 합니다');
+			$('#passwd').val('').focus();
+			$('#cpasswd').val('');
+			return false;
+		}
+	});
 	
+	//=========================================회원삭제 유효성체크====================================================
+	$('#deleteUser_Form').submit(function(){
+		
+		if($('#passwd').val()!= $('#cpasswd').val()){
+			alert('비밀번호와 비밀번호확인이 불일치 합니다');
+			$('#passwd').val('').focus();
+			$('#cpasswd').val('');
+			return false;
+		}
+	});
 });

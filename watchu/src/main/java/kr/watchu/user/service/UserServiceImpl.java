@@ -37,7 +37,10 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void deleteUser(String id) {
-		// TODO Auto-generated method stub
+		userMapper.deleteUserRelation(id);
+		userMapper.deleteUserDetail(id);
+		userMapper.deleteUser(id);
+	
 		
 	}
 
@@ -52,6 +55,16 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+	@Override
+	public List<UserCommand> selectfollowList() {
+		
+		return userMapper.selectfollowList();
+	}
+
+
+	
 	
 
 }

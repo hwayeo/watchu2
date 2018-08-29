@@ -3,6 +3,7 @@ package kr.watchu.user.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -23,11 +24,22 @@ public interface UserMapper {
 	//수정
 	@Update("update user_info set passwd=#{passwd},name=#{name},phone=#{phone},email=#{email},profile_img=#{profile_img} where id=#{id}")
 	public void updateUser(UserCommand user);
+	
 	//삭제
+	@Delete("delete from user_basic where id=#{id}")
 	public void deleteUser(String id);
+	@Delete("delete from user_info where id=#{id}")
+	public void deleteUserDetail(String id);
+	@Delete("delete from user_relation where id=#{id}")
+	public void deleteUserRelation(String id);
+	
 	//목록
-	public int selectUserCnt(Map<String, Object> map);
+	public int selectUserCnt(Map<String, Object> map);	
 	public List<UserCommand> selectUserList(Map<String,Object> map);
+	
+	//팔로우목록
+	@Select("select * from user_info")
+	public List<UserCommand> selectfollowList();
 	
 	//친구관계(팔로우,팔로워,블락)
 	//회원가입시 user_relation 테이블에 등록

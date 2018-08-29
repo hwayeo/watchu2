@@ -1,48 +1,46 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/setup.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/mypage.js"></script>
     
 <div class="container-fluid">
 	<div class="row">
-	<div>
 		<div class="col-xs-12 col-md-12"><br><br>
 			<div class="col-xs-12 col-md-12">
-			<div class="col-xs-9 col-md-9">
-				<img src="imageView.do?id=${user_id}" width="35" height="35" class="img-circle">
-			<hr></div>
-			<div class="col-xs-1 col-md-1">
-				<a href="following.do" class="glyphicon glyphicon-user"></a> 
-			</div>
-			<div class="col-xs-1 col-md-1">
-				<a href="setup.do" class="glyphicon glyphicon-cog" data-toggle="modal" data-target="#myModal2"></a>
-			</div>
+				<div class="col-xs-8 col-md-10">
+				</div>
+				<div class="col-xs-4 col-md-2">
+					<a href="following.do" class="glyphicon glyphicon-user"></a>&emsp;
+					<a href="setup.do" class="glyphicon glyphicon-cog" data-toggle="modal" data-target="#myModal2"></a>
+				</div><hr/>
 			</div>
 			
-				<div class="col-xs-8 col-md-8">
-					<h2 class="text-left"> ${user.name}</h2>
+			<div class="col-xs-7 col-md-6 text-center">
+				<img src="imageView.do?id=${user_id}" width="50" height="50" class="img-circle">
+				<h2> ${user.name}</h2>
 				<div>
-				<ul class="wcPc-Arrange">
-				<li class="wcPc-ArrangeSizeFit">
-				<a href="https://watcha.com/ko-KR" title="885 Following">
-					<a href="#">Following&emsp;</a>&emsp;
-					<a href="#">885&emsp;</a>
-				</a>
-				</li>
-				<li class="wcPc-ArrangeSizeFit">
-				<a href="https://watcha.com/ko-KR" title="1.810 Followers">
-					<a href="#">Followers&emsp;</a>
-					<a href="#">1.810&emsp;</a><br><br>
-				</a>
-				</li>
-				</ul>
+					<ul class="wcPc-Arrange">
+						<li class="wcPc-ArrangeSizeFit" style="list-style:none;">
+							<a href="#" title="885 Following">
+								<a href="#">Following&emsp;</a>&emsp;
+								<a href="#">885&emsp;</a>
+							</a>
+						</li>
+						<li class="wcPc-ArrangeSizeFit" style="list-style:none;">
+							<a href="https://watcha.com/ko-KR" title="1.810 Followers">
+								<a href="#">Followers&emsp;</a>
+								<a href="#">1.810&emsp;</a><br><br>
+							</a>
+						</li>
+					</ul>
 				</div>
-				</div>
-				
-				<div class="col-xs-4 col-md-4"><br>
-					<button class="btn btn-md btn-primary active" type="button" onclick="location.href='updateUser.do'">프로필 수정</button>
-				</div><hr><br><br>
+			</div>
+			<div class="col-md-2"></div>
+			<div class="col-xs-5 col-md-1"><br>
+				<button class="btn btn-md btn-primary active" type="button" onclick="location.href='updateUser.do'">프로필 수정</button>
+			</div><hr><br><br>
 		</div>
 		
 		<div class="col-xs-12 col-md-12"> 
@@ -60,37 +58,51 @@
 		</div>
 		<br><br><hr>
 	
-	<div class="col-xs-12 col-md-12"> 
-		<div class="container row">
-			<div class="col-xs-7 col-md-7"><br>
-				<h2>최고의 작품</h2>
+	<div class="col-xs-12 col-md-12 text-center"> 
+			<div class="col-xs-7 col-md-6"><br>
+				<h2>최고의 작품</h2><br>
 			</div>
-			<div class="col-xs-1 col-md-4">
-			</div>
-			<div class="col-xs-4 col-md-1"><br><br>
-				<button class="btn btn-md btn-primary active" type="button">취향 분석</button>
+			<div class="col-xs-1 col-md-2"></div>
+			<div class="col-xs-2 col-md-2"><br><br>
+				<button class="btn btn-md btn-primary active" type="button">취향 분석</button> 
 			</div>
 		</div>
-	</div>
-	</div>
-	
-	<div class="row container"><br>
-	<div class="col-xs-12 col-md-12"> 
-		<div class="col-xs-4 col-md-4">
-			<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="150" height="200"><br>
-			<p>가디언즈 오브 갤럭시</p>
+			
+		<div class="col-xs-12 col-md-12 text-center"> 
+			
+			<c:if test="col-xs">
+				 <div class="col-xs-4">
+				<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="50" height="50"><br>
+				<p>가디언즈 오브 갤럭시</p>
+				</div>
+				<div class="col-xs-4">
+					<img src="${pageContext.request.contextPath}/resources/images/gad2.jpg" width="80" height="130"><br>
+					<p>수어사이드 스쿼드</p>
+				</div>
+				<div class="col-xs-4">
+					<img src="${pageContext.request.contextPath}/resources/images/gad3.jpg" width="80" height="130"><br>
+					<p>앤트맨</p>
+				</div> 
+			</c:if>
+			
+			
+			
+			<div class="col-md-3"></div>
+			<div class="col-xs-4 col-md-2">
+				<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="130" height="180"><br>
+				<p>가디언즈 오브 갤럭시</p>
+			</div>
+			<div class="col-xs-4 col-md-2">
+				<img src="${pageContext.request.contextPath}/resources/images/gad2.jpg" width="130" height="180"><br>
+				<p>수어사이드 스쿼드</p>
+			</div>
+			<div class="col-xs-4 col-md-2">
+				<img src="${pageContext.request.contextPath}/resources/images/gad3.jpg" width="130" height="180"><br>
+				<p>앤트맨</p>
+			</div>
+			<div class="col-md-3"></div>
 		</div>
-		<div class="col-xs-4 col-md-4">
-			<img src="${pageContext.request.contextPath}/resources/images/gad2.jpg" width="150" height="200"><br>
-			<p>수어사이드 스쿼드</p>
-		</div>
-		<div class="col-xs-4 col-md-4">
-			<img src="${pageContext.request.contextPath}/resources/images/gad3.jpg" width="150" height="200"><br>
-			<p>앤트맨</p>
-		</div>
 	</div>
-	</div>
-</div>
 </div>
 
 

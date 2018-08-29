@@ -13,8 +13,8 @@
 					<div class="container">
 						<div class="col-xs-6 col-md-6">
 							<div class="container">
-								<img src="resources/images/img3.png" width="50" height="50">&emsp;홍길동
-								<span style="color: gray; font-size: 7px">13시간 전</span><br>
+								<img src="imageView.do?id=${user_id}" width="50" height="50" class="img-circle">&emsp;${user.name}
+								<span style="color: gray; font-size: 7px">${user.reg_date}</span><br>
 								<span style="font-weight: bold">가디언즈 오브 갤럭시</span> 
 								<span style="color: gray; font-size: 8px"> 2018</span><br> 
 								<span class="glyphicon glyphicon-star"></span> 
