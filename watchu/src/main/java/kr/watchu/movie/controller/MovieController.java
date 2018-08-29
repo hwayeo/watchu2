@@ -41,7 +41,7 @@ public class MovieController {
 		return "movieEva";
 	}
 	
-	@RequestMapping("/movie/movieMlist.do")
+	/*@RequestMapping("/movie/movieMlist.do")
 	@ResponseBody
 	public ModelAndView process(
 			@RequestParam(value="pageNum",defaultValue="1") int currentPage,
@@ -62,11 +62,13 @@ public class MovieController {
 		List<MovieCommand> list = null;
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("");
+		mav.setViewName("movieHome");
+		mav.addObject("count",count);
+		mav.addObject("list",list);
+		mav.addObject("pagingHtml",page.getPagingHtml());
 		
-		
-		
-	}
+		return mav;		
+	}*/
 	    
 	@RequestMapping("/movie/movieMlist.do")
 	@ResponseBody

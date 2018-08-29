@@ -33,4 +33,10 @@
 			<h4>영화제목</h4>
 		</div>
 	</div>
+	<div class="col-sm-6 col-md-3" id="main-category">
+		<a href="#" class="thumbnail"><img src="${pageContext.request.contextPath}/resources/images/best.jpg"></a>
+		<div class="sub-category">
+			<h4>영화제목</h4>
+		</div>
+	</div>
 </div>
