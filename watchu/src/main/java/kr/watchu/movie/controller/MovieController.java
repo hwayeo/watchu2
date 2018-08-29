@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,6 +26,11 @@ public class MovieController {
 	@Resource
 	private MovieService movieService;
 	
+	@ModelAttribute("command")
+	public MovieCommand initCommand() {
+		return new MovieCommand();
+	}
+	
 	//===영화 메인 목록===//
 	@RequestMapping("/movie/movieHome.do")
 	public String movieHome() {		
@@ -39,33 +45,6 @@ public class MovieController {
 	@RequestMapping("/movie/movieEva.do")
 	public String movieEva() {
 		return "movieEva";
-	}
-	
-	@RequestMapping("/movie/movieMlist.do")
-	@ResponseBody
-	public ModelAndView process(
-			@RequestParam(value="pageNum",defaultValue="1") int currentPage,
-			@RequestParam(value="keyfield",defaultValue="") String keyfield,
-			@RequestParam(value="keyword",defaultValue="" ) String keyword) {
-		
-		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("keyfield", keyfield);
-		map.put("keyword", keyword);
-		
-		//총 글의 갯수
-		int count = movieService.selectMovieCnt(map);
-		
-		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,rowCount,pageCount,"movieMlist.do");
-		map.put("start", page.getStartCount());
-		map.put("end", page.getEndCount());
-		
-		List<MovieCommand> list = null;
-		
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("");
-		
-		
-		return mav;
 	}
 	    
 	@RequestMapping("/movie/movieMlist.do")
