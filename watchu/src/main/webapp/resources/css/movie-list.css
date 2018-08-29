@@ -45,5 +45,16 @@
 #navline{
 	padding:0 20px;
 	margin:0;
-	width:1170px;
+	z-index:2;
+}
+.movie-sum{
+	overflow:hidden;	
+	white-space: normal; 
+	line-height: 1.2; 
+	height: 3.6em;
+	text-align: left; 
+	word-wrap: break-word; 
+	display: -webkit-box; 
+	-webkit-line-clamp: 3; 
+	-webkit-box-orient: vertical;
 }

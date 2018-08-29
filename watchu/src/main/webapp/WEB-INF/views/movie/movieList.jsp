@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/movie-list.css">
+<%@ taglib prefix="c"    uri="http://java.sun.com/jstl/core" %>
 <!-- for:each문으로 데이터를 가져와 리스트를 생성할것 -->
 <!-- 모바일 환경 -->
 <select class="visible-xs visible-sm form-control">
@@ -127,29 +126,10 @@
   <option>추천 순</option>
   <option>별점 순</option>
 </select>
+
 <hr>
+
 <div class="row">
-	<div class="col-sm-6 col-md-3 col-xs-6" id="main-category">
-		<a href="#" class="thumbnail" id="thumbnail"><img src="${pageContext.request.contextPath}/resources/images/img1.png"></a>
-		<div class="sub-category">
-			<h4>영화제목</h4>
-			<span>영화카테고리</span>
-		</div>
-	</div>
-	<div class="col-sm-6 col-md-3 col-xs-6" id="main-category">
-		<a href="#" class="thumbnail" id="thumbnail"><img src="${pageContext.request.contextPath}/resources/images/img1.png"></a>
-		<div class="sub-category">
-			<h4>영화제목</h4>
-			<span>영화카테고리</span>
-		</div>
-	</div>
-	<div class="col-sm-6 col-md-3 col-xs-6" id="main-category">
-		<a href="#" class="thumbnail" id="thumbnail"><img src="${pageContext.request.contextPath}/resources/images/img1.png"></a>
-		<div class="sub-category">
-			<h4>영화제목</h4>
-			<span>영화카테고리</span>
-		</div>
-	</div>
 	<div class="col-sm-6 col-md-3 col-xs-6" id="main-category">
 		<a href="#" class="thumbnail" id="thumbnail"><img src="${pageContext.request.contextPath}/resources/images/img1.png"></a>
 		<div class="sub-category">
