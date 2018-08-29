@@ -8,7 +8,7 @@
 			<!-- 처리여부 -->
 			<input type="radio" name="status" value="all" checked> 전체 <input
 				type="radio" name="status" value="incomplete"> 미처리<br>
-			<Br>
+			<Br> 
 		</div>
 
 		<div class="content-body">

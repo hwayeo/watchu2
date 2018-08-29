@@ -1,5 +1,5 @@
 package kr.watchu.movie.domain;
-
+ 
 public class GenreCommand {
 	private Integer genre_num;
 	private String genre;

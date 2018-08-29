@@ -33,7 +33,7 @@
 				<span class="glyphicon glyphicon-comment"></span><br><span class="item-font">소식</span></a>
 			</div>		
 			<div class="col-xs-3 text-center items-area">
-				<a href="${pageContext.request.contextPath}/main/main.do" class="footer-item">
+				<a href="${pageContext.request.contextPath}/user/userMypage.do" class="footer-item">
 				<span class="glyphicon glyphicon-user"></span><br><span class="item-font">내정보</span></a>
 			</div>		
 		</c:if>
@@ -43,7 +43,7 @@
 				<span class="glyphicon glyphicon-pencil"></span><br><span class="item-font">가입</span></a>
 			</div>		
 			<div class="col-xs-3 text-center items-area">
-				<a href="${pageContext.request.contextPath}/main/main.do" class="footer-item">
+				<a href="${pageContext.request.contextPath}/user/login.do" class="footer-item">
 				<span class="glyphicon glyphicon-user"></span><br><span class="item-font">로그인</span></a>
 			</div>		
 		</c:if>			
