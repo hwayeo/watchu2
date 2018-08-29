@@ -175,4 +175,10 @@ public class UserController {
 		return mav;
 	}
 	
+	// 타임라인
+	@RequestMapping("/user/userTimeline.do")
+	public String timeline() {
+		return "userTimeline";
+	}
+	
 }
