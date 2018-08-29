@@ -8,7 +8,7 @@
 			<ul id="footer-list">
 				<li><a href="#">서비스 이용약관</a></li>
 				<li><a href="#">개인정보 취급 방침</a></li>
-				<li><a href="${pageContext.request.contextPath}/admin/main.do">관리자</a></li>
+				<li><a href="${pageContext.request.contextPath}/admin/login.do">관리자</a></li>
 			</ul>
 			<div>
 				<p>&copy;2018 by Watchu. Inc</p>
