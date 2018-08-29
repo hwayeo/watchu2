@@ -14,7 +14,7 @@
 <div class="row">
 	<div class="home-text1">추천영화1
 	<a href="#" class="home-text2">모두보기</a></div>
-	<div class="col-sm-6 col-md-3" id="main-category">
+	<div class="col-sm-6 col-md-3 col-xs-6" id="main-category">
 		<a href="#" class="thumbnail"><img src="${pageContext.request.contextPath}/resources/images/away.jpg"></a>
 		<div class="sub-category">
 			<h4>영화제목</h4>
@@ -27,13 +27,13 @@
 <div class="row">
 	<div class="home-text1">추천영화2
 	<a href="#" class="home-text2">모두보기</a></div>
-	<div class="col-sm-6 col-md-3" id="main-category">
+	<div class="col-sm-6 col-md-3 col-xs-6" id="main-category">
 		<a href="#" class="thumbnail"><img src="${pageContext.request.contextPath}/resources/images/best.jpg"></a>
 		<div class="sub-category">
 			<h4>영화제목</h4>
 		</div>
 	</div>
-	<div class="col-sm-6 col-md-3" id="main-category">
+	<div class="col-sm-6 col-md-3 col-xs-6" id="main-category">
 		<a href="#" class="thumbnail"><img src="${pageContext.request.contextPath}/resources/images/best.jpg"></a>
 		<div class="sub-category">
 			<h4>영화제목</h4>

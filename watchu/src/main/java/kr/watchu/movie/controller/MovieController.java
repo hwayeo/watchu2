@@ -8,10 +8,8 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import kr.watchu.movie.domain.MovieCommand;
 import kr.watchu.movie.service.MovieService;
@@ -40,35 +38,6 @@ public class MovieController {
 	public String movieEva() {
 		return "movieEva";
 	}
-	
-	/*@RequestMapping("/movie/movieMlist.do")
-	@ResponseBody
-	public ModelAndView process(
-			@RequestParam(value="pageNum",defaultValue="1") int currentPage,
-			@RequestParam(value="keyfield",defaultValue="") String keyfield,
-			@RequestParam(value="keyword",defaultValue="" ) String keyword) {
-		
-		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("keyfield", keyfield);
-		map.put("keyword", keyword);
-		
-		//ÃÑ ±ÛÀÇ °¹¼ö
-		int count = movieService.selectMovieCnt(map);
-		
-		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,rowCount,pageCount,"movieMlist.do");
-		map.put("start", page.getStartCount());
-		map.put("end", page.getEndCount());
-		
-		List<MovieCommand> list = null;
-		
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("movieHome");
-		mav.addObject("count",count);
-		mav.addObject("list",list);
-		mav.addObject("pagingHtml",page.getPagingHtml());
-		
-		return mav;		
-	}*/
 	    
 	@RequestMapping("/movie/movieMlist.do")
 	@ResponseBody
@@ -88,12 +57,12 @@ public class MovieController {
 		if(count > 0) { 
 			list = movieService.selectMovieList(map);
 		}
-		
+		 
 		Map<String,Object> mapJson = new HashMap<String,Object>();
 		mapJson.put("count", count);
 		mapJson.put("rowCount", rowCount);
 		mapJson.put("list", list);		
-		 
+		
 		return mapJson;
 	}
 }

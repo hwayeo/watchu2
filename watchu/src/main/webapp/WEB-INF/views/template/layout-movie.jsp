@@ -18,9 +18,9 @@
 </head>
 <body>
 	<tiles:insertAttribute name="header"/>
+	<br><br>
 <div class="container">
 	<tiles:insertAttribute name="menu"/>
-	<hr>
 	<tiles:insertAttribute name="movieHome"/> 
 </div>
 	<tiles:insertAttribute name="footer"/>

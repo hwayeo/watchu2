@@ -27,7 +27,7 @@ $(document).ready(function(){
 					alert('if문으로 빠짐');
 				}else{
 					$(list).each(function(index,item){
-						var mlist = '<div class="col-sm-6 col-md-3" id="main-category">';
+						var mlist = '<div class="col-sm-6 col-md-3 col-xs-6" id="main-category">';
 						mlist += '<a href="#" class="thumbnail"><img src="../resources/images/'+item.poster_img+'"></a>';
 						mlist += '<div class="sub-category">';
 						mlist += '<h4>'+item.title+'</h4>';
