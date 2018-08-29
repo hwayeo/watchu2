@@ -26,7 +26,7 @@
                                         </div>
                                         <div class="col-md-8">
 											<form:hidden path="id"/>${command.id} 
-											<form:errors element="div" cssClass="error-color"/>d
+											<form:errors element="div" cssClass="error-color"/>
 											<form:errors path="id"/>
                                    
 										</div>

@@ -3,15 +3,22 @@ package kr.watchu.user.domain;
 import java.io.IOException;
 import java.sql.Date;
 
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
 public class UserCommand {
-	
+	@NotEmpty
 	private String id;
 	private int auth;
+	@Pattern(regexp="^[A-Za-z0-9+]{4,12}$")
 	private String passwd;
+	@NotEmpty
 	private String name;
+	@NotEmpty
 	private String phone;
+	@NotEmpty
 	private String email;
 	private MultipartFile upload;
 	private byte[] profile_img;
