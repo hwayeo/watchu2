@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <div class="container">
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-12">
       <h2 class="page-header text-center">소식</h2>
           <!-- First Comment -->
           <article class="row"><br>
@@ -114,7 +114,7 @@
 										<span style="color: #ff00c7; font-size: 14px">예상 ★3.8</span> <!-- 평가 안한 영화일 때 -->
 									</div>
 								</div><hr/>
-									zl존 짱잼~! 다른 냥이들더 보셈~! <br><br>
+									zl존 짱잼~! 다른 냥이들도 꼭 보셈~! <br><br>
 									<a href="#">좋아요</a>&emsp;
 									<a href="#">댓글</a>&emsp;
 									<a href="#">공유</a>
