@@ -9,10 +9,8 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import kr.watchu.movie.domain.MovieCommand;
 import kr.watchu.movie.service.MovieService;
@@ -65,12 +63,12 @@ public class MovieController {
 		if(count > 0) { 
 			list = movieService.selectMovieList(map);
 		}
-		
+		 
 		Map<String,Object> mapJson = new HashMap<String,Object>();
 		mapJson.put("count", count);
 		mapJson.put("rowCount", rowCount);
 		mapJson.put("list", list);		
-		 
+		
 		return mapJson;
 	}
 }
