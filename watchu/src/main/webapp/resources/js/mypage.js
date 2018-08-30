@@ -1,4 +1,4 @@
- $(function () {
+$(document).ready(function () {
         var progress = $("#pb-modalreglog-progressbar").shieldProgressBar({
             value: 0
         }).swidget();
@@ -56,4 +56,18 @@
             mask: "00/00/0000",
             value: "19/03/1032"
         });
-    })
+        
+        $('.bxslider').bxSlider({
+    	    mode: 'fade',
+    	    captions: true,
+    	    slideWidth: 600
+    	  });
+       /* $('.bxslider').bxSlider({
+        	  minSlides: 4,
+        	  maxSlides: 4,
+        	  slideWidth: 170,
+        	  slideMargin: 10,
+        	  ticker: true,
+        	  speed: 6000
+       });*/
+    });

@@ -1,8 +1,7 @@
 @charset "UTF-8";
-  body {
-        margin-top: 20px;
-    }
-
+  ou,ul{
+      list-style:none;
+   }
     .panel-body:not(.two-col) {
         padding: 0px;
     }
@@ -67,3 +66,39 @@
     {
         border-radius: 2px;
     }
+    
+    .grid{
+       margin:0 0 60px 0;
+       border-bottom:1px solid #ccc;
+    }
+    
+    .user_icon{
+      padding:0 0 10px 0;
+      text-align:right;
+   }
+   
+   .bn{
+      margin-bottom:50px;
+   }
+   
+   .sec_header{
+      margin-bottom:50px;
+   }
+   
+   .text-center{
+      text-align:center;
+   }
+
+   .img-text{
+      text-align:center;
+   }
+   
+   .left{
+      text-align:left;   
+   }   
+   
+   p{
+      margin:10px 0;
+      font-weight:600;
+      font-size:16px;
+   }
