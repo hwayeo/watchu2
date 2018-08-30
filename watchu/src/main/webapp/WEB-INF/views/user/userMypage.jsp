@@ -69,35 +69,17 @@
 		</div>
 			
 		<div class="col-xs-12 col-md-12 text-center"> 
-			
-			<c:if test="col-xs">
-				 <div class="col-xs-4">
-				<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="50" height="50"><br>
-				<p>가디언즈 오브 갤럭시</p>
-				</div>
-				<div class="col-xs-4">
-					<img src="${pageContext.request.contextPath}/resources/images/gad2.jpg" width="80" height="130"><br>
-					<p>수어사이드 스쿼드</p>
-				</div>
-				<div class="col-xs-4">
-					<img src="${pageContext.request.contextPath}/resources/images/gad3.jpg" width="80" height="130"><br>
-					<p>앤트맨</p>
-				</div> 
-			</c:if>
-			
-			
-			
 			<div class="col-md-3"></div>
 			<div class="col-xs-4 col-md-2">
-				<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="130" height="180"><br>
+				<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="100%" height="100%"><br>
 				<p>가디언즈 오브 갤럭시</p>
 			</div>
 			<div class="col-xs-4 col-md-2">
-				<img src="${pageContext.request.contextPath}/resources/images/gad2.jpg" width="130" height="180"><br>
+				<img src="${pageContext.request.contextPath}/resources/images/gad2.jpg" width="100%" height="100%"><br>
 				<p>수어사이드 스쿼드</p>
 			</div>
 			<div class="col-xs-4 col-md-2">
-				<img src="${pageContext.request.contextPath}/resources/images/gad3.jpg" width="130" height="180"><br>
+				<img src="${pageContext.request.contextPath}/resources/images/gad3.jpg" width="100%" height="100%"><br>
 				<p>앤트맨</p>
 			</div>
 			<div class="col-md-3"></div>
