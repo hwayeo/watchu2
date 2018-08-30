@@ -18,7 +18,16 @@
 			</div>
 			
 			<div class="col-xs-7 col-md-6 text-center">
-				<img src="imageView.do?id=${user_id}" width="50" height="50" class="img-circle">
+			
+				<a onclick="location.href='userMypage.do'" class="profile_img"> 
+					<c:if test="${empty user.profile_img}">
+						<img src="${pageContext.request.contextPath}/resources/images/default-profile.jpg" class="img-circle" id="profile_img" style="width: 50px; height: 50px;">
+					</c:if> 
+					<c:if test="${!empty user.profile_img}">
+						<img src="${pageContext.request.contextPath}/main/imageView.do?id=${user.id}" width="50" height="50" class="img-circle">
+					</c:if>
+				</a>
+				
 				<h2> ${user.name}</h2>
 				<div>
 					<ul class="wcPc-Arrange">
@@ -69,20 +78,24 @@
 		</div>
 			
 		<div class="col-xs-12 col-md-12 text-center"> 
-			<div class="col-md-3"></div>
-			<div class="col-xs-4 col-md-2">
+			<div class="col-md-2"></div>
+			<div class="col-xs-3 col-md-2">
 				<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="100%" height="100%"><br>
 				<p>가디언즈 오브 갤럭시</p>
 			</div>
-			<div class="col-xs-4 col-md-2">
+			<div class="col-xs-3 col-md-2">
 				<img src="${pageContext.request.contextPath}/resources/images/gad2.jpg" width="100%" height="100%"><br>
 				<p>수어사이드 스쿼드</p>
 			</div>
-			<div class="col-xs-4 col-md-2">
+			<div class="col-xs-3 col-md-2">
 				<img src="${pageContext.request.contextPath}/resources/images/gad3.jpg" width="100%" height="100%"><br>
 				<p>앤트맨</p>
 			</div>
-			<div class="col-md-3"></div>
+			<div class="col-xs-3 col-md-2">
+				<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="100%" height="100%"><br>
+				<p>가디언즈 오브 갤럭시</p>
+			</div>
+			<div class="col-md-2"></div>
 		</div>
 	</div>
 </div>
