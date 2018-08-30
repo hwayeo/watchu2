@@ -7,7 +7,13 @@
 	<select id="selectMovieList" parameterType="Map" resultType="MovieCommand">
 	SELECT * FROM
 	(SELECT a.*,rownum rnum FROM
-	(SELECT * FROM movie_info ORDER BY title desc)a)
+	(SELECT * FROM movie_info 
+		<where>
+			<if test="keyword != '' and keyfield == 'title'" >
+				title like '%' || #{keyword} || '%'
+			</if>
+		</where>	
+	ORDER BY title desc)a)
 	<![CDATA[
 		WHERE rnum >= #{start} AND rnum <= #{end}
 	]]>	
@@ -15,5 +21,10 @@
 	
 	<select id="selectMovieCnt" resultType="Integer">
 		SELECT count(*) FROM movie_info
+		<where>
+			<if test="keyword != '' and keyfield == 'title'" >
+				title like '%' || #{keyword} || '%'
+			</if>
+		</where>
 	</select>
 </mapper> 

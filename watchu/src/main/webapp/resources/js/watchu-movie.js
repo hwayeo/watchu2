@@ -3,12 +3,14 @@ $(document).ready(function(){
 	var count;
 	var rowCount;
 	      
-	//영화 목록 출력
+	//영화 홈 화면 출력
 	function selectData(pageNum){
 		currentPage = pageNum; 
 		
 		if(pageNum == 1){
-			$('#mlist').empty(); 
+			$('.mlist').empty();
+			$('.mlist2').empty();
+			$('.mlist3').empty();
 		}
 		
 		$.ajax({ 
@@ -34,7 +36,9 @@ $(document).ready(function(){
 						mlist += '</div>';
 						mlist += '</div>';
 						
-						$('#mlist').append(mlist);
+						$('.mlist').append(mlist);						
+						$('.mlist2').append(mlist);
+						$('.mlist3').append(mlist);
 					});
 				}
 			},error:function(){
@@ -42,5 +46,5 @@ $(document).ready(function(){
 			}
 		});
 	}
-	selectData(1);
+  selectData(1);
 });

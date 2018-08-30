@@ -38,7 +38,7 @@ public interface UserMapper {
 	public List<UserCommand> selectUserList(Map<String,Object> map);
 	
 	//迫肺快格废
-	@Select("select * from user_info")
+	@Select("select * from user_basic b LEFT OUTER JOIN user_info i ON b.id=i.id")
 	public List<UserCommand> selectfollowList();
 	
 	//模备包拌(迫肺快,迫肺况,喉遏)
