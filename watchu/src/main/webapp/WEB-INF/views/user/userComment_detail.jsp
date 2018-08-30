@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<div class="container text-center">
 		<h2>코멘트</h2>
 		<hr />
@@ -13,7 +14,14 @@
 					<div class="container">
 						<div class="col-xs-6 col-md-6">
 							<div class="container">
-								<img src="imageView.do?id=${user_id}" width="50" height="50" class="img-circle">&emsp;${user.name}
+								<a onclick="location.href='userMypage.do'" class="profile_img"> 
+									<c:if test="${empty user.profile_img}">
+										<img src="${pageContext.request.contextPath}/resources/images/default-profile.jpg" class="img-circle" id="profile_img" style="width: 50px; height: 50px;"> ${user.name}
+									</c:if> 
+									<c:if test="${!empty user.profile_img}">
+										<img src="${pageContext.request.contextPath}/main/imageView.do?id=${user.id}" width="50" height="50" class="img-circle"> ${user.name}
+									</c:if>
+								</a>
 								<span style="color: gray; font-size: 7px">${user.reg_date}</span><br>
 								<span style="font-weight: bold">가디언즈 오브 갤럭시</span> 
 								<span style="color: gray; font-size: 8px"> 2018</span><br> 
@@ -48,7 +56,6 @@
 					<span style="color: #d3d3d3"> | </span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 					<a href="#"><span class="glyphicon glyphicon-share-alt "></span> 공유</a>
 				</div><hr />
-				
 				
 				
 				<div class="container">

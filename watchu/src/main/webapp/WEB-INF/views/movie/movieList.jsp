@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c"    uri="http://java.sun.com/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- for:each문으로 데이터를 가져와 리스트를 생성할것 -->
 <!-- 모바일 환경 -->
 <select class="visible-xs visible-sm form-control">
@@ -129,12 +129,12 @@
 
 <hr>
 
-<div class="row">
+<c:forEach var="ml" items="${list}">
 	<div class="col-sm-6 col-md-3 col-xs-6" id="main-category">
-		<a href="#" class="thumbnail" id="thumbnail"><img src="${pageContext.request.contextPath}/resources/images/img1.png"></a>
+		<a href="movieHome.do" class="thumbnail" id="thumbnail"><img src="${pageContext.request.contextPath}/resources/images/${ml.poster_img}"></a>
 		<div class="sub-category">
-			<h4>영화제목</h4>
-			<span>영화카테고리</span>
+			<h4>${ml.title}</h4>
+			<p>${ml.country}</p>
 		</div>
 	</div>
-</div>
+</c:forEach>
