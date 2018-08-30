@@ -157,14 +157,14 @@ public class UserController {
 	}
 	
 	//==========================================추천친구목록(회원전체 목록)========================================
-	@RequestMapping("/user/following.do")
+	@RequestMapping("/user/follow.do")
 	public ModelAndView follow() {		
 		
 		List<UserCommand> list = null;
 		
 		list = userService.selectfollowList();
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("userfollowing");
+		mav.setViewName("userfollow");
 		mav.addObject("list",list);
 		
 		return mav;
