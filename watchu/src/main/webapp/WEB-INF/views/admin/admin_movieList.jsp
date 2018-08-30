@@ -6,7 +6,7 @@
 	<div id="movie_list">
 		<h2>영화 목록</h2>
 		<br>
-		<div class="content-header">
+		<div class="content-header">  
 			<!-- 검색 -->
 			<select name="category">
 				<option value="movie_name">영화명</option>

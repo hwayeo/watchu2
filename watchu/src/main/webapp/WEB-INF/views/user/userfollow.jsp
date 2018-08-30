@@ -46,7 +46,7 @@
 											style="width: 50px; height: 50px;">
 							</c:if> 
 							<c:if test="${!empty article.profile_img}">
-								<img src="imageView.do?id=${article.id}" width="50" height="50" class="img-circle">
+								<img src="${pageContext.request.contextPath}/main/imageView.do?id=${article.id}" width="50" height="50" class="img-circle">
 							</c:if>
 						</a> 
 						<span class="name_span"><label class="name">${article.name}</label></span>

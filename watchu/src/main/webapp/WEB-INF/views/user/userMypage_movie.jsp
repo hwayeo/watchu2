@@ -22,22 +22,28 @@
 					</div>
 				</div>
 
-				<div class="col-xs-4 col-md-4">
-					<img src="resources/images/gad.jpg" width="150" height="200"><br>
+				<div class="col-xs-3 col-md-3">
+					<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="100%" height="100%"><br>
 					<p>가디언즈 오브 갤럭시</p>
 					<span style="color: #ffbf00">★4.5</span>
 				</div>
-				<div class="col-xs-4 col-md-4">
-					<img src="resources/images/gad2.jpg" width="150" height="200"><br>
+				<div class="col-xs-3 col-md-3">
+					<img src="${pageContext.request.contextPath}/resources/images/gad2.jpg" width="100%" height="100%"><br>
 					<p>수어사이드 스쿼드</p>
 					<span style="color: #ffbf00">★1.5</span>
 
 				</div>
-				<div class="col-xs-4 col-md-4">
-					<img src="resources/images/gad3.jpg" width="150" height="200"><br>
+				<div class="col-xs-3 col-md-3">
+					<img src="${pageContext.request.contextPath}/resources/images/gad3.jpg" width="100%" height="100%"><br>
 					<p>앤트맨</p>
 					<span style="color: #ffbf00">★5.0</span>
 				</div>
+				<div class="col-xs-3 col-md-3">
+					<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="100%" height="100%"><br>
+					<p>가디언즈 오브 갤럭시</p>
+					<span style="color: #ffbf00">★4.5</span>
+				</div>
+				
 			</div>
 		</div>
 
