@@ -12,7 +12,7 @@
 				<div class="col-xs-8 col-md-10">
 				</div>
 				<div class="col-xs-4 col-md-2">
-					<a href="following.do" class="glyphicon glyphicon-user"></a>&emsp;
+					<a href="follow.do" class="glyphicon glyphicon-user"></a>&emsp;
 					<a href="setup.do" class="glyphicon glyphicon-cog" data-toggle="modal" data-target="#myModal2"></a>
 				</div><hr/>
 			</div>
