@@ -1,8 +1,9 @@
 package kr.watchu.user.controller;
 
 
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -15,7 +16,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.watchu.user.domain.UserCommand;
@@ -32,6 +34,9 @@ public class UserController {
 	
 	@Resource
 	private CipherTemplate cipherAES;
+	
+	/*@Resource
+	private SplitUtil split;*/
 	//자바빈 초기화
 	@ModelAttribute("command")
 	public UserCommand initCommand() {
@@ -99,7 +104,7 @@ public class UserController {
 		
 	}
 	
-	//==========================================회원수정========================================
+	//==========================================회원삭제========================================
 	//회원삭제 폼 호출
 	@RequestMapping(value="/user/deleteUser.do",method=RequestMethod.GET)
 	public String deleteForm(HttpSession session,Model model) {
@@ -158,7 +163,10 @@ public class UserController {
 	
 	//==========================================추천친구목록(회원전체 목록)========================================
 	@RequestMapping("/user/follow.do")
-	public ModelAndView follow() {		
+	public ModelAndView follow(HttpSession session) {		
+		
+		String id = (String)session.getAttribute("user_id");
+		UserCommand user = userService.selectUser(id);
 		
 		List<UserCommand> list = null;
 		
@@ -166,11 +174,49 @@ public class UserController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("userfollow");
 		mav.addObject("list",list);
+		mav.addObject("user",user);
 		
 		return mav;
 	}
 	
-	// 타임라인
+	//==========================================팔로우버튼 처리(미완료)========================================
+	@RequestMapping("/user/following.do")
+	@ResponseBody
+	
+	public Map<String,String> follwing(@RequestParam("id") String id,HttpSession session){
+
+	if(log.isDebugEnabled()) {
+			log.debug("<<id>>:" + id);
+		}
+		
+		Map<String,String> map = new HashMap<String,String>();
+
+		String user_id = (String)session.getAttribute("user_id");
+		UserCommand user = userService.selectUser(user_id);
+		
+		
+		String origin_follow = user.getFollow();
+		String new_follow = origin_follow+","+id;
+		
+		userService.insertFollow(new_follow);
+		
+		/*if(user.getfollow()!= id) {//follow command필요함...............
+			//팔로우중복
+			map.put("result", "Duplicated");		
+		}else {
+			map.put("result", "NotFound");
+			userService.insertFollw(user_id);
+		}*/
+		
+		//test(지울고임)
+		map.put("result", "success");
+		
+
+		return map;
+	}
+		
+	
+	// ========================================타임라인================================================
 	@RequestMapping("/user/userTimeline.do")
 	public String timeline() {
 		return "userTimeline";
