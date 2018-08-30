@@ -42,5 +42,8 @@
 		<put-attribute name="title" value="왓츄 -고객 문의"/>
 		<put-attribute name="body" value="/WEB-INF/views/admin/support.jsp"/>
 	</definition>
-	
+	<!-- 관리자 로그인 -->
+	<definition name="adminLogin" template="/WEB-INF/views/admin/adminLogin.jsp">
+		<put-attribute name="title" value="왓츄 -관리자 로그인"/>
+	</definition>
 </tiles-definitions>

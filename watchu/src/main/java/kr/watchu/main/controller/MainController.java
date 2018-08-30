@@ -86,6 +86,9 @@ public class MainController {
 					log.debug("<<user_auth>> : " + user.getAuth());
 				}
 				
+				if(user.getAuth() == 6) {
+					return "admin";
+				}
 				return "redirect:/main/main.do";
 			}else {
 				//인증실패 

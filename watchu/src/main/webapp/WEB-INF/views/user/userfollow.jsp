@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>팔로잉폼</title>
+<title>추천친구폼</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/follow.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap-theme.min.css">
@@ -53,11 +53,11 @@
 
 								<div class="pull-right">
 									<div class="" data-toggle="buttons">
-										<label class="btn btn-success "> 
-										<input type="radio" name="following" id="following" checked>팔로잉
+										<label class="btn btn-primary"> 
+										<input type="radio" name="following" id="follow" checked>팔로우
 										</label> 
-										<label class="btn btn-primary active"> 
-										<input type="radio" name="follower" id="follower" style="display: none;">팔로워
+										<label class="btn btn-success active"> 
+										<input type="radio" name="follower" id="following" style="display: none;">팔로잉
 										</label>
 									</div>
 								</div></li>

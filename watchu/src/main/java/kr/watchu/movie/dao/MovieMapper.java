@@ -23,4 +23,6 @@ public interface MovieMapper {
 	//영화 목록작업
 	public int selectMovieCnt(Map<String,Object> map);
 	public List<MovieCommand> selectMovieList(Map<String,Object> map);
+	public int selectMovieAjaxCnt(Map<String,Object> map);
+	public List<MovieCommand> selectMovieAjaxList(Map<String,Object> map);
 }

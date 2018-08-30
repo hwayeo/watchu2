@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<div class="row">
 <!-- 모바일 환경 -->
 <select class="visible-xs visible-sm form-control">
   <option selected>모든 장르</option>
@@ -43,7 +42,7 @@
   <option>별점 순</option>
 </select>
 <!-- 웹환경 -->
-<select id="category-menu" class="hidden-xs hidden-sm">
+<select id="rate-menu" class="hidden-xs hidden-sm">
   <option selected>모든 장르</option>
   <option>드라마</option>
   <option>판타지</option>
@@ -63,7 +62,7 @@
   <option>액션</option>
   <option>히어로</option>
 </select>
-<select id="category-menu" class="hidden-xs hidden-sm">
+<select id="rate-menu" class="hidden-xs hidden-sm">
   <option selected>모든 국가</option>
   <option>한국</option>
   <option>미국</option>
@@ -78,80 +77,22 @@
   <option>캐나다</option>
   <option>스페인</option>
 </select>
-<select id="category-menu" class="hidden-xs hidden-sm category-right"> 
+<select id="rate-menu" class="hidden-xs hidden-sm category-right"> 
   <option selected>최신 순</option>
   <option>추천 순</option>
   <option>별점 순</option>
 </select>
+
+
 <hr>
 
-
-
-		<div class="col-sm-6 col-md-3 col-xs-6">
-			<div class="thumbnail"><img src="${pageContext.request.contextPath}/resources/images/img1.png">
-		<div class="caption"> 
-			<h3>영화 제목</h3>	
-			<p>평가</p>
-		</div>
-		</div>
+<div class="row">
+	<div class="mlist4"></div>
+	<%-- <div class="col-sm-6 col-md-3 col-xs-6" id="main-category">
+		<div class="thumbnail"><img src="${pageContext.request.contextPath}/resources/images/img1.png"></div>
+	<div class="caption"> 
+		<h3>영화 제목</h3>	
+		<p>평가</p>
 	</div>
-	<div class="col-sm-6 col-md-3 col-xs-6">
-			<div class="thumbnail"><img src="${pageContext.request.contextPath}/resources/images/img1.png">
-		<div class="caption"> 
-			<h3>영화 제목</h3>	
-			<p>평가</p>
-		</div>
-		</div>
-	</div>
-	<div class="col-sm-6 col-md-3 col-xs-6">
-		<div class="thumbnail"><img src="${pageContext.request.contextPath}/resources/images/img1.png">
-		<div class="caption"> 
-			<h3>영화 제목</h3>	
-			<p>평가</p>
-		</div>
-		</div>
-	</div>
-	<div class="col-sm-6 col-md-3 col-xs-6">
-		<div class="thumbnail"><img src="${pageContext.request.contextPath}/resources/images/img1.png">
-			<div class="caption"> 
-				<h3>영화 제목</h3>	
-				<p>평가</p>
-			</div>
-		</div>
-		</div>
-	</div>
-	
-	<div class="row">
-		<div class="col-sm-6 col-md-3 col-xs-6">
-			<div class="thumbnail"><img src="${pageContext.request.contextPath}/resources/images/img1.png">
-		<div class="caption"> 
-			<h3>영화 제목</h3>	
-			<p>평가</p>
-		</div>
-		</div>
-	</div>
-	<div class="col-sm-6 col-md-3 col-xs-6">
-			<div class="thumbnail"><img src="${pageContext.request.contextPath}/resources/images/img1.png">
-		<div class="caption"> 
-			<h3>영화 제목</h3>	
-			<p>평가</p>
-		</div>
-		</div>
-	</div>
-	<div class="col-sm-6 col-md-3 col-xs-6">
-		<div class="thumbnail"><img src="${pageContext.request.contextPath}/resources/images/img1.png">
-		  <div class="caption"> 
-			<h3>영화 제목</h3>	
-			<p>평가</p>
-		</div>
-		</div>
-	</div>
-	<div class="col-sm-6 col-md-3 col-xs-6">
-		<div class="thumbnail"><img src="${pageContext.request.contextPath}/resources/images/img1.png">
-			<div class="caption"> 
-				<h3>영화 제목</h3>
-				<p>평가</p>
-			</div>
-		</div>
-	</div>
+	</div> --%>
 </div>
