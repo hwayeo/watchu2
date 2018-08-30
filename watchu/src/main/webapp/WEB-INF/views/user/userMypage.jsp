@@ -18,7 +18,7 @@
 			</div>
 			
 			<div class="col-xs-7 col-md-6 text-center">
-				<img src="imageView.do?id=${user_id}" width="50" height="50" class="img-circle">
+				<img src="${pageContext.request.contextPath}/main/imageView.do?id=${user_id}" width="50" height="50" class="img-circle">
 				<h2> ${user.name}</h2>
 				<div>
 					<ul class="wcPc-Arrange">
