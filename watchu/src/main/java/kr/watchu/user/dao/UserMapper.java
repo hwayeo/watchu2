@@ -46,8 +46,4 @@ public interface UserMapper {
 	@Insert("INSERT INTO user_relation (id) VALUES (#{id})")
 	public void insertRelation(String id);
 	
-	
-	//ÄÚ¸àÆ® ±Û
-	 
-	
 }
