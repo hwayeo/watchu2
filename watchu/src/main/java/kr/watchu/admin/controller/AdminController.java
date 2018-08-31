@@ -60,7 +60,8 @@ public class AdminController {
 	//==========관리자 로그인============//
 	//로그인 폼 호출
 	@RequestMapping(value="/admin/login.do",method=RequestMethod.GET)
-	public String loginForm() {
+	public String loginForm(HttpSession session) {
+		session.invalidate();
 		return "adminLogin";
 	}
 	//로그인
@@ -74,7 +75,7 @@ public class AdminController {
 		}
 
 		if(result.hasFieldErrors("id") || result.hasFieldErrors("passwd")) {
-			return loginForm();
+			return loginForm(session);
 		}
 
 		try {
@@ -120,7 +121,7 @@ public class AdminController {
 				log.debug("<<인증 실패>>");
 			}
 
-			return loginForm();
+			return loginForm(session);
 		}
 	}
 
