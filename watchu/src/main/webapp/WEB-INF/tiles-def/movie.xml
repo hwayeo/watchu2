@@ -14,20 +14,19 @@
 		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
 	</definition>
 	
-	<definition name="movieList" template="/WEB-INF/views/template/layout-movie.jsp">
+	<definition name="movieList" extends="movieHome">
 		<put-attribute name="title" value="왓츄 - 영화목록"/>
-		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
-		<put-attribute name="menu" value="/WEB-INF/views/movie/movieMenu.jsp"/>
 		<put-attribute name="movieHome" value="/WEB-INF/views/movie/movieList.jsp"/>
-		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
 	</definition>
 	
-	<definition name="movieEva" template="/WEB-INF/views/template/layout-movie.jsp">
+	<definition name="movieEva" extends="movieHome">
 		<put-attribute name="title" value="왓츄 - 영화목록"/>
-		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
-		<put-attribute name="menu" value="/WEB-INF/views/movie/movieMenu.jsp"/>
 		<put-attribute name="movieHome" value="/WEB-INF/views/movie/movieEva.jsp"/>
-		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+	
+	<definition name="movieDetail" extends="movieHome">
+		<put-attribute name="title" value="왓츄 - 영화목록"/>
+		<put-attribute name="movieHome" value="/WEB-INF/views/movie/movieDetail.jsp"/>
 	</definition>
 	
 </tiles-definitions>

@@ -4,7 +4,7 @@ $(document).ready(function(){
 	var rowCount;
 	      
 	//영화 홈 화면 출력
-	function selectHome(pageNum){
+	function selectHome(pageNum,movie_num){
 		currentPage = pageNum;
 		
 		if(pageNum == 1){
@@ -30,7 +30,7 @@ $(document).ready(function(){
 				}else{
 					$(list).each(function(index,item){
 						var mlist = '<div class="col-sm-6 col-md-3 col-xs-6" id="main-category">';
-						mlist += '<a href="#"><img src="${pageContext.request.contextPath}/resources/images/'+item.poster_img+'"></a>';
+						mlist += '<a href="movieDetail.do?movie_num='+item.movie_num+'"><img src="${pageContext.request.contextPath}/resources/images/'+item.poster_img+'"></a>';
 						mlist += '<div class="sub-category">';
 						mlist += '<h4>'+item.title+'</h4>';
 						mlist += '</div>';
@@ -46,7 +46,7 @@ $(document).ready(function(){
 			}
 		});
 	}
-  selectHome(1);
+  selectHome(1,$('#movie_num').val());
   
   
   //영화 평가 화면

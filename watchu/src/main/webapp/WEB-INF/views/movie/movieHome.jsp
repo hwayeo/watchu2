@@ -24,3 +24,7 @@
 	<a href="#" class="home-text2">모두보기</a></div>
 	<div class="mlist3"></div>
 </div>
+
+<c:forEach var="ml" items="${list}">
+	<input type="hidden" id="movie_num" name="movie_num" value="${ml.movie_num}">
+</c:forEach>
