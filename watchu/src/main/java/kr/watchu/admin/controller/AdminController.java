@@ -183,7 +183,7 @@ public class AdminController {
 
 	//==========01_영화 관리_영화목록==========//
 	//01_1_목록, 등록 폼
-	@RequestMapping("/admin/movieList.do")
+	@RequestMapping("/admin/movieList.do") 
 	public ModelAndView movie_list(@RequestParam(value="pageNum", defaultValue="1") int currentPage,
 			@RequestParam(value="keyfield", defaultValue="") String keyfield,
 			@RequestParam(value="keyword", defaultValue="") String keyword) {
