@@ -7,11 +7,11 @@
 <div class="page-main-style">
 	<%-- <h2>${contact.title}</h2> --%>
 	<ul>
-		<li>번호 : ${contact.contact_contact_num}</li>
+		<li>번호 : ${contact.contact_num}</li>
 		<li>작성자 : ${contact.id}</li>
 		<li>등록일 : ${contact.reg_date}</li>
 		<c:if test="${!empty contact.filename}">
-		<li>첨부파일 : <a href="file.do?contact_num=${contact.contact_num}">${contact.filename}</a></li>
+			<li>첨부파일 : <a href="file.do?num=${contact.contact_num}">${contact.filename}</a></li>
 		</c:if>
 	</ul>
 	<hr size="1" width="100%">
@@ -22,8 +22,7 @@
 	              fn:endsWith(contact.filename,'.png') ||
 	              fn:endsWith(contact.filename,'.PNG')}">
 	<div class="align-center">
-		<img src="imageView.do?contact_num=${contact.contact_contact_num}"
-		                      style="max-width:500px">
+		<img src="imageView.do?num=${contact.contact_num}" style="max-width:500px">
 	</div>	
 	</c:if>
 	<p>
@@ -32,8 +31,8 @@
 	<hr size="1" width="100%">
 	<div class="align-right">
 		<c:if test="${!empty user_id && user_id == contact.id}">
-		<input type="button" value="수정" onclick="location.href='userSupportUpdate.do?contact_num=${contact.contact_contact_num}'">	
-		<input type="button" value="삭제"  onclick="location.href='userSupportDelete.do?contact_num=${contact.contact_contact_num}'">	  
+		<input type="button" value="수정" onclick="location.href='userSupportUpdate.do?num=${contact.contact_num}'">	
+		<input type="button" value="삭제"  onclick="location.href='userSupportDelete.do?num=${contact.contact_num}'">	  
 		</c:if>
 		<input type="button" value="목록" onclick="location.href='userSupportList.do'">	  
 	</div>
@@ -48,10 +47,3 @@
 	</div> --%>
 	
 </div>
-
-
-
-
-
-
-
