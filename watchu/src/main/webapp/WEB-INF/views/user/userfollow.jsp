@@ -12,6 +12,44 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/admin-main.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+
+
+<script type="text/javascript">
+/* 나중에 폴더로 옮길거임! */
+$(document).ready(function(){
+	
+	$('.follow').click(function(){
+		
+		var id = $(this).attr('data-id');
+		alert(id);
+		
+		$.ajax({
+			url:'following.do',
+			type:'post',
+			data:{id:id},
+			dataType:'json',
+			cache:false,
+			timeout:30000,
+			success:function(data){
+				if(data.result == 'success'){				
+					$(this).attr('class','unfollow').show();
+					$(this).attr('class','follow').hide();
+				}else{
+					
+				}			
+			},
+			error:function(){
+				alert('네트워크 오류 발생');
+			}
+		});
+	});
+	
+ 
+	$('#unfollow').click(function(){
+		
+	});
+});
+</script>
 </head>
 <body>
 
@@ -51,16 +89,25 @@
 						</a> 
 						<span class="name_span"><label class="name">${article.name}</label></span>
 
-								<div class="pull-right">
+								<%-- <div class="pull-right">
 									<div class="" data-toggle="buttons">
 										<label class="btn btn-primary"> 
-										<input type="radio" name="following" id="follow" checked>팔로우
+										<input type="radio" name="following" id="follow" checked  onclick="location.href='${pageContext.request.contextPath}/main/main.do'">팔로우
 										</label> 
 										<label class="btn btn-success active"> 
 										<input type="radio" name="follower" id="following" style="display: none;">팔로잉
 										</label>
 									</div>
-								</div></li>
+								</div> --%>
+								<div class="pull-right">
+									<!-- <div class="" data-toggle="buttons"> -->
+										<input type="button" class="btn btn-primary follow" data-id="${article.id}" name="follow" value="팔로우" >
+										<input type="button" class="btn btn-success active unfollow" name="unfollow" value="팔로잉" style="display: none;">
+									<!-- </div> -->
+								</div>
+								
+								
+						</li>
 						</c:if>
 						</c:forEach>
                     
@@ -71,3 +118,4 @@
 </div>
 </body>
 </html>
+

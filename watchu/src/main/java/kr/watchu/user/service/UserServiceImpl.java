@@ -64,6 +64,12 @@ public class UserServiceImpl implements UserService {
 	}
 
 
+	@Override
+	public void insertFollow(String follow) {
+		userMapper.insertFollw(follow);
+	}
+
+
 	
 	
 
