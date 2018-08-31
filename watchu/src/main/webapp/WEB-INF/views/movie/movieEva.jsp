@@ -87,12 +87,12 @@
 <hr>
 
 <div class="row">
-	<div class="mlist4"></div>
-	<%-- <div class="col-sm-6 col-md-3 col-xs-6" id="main-category">
+	<!-- <div class="mlist4"></div> -->
+	<div class="col-sm-6 col-md-3 col-xs-6" id="main-category">
 		<div class="thumbnail"><img src="${pageContext.request.contextPath}/resources/images/img1.png"></div>
 	<div class="caption"> 
 		<h3>영화 제목</h3>	
 		<p>평가</p>
 	</div>
-	</div> --%>
+	</div>
 </div>

@@ -89,5 +89,10 @@ $(document).ready(function(){
 			}
 		});
 	}
-selectEva(1);
+  selectEva(1);
+
+  $('.paging-movie').click(function(){
+	 var pageNum = currentPage + 1;
+	 selectData(pageNum,$('#movie_num').val());
+  });
 });

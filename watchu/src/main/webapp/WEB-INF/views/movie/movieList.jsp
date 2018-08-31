@@ -129,6 +129,7 @@
 
 <hr>
 
+<div class="row">
 <c:forEach var="ml" items="${list}">
 	<div class="col-sm-6 col-md-3 col-xs-6" id="main-category">
 		<a href="movieDetail.do?movie_num=${ml.movie_num}" class="thumbnail" id="thumbnail"><img src="${pageContext.request.contextPath}/resources/images/${ml.poster_img}"></a>
@@ -138,3 +139,4 @@
 		</div>
 	</div>
 </c:forEach>
+</div>
