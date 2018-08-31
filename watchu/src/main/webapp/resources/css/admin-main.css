@@ -63,3 +63,8 @@ div.admin_menu a:hover{
 ul.paging {
 	background-color:#ff2f6e;
 }
+
+/* 자동 완성 */
+.ui-autocomplete {
+z-index: 2150000000;
+}

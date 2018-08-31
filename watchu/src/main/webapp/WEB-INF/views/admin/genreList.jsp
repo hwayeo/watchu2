@@ -1,33 +1,49 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!-- 장르 등록 및 수정 -->
 <div class="admin_main">
 	<div id="genre_list">
 		<h2>영화 장르 목록</h2>
 		<br>
 		<div class="content-header">
+			<!-- 데이터 없을 경우 -->
+			<c:if test="${genre_count == 0}">
+			<div align="center">등록된 장르가 없습니다.</div><br><br>
+			<div class="edit_btn" align="center">
+				<input type="button" value="장르 등록" id="register_genre" data-toggle="modal" data-target="#genreModal">
+			</div>
+			</c:if>
+			<c:if test="${genre_count > 0 }">
 			<!-- 검색 -->
-			<select name="category">
+			<form action="genreList.do" id="genre_search" method="get">
+			<select name="keyfield">
 				<option value="genre_num">장르 코드</option>
-				<option value="genre_name">장르명</option>
-			</select> <input type="text"> <input type="button" value="검색"><br> 
-			<Br>
+				<option value="genre">장르명</option>
+			</select>
+			<input type="text" name="keyword" id="keyword"> 
+			<input type="submit" value="검색">
+			</form>
+			<br><Br>
+			
 		</div>
 
 		<div class="content-body">
 			<!-- 장르 목록 -->
 			<table class="table table-hover table-condensed">
 				<tr>
-					<th class="col-md-3">장르 코드</th>
-					<th class="col-md-7">장르명</th>
+					<th class="col-md-2">장르 코드</th>
+					<th class="col-md-8">장르명</th>
 					<th class="col-md-2">선택</th>
 				</tr>
+				<c:forEach var="genre" items="${genre_list}">
 				<tr>
-					<td>00</td>
-					<td>스릴러</td>
+					<td>${genre.genre_num}</td>
+					<td>${genre.genre}</td>
 					<td><input type="checkbox" name="checked"></td>
 				</tr>
+				</c:forEach>
 			</table>
 			<br>
 
@@ -39,13 +55,15 @@
 			<br>
 
 			<!-- 페이지버튼 -->
-			<nav align="center">
+			<div align="center">${pagingHtml}</div>
+			<!-- <nav align="center">
 				<ul class="pagination pagination-sm">
 					<li class="disabled"><a href="#" aria-label="Previous"><span
 							aria-hidden="true">&laquo;</span></a></li>
 					<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
 				</ul>
-			</nav>
+			</nav> -->
+			</c:if>
 			<br>
 		</div>
 	</div>

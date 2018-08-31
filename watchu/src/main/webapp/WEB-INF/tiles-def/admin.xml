@@ -14,10 +14,6 @@
 	</definition>
 	<!-- 영화목록페이지를 admin페이지 main으로 설정함(08/23) -->
 	
-	<definition name="admin_movieList" extends="admin">
-		<put-attribute name="title" value="왓츄 -영화 목록"/>
-		<put-attribute name="body" value="/WEB-INF/views/admin/admin_movieList.jsp"/>
-	</definition>
 	<definition name="officialList" extends="admin">
 		<put-attribute name="title" value="왓츄 -영화 관계자 목록"/>
 		<put-attribute name="body" value="/WEB-INF/views/admin/officialList.jsp"/>

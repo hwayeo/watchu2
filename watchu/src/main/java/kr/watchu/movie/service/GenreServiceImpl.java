@@ -35,13 +35,12 @@ public class GenreServiceImpl implements GenreService{
 	@Override
 	public int selectGenreCnt(Map<String, Object> map) {
 		// TODO Auto-generated method stub
-		return 0;
+		return genreMapper.selectGenreCnt(map);
 	}
 
 	@Override
 	public List<GenreCommand> selectGenreList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+		return genreMapper.selectGenreList(map);
 	}
 	
 	

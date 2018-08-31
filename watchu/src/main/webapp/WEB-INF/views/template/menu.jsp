@@ -16,7 +16,7 @@
     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body">
       <ul>
-         <li class='last'><a href='${pageContext.request.contextPath}/admin/admin_movieList.do'><span>영화 등록 및 수정</span></a></li>
+         <li class='last'><a href='${pageContext.request.contextPath}/admin/main.do'><span>영화 등록 및 수정</span></a></li>
          <li class='last'><a href='${pageContext.request.contextPath}/admin/officialList.do'><span>관계자 등록 및 수정</span></a></li>
          <li class='last'><a href='${pageContext.request.contextPath}/admin/genreList.do'><span>장르 등록 및 수정</span></a></li>
          <li class='last'><a href='${pageContext.request.contextPath}/admin/movieRating.do'><span>영화 별점 관리</span></a></li>
