@@ -35,10 +35,20 @@
 		<put-attribute name="body" value="/WEB-INF/views/user/userTimeline.jsp"/>
 	</definition>
 	
-	<definition name="userSupport" extends="userWrite">
+	<!-- 고객센터 -->
+	<definition name="userSupportList" extends="userWrite">
 		<put-attribute name="title" value="왓츄 - 고객센터"/>
-		<put-attribute name="body" value="/WEB-INF/views/user/userSupport.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/user/userSupportList.jsp"/>
 	</definition>
+	<definition name="userSupportWrite" extends="userWrite">
+		<put-attribute name="title" value="왓츄 - 고객센터 - 글쓰기"/>
+		<put-attribute name="body" value="/WEB-INF/views/user/userSupportWrite.jsp"/>
+	</definition>
+	<definition name="userSupportView" extends="userWrite">
+		<put-attribute name="title" value="왓츄 - 고객센터 - 글목록"/>
+		<put-attribute name="body" value="/WEB-INF/views/user/userSupportView.jsp"/>
+	</definition>
+	
 </tiles-definitions>
 
 
