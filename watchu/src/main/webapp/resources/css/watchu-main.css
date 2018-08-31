@@ -1,6 +1,7 @@
-/*ÇªÅÍ*/
+@charset "UTF-8";
+/*í‘¸í„°*/
 #xs-footer {
-	widht: 100%;
+	width: 100%;
 	border-top: 1px solid rgba(120, 120, 120, 0.2);
 	background-color: white;
 }
@@ -16,6 +17,7 @@
 
 .footer-item {
 	color: #f74788;
+	
 }
 
 .footer-item:hover {
@@ -129,10 +131,10 @@
 #search-icon {
 	color: #878787;
 }
-/*È¸¿ø°¡ÀÔ*/
-#page-register {body { font-family:'PT Sans', sans-serif;
-	
-}
+/*íšŒå ì™ì˜™å ì™ì˜™å ì™ì˜™*/
+#page-register > body {
+font-family:'PT Sans', sans-serif;
+}	
 
 hr {
 	border: 1px solid #354458;
@@ -152,8 +154,6 @@ hr {
 	width: 100%;
 }
 
-
-}
 #form-register {
 	margin: 10% auto;
 	border: 1px solid rgba(120, 120, 120, 0.3);
@@ -219,9 +219,9 @@ hr {
 }
 .custom-row{
 }
-/*µ¥½ºÅ©Å¾*/
+/*å ì™ì˜™å ì™ì˜™í¬íƒ‘*/
 @media screen and (min-width:1201px) and (max-width:2550px) {
-	/*¸ŞÀÎÆäÀÌÁö*/
+	/*å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™*/
 	#main_banner {
 		top: 0;
 		position: absoulte;
@@ -229,7 +229,7 @@ hr {
 		height: 400px;
 		background-color: #333;
 	}
-	#main_banner:after {
+	#main_banner::after{
 		top: 0;
 		position: absoulte;
 		width: 100%;
@@ -238,13 +238,14 @@ hr {
 	}
 	#banner-text {
 		position: absoulte;
-		top: 200px;
+		vertical-align: -webkit-baseline-middle;
 		text-align: center;
 		margin: 0;
 		padding-top: 160px;
 		font-size: 3.5em;
 		color: white;
 	}
+	
 	.search-form {
 		position: absolute;
 		top: 375px;
@@ -291,7 +292,7 @@ hr {
 }
 
 @media screen and (min-width:768px) and (max-width:1200px) {
-	/*¸ŞÀÎÆäÀÌÁö*/
+	/*å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™*/
 	#main_banner {
 		top: 0;
 		position: absoulte;
@@ -301,7 +302,7 @@ hr {
 	}
 	#banner-text {
 		position: absoulte;
-		top: 200px;
+		vertical-align: -webkit-baseline-middle;
 		text-align: center;
 		margin: 0;
 		padding-top: 160px;
@@ -355,7 +356,7 @@ hr {
 }
 
 @media screen and (min-width:425px) and (max-width:767px) {
-	/*¸ŞÀÎÆäÀÌÁö*/
+	/*å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™*/
 	#main_banner {
 		top: 0;
 		position: absoulte;
@@ -365,7 +366,7 @@ hr {
 	}
 	#banner-text {
 		position: absoulte;
-		top: 100px;
+		vertical-align: -webkit-baseline-middle;
 		text-align: center;
 		margin: 0;
 		padding-top: 100px;
@@ -443,7 +444,7 @@ hr {
 }
 
 @media screen and (min-width:0px) and (max-width:424px) {
-	/*¸ŞÀÎÆäÀÌÁö*/
+	/*å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™*/
 	#main_banner {
 		top: 0;
 		position: absoulte;
@@ -453,7 +454,7 @@ hr {
 	}
 	#banner-text {
 		position: absoulte;
-		top: 100;
+		vertical-align: -webkit-baseline-middle;
 		text-align: center;
 		margin: 0;
 		padding-top: 100px;
@@ -479,13 +480,13 @@ hr {
 		padding-bottom: 8px;
 		background-color: transparent;
 	}
-	.search-form . input-group-addon .input-group input[type=text] {
+	.search-form .input-group-addon .input-group input[type=text] {
 		width: 90%;
 		transform: translateX(-50%);
 		left: 50%;
 		margin: 0 auto;
 	}
-	.search-form-top . input-group-addon .input-group input[type=text] {
+	.search-form-top .input-group-addon .input-group input[type=text] {
 		width: 90%;
 		transform: translateX(-50%);
 		left: 50%;
