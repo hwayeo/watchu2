@@ -1,15 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/movie-detail.css">	
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/watchu-view.css">	
+<div id="main-page">
+	<div id="main_banner">
+		<div id="img-test">
+		</div> 
+	</div>
+</div>
 <div class="container-fluid">
 	<!-- 상단부분 시작 -->
 	<div class="row">
-		<!-- 상단 포스터 이미지 -->
+		<%-- <!-- 상단 포스터 이미지 -->
 		<div class="col-md-12" id="poster">
 			<a href="#" class=""><img src="${pageContext.request.contextPath}/resources/images/img4.jpg" class="img-responsive center-block hidden-xs" id="image"></a>
 			<a href="#" class="hidden-md hidden-lg hidden-sm thumbnail"><img src="#" class="center-block visible-xs"></a>
 		</div>
-		<!-- 상단 포스터 이미지 끝 -->
+		<!-- 상단 포스터 이미지 끝 --> --%>
 		
 		<!-- 영화 기본정보 pc 화면 -->
 	<div class="col-sm-12 col-md-12 col-xs-12 hidden-xs">
