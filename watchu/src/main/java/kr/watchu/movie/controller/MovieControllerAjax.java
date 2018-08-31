@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,8 +19,7 @@ import kr.watchu.util.PagingUtil;
 
 @Controller
 public class MovieControllerAjax {
-	private int rowCount = 4;
-	private int pageCount = 10;
+	private Logger log = Logger.getLogger(this.getClass());
 	
 	@Resource 
 	private MovieService movieService;
@@ -34,9 +34,16 @@ public class MovieControllerAjax {
 	public Map<String,Object> getMovieList(
 			@RequestParam(value="pageNum",defaultValue="1") int currentPage){
 		
+		int rowCount = 4;
+		int pageCount = 10;
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<currentPage>> : " + currentPage);
+		}
+		
 		Map<String,Object> map = new HashMap<String,Object>();
 		
-		int count = movieService.selectMovieCnt(map);
+		int count = movieService.selectMovieAjaxCnt(map);
 		
 		PagingUtil page = new PagingUtil(currentPage,count,rowCount,pageCount,null);
 		map.put("start", page.getStartCount());
@@ -45,7 +52,7 @@ public class MovieControllerAjax {
 		List<MovieCommand> list = null;
 		
 		if(count > 0) { 
-			list = movieService.selectMovieList(map);
+			list = movieService.selectMovieAjaxList(map);
 		}
 		 
 		Map<String,Object> mapJson = new HashMap<String,Object>();

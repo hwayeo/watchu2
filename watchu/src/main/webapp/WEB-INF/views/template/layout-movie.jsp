@@ -20,9 +20,11 @@
 	<tiles:insertAttribute name="header"/>
 <div class="container">
 	<tiles:insertAttribute name="menu"/>
-	<hr>
-	<tiles:insertAttribute name="movieHome"/> 
 </div>
+	<hr>
+<div class="container">
+	<tiles:insertAttribute name="movieHome"/>
+</div> 
 	<tiles:insertAttribute name="footer"/>
 </body>
 </html>

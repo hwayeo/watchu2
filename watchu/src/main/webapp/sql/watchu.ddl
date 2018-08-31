@@ -140,7 +140,7 @@ COMMENT ON COLUMN MOVIE_RATED.RATE is '∆Ú¡°';
 /**********************************/
 CREATE TABLE OFFICIALS(
 		OFF_NUM                       		NUMBER		 NOT NULL,
-		NAME                          		VARCHAR2(20)		 NOT NULL,
+		NAME                          		VARCHAR2(100)		 NOT NULL,
 		JOBS                          		VARCHAR2(20)		 NOT NULL,
 		FILMOGRAP                     		CLOB		 NOT NULL,
 		OFF_PHOTO                     		BLOB		 NULL 

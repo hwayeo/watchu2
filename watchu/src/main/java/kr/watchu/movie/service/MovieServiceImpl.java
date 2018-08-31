@@ -11,7 +11,7 @@ import kr.watchu.movie.dao.MovieMapper;
 import kr.watchu.movie.domain.MovieCommand;
 
 
-@Service("movieService")
+@Service("movieService") 
 public class MovieServiceImpl implements MovieService {
 	@Resource
 	private MovieMapper movieMapper;
@@ -47,6 +47,16 @@ public class MovieServiceImpl implements MovieService {
 	@Override
 	public List<MovieCommand> selectMovieList(Map<String, Object> map) {
 		return movieMapper.selectMovieList(map);
+	}
+
+	@Override
+	public int selectMovieAjaxCnt(Map<String, Object> map) {
+		return movieMapper.selectMovieAjaxCnt(map);
+	}
+
+	@Override
+	public List<MovieCommand> selectMovieAjaxList(Map<String, Object> map) {
+		return movieMapper.selectMovieAjaxList(map);
 	}
 
 }
