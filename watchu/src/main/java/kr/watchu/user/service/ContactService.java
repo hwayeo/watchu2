@@ -6,6 +6,7 @@ import java.util.Map;
 import kr.watchu.user.domain.ContactCommand;
 
 public interface ContactService {
+	
 	//문의글 등록
 	public void insertContact(ContactCommand contact);
 	//상세정보

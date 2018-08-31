@@ -6,12 +6,12 @@ import java.sql.Date;
 import org.springframework.web.multipart.MultipartFile;
 
 public class ContactCommand {
-	private Integer contact_num;
+	private Integer contact_num; //글번호
 	private String id;
-	private String content;
-	private MultipartFile upload;
-	private String filename;
-	private byte[] upload_file;
+	private String content; //글내용
+	private MultipartFile upload; //업로드파일
+	private String filename; //파일명
+	private byte[] upload_file; //DB에 저장된 파일
 	private Date reg_date;
 	private int recotentable;
 	

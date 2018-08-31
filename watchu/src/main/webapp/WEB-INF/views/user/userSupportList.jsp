@@ -31,19 +31,23 @@
          <table class="table table-hover table-condensed">
             <tr class="sup_title">
                <th class="col-md-2">번호</th>
+               <th class="col-md-2">아이디</th>
                <th class="col-md-2">제목</th>
                <th class="col-md-2">분류</th>
                <th class="col-md-2">상태</th>
                <th class="col-md-2">등록일</th>
             </tr>
             
+            <c:forEach var="contact" items="${list}">
             <tr class="sup_content">
-               <td>1</td>
-               <td><a href="#">제목</a></td>
+               <td>${contact.contact_num}</td>
+               <td>${contact.id}</td>
+               <td><a onclick="location.href='userSupportView.do'">제목</a></td>
                <td>App 오류</td>
                <td>답변대기</td>
-               <td>2018.8.31</td>
+               <td>${contact.reg_date}</td>
             </tr>
+            </c:forEach>
          </table>
       </div>
       
