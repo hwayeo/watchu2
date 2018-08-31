@@ -9,12 +9,15 @@
 		<br>
 		<div class="content-header">
 			<!-- 검색 -->
-			<select name="category">
+			<form action="movieList.do" id="movie_search" method="get">
+			<select name="keyfield">
 				<option value="title">영화명</option>
 				<option value="director">감독명</option>
 				<option value="actors">배우명</option>
-			</select> <input type="text"> <input type="button" value="검색"><br>
-			<Br>
+			</select>
+			<input type="text" name="keyword" id="keyword"> 
+			<input type="submit" value="검색">
+			</form>
 		</div>
 
 		<div class="content-body">
@@ -28,8 +31,8 @@
 				<c:forEach var="movie" items="${movie_list}">
 				<tr>
 					<td>${movie.movie_num}</td>
-					<td>${movie.title}</td>
-					<td><input type="checkbox" name="checked"></td>
+					<td onclick="location.href='admin_movieView.do?movie_num=${movie.movie_num}'" style="cursor:pointer;">${movie.title}</td>
+					<td><input type="checkbox" data-num="${movie.movie_num}" name="checked"></td>
 				</tr>
 				</c:forEach>
 			</table>

@@ -104,7 +104,7 @@
 	width: 100%;
 	border-bottom: 1px solid rgba(120, 120, 120, 0.3);
 	box-shadow: 2px 2px 5px rgba(120, 120, 120, 0.2);
-	z-index: 2;
+	z-index: 4;
 	background-color:white;
 }
 
@@ -152,9 +152,6 @@ hr {
 	width: 100%;
 }
 
-.img-size {
-	
-}
 
 }
 #form-register {
@@ -162,7 +159,66 @@ hr {
 	border: 1px solid rgba(120, 120, 120, 0.3);
 	border-radius: 5px;
 }
-
+#main-page-content{
+	margin-top:80px;
+}
+.items-box{
+	width:100%;
+	min-height:300px;
+}
+.main-img{
+	z-index:1;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+}
+.text-box{
+	background-color:white;
+	width:100%;
+	margin-top:-50px;
+	min-height:80px;
+	z-index:2;
+	position:relative;
+	padding:8px;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px; 
+	border-top:1.5px solid rgba(125,125,125,0.5);
+	border-left:1px solid rgba(125,125,125,0.3);
+	border-right:1px solid rgba(125,125,125,0.3);
+	border-bottom:1px solid rgba(125,125,125,0.3);
+}
+.items-box-col3{
+	width:100%;
+	max-height:250px;
+}
+.main-img-col3{
+	z-index:1;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+}
+.text-box-col3{
+	background-color:white;
+	width:100%;
+	margin-top:-30px;
+	height:70px;
+	z-index:2;
+	position:relative;
+	padding:8px;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px; 
+	border-top:1.5px solid rgba(125,125,125,0.5);
+	border-left:1px solid rgba(125,125,125,0.3);
+	border-right:1px solid rgba(125,125,125,0.3);
+	border-bottom:1px solid rgba(125,125,125,0.3);
+}
+.movie-title{
+	font-size:1.25em;
+}
+.sub-title{
+	font-size:0.85em;
+	color:rgba(80,80,80,0.7);
+}
+.custom-row{
+}
 /*데스크탑*/
 @media screen and (min-width:1201px) and (max-width:2550px) {
 	/*메인페이지*/
@@ -204,7 +260,7 @@ hr {
 	}
 	.header-menu {
 		position: absolute;
-		z-index:3;
+		z-index:5;
 		top: 10px;
 		right: 10px;
 	}
@@ -369,7 +425,7 @@ hr {
 		position: fixed;
 		background-color: white;
 		padding: 10px 8px;
-		z-index: 1;
+		z-index: 4;
 	}
 	#main-content {
 		top: 100px;
@@ -459,7 +515,7 @@ hr {
 		background-color: white;
 		margin: 0 auto;
 		padding: 10px 8px 10px 8px;
-		z-index: 1;
+		z-index: 4;
 	}
 	#main-content {
 		top: 100px;

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/setup.css">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<div class="container text-center">
 		<h2>코멘트</h2><hr/>
 	</div>
@@ -24,9 +25,14 @@
 			<div class="media">
 				<div class="media-body">
 					<div class="container">
-						<a class="pull-left" onclick="location.href='userMypage.do'"> 
-							<img src="imageView.do?id=${user_id}" width="50" height="50" class="img-circle">&emsp;${user.name}
-						</a>
+						<a onclick="location.href='userMypage.do'" class="profile_img"> 
+							<c:if test="${empty user.profile_img}">
+								<img src="${pageContext.request.contextPath}/resources/images/default-profile.jpg" class="img-circle" id="profile_img" style="width: 50px; height: 50px;"> ${user.name}
+							</c:if> 
+							<c:if test="${!empty user.profile_img}">
+								<img src="${pageContext.request.contextPath}/main/imageView.do?id=${user.id}" width="50" height="50" class="img-circle"> ${user.name}
+							</c:if>
+						</a>	
 						<p align="right"> 
 							<li>
 								<span class="glyphicon glyphicon-star"></span> 
@@ -35,7 +41,6 @@
 								<span class="glyphicon glyphicon-star"></span> 
 								<span class="glyphicon glyphicon-star-empty"></span>
 							</li>
-						</p>
 					</div><hr/>
 					<div class="container" onclick="location.href='userComment_detail.do'" style="cursor:pointer;">  
 						<a class="pull-left" href="#"> 

@@ -53,4 +53,18 @@
 			</if>
 		</where>
 	</select>
+	
+	<select id="selectMovieAjaxList" parameterType="Map" resultType="MovieCommand">
+		SELECT * FROM
+	(SELECT a.*,rownum rnum FROM
+	(SELECT * FROM movie_info
+	ORDER BY title desc)a)
+	<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+	]]>	
+	</select>
+	
+	<select id="selectMovieAjaxCnt" resultType="Integer">
+		SELECT count(*) FROM movie_info
+	</select>
 </mapper> 
