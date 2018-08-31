@@ -21,10 +21,10 @@
 			 		<if test="keyword != '' and keyfield == 'genre'">
 			 			genre like '%' || #{keyword} || '%'
 			 		</if>
-			 		<if test="keyword != '' and keyfield.equals('all')">
+<!-- 			 		<if test="keyword != '' and keyfield.equals('all')">
 			 			genre_num like '%' || #{keyword} || '%' or
 			 			genre like '%' || #{keyword} || '%'
-			 		</if>
+			 		</if> -->
 		 		</where>
 				
 				ORDER BY genre_num)a)
@@ -44,10 +44,10 @@
 			 <if test="keyword != '' and keyfield == 'genre'">
 			 	genre like '%' || #{keyword} || '%'
 			 </if>
-			 <if test="keyword != '' and keyfield.equals('all')">
+<!-- 			 <if test="keyword != '' and keyfield.equals('all')">
 			 	genre_num like '%' || #{keyword} || '%' or
 			 	genre like '%' || #{keyword} || '%' or
-			 </if>
+			 </if> -->
 		 </where>
 	</select>
 </mapper>

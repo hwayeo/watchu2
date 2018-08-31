@@ -22,11 +22,11 @@
 			<if test="keyword != '' and keyfield == 'actors'" >
 				actors like '%' || #{keyword} || '%'
 			</if>
-			<if test="keyword != '' and keyfield.equals('all')" >
+		<!-- 	<if test="keyword != '' and keyfield.equals('all')" >
 				title like '%' || #{keyword} || '%' or
 				director like '%' || #{keyword} || '%' or
 				actors like '%' || #{keyword} || '%'	
-			</if>
+			</if> -->
 		</where>	
 		ORDER BY title desc)a)
 	<![CDATA[
@@ -46,11 +46,11 @@
 			<if test="keyword != '' and keyfield == 'actors'" >
 				actors like '%' || #{keyword} || '%'
 			</if>
-			<if test="keyword != '' and keyfield.equals('all')" >
+			<!-- <if test="keyword != '' and keyfield.equals('all')" >
 				title like '%' || #{keyword} || '%' or
 				director like '%' || #{keyword} || '%' or
 				actors like '%' || #{keyword} || '%'	
-			</if>
+			</if> -->
 		</where>
 	</select>
 	

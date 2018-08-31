@@ -22,8 +22,7 @@ public class OfficialsServiceImpl implements OfficialsService {
 
 	@Override
 	public OfficialsCommand selectOfficials(Integer off_num) {
-		// TODO Auto-generated method stub
-		return null;
+		return officialsMapper.selectOfficials(off_num);
 	}
 
 	@Override
@@ -40,14 +39,12 @@ public class OfficialsServiceImpl implements OfficialsService {
 
 	@Override
 	public int selectOffCnt(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return officialsMapper.selectOffCnt(map);
 	}
 
 	@Override
 	public List<OfficialsCommand> selectOffList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+		return officialsMapper.selectOffList(map);
 	}
 
 }

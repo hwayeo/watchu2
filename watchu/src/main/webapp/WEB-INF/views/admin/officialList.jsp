@@ -1,38 +1,48 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!-- 영화 관계자 등록 및 수정 -->
 <div class="admin_main">
 	<div id="official_list">
 		<h2>영화 관계자 목록</h2>
 		<br>
-		<div class="content-header"> 
+		<div class="content-header">
+			<!-- 구분 -->
+			<span class="division">
+				<input type="radio" name="jobs" value="all" checked> 전체
+				<input type="radio" name="jobs" value="director"> 감독
+				<input type="radio" name="jobs" value="actor"> 배우
+			</span>
+			
 			<!-- 검색 -->
-			<select name="category">
-				<option value="movie_name">주요영화명</option>
-				<option value="movie_director">감독명</option>
-				<option value="movie_actor">배우명</option>
-			</select> <input type="text"> <input type="button" value="검색"><br>
-			<Br>
+			<form action="officialList.do" id="official_search" method="get" class="search">
+			<select name="keyfield">
+				<option value="name">이름</option>
+				<option value="filmograp">작품명</option>
+			</select>
+			<input type="text" name="keyword" id="keyword"> 
+			<input type="submit" value="검색">
+			</form>
 		</div>
 
 		<div class="content-body">
 			<!-- 영화 목록 -->
 			<table class="table table-hover table-condensed">
 				<tr>
-					<th class="col-md-2">번호</th>
-					<th class="col-md-4">영화명</th>
-					<th class="col-md-2">감독명</th>
-					<th class="col-md-2">배우명</th>
-					<th class="col-md-2">선택</th>
+					<th class="col-md-2">관계자코드</th>
+					<th class="col-md-5">이름</th>
+					<th class="col-md-2">구분</th>
+					<th class="col-md-1">선택</th>
 				</tr>
+				<c:forEach var="official" items="${official_list}">
 				<tr>
-					<td>1</td>
-					<td>제목</td>
-					<td>감독이름</td>
-					<td>배우이름</td>
+					<td>${official.off_num}</td>
+					<td onclick="location.href='offcialDetail.do?off_num=${official.off_num}'" style="cursor:pointer;">${official.name}</td>
+					<td>${official.jobs}</td>
 					<td><input type="checkbox" name="checked"></td>
 				</tr>
+				</c:forEach>
 			</table>
 			<br>
 
@@ -46,19 +56,20 @@
 			<br>
 
 			<!-- 페이지버튼 -->
-			<nav align="center">
+			<div align="center">${pagingHtml}</div>
+			<!-- <nav align="center">
 				<ul class="pagination pagination-sm">
 					<li class="disabled"><a href="#" aria-label="Previous"><span
 							aria-hidden="true">&laquo;</span></a></li>
 					<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
 				</ul>
-			</nav>
+			</nav> -->
 			<br>
 		</div>
 	</div>
 </div>
 
-
+<!-- 관계자 등록 모달 -->
 <div class="modal fade" id="officialsModal" tabindex="-1" role="dialog" aria-labelledby="officialsModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -95,29 +106,6 @@
 				<button type="submit" class="btn btn-default">등록</button>
 			</div>
 			</form:form>
-			
-<!-- 				<form id="officials_form" enctype="multipart/form-data">
-					<div class="form-group">
-						<label for="jobs">직업</label> <select name="main_category">
-							<option value="movie_director">영화감독</option>
-							<option value="movie_actor">영화배우</option>
-						</select>
-					</div>
-
-					<div class="form-group">
-						<label for="name">이름</label> <input type="text" name="name"
-							class="form-control">
-					</div>
-
-					<div class="form-group">
-						<label for="movie_name">주요영화</label> <input type="text"
-							name="movie_name" class="form-control">
-					</div>
-					<div class="form-group">
-						<label for="movie_photo">사진</label> <input type="file"
-							name="movie_photo" class="form-control">
-					</div>
-				</form>-->
 		</div>
 	</div>
 </div>

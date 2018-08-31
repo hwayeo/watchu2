@@ -22,9 +22,8 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	@Override
-	public MovieCommand selectMovie(Integer num) {
-		// TODO Auto-generated method stub
-		return null;
+	public MovieCommand selectMovie(Integer movie_num) {
+		return movieMapper.selectMovie(movie_num);
 	}
 
 	@Override

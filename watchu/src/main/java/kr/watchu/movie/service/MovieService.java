@@ -9,7 +9,7 @@ public interface MovieService {
 	//영화등록
 	public void insertMovie(MovieCommand movie);
 	//영화 상세정보
-	public MovieCommand selectMovie(Integer num);
+	public MovieCommand selectMovie(Integer movie_num);
 	//영화 수정
 	public void updateMovie(MovieCommand movie);
 	//영화 삭제

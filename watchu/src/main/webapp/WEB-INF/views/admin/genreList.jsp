@@ -8,14 +8,6 @@
 		<h2>영화 장르 목록</h2>
 		<br>
 		<div class="content-header">
-			<!-- 데이터 없을 경우 -->
-			<c:if test="${genre_count == 0}">
-			<div align="center">등록된 장르가 없습니다.</div><br><br>
-			<div class="edit_btn" align="center">
-				<input type="button" value="장르 등록" id="register_genre" data-toggle="modal" data-target="#genreModal">
-			</div>
-			</c:if>
-			<c:if test="${genre_count > 0 }">
 			<!-- 검색 -->
 			<form action="genreList.do" id="genre_search" method="get">
 			<select name="keyfield">
@@ -25,8 +17,6 @@
 			<input type="text" name="keyword" id="keyword"> 
 			<input type="submit" value="검색">
 			</form>
-			<br><Br>
-			
 		</div>
 
 		<div class="content-body">
@@ -63,7 +53,6 @@
 					<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
 				</ul>
 			</nav> -->
-			</c:if>
 			<br>
 		</div>
 	</div>
