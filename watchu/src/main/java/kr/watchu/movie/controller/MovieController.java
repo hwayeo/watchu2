@@ -75,7 +75,7 @@ public class MovieController {
 			@RequestParam(value="keyfield",defaultValue="") String keyfield,
 			@RequestParam(value="keyword",defaultValue="" ) String keyword) {
 		
-		int rowCount = 12;
+		int rowCount = 24;
 		int pageCount = 10;
 		
 		Map<String,Object> map = new HashMap<String,Object>();
@@ -116,7 +116,7 @@ public class MovieController {
 			@RequestParam(value="keyfield",defaultValue="") String keyfield,
 			@RequestParam(value="keyword",defaultValue="" ) String keyword) {
 		
-		int rowCount = 12;
+		int rowCount = 24;
 		int pageCount = 10;
 		
 		Map<String,Object> map = new HashMap<String,Object>();
@@ -149,18 +149,5 @@ public class MovieController {
 		mav.addObject("pagingHtml",page.getPagingHtml());
 		
 		return mav;
-	}
-	
-	//글 상세 보기용
-	@RequestMapping("/movie/movieDetail.do")
-	public ModelAndView movieDetail(@RequestParam("movie_num") int movie_num) {
-		
-		if(log.isDebugEnabled()){
-			log.debug("<<movie_num>> : " + movie_num);
-		}
-		
-		MovieCommand movie = movieService.selectMovie(movie_num);
-		
-		return new ModelAndView("movieDetail","movie",movie);
 	}
 }

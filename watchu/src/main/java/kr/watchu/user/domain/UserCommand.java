@@ -2,6 +2,7 @@ package kr.watchu.user.domain;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.Arrays;
 
 import javax.validation.constraints.Pattern;
 
@@ -20,10 +21,22 @@ public class UserCommand {
 	private String phone;
 	@NotEmpty
 	private String email;
+	private String follow;
+	private String follower;
+	private String block;
 	private MultipartFile upload;
 	private byte[] profile_img;
 	private Date reg_date;
+	private String permit;
 	
+	public String getPermit() {
+		return permit;
+	}
+
+	public void setPermit(String permit) {
+		this.permit = permit;
+	}
+
 	//비밀번호 체크
 	public boolean isCheckedPasswd(String userPasswd) {
 		if(auth > 0 && passwd.equals(userPasswd)) {
@@ -94,10 +107,36 @@ public class UserCommand {
 		this.reg_date = reg_date;
 	}
 
+	public String getFollow() {
+		return follow;
+	}
+
+	public void setFollow(String follow) {
+		this.follow = follow;
+	}
+
+	public String getFollower() {
+		return follower;
+	}
+
+	public void setFollower(String follower) {
+		this.follower = follower;
+	}
+
+	public String getBlock() {
+		return block;
+	}
+
+	public void setBlock(String block) {
+		this.block = block;
+	}
+
 	@Override
 	public String toString() {
 		return "UserCommand [id=" + id + ", auth=" + auth + ", passwd=" + passwd + ", name=" + name + ", phone=" + phone
-				+ ", email=" + email + ", reg_date=" + reg_date + "]";
+				+ ", email=" + email + ", follow=" + follow + ", follower=" + follower + ", block=" + block
+				+ ", upload=" + upload + ", profile_img=" + Arrays.toString(profile_img) + ", reg_date=" + reg_date
+				+ ", permit=" + permit + "]";
 	}
 
 }

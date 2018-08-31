@@ -4,7 +4,9 @@
 <div id="main-page">
 	<div id="main_banner">
 		<div id="img-test">
-			<h1 id="banner-text"><b>WATCHU</b></h1>
+			<div id="banner-back">
+				<h1 id="banner-text"><b>WATCHU</b></h1>
+			</div>
 		</div>
 	</div>
 </div>
@@ -43,14 +45,14 @@
 	</div>
 	<div class="row custom-row">
 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-			<h4>이런 작품은 어때요?</h4>		
+			<h4>이런 작품은 어때요</h4>		
 			<div class="items-box">
 				<div class="img-box">
 					<img src="${pageContext.request.contextPath}/resources/images/main-banner-test.jpg" class="img-responsive main-img">
 				</div>
 				<div class="text-box">	
 					<p class="movie-title"><a href="#" class="movie-link">영화제목</a><p>
-					<p class="sub-title">슈퍼히어로 2018</p>
+					<p class="sub-title">슈퍼히어로 . 2018</p>
 				</div>
 			</div>
 		</div>

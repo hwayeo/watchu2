@@ -3,47 +3,47 @@ package kr.watchu.user.service;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 
+import kr.watchu.user.dao.ContactMapper;
 import kr.watchu.user.domain.ContactCommand;
 
 @Service("contactService")
 public class ContactServiceImpl implements ContactService {
+	
+	@Resource
+	private ContactMapper contactMapper;
 
 	@Override
 	public void insertContact(ContactCommand contact) {
-		// TODO Auto-generated method stub
-		
+		contactMapper.insertContact(contact);
 	}
 
 	@Override
 	public ContactCommand selectContact(Integer contact_num) {
-		// TODO Auto-generated method stub
-		return null;
+		return contactMapper.selectContact(contact_num);
 	}
 
 	@Override
 	public void updateContact(ContactCommand contact) {
-		// TODO Auto-generated method stub
-		
+		contactMapper.updateContact(contact);
 	}
 
 	@Override
 	public void deleteContact(Integer contact_num) {
-		// TODO Auto-generated method stub
-		
+		contactMapper.deleteContact(contact_num);
 	}
 
 	@Override
 	public int selectContactCnt(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return contactMapper.selectContactCnt(map);
 	}
 
 	@Override
 	public List<ContactCommand> selectContactList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+		return contactMapper.selectContactList(map);
 	}
 
 }

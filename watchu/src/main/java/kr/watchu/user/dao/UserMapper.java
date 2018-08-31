@@ -12,7 +12,7 @@ import kr.watchu.user.domain.UserCommand;
  
 public interface UserMapper {
 	//회원등록
-	@Insert("INSERT INTO user_basic (id,auth) VALUES (#{id},1)")
+	@Insert("INSERT INTO user_basic (id,auth,permit) VALUES (#{id},1,#{permit})")
 	public void insertUser(UserCommand user);
 	//상세정보등록
 	@Insert("INSERT INTO user_info (id,passwd,name,phone,email,profile_img,reg_date) VALUES (#{id},#{passwd},#{name},#{phone},#{email},#{profile_img},SYSDATE)")
@@ -41,9 +41,17 @@ public interface UserMapper {
 	@Select("select * from user_basic b LEFT OUTER JOIN user_info i ON b.id=i.id")
 	public List<UserCommand> selectfollowList();
 	
+	//팔로우버튼누르면  user_relation 테이블에 등록
+	@Insert("update user_relation set follow=#{follow_id} where id=#{id}")
+	public void insertFollow(String follow_id,String id);
+	
+	
+	
 	//친구관계(팔로우,팔로워,블락)
 	//회원가입시 user_relation 테이블에 등록
 	@Insert("INSERT INTO user_relation (id) VALUES (#{id})")
 	public void insertRelation(String id);
+	
+	
 	
 }

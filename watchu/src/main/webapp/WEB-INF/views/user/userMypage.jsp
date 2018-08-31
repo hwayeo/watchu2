@@ -142,7 +142,7 @@
 
 						<li class="list-group-item">
 							<div class="">
-								<a href="#"><label>고객센터</label></a>
+								<a onclick="location.href='userSupportList.do'"><label>고객센터</label></a>
 							</div>
 
 						</li>
