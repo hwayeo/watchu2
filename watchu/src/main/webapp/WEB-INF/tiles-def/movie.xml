@@ -9,7 +9,6 @@
 	<definition name="movieHome" template="/WEB-INF/views/template/layout-movie.jsp">
 		<put-attribute name="title" value="왓츄 - 영화목록"/>
 		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
-		<put-attribute name="menu" value="/WEB-INF/views/movie/movieMenu.jsp"/>
 		<put-attribute name="movieHome" value="/WEB-INF/views/movie/movieHome.jsp"/>
 		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
 	</definition>
@@ -18,15 +17,16 @@
 		<put-attribute name="title" value="왓츄 - 영화목록"/>
 		<put-attribute name="movieHome" value="/WEB-INF/views/movie/movieList.jsp"/>
 	</definition>
-	
+	 
 	<definition name="movieEva" extends="movieHome">
 		<put-attribute name="title" value="왓츄 - 영화목록"/>
 		<put-attribute name="movieHome" value="/WEB-INF/views/movie/movieEva.jsp"/>
 	</definition>
 	
-	<definition name="movieDetail" extends="movieHome">
-		<put-attribute name="title" value="왓츄 - 영화목록"/>
-		<put-attribute name="movieHome" value="/WEB-INF/views/movie/movieDetail.jsp"/>
+ 	<definition name="movieDetail" extends="userWrite">
+		<put-attribute name="title" value="왓츄 - 상세정보"/>
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/movie/movieDetail.jsp"/>
 	</definition>
 	
 </tiles-definitions>

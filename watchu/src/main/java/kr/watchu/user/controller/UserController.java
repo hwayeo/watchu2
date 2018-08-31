@@ -196,35 +196,30 @@ public class UserController {
 	//==========================================팔로우버튼 처리(미완료)========================================
 	@RequestMapping("/user/following.do")
 	@ResponseBody
-	
-	public Map<String,String> follwing(@RequestParam("id") String id,HttpSession session){
+	public Map<String,String> follwing(@RequestParam(value="follow_id") String follow_id,@RequestParam(value="user_id") String user_id){
 
-	if(log.isDebugEnabled()) {
-			log.debug("<<id>>:" + id);
+		if(log.isDebugEnabled()) {
+			log.debug("<<follow_id~~~>>:" + follow_id);
 		}
-		
-		Map<String,String> map = new HashMap<String,String>();
+		if(log.isDebugEnabled()) {
+			log.debug("<<user_id~~~>>:" + user_id);
+		}
 
-		String user_id = (String)session.getAttribute("user_id");
+		
 		UserCommand user = userService.selectUser(user_id);
 		
 		
 		String origin_follow = user.getFollow();
-		String new_follow = origin_follow+","+id;
+		String new_follow = origin_follow+","+follow_id;
 		
-		userService.insertFollow(new_follow);
+		if(log.isDebugEnabled()) {
+			log.debug("<<new_follow~~~>>:" + new_follow);
+		}
 		
-		/*if(user.getfollow()!= id) {//follow command필요함...............
-			//팔로우중복
-			map.put("result", "Duplicated");		
-		}else {
-			map.put("result", "NotFound");
-			userService.insertFollw(user_id);
-		}*/
+		userService.insertFollow(new_follow, user_id);//파라미터 안받아영...
 		
-		//test(지울고임)
+		Map<String,String> map = new HashMap<String,String>();
 		map.put("result", "success");
-		
 
 		return map;
 	}

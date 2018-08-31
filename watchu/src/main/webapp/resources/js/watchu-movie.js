@@ -30,9 +30,9 @@ $(document).ready(function(){
 				}else{
 					$(list).each(function(index,item){
 						var mlist = '<div class="col-sm-6 col-md-3 col-xs-6" id="main-category">';
-						mlist += '<a href="movieDetail.do?movie_num='+item.movie_num+'"><img src="${pageContext.request.contextPath}/resources/images/'+item.poster_img+'"></a>';
-						mlist += '<div class="sub-category">';
-						mlist += '<h4>'+item.title+'</h4>';
+						mlist += '<div class="thumbnail" onclick="location.href=\'movieDetail.do?movie_num='+item.movie_num+'\'"><img src="../resources/images/img4.jpg"></div>';
+						mlist += '<div class="sub-category caption">';
+						mlist += '<p class="ptitle">'+item.title+'</p>';
 						mlist += '</div>';
 						mlist += '</div>';
 						
@@ -75,9 +75,9 @@ $(document).ready(function(){
 					$(list).each(function(index,item){
 						var mlist4 = '<div class="col-sm-6 col-md-3 col-xs-6" id="main-category">';
 						mlist4 += '<div class="thumbnail"><img src="${pageContext.request.contextPath}/resources/images/'+item.poster_img+'"></div>';
-						mlist4 += '<div class="caption">';
-						mlist4 += '<h3>'+item.title+'</h3>';
-						mlist4 += '<p>★★★★☆</p>';
+						mlist4 += '<div class="sub-category caption">';
+						mlist4 += '<p class="ptitle">'+item.title+'</h3>';
+						mlist4 += '<p class="pgeren">★★★★☆</p>';
 						mlist4 += '</div>';
 						mlist4 += '</div>';
 						

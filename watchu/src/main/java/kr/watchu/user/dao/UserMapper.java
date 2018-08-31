@@ -42,8 +42,8 @@ public interface UserMapper {
 	public List<UserCommand> selectfollowList();
 	
 	//팔로우버튼누르면  user_relation 테이블에 등록
-	@Insert("update user_relation set follow=#{id} where id=#{user_id}")
-	public void insertFollw(String id);
+	@Insert("update user_relation set follow=#{follow_id} where id=#{id}")
+	public void insertFollow(String follow_id,String id);
 	
 	
 	

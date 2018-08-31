@@ -35,7 +35,6 @@ public class MovieControllerAjax {
 			@RequestParam(value="pageNum",defaultValue="1") int currentPage){
 		
 		int rowCount = 4;
-		int rowCount2 = 12;
 		int pageCount = 10;
 		
 		if(log.isDebugEnabled()) {
@@ -48,12 +47,7 @@ public class MovieControllerAjax {
 		
 		PagingUtil page = new PagingUtil(currentPage,count,rowCount,pageCount,null);
 		map.put("start", page.getStartCount());
-		map.put("end", page.getEndCount());
-		
-		PagingUtil page2 = new PagingUtil(currentPage,count,rowCount2,pageCount,null);
-		map.put("start", page2.getStartCount());
-		map.put("end", page2.getEndCount());
-		
+		map.put("end", page.getEndCount());		
 		
 		List<MovieCommand> list = null;
 		
@@ -64,7 +58,6 @@ public class MovieControllerAjax {
 		Map<String,Object> mapJson = new HashMap<String,Object>();
 		mapJson.put("count", count);
 		mapJson.put("rowCount", rowCount);
-		mapJson.put("rowCount2", rowCount2);
 		mapJson.put("list", list);
 		
 		return mapJson;
