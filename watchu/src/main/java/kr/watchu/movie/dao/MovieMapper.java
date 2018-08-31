@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
 
 import kr.watchu.movie.domain.MovieCommand;
   
@@ -13,7 +14,8 @@ public interface MovieMapper {
 		+ "#{country}, #{released}, #{director}, #{actors}, #{summary}, #{poster_img}, #{banner_img}, #{main_genre}, #{sub_genre}, #{trailer}, SYSDATE)")
 	public void insertMovie(MovieCommand movie);
 	//영화 상세정보
-	public MovieCommand selectMovie(Integer num);
+	@Select("SELECT * FROM movie_info WHERE movie_num=#{movie_num}")
+	public MovieCommand selectMovie(Integer movie_num);
 	//영화 수정 
 	public void updateMovie(MovieCommand movie);
 	//영화 삭제
