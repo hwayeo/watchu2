@@ -18,7 +18,7 @@ public class PagingUtil {
 	private int startCount;	 // 한 페이지에서 보여줄 게시글의 시작 번호
 	private int endCount;	 // 한 페이지에서 보여줄 게시글의 끝 번호
 	private StringBuffer pagingHtml;// 페이지 표시 문자열
-  
+
 	/**
 	 * currentPage : 현재페이지
 	 * totalCount : 전체 게시물 수
@@ -41,9 +41,9 @@ public class PagingUtil {
 	}
 	public PagingUtil(String keyfield, String keyword, int currentPage, int totalCount, int rowCount,
 			int pageCount,String pageUrl,String addKey) {
-		
+
 		if(addKey == null) addKey = ""; //부가키가 null 일때 ""처리
-		
+
 		// 전체 페이지 수
 		int totalPage = (int) Math.ceil((double) totalCount / rowCount);
 		if (totalPage == 0) {
