@@ -20,5 +20,5 @@ public interface UserService {
 	//팔로우(추천친구)목록
 	public List<UserCommand> selectfollowList();
 	//팔로우 추가
-	public void insertFollow(String follow);
+	public void insertFollow(String follow_id,String id);
 }

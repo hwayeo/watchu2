@@ -20,20 +20,24 @@ $(document).ready(function(){
 	
 	$('.follow').click(function(){
 		
-		var id = $(this).attr('data-id');
-		alert(id);
+		var follow_id = $(this).attr('data-id');
+		var user_id = $('#user_id').val();
+		alert("user_id =" +user_id);
+		alert("follow_id =" +follow_id);
 		
 		$.ajax({
 			url:'following.do',
 			type:'post',
-			data:{id:id},
+			data:{follow_id:follow_id,user_id:user_id},
 			dataType:'json',
 			cache:false,
 			timeout:30000,
 			success:function(data){
-				if(data.result == 'success'){				
-					$(this).attr('class','unfollow').show();
-					$(this).attr('class','follow').hide();
+				if(data.result == 'success'){
+					alert(follow_id + '입니당' );
+					
+					/* $(this).attr('class','unfollow').show();
+					$(this).attr('class','follow').hide(); */
 				}else{
 					
 				}			
@@ -71,11 +75,12 @@ $(document).ready(function(){
 				<div class="panel panel-default">
                 <div class="panel-heading">추천친구 목록</div>
                 
+                <input type="hidden" id="user_id" name="user_id" value="${user.id}">
+                
                 <ul class="list-group">
-                    
                     <c:forEach var="article" items="${list}">
-                    <!-- 관리자제외 -->
-                    <c:if test="${article.auth==1}">
+                    <!-- 본인,관리자제외 -->
+                    <c:if test="${article.auth==1 && article.id != user.id }">
 						<li class="list-group-item">
 						<a href="#" class="following_profile_img"> 
 							<c:if test="${empty article.profile_img}">
@@ -89,22 +94,22 @@ $(document).ready(function(){
 						</a> 
 						<span class="name_span"><label class="name">${article.name}</label></span>
 
-								<%-- <div class="pull-right">
-									<div class="" data-toggle="buttons">
-										<label class="btn btn-primary"> 
-										<input type="radio" name="following" id="follow" checked  onclick="location.href='${pageContext.request.contextPath}/main/main.do'">팔로우
-										</label> 
-										<label class="btn btn-success active"> 
-										<input type="radio" name="follower" id="following" style="display: none;">팔로잉
-										</label>
+								<%-- <c:if test="${article.id != user.follow }"user.follow split으로 쪼개서 리스트넣고 불러옴>
+									<div class="pull-right">
+										<!-- <div class="" data-toggle="buttons"> -->
+											<input type="button" class="btn btn-primary follow" data-id="${article.id}" name="follow" value="팔로우" style="display: none;">
+											<input type="button" class="btn btn-success active unfollow" name="unfollow" value="팔로잉">
+										<!-- </div> -->
 									</div>
-								</div> --%>
-								<div class="pull-right">
-									<!-- <div class="" data-toggle="buttons"> -->
-										<input type="button" class="btn btn-primary follow" data-id="${article.id}" name="follow" value="팔로우" >
-										<input type="button" class="btn btn-success active unfollow" name="unfollow" value="팔로잉" style="display: none;">
-									<!-- </div> -->
-								</div>
+								</c:if> --%>
+								<%-- <c:if test="${article.id == user.follow }"> --%>
+									<div class="pull-right">
+										<!-- <div class="" data-toggle="buttons"> -->
+											<input type="button" class="btn btn-primary follow" data-id="${article.id}" name="follow" value="팔로우" >
+											<input type="button" class="btn btn-success active unfollow" data-id="${article.id}" name="unfollow" value="팔로잉" style="display: none;">
+										<!-- </div> -->
+									</div>
+								<%-- </c:if> --%>
 								
 								
 						</li>
