@@ -19,10 +19,6 @@
 <body>
 	<tiles:insertAttribute name="header"/>
 <div class="container">
-	<tiles:insertAttribute name="menu"/>
-</div>
-	<hr>
-<div class="container">
 	<tiles:insertAttribute name="movieHome"/>
 </div> 
 	<tiles:insertAttribute name="footer"/>

@@ -1,6 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<nav class="navbar navbar-default" id="navline">
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse"
+			data-target=".navbar-movie">
+			<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+				class="icon-bar"></span>
+		</button>
+		<a href="#" class="navbar-brand">영화메뉴</a>
+	</div>
+	<div class="collapse navbar-collapse navbar-movie">
+		<ul class="nav navbar-nav">
+			<li><a href="movieHome.do">홈</a></li>
+			<li><a href="movieList.do">카테고리</a></li>
+			<li><a href="movieEva.do">평가하기</a></li>
+		</ul>
+	</div>
+</nav>
+
 <!-- for:each문으로 데이터를 가져와 리스트를 생성할것 -->
 <!-- 모바일 환경 -->
 <select class="visible-xs visible-sm form-control">
@@ -132,10 +151,10 @@
 <div class="row">
 <c:forEach var="ml" items="${list}">
 	<div class="col-sm-6 col-md-3 col-xs-6" id="main-category">
-		<a href="movieDetail.do?movie_num=${ml.movie_num}" class="thumbnail" id="thumbnail"><img src="${pageContext.request.contextPath}/resources/images/${ml.poster_img}"></a>
-		<div class="sub-category">
-			<h4>${ml.title}</h4>
-			<p>${ml.country}</p>
+		<div class="thumbnail" onclick="location.href='movieDetail.do?movie_num=${ml.movie_num}'"><img src="${pageContext.request.contextPath}/resources/images/img4.jpg"></div>
+		<div class="sub-category caption">
+			<p class="ptitle">${ml.title}</p>
+			<p class="pgeren">${ml.country}</p>
 		</div>
 	</div>
 </c:forEach>
