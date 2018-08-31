@@ -222,4 +222,10 @@ public class UserController {
 		return "userTimeline";
 	}
 	
+	// ========================================∞Ì∞¥ºæ≈Õ================================================
+		@RequestMapping("/user/userSupport.do")
+		public String support() {
+			return "userSupport";
+		}
+	
 }
