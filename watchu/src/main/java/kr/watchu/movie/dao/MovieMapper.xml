@@ -27,7 +27,7 @@
 			</if>
 		</where>
 	</select>
-	
+		
 	<select id="selectMovieAjaxList" parameterType="Map" resultType="MovieCommand">
 		SELECT * FROM
 	(SELECT a.*,rownum rnum FROM

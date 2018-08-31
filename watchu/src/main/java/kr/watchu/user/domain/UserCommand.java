@@ -27,7 +27,16 @@ public class UserCommand {
 	private MultipartFile upload;
 	private byte[] profile_img;
 	private Date reg_date;
+	private String permit;
 	
+	public String getPermit() {
+		return permit;
+	}
+
+	public void setPermit(String permit) {
+		this.permit = permit;
+	}
+
 	//비밀번호 체크
 	public boolean isCheckedPasswd(String userPasswd) {
 		if(auth > 0 && passwd.equals(userPasswd)) {
@@ -127,7 +136,7 @@ public class UserCommand {
 		return "UserCommand [id=" + id + ", auth=" + auth + ", passwd=" + passwd + ", name=" + name + ", phone=" + phone
 				+ ", email=" + email + ", follow=" + follow + ", follower=" + follower + ", block=" + block
 				+ ", upload=" + upload + ", profile_img=" + Arrays.toString(profile_img) + ", reg_date=" + reg_date
-				+ "]";
+				+ ", permit=" + permit + "]";
 	}
 
 }

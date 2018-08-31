@@ -1,5 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<nav class="navbar navbar-default" id="navline">
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse"
+			data-target=".navbar-movie">
+			<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+				class="icon-bar"></span>
+		</button>
+		<a href="#" class="navbar-brand">영화메뉴</a>
+	</div>
+	<div class="collapse navbar-collapse navbar-movie">
+		<ul class="nav navbar-nav">
+			<li><a href="movieHome.do">홈</a></li>
+			<li><a href="movieList.do">카테고리</a></li>
+			<li><a href="movieEva.do">평가하기</a></li>
+		</ul>
+	</div>
+</nav>
+
 <!-- 모바일 환경 -->
 <select class="visible-xs visible-sm form-control">
   <option selected>모든 장르</option>
@@ -87,12 +107,14 @@
 <hr>
 
 <div class="row">
-	<div class="mlist4"></div>
-	<%-- <div class="col-sm-6 col-md-3 col-xs-6" id="main-category">
-		<div class="thumbnail"><img src="${pageContext.request.contextPath}/resources/images/img1.png"></div>
-	<div class="caption"> 
-		<h3>영화 제목</h3>	
-		<p>평가</p>
+	<!-- <div class="mlist4"></div> -->
+	<c:forEach var="ml" items="${list}">
+	<div class="col-sm-6 col-md-3 col-xs-6" id="main-category">
+		<div class="thumbnail"><img src="${pageContext.request.contextPath}/resources/images/img4.jpg"></div>
+		<div class="sub-category caption"> 
+			<p class="ptitle">${ml.title}</p>	
+			<p class="pgeren">★★★★☆</p>
+		</div>
 	</div>
-	</div> --%>
+	</c:forEach>
 </div>

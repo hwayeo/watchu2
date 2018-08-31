@@ -47,7 +47,7 @@ public class MovieControllerAjax {
 		
 		PagingUtil page = new PagingUtil(currentPage,count,rowCount,pageCount,null);
 		map.put("start", page.getStartCount());
-		map.put("end", page.getEndCount());
+		map.put("end", page.getEndCount());		
 		
 		List<MovieCommand> list = null;
 		
