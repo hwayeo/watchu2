@@ -46,7 +46,7 @@
 
 #navline{
 	padding:0 20px;
-	margin:0;
+	margin:10px 0 80px;
 	z-index:2;
 }
 .movie-sum{
@@ -72,6 +72,10 @@
 
 .pgeren{
 	font-size:16px;
+}
+
+#mscroll{
+	overflow-y:scroll;
 }
 }
 

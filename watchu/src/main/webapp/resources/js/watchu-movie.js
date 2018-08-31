@@ -91,8 +91,14 @@ $(document).ready(function(){
 	}
   selectEva(1);
 
-  $('.paging-movie').click(function(){
-	 var pageNum = currentPage + 1;
-	 selectData(pageNum,$('#movie_num').val());
+  $('#mscroll').scroll(function(){
+	  var scrollT = $(this).scrollTop();
+	  var scrollH = $(this).height();
+	  var contentH = $('.container').height();
+	  
+	  if(scrollT + scrollH >= contentH){
+		  var pageNum = currentPage + 1;
+		  selectData(pageNum,$('#movie_num').val());
+	  }
   });
 });

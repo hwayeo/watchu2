@@ -103,9 +103,6 @@
   <option>별점 순</option>
 </select>
 
-
-<hr>
-
 <div class="row">
 	<!-- <div class="mlist4"></div> -->
 	<c:forEach var="ml" items="${list}">

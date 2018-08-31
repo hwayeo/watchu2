@@ -146,8 +146,6 @@
   <option>별점 순</option>
 </select>
 
-<hr>
-
 <div class="row">
 <c:forEach var="ml" items="${list}">
 	<div class="col-sm-6 col-md-3 col-xs-6" id="main-category">
