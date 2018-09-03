@@ -58,12 +58,10 @@
          </table>
       </div>
       
-      <div class="etc">
-         <div class="col-md-12">
-            <c:if test="${!empty user_id}">
-				<input type="button" value="글쓰기" onclick="location.href='userSupportWrite.do'">
-			</c:if>
-         </div>
+      <div class="etc text-center">
+      	<c:if test="${!empty user_id}">
+			<input type="button" class="btn btn-default" value="글쓰기" onclick="location.href='userSupportWrite.do'">
+		</c:if>
       </div>
    </div>
 </div>
