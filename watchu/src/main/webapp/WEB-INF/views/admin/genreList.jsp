@@ -30,8 +30,11 @@
 				<c:forEach var="genre" items="${genre_list}">
 				<tr>
 					<td>${genre.genre_num}</td>
-					<td>${genre.genre}</td>
+					<td onclick="location.href='#genreModify'" style="cursor:pointer;" data-toggle="modal" data-target="#genreModify">${genre.genre}</td>
 					<td><input type="checkbox" name="checked"></td>
+<%-- 				<td>${genre.genre_num}</td>
+					<td onclick="location.href='genreDetail.do?genre_num=${genre.genre_num}'" style="cursor:pointer;" data-toggle="modal" data-target="#genreModify">${genre.genre}</td>
+					<td><input type="checkbox" name="checked"></td> --%>
 				</tr>
 				</c:forEach>
 			</table>
@@ -83,25 +86,38 @@
         	<button type="submit" class="btn btn-default">등록</button>
         </div>
         </form:form>
-		
-		
-			<%-- <form id="genre_form">
-               <div class="form-group">
-                  <label for="genre_num">장르 코드</label>
-                  <input type="text" name="genre_code" class="form-control">
-                  <input type="button" value="중복 체크">
-               </div>
-               <div class="form-group">
-                  <label for="genre">장르명</label>
-                  <input type="text" name="genre" class="form-control">
-               </div>
-            </form>
-         </div>
+   </div>
+   </div>
+</div>
 
-         <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-            <button type="button" class="btn btn-primary">등록</button>
-         </div> --%>
+
+<!-- 장르 수정 모달창 -->
+<div class="modal fade" id="genreModify" tabindex="-1" role="dialog" aria-labelledby="genreModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+		<form:form commandName="genre_command" action="genreDetail.do" id="modify_form">
+		<form:hidden path="genre_num" />
+        <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="genreModalLabel">장르 상세/수정</h4>
+        </div>
+        <div class="modal-body">
+        
+         	<div class="form-group">
+         		<label for="genre">장르명</label>
+         		<form:input path="genre"/>
+         		<form:errors path="genre" cssClass="error-color"/>
+         	</div>
+        </div>
+         	
+        <div class="modal-footer">
+        	<input type="button" value="삭제" onclick="location.href='genreDelete.do?genre_num=${genre.genre_num}'">
+			<input type="submit" value="수정">
+			<input type="button" onclick="location.href='genreList.do'" value="목록">
+        </div>
+        </form:form>
    </div>
    </div>
 </div>

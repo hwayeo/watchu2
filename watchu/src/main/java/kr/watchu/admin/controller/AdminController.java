@@ -112,7 +112,7 @@ public class AdminController {
 
 		return mav;
 	}
-	
+
 	//==========관리자 로그인============//
 	//로그인 폼 호출
 	@RequestMapping(value="/admin/login.do",method=RequestMethod.GET)
@@ -239,18 +239,52 @@ public class AdminController {
 		return "redirect:/admin/main.do";
 	}
 
-	//01_3_영화 상세 정보
+	//01_3_영화 상세/수정
+	//상세정보&수정폼 호출
 	@RequestMapping("/admin/admin_movieView.do")
 	public ModelAndView movie_detail(@RequestParam("movie_num") int movie_num){
 		if(log.isDebugEnabled()) {
 			log.debug("<<movie_num>>: " + movie_num);
 		}
-		
-		MovieCommand movie = movieService.selectMovie(movie_num); 
-		
-		return new ModelAndView("admin_movieView", "movie", movie);
+
+		MovieCommand movieCommand = movieService.selectMovie(movie_num); 
+
+		return new ModelAndView("admin_movieView", "movie", movieCommand);
+
+		//★★파일 다운로드, 이미지 출력 처리 해야함!
 	}
-	
+
+	//01_4_영화 수정
+	//수정폼 호출
+	@RequestMapping(value="/admin/admin_movieModify.do", method=RequestMethod.GET)
+	public String movie_modify(@RequestParam("movie_num") int movie_num, Model model) {
+		//한 건의 데이터
+		MovieCommand movieCommand = movieService.selectMovie(movie_num);
+
+		model.addAttribute("movie_command", movieCommand);
+
+		return "admin_movieModify";
+	}
+
+	//수정 폼에서 전송된 데이터 처리	
+	@RequestMapping(value="/admin/admin_movieModify.do", method=RequestMethod.POST)
+	public String submit(@ModelAttribute("movie_command") @Valid MovieCommand movieCommand, BindingResult result, HttpSession session, HttpServletRequest request) {
+		//로그 출력
+		if(log.isDebugEnabled()) {
+			log.debug("<<movieCommand>>: " + movieCommand);
+		}
+		//유효성 체크
+		if(result.hasErrors()) {
+			//원래 파일명 셋팅
+			return "admin_movieModify";
+		}
+		
+		//글 수정
+		movieService.updateMovie(movieCommand);
+
+		return "redirect:/admin/movieList.do";
+	}
+
 	//==========02_영화 관리_영화 관계자==========//
 	//02_1_목록, 등록 폼
 	@RequestMapping("/admin/officialList.do")
@@ -295,7 +329,7 @@ public class AdminController {
 
 		return mav;
 	}
-	
+
 	//02_2_전송된 데이터 처리
 	@RequestMapping(value="/admin/officialList.do", method=RequestMethod.POST)
 	public String official_submit(@ModelAttribute("official_command") @Valid OfficialsCommand officialsCommand, BindingResult result, HttpServletRequest request) {
@@ -309,34 +343,48 @@ public class AdminController {
 		return "redirect:/admin/officialList.do";
 	}
 
-	//02_3_관계자 상세
-	@RequestMapping("/admin/offcialDetail.do")
-	public ModelAndView off_detail(@RequestParam("off_num") int off_num) {
+	//02_3_관계자 상세&수정
+	//상세보기&수정폼 호출
+	@RequestMapping(value="/admin/offcialDetail.do", method=RequestMethod.GET)
+	public ModelAndView off_detail(@RequestParam("off_num") int off_num, Model model) {
 		//로그 출력
 		if(log.isDebugEnabled()) {
 			log.debug("<<off_num>>: " + off_num);
 		}
-		
+
 		OfficialsCommand officials = officialsService.selectOfficials(off_num);
-		
-		return new ModelAndView("officialView", "officials", officials);
+		model.addAttribute("official_command", officials);
+
+		return new ModelAndView("officialDetail", "officials", officials);
 	}
-	
-	//02_4_관계자 수정
-	//수정폼 호출
-	@RequestMapping(value="/admin/officialModify.do", method=RequestMethod.GET)
-	public String official_modify(@RequestParam("off_num") int off_num, Model model) {
-		//한 건의 데이터 불러옴
-		OfficialsCommand officialsCommand = officialsService.selectOfficials(off_num);
-		
+	//수정 폼에서 전송된 데이터 처리
+	@RequestMapping(value="/admin/offcialDetail.do", method=RequestMethod.POST)
+	public String officials_submit(@ModelAttribute("official_command") @Valid OfficialsCommand officialsCommand, BindingResult result, HttpSession session, HttpServletRequest request) {
+		//로그 출력
 		if(log.isDebugEnabled()) {
-			log.debug("<<officialsCommand>> : "+ officialsCommand);
+			log.debug("<<officialsCommand>>: " + officialsCommand);
 		}
-		model.addAttribute("command", officialsCommand);
 		
-		return "officialModify";
+		//글 수정
+		officialsService.update(officialsCommand);
+		
+		return "redirect:/admin/officialList.do";
 	}
-	
+
+	//02_4_관계자 삭제
+	@RequestMapping("/admin/officialDelete.do")
+	public String officials_delete(@RequestParam("off_num") int off_num) {
+		//로그출력
+		if(log.isDebugEnabled()) {
+			log.debug("<<off_num>>: " + off_num);
+		}
+		
+		//글 삭제
+		officialsService.delete(off_num);
+		
+		return "redirect:/admin/officialList.do";
+	}
+
 	//==========03_영화 관리_영화 장르==========//
 	//03_1_장르 목록(페이징&검색)
 	@RequestMapping("/admin/genreList.do")
@@ -382,16 +430,6 @@ public class AdminController {
 		return mav;
 	}
 
-	public String genre_delete(@RequestParam("genre_num") int num) {
-		//로그 출력
-		if(log.isDebugEnabled()) {
-			log.debug("<<num>>: " + num);
-		}
-
-		genreService.deleteGenre(num);
-
-		return "redirect:/admin/genreList.do";
-	}
 
 	//03_2_전송된 데이터 처리
 	@RequestMapping(value="/admin/genreList.do", method=RequestMethod.POST)
@@ -405,7 +443,49 @@ public class AdminController {
 
 		return "redirect:/admin/genreList.do";
 	}
+	
+	//03_3_장르 수정
+	//상세보기&수정폼 호출
+	@RequestMapping(value="/admin/genreDetail.do", method=RequestMethod.GET)
+	public ModelAndView genre_detail(@RequestParam("genre_num") int genre_num, Model model) {
+		//로그 출력
+		if(log.isDebugEnabled()) {
+			log.debug("<<genre_num>>: " + genre_num);
+		}
 
+		GenreCommand genre = genreService.selectGenre(genre_num);
+		model.addAttribute("genre_command", genre);
+
+		return new ModelAndView("genreDetail", "genre", genre);
+	}
+	
+	//수정 폼에서 전송된 데이터 처리
+	@RequestMapping(value="/admin/genreDetail.do", method=RequestMethod.POST)
+	public String genre_submit(@ModelAttribute("genre_command") @Valid GenreCommand genreCommand, BindingResult result, HttpSession session, HttpServletRequest request) {
+		//로그 출력
+		if(log.isDebugEnabled()) {
+			log.debug("<<genreCommand>>: " + genreCommand);
+		}
+		
+		//글 수정
+		genreService.updateGenre(genreCommand);
+		
+		return "redirect:/admin/genreList.do";
+	}
+	
+	//03_4_장르 삭제
+	@RequestMapping("/admin/genreDelete.do")
+	public String genre_delete(@RequestParam("genre_num") int genre_num) {
+		//로그 출력
+		if(log.isDebugEnabled()) {
+			log.debug("<<genre_num>>: " + genre_num);
+		}
+		
+		genreService.deleteGenre(genre_num);
+		
+		return "redirect:/admin/genreList.do";
+	}
+	
 	//==========04_영화 관리_영화 별점==========//
 	@RequestMapping("/admin/movieRating.do")
 	public String process3() {

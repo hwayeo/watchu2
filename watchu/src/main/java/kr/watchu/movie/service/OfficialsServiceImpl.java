@@ -27,13 +27,13 @@ public class OfficialsServiceImpl implements OfficialsService {
 
 	@Override
 	public void update(OfficialsCommand officials) {
-		// TODO Auto-generated method stub
+		officialsMapper.update(officials);
 		
 	}
 
 	@Override
 	public void delete(Integer off_num) {
-		// TODO Auto-generated method stub
+		officialsMapper.delete(off_num);
 		
 	}
 

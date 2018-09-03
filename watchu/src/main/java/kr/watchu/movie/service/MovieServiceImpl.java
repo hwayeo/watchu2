@@ -28,7 +28,7 @@ public class MovieServiceImpl implements MovieService {
 
 	@Override
 	public void updateMovie(MovieCommand movie) {
-		// TODO Auto-generated method stub
+		movieMapper.updateMovie(movie);
 		
 	}
 

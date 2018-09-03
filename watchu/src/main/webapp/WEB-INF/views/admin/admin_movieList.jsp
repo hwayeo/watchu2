@@ -96,7 +96,7 @@
 				</div>
 				<div class="form-group">
 					<label for="summary">줄거리</label>
-					<form:textarea path="summary" cols="50" rows="3" />
+					<form:textarea path="summary" cols="50" rows="5" />
 					<form:errors path="summary" cssClass="error-color"/>
 				</div>
 				<div class="form-group">

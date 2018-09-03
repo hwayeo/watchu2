@@ -16,7 +16,7 @@ public interface MovieMapper {
 	//영화 상세정보
 	@Select("SELECT * FROM movie_info WHERE movie_num=#{movie_num}")
 	public MovieCommand selectMovie(Integer movie_num);
-	//영화 수정 
+	//영화 수정
 	public void updateMovie(MovieCommand movie);
 	//영화 삭제
 	//영화 삭제시 관련 평가 테이블도 삭제해야 함

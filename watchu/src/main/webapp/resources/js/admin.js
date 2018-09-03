@@ -10,6 +10,16 @@ $(document).ready(function(){
 	});
 });
 
+//genreModify 모달에 데이터 넘기기
+$('#genreModify').on('show.bs.modal', function(e) {
+
+    //get data-id attribute of the clicked element
+    var genre_num = $(e.relatedTarget).data('book-id');
+
+    //populate the textbox
+    $(e.currentTarget).find('input[name="bookId"]').val(bookId);
+});
+
 //======자동완성=====//
 $(function() {
 	var directorList = [
