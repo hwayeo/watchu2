@@ -238,10 +238,10 @@ public class UserController {
 	public String form(HttpSession session, Model model) {
 		String id = (String)session.getAttribute("user_id");
 		
-		ContactCommand command = new ContactCommand();
-		command.setId(id);
+		ContactCommand contactCommand = new ContactCommand();
+		contactCommand.setId(id);
 		
-		model.addAttribute("command",command);
+		model.addAttribute("command",contactCommand);
 		
 		return "userSupportWrite";
 	}
@@ -300,31 +300,87 @@ public class UserController {
 		return mav;
 	}
 	//게시판 글 상세
-	@RequestMapping("/user/userSupport.do")
-	public ModelAndView process(@RequestParam("contact_num") int contact_num) {
+	@RequestMapping("/user/userSupportView.do")
+	public ModelAndView process(@RequestParam(value="contact_num",required=true) int contact_num) {
 		if(log.isDebugEnabled()) {
 			log.debug("<<contact_num>> : " + contact_num);
 		}
 		
 		ContactCommand contact = contactService.selectContact(contact_num);
-		//줄바꿈 처리
+		//줄바꿈 처리 
 		contact.setContent(StringUtil.useBrNoHtml(contact.getContent()));
 		
 		return new ModelAndView("userSupportView","contact",contact);
 	}
 	
 	//파일 다운로드
+	@RequestMapping("/user/file.do")
+	public ModelAndView download(@RequestParam("contact_num")int contact_num) {
+		ContactCommand contact = contactService.selectContact(contact_num);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("downloadView");
+		mav.addObject("downloadFile",contact.getUpload_file());
+		mav.addObject("filename",contact.getFilename());
+		
+		return mav;
+	}
 	
 	//이미지 출력
+	@RequestMapping("/user/imageView.do")
+	public ModelAndView viewImage(@RequestParam("contact_num") int contact_num) {
+		ContactCommand contact = contactService.selectContact(contact_num);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("imageView");
+		mav.addObject("imageFile",contact.getUpload_file());
+		mav.addObject("filename",contact.getFilename());
+		
+		return mav; 
+	}
 	
 	//게시판 글 수정
 	//수정 폼
+	@RequestMapping(value="/user/userSupportUpdate.do",method=RequestMethod.GET)
+	public String form(@RequestParam("contact_num") int contact_num, Model model) {
+		ContactCommand contactCommand = contactService.selectContact(contact_num);
+		model.addAttribute("contactCommand", contactCommand);
+		
+		return "userSupportModify";
+	}
 	//수정 폼에서 전송된 데이터 처리
+	@RequestMapping(value="/user/userSupportUpdate.do",method=RequestMethod.POST)
+	public String submit(@ModelAttribute("contactCommand") 
+						 ContactCommand contactCommand, 
+						 BindingResult result,
+						 HttpSession session, 
+						 HttpServletRequest request) {
+		if(log.isDebugEnabled()) {
+			log.debug("<<contactCommand>> : " + contactCommand);
+		}
+		
+		/*if(result.hasErrors()) {
+			return "userSupportModify";
+		}*/
+		contactService.updateContact(contactCommand);
+
+		return "redirect:/user/userSupportList.do"; 
+	}
 	
 	//게시판 글 삭제
-	
+	@RequestMapping("/user/userSupportDelete.do")
+	public String submit(@RequestParam("contact_num")int contact_num) {
+		if(log.isDebugEnabled()) {
+			log.debug("<<contact_num>> : " + contact_num);
+		}
+		contactService.deleteContact(contact_num);
+		
+		return "redirect:/user/userSupportList.do";
+	}
 }	
 	
+
+
+
 	
 	
 	
