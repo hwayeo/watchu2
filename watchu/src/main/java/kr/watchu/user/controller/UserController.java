@@ -238,16 +238,16 @@ public class UserController {
 	public String form(HttpSession session, Model model) {
 		String id = (String)session.getAttribute("user_id");
 		
-		ContactCommand command = new ContactCommand();
-		command.setId(id);
+		ContactCommand contactCommand = new ContactCommand();
+		contactCommand.setId(id);
 		
-		model.addAttribute("command",command);
+		model.addAttribute("command",contactCommand);
 		
 		return "userSupportWrite";
 	}
 	//전송된 데이터 처리
 	@RequestMapping(value="/user/userSupportWrite.do",method=RequestMethod.POST)
-	public String submit(@ModelAttribute("contactCommand") @Valid ContactCommand contactCommand,BindingResult result) {
+	public String write(@ModelAttribute("contactCommand") @Valid ContactCommand contactCommand,BindingResult result) {
 		if(log.isDebugEnabled()) {
 			log.debug("<<contactCommand>> : " + contactCommand);
 		}
@@ -335,18 +335,51 @@ public class UserController {
 		mav.addObject("imageFile",contact.getUpload_file());
 		mav.addObject("filename",contact.getFilename());
 		
-		return mav;
+		return mav; 
 	}
 	
 	//게시판 글 수정
-	
 	//수정 폼
+	@RequestMapping(value="/user/userSupportUpdate.do",method=RequestMethod.GET)
+	public String form(@RequestParam("contact_num") int contact_num, Model model) {
+		ContactCommand contactCommand = contactService.selectContact(contact_num);
+		model.addAttribute("contactCommand", contactCommand);
+		
+		return "userSupportModify";
+	}
 	//수정 폼에서 전송된 데이터 처리
+	@RequestMapping(value="/user/userSupportUpdate.do",method=RequestMethod.POST)
+	public String submit(@ModelAttribute("contactCommand") 
+						 ContactCommand contactCommand, 
+						 BindingResult result,
+						 HttpSession session, 
+						 HttpServletRequest request) {
+		if(log.isDebugEnabled()) {
+			log.debug("<<contactCommand>> : " + contactCommand);
+		}
+		
+		/*if(result.hasErrors()) {
+			return "userSupportModify";
+		}*/
+		contactService.updateContact(contactCommand);
+
+		return "redirect:/user/userSupportList.do"; 
+	}
 	
 	//게시판 글 삭제
 	
 }	
 	
+
+
+
+
+
+
+
+
+
+
 	
 	
 	
