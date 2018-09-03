@@ -24,7 +24,7 @@
 					<ul class="wcPc-Arrange">
 						<li class="wcPc-ArrangeSizeFit" style="list-style:none;">
 							<a href="#" title="885 Following">
-								<a href="#">Following&emsp;</a>&emsp;
+								<a href="myfollowing.do">Following&emsp;</a>&emsp;
 								<a href="#">885&emsp;</a>
 							</a>
 						</li>
