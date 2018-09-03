@@ -247,7 +247,7 @@ public class UserController {
 	}
 	//전송된 데이터 처리
 	@RequestMapping(value="/user/userSupportWrite.do",method=RequestMethod.POST)
-	public String write(@ModelAttribute("contactCommand") @Valid ContactCommand contactCommand,BindingResult result) {
+	public String submit(@ModelAttribute("contactCommand") @Valid ContactCommand contactCommand,BindingResult result) {
 		if(log.isDebugEnabled()) {
 			log.debug("<<contactCommand>> : " + contactCommand);
 		}
@@ -367,16 +367,17 @@ public class UserController {
 	}
 	
 	//게시판 글 삭제
-	
+	@RequestMapping("/user/userSupportDelete.do")
+	public String submit(@RequestParam("contact_num")int contact_num) {
+		if(log.isDebugEnabled()) {
+			log.debug("<<contact_num>> : " + contact_num);
+		}
+		contactService.deleteContact(contact_num);
+		
+		return "redirect:/user/userSupportList.do";
+	}
 }	
 	
-
-
-
-
-
-
-
 
 
 

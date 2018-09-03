@@ -60,7 +60,9 @@
       
       <div class="etc">
          <div class="col-md-12">
-            
+            <c:if test="${!empty user_id}">
+				<input type="button" value="±Û¾²±â" onclick="location.href='userSupportWrite.do'">
+			</c:if>
          </div>
       </div>
    </div>
