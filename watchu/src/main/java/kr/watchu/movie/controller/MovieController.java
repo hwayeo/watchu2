@@ -99,6 +99,7 @@ public class MovieController {
 		
 		if(log.isDebugEnabled()) {
 			log.debug("<<list>> : " + list);
+			log.debug("<<page>> : " + page);
 		}
 		
 		ModelAndView mav = new ModelAndView();
