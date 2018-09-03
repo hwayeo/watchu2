@@ -18,11 +18,15 @@
 }
 
 #category-menu{
-	padding:5px;
+	padding:10px;
+	font-weight:bold;
+	color:gray;
 }
 
 #rate-menu{
-	padding:5px;
+	padding:10px;
+	font-weight:bold;
+	color:gray;
 }
 
 .category-right{
@@ -76,6 +80,10 @@
 
 #mscroll{
 	overflow-y:scroll;
+}
+
+#categoryHr{
+	margin-bottom:15px;
 }
 }
 

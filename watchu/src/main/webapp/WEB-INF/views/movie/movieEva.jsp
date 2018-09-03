@@ -21,6 +21,7 @@
 </nav>
 
 <!-- 모바일 환경 -->
+<div id="categoryHr">
 <select class="visible-xs visible-sm form-control">
   <option selected>모든 장르</option>
   <option>드라마</option>
@@ -102,6 +103,7 @@
   <option>추천 순</option>
   <option>별점 순</option>
 </select>
+</div>
 
 <div class="row">
 	<!-- <div class="mlist4"></div> -->
@@ -109,9 +111,11 @@
 	<div class="col-sm-6 col-md-3 col-xs-6" id="main-category">
 		<div class="thumbnail"><img src="${pageContext.request.contextPath}/resources/images/img4.jpg"></div>
 		<div class="sub-category caption"> 
-			<p class="ptitle">${ml.title}</p>	
+			<p class="ptitle">${ml.title}</p>
+			<p class="ptitle">${ml.reg_date}</p>
 			<p class="pgeren">★★★★☆</p>
 		</div>
 	</div>
 	</c:forEach>
+	<div class="elist"></div>
 </div>
