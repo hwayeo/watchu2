@@ -4,16 +4,31 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
 <mapper namespace="kr.watchu.movie.dao.MovieMapper">
-	<select id="selectMovieList" parameterType="Map" resultType="MovieCommand">
-	SELECT * FROM
-	(SELECT a.*,rownum rnum FROM
-	(SELECT * FROM movie_info 
+	<select id="selectMovieList" parameterType="map" resultType="MovieCommand">
+	SELECT 
+		* 
+	FROM (SELECT 
+			a.*,rownum rnum
+		FROM (SELECT
+				 *
+			FROM movie_info 
 		<where>
 			<if test="keyword != '' and keyfield == 'title'" >
 				title like '%' || #{keyword} || '%'
 			</if>
+			<if test="keyword != '' and keyfield == 'director'" >
+				director like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'actors'" >
+				actors like '%' || #{keyword} || '%'
+			</if>
+		<!-- 	<if test="keyword != '' and keyfield.equals('all')" >
+				title like '%' || #{keyword} || '%' or
+				director like '%' || #{keyword} || '%' or
+				actors like '%' || #{keyword} || '%'	
+			</if> -->
 		</where>	
-	ORDER BY title desc)a)
+		ORDER BY title desc)a)
 	<![CDATA[
 		WHERE rnum >= #{start} AND rnum <= #{end}
 	]]>	
@@ -25,6 +40,17 @@
 			<if test="keyword != '' and keyfield == 'title'" >
 				title like '%' || #{keyword} || '%'
 			</if>
+			<if test="keyword != '' and keyfield == 'director'" >
+				director like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'actors'" >
+				actors like '%' || #{keyword} || '%'
+			</if>
+			<!-- <if test="keyword != '' and keyfield.equals('all')" >
+				title like '%' || #{keyword} || '%' or
+				director like '%' || #{keyword} || '%' or
+				actors like '%' || #{keyword} || '%'	
+			</if> -->
 		</where>
 	</select>
 		

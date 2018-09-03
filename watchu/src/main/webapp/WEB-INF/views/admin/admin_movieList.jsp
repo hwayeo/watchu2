@@ -1,20 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 영화 목록(관리자 메인) -->
 <div class="admin_main">
 	<div id="movie_list">
 		<h2>영화 목록</h2>
 		<br>
-		<div class="content-header">  
+		<div class="content-header">
 			<!-- 검색 -->
-			<select name="category">
-				<option value="movie_name">영화명</option>
-				<option value="movie_director">감독명</option>
-				<option value="movie_actor">배우명</option>
-				<option value="movie_genre">장르</option>
-			</select> <input type="text"> <input type="button" value="검색"><br>
-			<Br>
+			<form action="movieList.do" id="movie_search" method="get">
+			<select name="keyfield">
+				<option value="title">영화명</option>
+				<option value="director">감독명</option>
+				<option value="actors">배우명</option>
+			</select>
+			<input type="text" name="keyword" id="keyword"> 
+			<input type="submit" value="검색">
+			</form>
 		</div>
 
 		<div class="content-body">
@@ -25,11 +28,13 @@
 					<th class="col-md-8">영화명</th>
 					<th class="col-md-2">선택</th>
 				</tr>
+				<c:forEach var="movie" items="${movie_list}">
 				<tr>
-					<td>1</td>
-					<td>제목</td>
-					<td><input type="checkbox" name="checked"></td>
+					<td>${movie.movie_num}</td>
+					<td onclick="location.href='admin_movieView.do?movie_num=${movie.movie_num}'" style="cursor:pointer;">${movie.title}</td>
+					<td><input type="checkbox" data-num="${movie.movie_num}" name="checked"></td>
 				</tr>
+				</c:forEach>
 			</table>
 			<br>
 
@@ -42,17 +47,17 @@
 			<br>
 
 			<!-- 페이지버튼 -->
-			<nav align="center">
+			<div align="center">${pagingHtml}</div>
+			<!-- <nav align="center">
 				<ul class="pagination pagination-sm">
 					<li class="disabled"><a href="#" aria-label="Previous"> <spanaria-hidden="true">&laquo;</span></a></li>
 					<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
 				</ul>
-			</nav>
+			</nav> -->
 			<br>
 		</div>
 	</div>
 </div>
-
 
 <!-- 영화등록 모달창 -->
 <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
@@ -66,7 +71,6 @@
 				<h4 class="modal-title" id="registerModalLabel">영화 등록</h4>
 			</div>
 			<div class="modal-body">
-
 				<div class="form-group">
 					<label for="title">영화명</label>
 					<form:input path="title"/>
@@ -81,14 +85,13 @@
 					<label for="released">개봉연도</label>
 					<input type="date" name="released" id="released">
 				</div>
-				<div class="form-group">
+				<div class="form-group ui-widget">
 					<label for="director">감독</label>
-					<form:input path="director"/>
-					<form:errors path="director" cssClass="error-color"/>
+					<input type="text" name="director" class="auto" id="auto_director">
 				</div>
-				<div class="form-group">
+				<div class="form-group ui-widget">
 					<label for="actors">배우</label>
-					<form:input path="actors"/>
+					<input type="text" name="actors" class="auto" id="auto_actor">
 					<form:errors path="actors" cssClass="error-color"/>
 				</div>
 				<div class="form-group">

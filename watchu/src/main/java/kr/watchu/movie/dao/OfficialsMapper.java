@@ -1,12 +1,10 @@
 package kr.watchu.movie.dao;
 
-import java.sql.Date;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Insert;
-import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.web.multipart.MultipartFile;
+import org.apache.ibatis.annotations.Select;
 
 import kr.watchu.movie.domain.OfficialsCommand;
  
@@ -16,6 +14,7 @@ public interface OfficialsMapper {
 			+ "VALUES (officials_seq.nextval, #{name}, #{jobs}, #{filmograp}, #{off_photo})")
 	public void insert(OfficialsCommand officials);
 	//상세정보
+	@Select("SELECT * FROM officials WHERE off_num=#{off_num}")
 	public OfficialsCommand selectOfficials(Integer off_num);
 	//수정
 	public void update(OfficialsCommand officials);

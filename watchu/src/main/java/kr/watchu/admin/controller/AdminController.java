@@ -1,5 +1,9 @@
 package kr.watchu.admin.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -7,10 +11,13 @@ import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.watchu.movie.domain.GenreCommand;
 import kr.watchu.movie.domain.MovieCommand;
@@ -21,6 +28,7 @@ import kr.watchu.movie.service.OfficialsService;
 import kr.watchu.user.domain.UserCommand;
 import kr.watchu.user.service.UserService;
 import kr.watchu.util.CipherTemplate;
+import kr.watchu.util.PagingUtil;
 
 @Controller
 public class AdminController {
@@ -55,6 +63,54 @@ public class AdminController {
 	@ModelAttribute("userCommand")
 	public UserCommand initUserCommand() {
 		return new UserCommand();
+	}
+
+	//페이징을 위한 변수 선언
+	private int rowCount = 50;
+	private int pageCount = 10;
+
+	//관리자 메인	
+	@RequestMapping("/admin/main.do")
+	public ModelAndView mainProcess(@RequestParam(value="pageNum", defaultValue="1") int currentPage,
+			@RequestParam(value="keyfield", defaultValue="") String keyfield,
+			@RequestParam(value="keyword", defaultValue="") String keyword) {
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
+
+		//총 글의 갯수 또는 검색된 글의 갯수
+		int movie_count = movieService.selectMovieCnt(map);
+
+		//로그 출력
+		if(log.isDebugEnabled()) {
+			log.debug("<<movie_count>>: " + movie_count);
+		}
+
+		//페이징 처리
+		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, movie_count, rowCount, pageCount, "/admin/main.do");
+
+		map.put("start", page.getStartCount());
+		map.put("end", page.getEndCount());
+
+		List<MovieCommand> movie_list = null;
+		if(movie_count > 0) {
+			movie_list = movieService.selectMovieList(map);
+
+			//로그 출력
+			if(log.isDebugEnabled()) {
+				log.debug("<movie_list>: " + movie_list);
+			} 
+		}
+
+		//ModelAndView객체 생성, 데이터 저장
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("adminMovieList");
+		mav.addObject("movie_count", movie_count);
+		mav.addObject("movie_list", movie_list);
+		mav.addObject("pagingHtml", page.getPagingHtml());
+
+		return mav;
 	}
 	
 	//==========관리자 로그인============//
@@ -91,19 +147,19 @@ public class AdminController {
 					log.debug("<<일치여부>> : " + check);
 				}
 			}
-			
+
 			if(user.getAuth() == 6) {
 				if(check) {
 					//인증 성공 로그인
 					session.setAttribute("user_id", user.getId());
 					session.setAttribute("user_auth", user.getAuth());
-					
+
 					if(log.isDebugEnabled()) {
 						log.debug("<<인증 성공>>");
 						log.debug("<<user_id>> : " + user.getId());
 						log.debug("<<user_auth>> : " + user.getAuth());
 					}
-					
+
 					return "admin";
 				}else {
 					//인증실패 
@@ -125,14 +181,52 @@ public class AdminController {
 		}
 	}
 
-	//==========영화 관리_영화목록==========//
-	//등록 폼 호출
-	@RequestMapping("/admin/main.do")
-	public String movie_form() {
+	//==========01_영화 관리_영화목록==========//
+	//01_1_목록, 등록 폼
+	@RequestMapping("/admin/movieList.do") 
+	public ModelAndView movie_list(@RequestParam(value="pageNum", defaultValue="1") int currentPage,
+			@RequestParam(value="keyfield", defaultValue="") String keyfield,
+			@RequestParam(value="keyword", defaultValue="") String keyword) {
 
-		return "admin";
-	} 
-	//전송된 데이터 처리
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
+
+		//총 글의 갯수 또는 검색된 글의 갯수
+		int movie_count = movieService.selectMovieCnt(map);
+
+		//로그 출력
+		if(log.isDebugEnabled()) {
+			log.debug("<<movie_count>>: " + movie_count);
+		}
+
+		//페이징 처리
+		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, movie_count, rowCount, pageCount, "/admin/main.do");
+
+		map.put("start", page.getStartCount());
+		map.put("end", page.getEndCount());
+
+		List<MovieCommand> movie_list = null;
+		if(movie_count > 0) {
+			movie_list = movieService.selectMovieList(map);
+
+			//로그 출력
+			if(log.isDebugEnabled()) {
+				log.debug("<movie_list>: " + movie_list);
+			} 
+		}
+
+		//ModelAndView객체 생성, 데이터 저장
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("adminMovieList");
+		mav.addObject("movie_count", movie_count);
+		mav.addObject("movie_list", movie_list);
+		mav.addObject("pagingHtml", page.getPagingHtml());
+
+		return mav;
+	}
+
+	//01_2_전송된 데이터 처리
 	@RequestMapping(value="/admin/main.do", method=RequestMethod.POST)
 	public String movie_submit(@ModelAttribute("movie_command") @Valid MovieCommand movieCommand, BindingResult result, HttpServletRequest request) {
 		//로그 출력
@@ -145,14 +239,64 @@ public class AdminController {
 		return "redirect:/admin/main.do";
 	}
 
-	//==========영화 관리_영화 관계자==========//
-	//등록 폼 호출
-	@RequestMapping("/admin/officialList.do")
-	public String official_form() {
-
-		return "officialList";
+	//01_3_영화 상세 정보
+	@RequestMapping("/admin/admin_movieView.do")
+	public ModelAndView movie_detail(@RequestParam("movie_num") int movie_num){
+		if(log.isDebugEnabled()) {
+			log.debug("<<movie_num>>: " + movie_num);
+		}
+		
+		MovieCommand movie = movieService.selectMovie(movie_num); 
+		
+		return new ModelAndView("admin_movieView", "movie", movie);
 	}
-	//전송된 데이터 처리
+	
+	//==========02_영화 관리_영화 관계자==========//
+	//02_1_목록, 등록 폼
+	@RequestMapping("/admin/officialList.do")
+	public ModelAndView official_list(@RequestParam(value="pageNum", defaultValue="1") int currentPage,
+			@RequestParam(value="keyfield", defaultValue="") String keyfield,
+			@RequestParam(value="keyword", defaultValue="") String keyword) {
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
+
+		//총 글의 갯수 또는 검색된 글의 갯수
+		int official_count = officialsService.selectOffCnt(map);
+
+		//로그 출력
+		if(log.isDebugEnabled()) {
+			log.debug("<offical_count>>: " + official_count);
+		}
+
+		//페이징 처리
+		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, official_count, rowCount, pageCount, "officialList.do");
+
+		map.put("start", page.getStartCount());
+		map.put("end", page.getEndCount());
+
+		List<OfficialsCommand> official_list = null;
+		if(official_count > 0) {
+			official_list = officialsService.selectOffList(map);
+
+			//로그 출력
+			if(log.isDebugEnabled()) {
+				log.debug("<official_list>: " + official_list);
+			} 
+		}
+
+		//ModelAndView객체 생성, 데이터 저장
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("officialList");
+		mav.addObject("official_count", official_count);
+		mav.addObject("official_list", official_list);
+		mav.addObject("pagingHtml", page.getPagingHtml());
+
+		return mav;
+	}
+	
+	//02_2_전송된 데이터 처리
 	@RequestMapping(value="/admin/officialList.do", method=RequestMethod.POST)
 	public String official_submit(@ModelAttribute("official_command") @Valid OfficialsCommand officialsCommand, BindingResult result, HttpServletRequest request) {
 		//로그 출력
@@ -165,14 +309,91 @@ public class AdminController {
 		return "redirect:/admin/officialList.do";
 	}
 
-	//==========영화 관리_영화 장르==========//
-	//등록 폼 호출
-	@RequestMapping("/admin/genreList.do")
-	public String genre_form() {
-
-		return "genreList";
+	//02_3_관계자 상세
+	@RequestMapping("/admin/offcialDetail.do")
+	public ModelAndView off_detail(@RequestParam("off_num") int off_num) {
+		//로그 출력
+		if(log.isDebugEnabled()) {
+			log.debug("<<off_num>>: " + off_num);
+		}
+		
+		OfficialsCommand officials = officialsService.selectOfficials(off_num);
+		
+		return new ModelAndView("officialView", "officials", officials);
 	}
-	//전송된 데이터 처리
+	
+	//02_4_관계자 수정
+	//수정폼 호출
+	@RequestMapping(value="/admin/officialModify.do", method=RequestMethod.GET)
+	public String official_modify(@RequestParam("off_num") int off_num, Model model) {
+		//한 건의 데이터 불러옴
+		OfficialsCommand officialsCommand = officialsService.selectOfficials(off_num);
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<officialsCommand>> : "+ officialsCommand);
+		}
+		model.addAttribute("command", officialsCommand);
+		
+		return "officialModify";
+	}
+	
+	//==========03_영화 관리_영화 장르==========//
+	//03_1_장르 목록(페이징&검색)
+	@RequestMapping("/admin/genreList.do")
+	public ModelAndView genre_list(@RequestParam(value="pageNum", defaultValue="1") int currentPage,
+			@RequestParam(value="keyfield", defaultValue="") String keyfield,
+			@RequestParam(value="keyword", defaultValue="") String keyword) {
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
+
+		//총 글의 갯수 또는 검색된 글의 갯수
+		int genre_count = genreService.selectGenreCnt(map);
+
+		//로그 출력
+		if(log.isDebugEnabled()) {
+			log.debug("<<genre_count>>: " + genre_count);
+		}
+
+		//페이징 처리
+		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, genre_count, rowCount, pageCount, "genreList.do");
+
+		map.put("start", page.getStartCount());
+		map.put("end", page.getEndCount());
+
+		List<GenreCommand> genre_list = null;
+		if(genre_count > 0) {
+			genre_list = genreService.selectGenreList(map);
+
+			//로그 출력
+			if(log.isDebugEnabled()) {
+				log.debug("<genre_list>: " + genre_list);
+			} 
+		}
+
+		//ModelAndView객체 생성, 데이터 저장
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("genreList");
+		mav.addObject("genre_count", genre_count);
+		mav.addObject("genre_list", genre_list);
+		mav.addObject("pagingHtml", page.getPagingHtml());
+
+		return mav;
+	}
+
+	public String genre_delete(@RequestParam("genre_num") int num) {
+		//로그 출력
+		if(log.isDebugEnabled()) {
+			log.debug("<<num>>: " + num);
+		}
+
+		genreService.deleteGenre(num);
+
+		return "redirect:/admin/genreList.do";
+	}
+
+	//03_2_전송된 데이터 처리
 	@RequestMapping(value="/admin/genreList.do", method=RequestMethod.POST)
 	public String genre_submit(@ModelAttribute("genre_command") @Valid GenreCommand genreCommand, BindingResult result, HttpServletRequest request) {
 		//로그 출력
@@ -185,28 +406,28 @@ public class AdminController {
 		return "redirect:/admin/genreList.do";
 	}
 
-	//==========영화 관리_영화 별점==========//
+	//==========04_영화 관리_영화 별점==========//
 	@RequestMapping("/admin/movieRating.do")
 	public String process3() {
 
 		return "movieRating";
 	}
 
-	//==========회원 관리_회원 목록==========//
+	//==========05_회원 관리_회원 목록==========//
 	@RequestMapping("/admin/userList.do")
 	public String process4() {
 
 		return "userList";
 	}
 
-	//==========회원 관리_신고 회원==========//
+	//==========06_회원 관리_신고 회원==========//
 	@RequestMapping("/admin/reportedUser.do")
 	public String process5() {
 
 		return "reportedUser";
 	}
 
-	//==========고객 지원_고객 문의==========//
+	//==========07_고객 지원_고객 문의==========//
 	@RequestMapping("/admin/support.do")
 	public String process6() {
 

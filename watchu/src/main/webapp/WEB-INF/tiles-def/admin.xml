@@ -14,14 +14,28 @@
 	</definition>
 	<!-- 영화목록페이지를 admin페이지 main으로 설정함(08/23) -->
 	
-	<definition name="admin_movieList" extends="admin">
+	<definition name="adminMovieList" extends="admin">
 		<put-attribute name="title" value="왓츄 -영화 목록"/>
 		<put-attribute name="body" value="/WEB-INF/views/admin/admin_movieList.jsp"/>
 	</definition>
+	<definition name="admin_movieView" extends="admin">
+		<put-attribute name="title" value="왓츄 -영화 상세 정보"/>
+		<put-attribute name="body" value="/WEB-INF/views/admin/admin_movieView.jsp"/>
+	</definition>
+	
 	<definition name="officialList" extends="admin">
 		<put-attribute name="title" value="왓츄 -영화 관계자 목록"/>
 		<put-attribute name="body" value="/WEB-INF/views/admin/officialList.jsp"/>
 	</definition>
+	<definition name="officialView" extends="admin">
+		<put-attribute name="title" value="왓츄 -영화 상세 정보"/>
+		<put-attribute name="body" value="/WEB-INF/views/admin/officialView.jsp"/>
+	</definition>
+	<definition name="officialModify" extends="admin">
+		<put-attribute name="title" value="왓츄 -영화 관계자 수정"/>
+		<put-attribute name="body" value="/WEB-INF/views/admin/officialModify.jsp"/>
+	</definition>
+	
 	<definition name="genreList" extends="admin">
 		<put-attribute name="title" value="왓츄 -영화 장르 목록"/>
 		<put-attribute name="body" value="/WEB-INF/views/admin/genreList.jsp"/>
