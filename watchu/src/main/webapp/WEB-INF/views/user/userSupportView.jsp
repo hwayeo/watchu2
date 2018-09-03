@@ -22,7 +22,7 @@
 	              fn:endsWith(contact.filename,'.png') ||
 	              fn:endsWith(contact.filename,'.PNG')}">
 	<div class="align-center">
-		<img src="imageView.do?num=${contact.contact_num}" style="max-width:500px">
+		<img src="imageView.do?contact_num=${contact.contact_num}" style="max-width:500px">
 	</div>	
 	</c:if>
 	<p>
@@ -31,8 +31,8 @@
 	<hr size="1" width="100%">
 	<div class="align-right">
 		<c:if test="${!empty user_id && user_id == contact.id}">
-		<input type="button" value="수정" onclick="location.href='userSupportUpdate.do?num=${contact.contact_num}'">	
-		<input type="button" value="삭제"  onclick="location.href='userSupportDelete.do?num=${contact.contact_num}'">	  
+		<input type="button" value="수정" onclick="location.href='userSupportUpdate.do?contact_num=${contact.contact_num}'">	
+		<input type="button" value="삭제"  onclick="location.href='userSupportDelete.do?contact_num=${contact.contact_num}'">	  
 		</c:if>
 		<input type="button" value="목록" onclick="location.href='userSupportList.do'">	  
 	</div>
@@ -42,8 +42,8 @@
 	<div class="paging-button" style="display:none;">
 		<input type="button" value="다음글 보기">
 	</div>
-	<%-- <div id="loading" style="display:none;">
+	<div id="loading" style="display:none;">
 		<img src="${pageContext.request.contextPath}/resources/images/ajax-loader.gif">
-	</div> --%>
+	</div> 
 	
 </div>

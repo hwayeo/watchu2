@@ -10,7 +10,7 @@
    <p class="subTitle">Watchu의 고객센터입니다.</p>
 
 	<h1>글쓰기</h1>
-	<form:form commandName="contactCommand" action="write.do" id="register_form" enctype="multipart/form-data">
+	<form:form commandName="contactCommand" action="userSupportWrite.do" id="register_form" enctype="multipart/form-data">
 		<input type="hidden" name="id" value="${user_id}">
 		<form:errors element="div" cssClass="error-color"/>	
 		<ul>

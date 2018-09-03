@@ -135,8 +135,6 @@ public class UserCommand {
 	public String toString() {
 		return "UserCommand [id=" + id + ", auth=" + auth + ", passwd=" + passwd + ", name=" + name + ", phone=" + phone
 				+ ", email=" + email + ", follow=" + follow + ", follower=" + follower + ", block=" + block
-				+ ", upload=" + upload + ", profile_img=" + Arrays.toString(profile_img) + ", reg_date=" + reg_date
-				+ ", permit=" + permit + "]";
+				+ ", upload=" + upload + ", reg_date=" + reg_date + ", permit=" + permit + "]";
 	}
-
 }
