@@ -329,8 +329,7 @@ font-family:'PT Sans', sans-serif;
 		width: 50%;
 	}
 	#main-content {
-		top: 100px;
-		position: relative;
+		padding-top:100px;	
 	}
 	#img-test {
 		width: 50%;
