@@ -42,8 +42,8 @@
 	<div class="paging-button" style="display:none;">
 		<input type="button" value="다음글 보기">
 	</div>
-	<%-- <div id="loading" style="display:none;">
+	<div id="loading" style="display:none;">
 		<img src="${pageContext.request.contextPath}/resources/images/ajax-loader.gif">
-	</div> --%>
+	</div> 
 	
 </div>

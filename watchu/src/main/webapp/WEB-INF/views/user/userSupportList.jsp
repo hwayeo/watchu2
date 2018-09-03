@@ -39,12 +39,19 @@
             </tr>
             
             <c:forEach var="contact" items="${list}">
-            <tr class="sup_content">
+            <tr class="sup_content" a onclick="location.href='userSupportView.do?contact_num=${contact.contact_num}'" style="cursor:pointer">
                <td>${contact.contact_num}</td>
                <td>${contact.id}</td>
-               <td><a onclick="location.href='userSupportView.do'">제목</a></td>
+               <td>제목</td>
                <td>App 오류</td>
-               <td>답변대기</td>
+               <td>
+               	<c:if test="${contact.recotentable == 0}">
+               		<a style="color:red">답변대기</a>
+               	</c:if>
+               	<c:if test="${contact.recotentable == 1}">
+               		<a style="color:blue">답변완료</a>
+               	</c:if>
+               </td>
                <td>${contact.reg_date}</td>
             </tr>
             </c:forEach>
