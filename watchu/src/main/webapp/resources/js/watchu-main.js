@@ -22,13 +22,15 @@ $(document).ready(function(){
 	//초기값
 	headerClassControl();
 	
+	
 	//브라우저 사이즈가 변동되었을때 동작
 	$(window).on('resize',function(){
 		windowWidth = $(document).width();
 		windowHeight = $(document).scrollTop();
 		headerClassControl();
+		
 	});
-
+	
 	//스크롤을 내리거나 올릴때 동작 //300
 	$(window).on('scroll',function(){
 		windowWidth = $(document).width();
@@ -74,7 +76,7 @@ $(document).ready(function(){
 	function boxOffice(){
 		var basicUrl ="http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=eff3e14691bf6fe3fd1b35c8e35a5340";
 		    basicUrl += "&targetDt="+today;
-		    basicUrl += "&itemPerPage=8";
+		    basicUrl += "&itemPerPage=7";
 		var output = '<table class="table boxOffice"></tr>'
 		$.getJSON(basicUrl, function(data){
 			$.each(data, function (index, value) { 
