@@ -19,7 +19,7 @@
 			
 			<div class="col-xs-7 col-md-6 text-center">
 				<img src="${pageContext.request.contextPath}/main/imageView.do?id=${user_id}" width="50" height="50" class="img-circle">
-				<h2> ${user.name}</h2>
+				<p style="font-size:22px"> ${user.name}</p>
 				<div>
 					<ul class="wcPc-Arrange">
 						<li class="wcPc-ArrangeSizeFit" style="list-style:none;">
@@ -60,7 +60,7 @@
 	
 	<div class="col-xs-12 col-md-12 text-center"> 
 			<div class="col-xs-7 col-md-6"><br>
-				<h2>최고의 작품</h2><br>
+				<p style="font-size:22px">최고의 작품</p><br>
 			</div>
 			<div class="col-xs-1 col-md-2"></div>
 			<div class="col-xs-2 col-md-2"><br><br>
@@ -70,34 +70,17 @@
 			
 		<div class="col-xs-12 col-md-12 text-center"> 
 			
-			<c:if test="col-xs">
-				 <div class="col-xs-4">
-				<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="50" height="50"><br>
-				<p>가디언즈 오브 갤럭시</p>
-				</div>
-				<div class="col-xs-4">
-					<img src="${pageContext.request.contextPath}/resources/images/gad2.jpg" width="80" height="130"><br>
-					<p>수어사이드 스쿼드</p>
-				</div>
-				<div class="col-xs-4">
-					<img src="${pageContext.request.contextPath}/resources/images/gad3.jpg" width="80" height="130"><br>
-					<p>앤트맨</p>
-				</div> 
-			</c:if>
-			
-			
-			
 			<div class="col-md-3"></div>
 			<div class="col-xs-4 col-md-2">
-				<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="130" height="180"><br>
+				<img class="image" src="${pageContext.request.contextPath}/resources/images/gad.jpg" ><br>
 				<p>가디언즈 오브 갤럭시</p>
 			</div>
 			<div class="col-xs-4 col-md-2">
-				<img src="${pageContext.request.contextPath}/resources/images/gad2.jpg" width="130" height="180"><br>
+				<img class="image" src="${pageContext.request.contextPath}/resources/images/gad2.jpg" ><br>
 				<p>수어사이드 스쿼드</p>
 			</div>
 			<div class="col-xs-4 col-md-2">
-				<img src="${pageContext.request.contextPath}/resources/images/gad3.jpg" width="130" height="180"><br>
+				<img class="image" src="${pageContext.request.contextPath}/resources/images/gad3.jpg" ><br>
 				<p>앤트맨</p>
 			</div>
 			<div class="col-md-3"></div>
