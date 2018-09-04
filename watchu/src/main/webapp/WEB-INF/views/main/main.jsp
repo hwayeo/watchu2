@@ -20,13 +20,13 @@
 			</div>
 		</div>
 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-			<h4>이런 작품은 어때요</h4>		
-			<div class="items-box">
+			<h4>오늘은 이거다!</h4>
+			<div class="items-box" onclick="location.href='${pageContext.request.contextPath}/movie/movieDetail.do?movie_num=${randomMovie.movie_num}'">
 				<div class="img-box">
 					<img src="${pageContext.request.contextPath}/resources/images/main-banner-test.jpg" class="img-responsive main-img">
 				</div>
 				<div class="text-box">	
-					<p class="movie-title"><a href="#" class="movie-link">영화제목</a><p>
+					<p class="movie-title"><a href="#" class="movie-link">${randomMovie.title}</a><p>
 					<p class="sub-title">슈퍼히어로 . 2018</p>
 				</div>
 			</div>

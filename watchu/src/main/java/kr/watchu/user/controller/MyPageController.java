@@ -162,9 +162,11 @@ public class MyPageController {
 	//===============================내 팔로잉 목록 보기====================================
 	//팔로잉목록
 	@RequestMapping("/user/myfollowing.do")
-	public ModelAndView myfollowing(HttpSession session,@RequestParam(value="pageNum",defaultValue="1") int currentPage,
-			   											@RequestParam(value="keyfield",defaultValue="") String keyfield,
-			   											@RequestParam(value="keyword",defaultValue="") String keyword) {		
+	public ModelAndView myfollowing(HttpSession session,
+									@RequestParam(value="id") String id,
+			   					    @RequestParam(value="pageNum",defaultValue="1") int currentPage,
+			   					    @RequestParam(value="keyfield",defaultValue="") String keyfield,
+			   					    @RequestParam(value="keyword",defaultValue="") String keyword) {		
 		
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("keyfield", keyfield);
@@ -181,8 +183,10 @@ public class MyPageController {
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
 		//------------------------------------------------
-		String id = (String)session.getAttribute("user_id");
-		UserCommand user = userService.selectUser(id);
+		String loginUserId = (String)session.getAttribute("user_id");
+		
+		UserCommand loginUser = userService.selectUser(loginUserId);//현재 로그인한 아이디의 커맨드
+		UserCommand user = userService.selectUser(id);//get방식으로 넘겨받은 아이디의 커맨드
 		ModelAndView mav = new ModelAndView();
 		//시작(쉼표제거)
 		List<String> follow3 = new ArrayList<String>();
@@ -213,7 +217,7 @@ public class MyPageController {
 		mav.addObject("count",count);
 		mav.addObject("pagingHtml",page.getPagingHtml());
 		mav.addObject("user",user);
-
+		mav.addObject("loginUser",loginUser);
 		
 
 		return mav;
@@ -222,9 +226,11 @@ public class MyPageController {
 	//===============================내 팔로워 목록 보기====================================
 	//팔로워목록
 	@RequestMapping("/user/myfollower.do")
-	public ModelAndView myfollower(HttpSession session,@RequestParam(value="pageNum",defaultValue="1") int currentPage,
-												       @RequestParam(value="keyfield",defaultValue="") String keyfield,
-												       @RequestParam(value="keyword",defaultValue="") String keyword) {		
+	public ModelAndView myfollower(HttpSession session,
+								   @RequestParam(value="id") String id,
+			   				       @RequestParam(value="pageNum",defaultValue="1") int currentPage,
+			   				       @RequestParam(value="keyfield",defaultValue="") String keyfield,
+			   				       @RequestParam(value="keyword",defaultValue="") String keyword) {		
 
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("keyfield", keyfield);
@@ -241,8 +247,10 @@ public class MyPageController {
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
 		//------------------------------------------------
-		String id = (String)session.getAttribute("user_id");
-		UserCommand user = userService.selectUser(id);
+		String loginUserId = (String)session.getAttribute("user_id");
+		
+		UserCommand loginUser = userService.selectUser(loginUserId);//현재 로그인한 아이디의 커맨드
+		UserCommand user = userService.selectUser(id);//get방식으로 넘겨받은 아이디의 커맨드	
 		ModelAndView mav = new ModelAndView();
 		//내 팔로워 arrayList시작
 		List<String> follower3 = new ArrayList<String>();
@@ -293,7 +301,7 @@ public class MyPageController {
 		mav.addObject("count",count);
 		mav.addObject("pagingHtml",page.getPagingHtml());
 		mav.addObject("user",user);
-
+		mav.addObject("loginUser",loginUser);
 
 
 		return mav;

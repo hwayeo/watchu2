@@ -29,9 +29,9 @@
 	<div class="col-sm-6 col-md-6 col-xs-6" id="poster2">
 		 <h3><b>${movie.title}</b></h3>
 		 	<p>${movie.released}.${movie.main_genre}.${movie.country}</p>
-		 		<hr width="90%" align="left">	
+		 		<hr width="65%" align="left">	
 					<p>평점★4.5</p>
-				<hr width="90%" align="left">
+				<hr width="65%" align="left">
 			<button type="button" style="width: 250px;" 
 			 class="btn btn-primary btn-default btn-danger">보고싶어요</button>
 		</div>
@@ -42,18 +42,36 @@
 		<div class="col-sm-12 col-md-12-xs-12 hidden-md hidden-lg hidden-sm" style="text-align:center"> 
 		<h3>${movie.title}</h3>
 		 	<p>${movie.released}.${movie.main_genre}.${movie.country}</p>
-		 		<hr width="90%" align="left">	
+		 		<hr width="98%" align="left">	
 					<p>평점★4.5</p>
-				<hr width="90%" align="left">
+				<hr width="98%" align="left">
 		<button type="button" style="width: 200px;" 
 		class="btn btn-primary btn-default btn-danger">보고싶어요</button>
-		<hr width="90%" align="left">
+		<hr width="98%" align="left">
 		
-		<div class="visible-xs">
+		<c:if test="${empty user_id}">
+		<div class="visible-xs">코멘트를 남기시려면 로그인 하세요 
 			<button type="button" style="width: 200px;" 
-			 class="btn btn-info" data-toggle="modal" data-target="#myModal">코멘트 남기기</button>
+			 class="btn btn-info" data-toggle="modal" data-target="#myModal" disabled>코멘트 남기기</button>
 		</div>
+		</c:if>
 		
+		<c:if test="${!empty user_id && empty comment}">
+		<div class="visible-xs">대단한 작품이군요 회원님의 코멘트를 남겨주세요
+			<button type="button" style="width: 200px;" 
+			 class="btn btn-info" data-toggle="modal" data-target="#myModal" disabled>코멘트 남기기</button>
+		</div>
+		</c:if>
+		
+		<c:if test="${!empty user_id && !empty comment}">
+		<div class="visible-xs">
+			<div class="commentContent">${comment.content}</div>
+			<div class="commentBtn0">
+					<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal2">수정</button>
+					<button type="button" class="btn btn-danger btn-xs">삭제</button>
+			</div>
+		</div>
+		</c:if>
 	</div>
 	<!-- 영화 기본정보 모바일 화면 끝-->
 	</div>
@@ -65,13 +83,30 @@
 		<div class="row">
 			<div class="col-sm-12 col-md-12 col-xs-12 col-lg-12" id="middle">
 				<!-- 코멘트 -->
+				<c:if test="${empty user_id}">
+				<div class="comment hidden-xs">코멘트를 남기시려면 로그인을 하세요
+					<button 
+						class="btn btn-info" data-toggle="modal" data-target="#myModal" disabled>코멘트 남기기
+					</button>
+				</div>
+				</c:if>
+				<c:if test="${!empty user_id && empty comment}">
 				<div class="comment hidden-xs">대단한 작품이군요 회원님의 코멘트를 남겨주세요
 					<button 
 						class="btn btn-info" data-toggle="modal" data-target="#myModal">코멘트 남기기
 					</button>
 				</div>
-			
-		
+				</c:if>
+				<c:if test="${!empty user_id && !empty comment}">
+					<div class="comment hidden-xs">
+					<div class="commentContent">${comment.content}</div>
+					<div class="commentBtn0">
+					<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal2">수정</button>
+					<button type="button" class="btn btn-danger btn-xs" onclick="location.href='${pageContext.request.contextPath}/movie/deleteComment.do?comment_num=${comment.comment_num}&movie_num=${movie.movie_num}'">삭제</button>
+					</div>
+					</div>
+					
+				</c:if>
 				<!-- 코멘트 끝 -->
 				
 				<!-- pc상세정보 -->
@@ -135,12 +170,18 @@
 				</div>
 				
 				<div id="comment-box">
+				<c:forEach var="list" items="${commentList}">
 					<div class="division1">
-						<h4><span>아이디</span></h4>
+					<div class=inner-box1>
+					<h4><span>아이디 : ${list.id}</span></h4></div>
+					<hr class="one">
+					<div class="inner-box2">내용: ${list.content}</div>
+					<hr>
+					<div class="inner-box3">좋아요 : ${list.likes}</div>  
+					<hr>
+					<div class="inner-box4">작성날짜 : ${list.reg_date}</div>                
 					</div>
-				<div class="division2">
-						<h4><span>아이디</span></h4>
-				</div>
+				</c:forEach>
 				</div>
 				
 				<hr>
@@ -234,10 +275,13 @@
 				<div>
 					<h4><b>코멘트</b></h4>
 				</div>
-				
-				<div class="jumbotron division3">
-					<h4><span></span></h4>
-				</div>
+				<c:forEach var="list" items="${commentList}">
+					<div class="jumbotron division3 col-md-12 col-xs-12">
+					<h4><span>${list.id}</span></h4>
+					<hr class="one">
+					<span>${list.content}</span>
+					</div>
+				</c:forEach>
 				<hr>
 				
 				<div class="row">
@@ -258,7 +302,7 @@
 <!-- 상세정보 끝 -->
 
 <!-- modal -->
-
+<!-- 코멘트 등록 모달 -->
 <div class="modal fade" id="myModal">
 		<div class="modal-dialog">
 			<div class="modal-content" id="modal">
@@ -280,6 +324,30 @@
 			</div>
 		</div>
 	</div>
+
+<!-- 코멘트 수정 모달 -->	
+<div class="modal fade" id="myModal2">
+		<div class="modal-dialog">
+			<div class="modal-content" id="modal">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">x</button>
+					<h4 style="text-align:center"><b>${movie.title}</b></h4>
+				</div>
+				<div class="modal-body">
+					<form:form commandName="commentCommand" action="updateCommentWrite.do" id="commentRegisterForm"> 
+					<input type="hidden" name="movie_num" value="${movie.movie_num}">
+					<input type="hidden" name="id" value="${user_id}">
+					<textarea name="content" id="text" placeholder="${comment.content}" class="form-control" rows="5"></textarea><br>
+					<div class="text-right">
+						<button class="btn" data-dismiss="modal">닫기</button>
+						<button class="btn btn-primary" value="submit">코멘트 작성</button>
+					</div>
+					</form:form>
+				</div>
+			</div>
+		</div>
+	</div>
+		
 	
 
 <input type="hidden" value="${movie.movie_num}">

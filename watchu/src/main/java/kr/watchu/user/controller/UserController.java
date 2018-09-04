@@ -175,9 +175,10 @@ public class UserController {
 	
 	//==========================================추천친구목록========================================
 	@RequestMapping("/user/follow.do")
-	public ModelAndView follow(HttpSession session,@RequestParam(value="pageNum",defaultValue="1") int currentPage,
-												   @RequestParam(value="keyfield",defaultValue="") String keyfield,
-			                                       @RequestParam(value="keyword",defaultValue="") String keyword) {		
+	public ModelAndView follow(@RequestParam(value="id") String id,
+							   @RequestParam(value="pageNum",defaultValue="1") int currentPage,
+							   @RequestParam(value="keyfield",defaultValue="") String keyfield,
+			                   @RequestParam(value="keyword",defaultValue="") String keyword) {		
 		
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("keyfield", keyfield);
@@ -195,7 +196,7 @@ public class UserController {
 		map.put("end", page.getEndCount());
 		
 		//--------------------------------------------
-		String id = (String)session.getAttribute("user_id");
+		
 		UserCommand user = userService.selectUser(id);
 		ModelAndView mav = new ModelAndView();
 		
@@ -257,7 +258,7 @@ public class UserController {
 		//내 follow update
 		userService.insertFollow(user);
 		
-		//-----------------내가 팔로우한 사람의 커맨드 follower에 추가
+		//-----------------내가 팔로우한 사람의 커맨드 follower에 나를 추가
 		if(follow_user.getFollower() == null) {//팔로워 비어있으면 그냥 추가
 			follow_user.setFollower(user_id);
 		}else {//있으면 쉽표찍고 추가
@@ -283,7 +284,7 @@ public class UserController {
 		UserCommand user = userService.selectUser(user_id);//내 커맨드
 		UserCommand unfollow_user = userService.selectUser(unfollow_id);//내가 언팔한사람의 커맨드
 		
-		//--------------------------------------------------------------------------
+		//------------------------------------------------
 		//내 follow에 있는 친구들 쉼표제거해서 arrayList로 만들기 시작
 		List<String> user_follow3 = new ArrayList<String>();
 
@@ -325,7 +326,7 @@ public class UserController {
 
 		//내 follow update
 		userService.insertFollow(user);
-		//--------------------------------------------------------------------------
+		//-------------------------------------------------
 		
 		//내가 언팔한사람의 follwer를 쉼표제거해서 arrayList로 만들기 시작
 		List<String> unfollow_follower3 = new ArrayList<String>();
@@ -362,7 +363,7 @@ public class UserController {
 		
 		//상대방 follower update
 		userService.insertFollower(unfollow_user);
-		//--------------------------------------------------------------------------------
+		//----------------------------------------------------
 		
 		Map<String,String> map = new HashMap<String,String>();
 		map.put("result", "success");
@@ -521,6 +522,57 @@ public class UserController {
 		
 		return "redirect:/user/userSupportList.do";
 	}
+	
+	
+	
+	//===============================================다른유저 마이페이지===============================================
+	@RequestMapping("/user/userPage.do")
+	public ModelAndView anotherUserpage(HttpSession session,@RequestParam("id") String id) {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		String my_id = (String)session.getAttribute("user_id");
+		UserCommand anotheruser = userService.selectUser(id);//다른유저 커맨드
+		UserCommand user = userService.selectUser(my_id);//내 커맨드
+		
+		//팔로잉 숫자 표시하기위해 친구 arraylist만듬
+		List<String> follow3 = new ArrayList<String>();
+
+		if(anotheruser.getFollow() != null) {
+			String follow = anotheruser.getFollow();
+			String[] follow2 = SplitUtil.splitByComma(follow);//쉼표제거
+
+			//for문 돌려서 String배열요소 Array리스트에 넣기
+			for(int i=0;i<follow2.length; i++) {
+				follow3.add(follow2[i]);
+			}
+
+		}else {
+			follow3.clear();//null값도 없애버림
+		}
+
+		//팔로워 숫자
+		List<String> follower3 = new ArrayList<String>();
+		if(anotheruser.getFollower() != null) {
+			String follower = anotheruser.getFollower();
+			String[] follower2 = SplitUtil.splitByComma(follower);//쉼표제거
+
+			//for문 돌려서 String배열요소 Array리스트에 넣기
+			for(int i=0;i<follower2.length; i++) {
+				follower3.add(follower2[i]);
+			}
+		}else {
+			follower3.clear();
+		}
+				
+		mav.setViewName("userPage");
+		mav.addObject("anotheruser",anotheruser);
+		mav.addObject("user",user);
+		mav.addObject("list",follow3);
+		mav.addObject("list2",follower3);
+		return mav;
+	}
+	
 }	
 	
 

@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/admin-main.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/follow_unfollow.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/my_follow_unfollow.js"></script>
 
 </head>
 <body>
@@ -38,7 +38,6 @@
                 <div class="panel-heading">추천친구 목록</div>
                 
                 <input type="hidden" id="user_id" name="user_id" value="${user.id}">
-                <input type="hidden" id="follow22" name="follow22" value="${follow}">
                 
                 <ul class="list-group">
                 
@@ -54,23 +53,26 @@
                     <!-- 내가 팔로잉한 친구 제외 -->
                     <c:if test="${follow.contains(article.id) == false}">
 						<li class="list-group-item">
-						<a href="#" class="following_profile_img"> 
+						<a href="userPage.do?id=${article.id}" class="following_profile_img"> 
 							<c:if test="${empty article.profile_img}">
 								<img src="${pageContext.request.contextPath}/resources/images/default-profile.jpg"
 											class="img-circle" id="following_profile_img"
 											style="width: 50px; height: 50px;">
+								
 							</c:if> 
 							<c:if test="${!empty article.profile_img}">
 								<img src="${pageContext.request.contextPath}/main/imageView.do?id=${article.id}" width="50" height="50" class="img-circle">
 							</c:if>
 						</a> 
-						<span class="name_span"><label class="name">${article.name}</label></span>
+						<span class="name_span"><label class="name"><a href="userPage.do?id=${article.id}">${article.name}</a></label></span>
+									
 									<div class="pull-right">
 										<div class="follow_unfollow" > 
 											<input type="button" class="btn btn-primary follow" data-id="${article.id}" name="follow" value="팔로우" >
 											<input type="button" class="btn btn-success active unfollow" data-id="${article.id}" name="unfollow" value="팔로잉" style="display: none;">
 										</div> 
 									</div>
+									
 						</li>
 						</c:if>
 						</c:if>
