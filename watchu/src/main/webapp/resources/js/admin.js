@@ -11,32 +11,60 @@ $(document).ready(function(){
 });
 
 //genreModify 모달에 데이터 넘기기
-$('#genreModify').on('show.bs.modal', function(e) {
-
-    //get data-id attribute of the clicked element
-    var genre_num = $(e.relatedTarget).data('book-id');
-
-    //populate the textbox
-    $(e.currentTarget).find('input[name="bookId"]').val(bookId);
+$(document).ready(function() {
+	$('.modify_btn').on('click', function () {
+		var num = $(this).attr('data-whatever');
+		var data = $(this).text();
+		$('#genre_num').val(num);
+		$('#show-num').text(num);
+		$('#name').val(data);
+		//장르 삭제 버튼
+		var modify = "location.href='genreDelete.do?genre_num=";
+		var modifyUrl = modify+num+"'";
+		$('#modifyBtn').attr("onclick", modifyUrl);
+	});
 });
 
 //======자동완성=====//
-$(function() {
-	var directorList = [
-		  "오다영",
-		  "이정은"
-	];
-	$("#auto_director").autocomplete({
-	    source: directorList
+$(function(){
+	$("#auto_actor").autocomplete({
+		minLength: 1,
+		source: function(request, response){
+			var param = {value:request.term};
+			$.ajax({
+				url: "/admin/auto",
+				
+			});
+		}
 	});
 });
-$(function() {
+/*$(function(){
 	var actorList = [
 		"가나다",
-		"라마바",
-		"한국"
-	];
+		"가나",
+		"가나다라",
+		"가나바바",
+		"가라마",
+		"가위바위",
+		"가ㅏ가가",
+		"가어ㅏ악",
+		"apple",
+		"apply",
+		"approve",
+		"나라"
+		];
 	$("#auto_actor").autocomplete({
 		source: actorList
 	});
+});
+*/
+$(function(){
+	var directorList = [
+		"박보검",
+		"박한솔",
+		"박찬욱",
+		"박원영",
+		"박박박"
+	];
+	$('#auto_director').autocomplete({source: directorList});
 });

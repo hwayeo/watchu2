@@ -33,8 +33,8 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	@Override
-	public void deleteMovie(Integer num) {
-		// TODO Auto-generated method stub
+	public void deleteMovie(Integer movie_num) {
+		movieMapper.deleteMovie(movie_num);
 		
 	}
 

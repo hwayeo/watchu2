@@ -55,7 +55,7 @@
 	</select>
 	
 	<!-- 글 수정 -->
-	<update id="movie_update">
+	<update id="update">
 		<if test="poster_img == '' and banner_img == ''">
 			UPDATE movie_info SET title=#{title}, country=#{country}, released=#{released}, director=${director}, summary=#{summary}, main_genre=#{main_genre}, sub_genre=#{sub_genre}, trailer=#{trailer} WHERE movie_num=#{movie_num}
 		</if>
@@ -67,7 +67,13 @@
 	<select id="selectMovieAjaxList" parameterType="Map" resultType="MovieCommand">
 		SELECT * FROM
 	(SELECT a.*,rownum rnum FROM
-	(SELECT * FROM movie_info
+	(SELECT * 
+	FROM movie_info
+	<where>
+			<if test="keyword != '' and keyfield == 'title'" >
+				title like '%' || #{keyword} || '%'
+			</if>
+	</where>	
 	ORDER BY title desc)a)
 	<![CDATA[
 		WHERE rnum >= #{start} AND rnum <= #{end}
@@ -76,5 +82,10 @@
 	
 	<select id="selectMovieAjaxCnt" resultType="Integer">
 		SELECT count(*) FROM movie_info
+		<where>
+			<if test="keyword != '' and keyfield == 'title'" >
+				title like '%' || #{keyword} || '%'
+			</if>
+		</where>
 	</select>
 </mapper> 

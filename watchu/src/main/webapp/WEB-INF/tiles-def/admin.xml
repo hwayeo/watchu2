@@ -18,13 +18,13 @@
 		<put-attribute name="title" value="왓츄 -영화 목록"/>
 		<put-attribute name="body" value="/WEB-INF/views/admin/admin_movieList.jsp"/>
 	</definition>
-	<definition name="admin_movieView" extends="admin">
-		<put-attribute name="title" value="왓츄 -영화 상세 정보"/>
-		<put-attribute name="body" value="/WEB-INF/views/admin/admin_movieView.jsp"/>
+	<definition name="admin_movieWrite" extends="admin">
+		<put-attribute name="title" value="왓츄 -영화 등록"/>
+		<put-attribute name="body" value="/WEB-INF/views/admin/admin_movieWrite.jsp"/>
 	</definition>
-	<definition name="admin_movieModify" extends="admin">
-		<put-attribute name="title" value="왓츄 -영화 상세/수정 및 삭제" />
-		<put-attribute name="body" value="/WEB-INF/views/admin/admin_movieModify.jsp"/>
+	<definition name="admin_movieDetail" extends="admin">
+		<put-attribute name="title" value="왓츄 -영화 상세 정보"/>
+		<put-attribute name="body" value="/WEB-INF/views/admin/admin_movieDetail.jsp"/>
 	</definition>
 	
 	<definition name="officialList" extends="admin">
@@ -40,10 +40,6 @@
 		<put-attribute name="title" value="왓츄 -영화 장르 목록"/>
 		<put-attribute name="body" value="/WEB-INF/views/admin/genreList.jsp"/>
 	</definition>
-<!-- 	<definition name="genreDetail" extends="admin">
-		<put-attribute name="title" value="왓츄 -영화 장르 수정/삭제"/>
-		<put-attribute name="body" value="/WEB-INF/views/admin/genreDetail.jsp"/>
-	</definition> -->
 	
 	<definition name="movieRating" extends="admin">
 		<put-attribute name="title" value="왓츄 -영화 별점 관리"/>

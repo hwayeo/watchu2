@@ -32,7 +32,9 @@ public class MovieControllerAjax {
 	@RequestMapping("/movie/movieMlist.do")
 	@ResponseBody
 	public Map<String,Object> getMovieList(
-			@RequestParam(value="pageNum",defaultValue="1") int currentPage){
+			@RequestParam(value="pageNum",defaultValue="1") int currentPage,
+			@RequestParam(value="keyfield",defaultValue="") String keyfield,
+			@RequestParam(value="keyword",defaultValue="" ) String keyword){
 		
 		int rowCount = 4;
 		int pageCount = 10;
@@ -47,9 +49,13 @@ public class MovieControllerAjax {
 		
 		PagingUtil page = new PagingUtil(currentPage,count,rowCount,pageCount,null);
 		map.put("start", page.getStartCount());
-		map.put("end", page.getEndCount());		
+		map.put("end", page.getEndCount());
 		
 		List<MovieCommand> list = null;
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<count>> : " + count);
+		}
 		
 		if(count > 0) { 
 			list = movieService.selectMovieAjaxList(map);

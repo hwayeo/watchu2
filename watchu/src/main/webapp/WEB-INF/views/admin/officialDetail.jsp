@@ -15,12 +15,14 @@
 				<c:if test="${empty officials.off_photo}">
 				<img src="${pageContext.request.contextPath}/resources/images/no_img.png">
 				</c:if>
-				${officials.off_photo} 
+				<c:if test="${!empty officials.off_photo}">
+					<img src="off_imgView.do?num=${officials.off_num}" style="max-width: 100px">
+				</c:if>
 				</div>
 			</td>
 			<td>
 				<ul>
-					<li><b>관계자 코드</b> ${officials.off_num}</li>
+					<li><b>관계자 코드: </b> ${officials.off_num}</li>
 					<li>
 					<label for="jobs">구분</label>
 					<form:input path="jobs"/>
@@ -31,7 +33,7 @@
 					<form:input path="name"/>
 					<form:errors path="name" cssClass="error-color"/>
 					</li>
-					<hr size="1">
+					<hr size="1" noshade>
 					<li>
 					<label for="filmograp">필모그래피</label>
 					<Br>
@@ -41,6 +43,7 @@
 					<li>
 					<label for="upload">사진</label>
 				    <input type="file" name="upload" id="upload"/>
+				    <span>※ 새 파일 업로드 시 기존 파일은 삭제됩니다 ※</span>
 					</li>
 				</ul>
 			</td>

@@ -30,7 +30,7 @@
 				<c:forEach var="genre" items="${genre_list}">
 				<tr>
 					<td>${genre.genre_num}</td>
-					<td onclick="location.href='#genreModify'" style="cursor:pointer;" data-toggle="modal" data-target="#genreModify">${genre.genre}</td>
+					<td class="modify_btn" style="cursor:pointer;" data-toggle="modal" data-target="#genreModify" data-whatever="${genre.genre_num}">${genre.genre}</td>
 					<td><input type="checkbox" name="checked"></td>
 <%-- 				<td>${genre.genre_num}</td>
 					<td onclick="location.href='genreDetail.do?genre_num=${genre.genre_num}'" style="cursor:pointer;" data-toggle="modal" data-target="#genreModify">${genre.genre}</td>
@@ -96,7 +96,8 @@
    <div class="modal-dialog">
       <div class="modal-content">
 		<form:form commandName="genre_command" action="genreDetail.do" id="modify_form">
-		<form:hidden path="genre_num" />
+		<input type="hidden" name="genre_num" id="genre_num">
+		<form:errors element="div" cssClass="error-color"/>
         <div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
                <span aria-hidden="true">&times;</span>
@@ -104,16 +105,20 @@
             <h4 class="modal-title" id="genreModalLabel">장르 상세/수정</h4>
         </div>
         <div class="modal-body">
-        
-         	<div class="form-group">
+        	<input type="hidden" class="form-control" id="genre_num">
+        	<div class="form-group">
+        	<label for="genre_num">장르 코드: </label>
+        	<span id="show-num"></span>
+        	</div>
+        	<div class="form-group">
          		<label for="genre">장르명</label>
-         		<form:input path="genre"/>
+         		<form:input path="genre" id="name"/>
          		<form:errors path="genre" cssClass="error-color"/>
          	</div>
         </div>
          	
         <div class="modal-footer">
-        	<input type="button" value="삭제" onclick="location.href='genreDelete.do?genre_num=${genre.genre_num}'">
+        	<input id="modifyBtn" type="button" value="삭제" onclick="location.href='genreDelete.do?genre_num='">
 			<input type="submit" value="수정">
 			<input type="button" onclick="location.href='genreList.do'" value="목록">
         </div>

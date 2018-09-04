@@ -17,21 +17,27 @@
 			<!-- 회원 목록 -->
 			<table class="table table-hover table-condensed">
 				<tr>
-					<th class="col-md-2">번호</th>
-					<th class="col-md-8">회원명</th>
-					<th class="col-md-2">등급</th>
+					<th class="col-md-2">회원 코드</th>
+					<th class="col-md-2">아이디</th>
+					<th class="col-md-3">회원명</th>
+					<th class="col-md-2">누적 신고 수</th>
+					<th class="col-md-2">누적 좋아요 수</th>
+					<th class="col-md-1">선택</th>
 				</tr>
 				<tr>
 					<td>1</td>
-					<td><a href="#modifyModal" data-toggle="modal">홍길동</a></td>
-					<td><input type="number"></td>
+					<td>admin</td>
+					<td>홍길동</td>
+					<td>3</td>
+					<td>12</td>
+					<td><input type="checkbox"></td>
 				</tr>
 			</table>
 			<br>
 
 			<!-- 회원 등급 수정 -->
 			<div class="edit_btn" align="right">
-				<input type="submit" value="수정 저장" id="modify_level">
+				<input type="submit" value="선택 삭제" id="modify_level">
 			</div>
 			<br>
 

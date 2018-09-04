@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.watchu.movie.domain.GenreCommand;
@@ -70,7 +71,7 @@ public class AdminController {
 	private int pageCount = 10;
 
 	//관리자 메인	
-	@RequestMapping("/admin/main.do")
+	@RequestMapping("/admin/movieList.do")
 	public ModelAndView mainProcess(@RequestParam(value="pageNum", defaultValue="1") int currentPage,
 			@RequestParam(value="keyfield", defaultValue="") String keyfield,
 			@RequestParam(value="keyword", defaultValue="") String keyword) {
@@ -182,8 +183,30 @@ public class AdminController {
 	}
 
 	//==========01_영화 관리_영화목록==========//
-	//01_1_목록, 등록 폼
-	@RequestMapping("/admin/movieList.do") 
+	//01_1_등록 폼 호출
+	@RequestMapping(value="/admin/admin_movieWrite.do", method=RequestMethod.GET)
+	public String admin_movieForm(HttpSession session, Model model) {
+		//자바빈 생성
+		MovieCommand movie = new MovieCommand();
+		model.addAttribute("movie_command", movie);
+		
+		return "admin_movieWrite";
+	}
+	
+	//01_2_전송된 데이터 처리
+	@RequestMapping(value="/admin/admin_movieWrite.do", method=RequestMethod.POST)
+	public String movie_submit(@ModelAttribute("movie_command") @Valid MovieCommand movieCommand, BindingResult result, HttpServletRequest request) {
+		//로그 출력
+		if(log.isDebugEnabled()) {
+			log.debug("<<MovieCommand>>: " + movieCommand);
+		}
+
+		movieService.insertMovie(movieCommand);
+
+		return "redirect:/admin/movieList.do";
+	}
+
+	/*@RequestMapping("/admin/movieList.do") 
 	public ModelAndView movie_list(@RequestParam(value="pageNum", defaultValue="1") int currentPage,
 			@RequestParam(value="keyfield", defaultValue="") String keyfield,
 			@RequestParam(value="keyword", defaultValue="") String keyword) {
@@ -238,53 +261,65 @@ public class AdminController {
 
 		return "redirect:/admin/main.do";
 	}
-
-	//01_3_영화 상세/수정
-	//상세정보&수정폼 호출
-	@RequestMapping("/admin/admin_movieView.do")
-	public ModelAndView movie_detail(@RequestParam("movie_num") int movie_num){
+*/
+	//01_3_영화 상세&수정
+	//상세보기&수정 폼 호출
+	@RequestMapping(value="/admin/admin_movieDetail.do", method=RequestMethod.GET)
+	public ModelAndView admin_movieDetail(@RequestParam("movie_num") int movie_num, Model model) {
+		//로그 출력
 		if(log.isDebugEnabled()) {
 			log.debug("<<movie_num>>: " + movie_num);
 		}
-
-		MovieCommand movieCommand = movieService.selectMovie(movie_num); 
-
-		return new ModelAndView("admin_movieView", "movie", movieCommand);
-
-		//★★파일 다운로드, 이미지 출력 처리 해야함!
+		
+		MovieCommand movie = movieService.selectMovie(movie_num);
+		model.addAttribute("movie_command", movie);
+		
+		return new ModelAndView("admin_movieDetail", "movie", movie);
 	}
-
-	//01_4_영화 수정
-	//수정폼 호출
-	@RequestMapping(value="/admin/admin_movieModify.do", method=RequestMethod.GET)
-	public String movie_modify(@RequestParam("movie_num") int movie_num, Model model) {
-		//한 건의 데이터
-		MovieCommand movieCommand = movieService.selectMovie(movie_num);
-
-		model.addAttribute("movie_command", movieCommand);
-
-		return "admin_movieModify";
+	
+	//이미지 출력
+	@RequestMapping("/admin/movie_imgView.do")
+	public ModelAndView viewImage2(@RequestParam("movie_num") int movie_num) {
+		//한 건의 데이터를 받아 객체 생성
+		MovieCommand movie = movieService.selectMovie(movie_num);
+				
+		//데이터를 ModelAndView객체에 차곡차곡 저장
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("movie_imgView");
+						//속성명		속성값(byte[]의 데이터)
+		mav.addObject("imageFile", movie.getPoster_img());
+		mav.addObject("imageFile2", movie.getBanner_img());
+				
+		return mav;
 	}
-
-	//수정 폼에서 전송된 데이터 처리	
-	@RequestMapping(value="/admin/admin_movieModify.do", method=RequestMethod.POST)
-	public String submit(@ModelAttribute("movie_command") @Valid MovieCommand movieCommand, BindingResult result, HttpSession session, HttpServletRequest request) {
+	
+	//수정 폼에서 전송된 데이터 처리
+	@RequestMapping(value="/admin/admin_movieDetail.do", method=RequestMethod.POST)
+	public String adminMovie_submit(@ModelAttribute("movie_command") @Valid MovieCommand movieCommand, BindingResult result, HttpSession session, HttpServletRequest request) {
 		//로그 출력
 		if(log.isDebugEnabled()) {
 			log.debug("<<movieCommand>>: " + movieCommand);
 		}
-		//유효성 체크
-		if(result.hasErrors()) {
-			//원래 파일명 셋팅
-			return "admin_movieModify";
-		}
 		
-		//글 수정
+		//영화 정보 수정
 		movieService.updateMovie(movieCommand);
-
+		
 		return "redirect:/admin/movieList.do";
 	}
-
+	
+	//01_4_영화 정보 삭제
+	@RequestMapping("/admin/admin_movieDelete.do")
+	public String adminMovie_delete(@RequestParam("movie_num") int movie_num) {
+		//로그출력
+		if(log.isDebugEnabled()) {
+			log.debug("<<movie_num>>: " + movie_num);
+		}
+		
+		//글 삭제
+		movieService.deleteMovie(movie_num);
+		
+		return "redirect:/admin/movieList.do";
+	}
 	//==========02_영화 관리_영화 관계자==========//
 	//02_1_목록, 등록 폼
 	@RequestMapping("/admin/officialList.do")
@@ -357,6 +392,22 @@ public class AdminController {
 
 		return new ModelAndView("officialDetail", "officials", officials);
 	}
+	
+	//이미지 출력
+	@RequestMapping("/admin/off_imgView.do")
+	public ModelAndView viewImage(@RequestParam("off_num") int off_num) {
+		//한 건의 데이터를 받아 객체 생성
+		OfficialsCommand officials = officialsService.selectOfficials(off_num);
+				
+		//데이터를 ModelAndView객체에 차곡차곡 저장
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("off_imgView");
+						//속성명		속성값(byte[]의 데이터)
+		mav.addObject("imageFile", officials.getOff_photo());
+				
+		return mav;
+	}
+	
 	//수정 폼에서 전송된 데이터 처리
 	@RequestMapping(value="/admin/offcialDetail.do", method=RequestMethod.POST)
 	public String officials_submit(@ModelAttribute("official_command") @Valid OfficialsCommand officialsCommand, BindingResult result, HttpSession session, HttpServletRequest request) {
@@ -365,7 +416,7 @@ public class AdminController {
 			log.debug("<<officialsCommand>>: " + officialsCommand);
 		}
 		
-		//글 수정
+		//관계자 수정
 		officialsService.update(officialsCommand);
 		
 		return "redirect:/admin/officialList.do";

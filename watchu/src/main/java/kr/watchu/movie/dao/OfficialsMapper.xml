@@ -50,4 +50,15 @@
 			 </if> -->
 		 </where>
 	</select>
+	
+	<!-- 글 수정 -->
+	<update id="update">
+		<if test="off_photo == ''">
+			UPDATE officials SET name=#{name}, jobs=#{jobs}, filmograp=#{filmograp} WHERE off_num=#{off_num}
+		</if>
+		<if test="off_photo != ''">
+			UPDATE officials SET name=#{name}, jobs=#{jobs}, filmograp=#{filmograp}, off_photo=#{off_photo} WHERE off_num=#{off_num}
+		</if>
+	</update>
+	
 </mapper>
