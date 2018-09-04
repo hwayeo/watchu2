@@ -32,7 +32,9 @@ public class MovieControllerAjax {
 	@RequestMapping("/movie/movieMlist.do")
 	@ResponseBody
 	public Map<String,Object> getMovieList(
-			@RequestParam(value="pageNum",defaultValue="1") int currentPage){
+			@RequestParam(value="pageNum",defaultValue="1") int currentPage,
+			@RequestParam(value="keyfield",defaultValue="") String keyfield,
+			@RequestParam(value="keyword",defaultValue="" ) String keyword){
 		
 		int rowCount = 4;
 		int pageCount = 10;
