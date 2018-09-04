@@ -46,10 +46,14 @@
 	</definition>
 	
 	<definition name="userfollow" extends="userWrite">
-		<put-attribute name="title" value="팔로우페이지"/>
+		<put-attribute name="title" value="추천친구페이지"/>
 		<put-attribute name="body" value="/WEB-INF/views/user/userfollow.jsp"/>
 	</definition>
 	
+	<definition name="userFollowing" extends="userWrite">
+	<put-attribute name="title" value="내 팔로잉페이지"/>
+	<put-attribute name="body" value="/WEB-INF/views/user/userFollowing.jsp"/>
+	</definition>
 	
 </tiles-definitions>
 
