@@ -98,7 +98,31 @@
 	    width: auto;
 	    height: auto;
 	}
+	
+	
+	.rolling_panel {
+	position: relative;
+	width: 780px;
+	height: 150px;
+	margin: 0;
+	padding: 0;
+	border: 1px solid #c7c7c7;
+	overflow: hidden;
+}
 
+.rolling_panel ul {
+	position: absolute;
+	margin: 5px;
+	padding: 0;
+	list-style: none;
+}
+
+.rolling_panel ul li {
+	float: left; 
+	width: 180px;
+	height: 140px;
+}
+	
 }
 
 
@@ -200,4 +224,30 @@
 	    width: auto;
 	    height: auto;
 	}
+	
+	
+	
+	
+	.rolling_panel {
+	position: relative;
+	width: 780px;
+	height: 150px;
+	margin: 0;
+	padding: 0;
+	border: 1px solid #c7c7c7;
+	overflow: hidden;
+}
+
+.rolling_panel ul {
+	position: absolute;
+	margin: 5px;
+	padding: 0;
+	list-style: none;
+}
+
+.rolling_panel ul li {
+	float: left; 
+	width: 180px;
+	height: 140px;
+}
 }
