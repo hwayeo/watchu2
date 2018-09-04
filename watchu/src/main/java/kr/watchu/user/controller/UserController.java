@@ -192,7 +192,7 @@ public class UserController {
 			String follow_id = user.getFollow();
 			String[] follow_id2 = SplitUtil.splitByComma(follow_id);//쉼표제거
 		
-			//for문 돌려서 배열요소 리스트에 넣기
+			//for문 돌려서 String배열요소 Array리스트에 넣기
 			for(int i=0;i<follow_id2.length; i++) {
 				follow_id3.add(follow_id2[i]);
 			}
@@ -233,7 +233,6 @@ public class UserController {
 			log.debug("<<user_id~~~>>:" + user_id);
 		}
 
-		
 		UserCommand user = userService.selectUser(user_id);
 		
 		if(user.getFollow() == null) {//기존 팔로우한사람 없으면 그냥 추가
@@ -244,6 +243,7 @@ public class UserController {
 			user.setFollow(new_follow);
 		}
 		
+		//팔로우누른 친구 db에 update
 		userService.insertFollow(user);
 		
 		Map<String,String> map = new HashMap<String,String>();

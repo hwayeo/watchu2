@@ -1,7 +1,10 @@
 package kr.watchu.user.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -11,6 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.watchu.user.domain.UserCommand;
@@ -159,7 +164,74 @@ public class MyPageController {
 
 		return "user/userFollowing";
 	}
+	
+	
 	//언팔로우버튼 처리
+	@RequestMapping("/user/unfollow.do")
+	@ResponseBody
+	public Map<String,String> unfollow(@RequestParam(value="unfollow_id") String unfollow_id,@RequestParam(value="user_id") String user_id){
+		if(log.isDebugEnabled()) {
+			log.debug("<<unfollow_id~~~>>:" + unfollow_id);
+		}
+		ModelAndView mav = new ModelAndView();
+		UserCommand user = userService.selectUser(user_id);
+		
+		//시작
+		List<String> follow_id3 = new ArrayList<String>();
+
+		if(user.getFollow() != null) {
+			String follow_id = user.getFollow();
+			String[] follow_id2 = SplitUtil.splitByComma(follow_id);//쉼표제거
+
+			//for문 돌려서 String배열요소 Array리스트에 넣기
+			for(int i=0;i<follow_id2.length; i++) {
+				follow_id3.add(follow_id2[i]);
+			}
+
+		}else {
+			follow_id3.add(null);
+		}
+		//로그확인
+		if(log.isDebugEnabled()) {
+			log.debug("<<☆★follow_id3~~~>>:" + follow_id3);
+		}
+		mav.addObject("follow",follow_id3);
+		//끝
+		
+		if(follow_id3.contains(unfollow_id)==true) {//언팔누르는 아이디가 내 친구목록에 있으면
+			follow_id3.remove(unfollow_id);
+			//로그확인
+			if(log.isDebugEnabled()) {
+				log.debug("<<☆★follow_id3~~~>>:" + follow_id3);
+			}
+		}
+		
+		//follow_id3요소들을 다시 쉽표붙여서 db에 update
+		String followback = "";
+		if(follow_id3.isEmpty()) {//마지막남은친구도 언팔하면..
+			followback = "";
+		}else {//두명 이상일때 언팔누르면
+		
+			for(int i=0; i<follow_id3.size(); i++) {
+				followback += follow_id3.get(i) + "," ;
+			}
+			//마지막 쉼표는 제거해야댐
+			followback = followback.substring(0,followback.length()-1);
+		}
+		if(log.isDebugEnabled()) {
+			log.debug("<<☆★followback~~~>>:" + followback);
+		}
+		user.setFollow(followback);
+		
+		//언팔로우한 친구 빼고 db에 update
+		userService.insertFollow(user);
+		
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("result", "success");
+
+		return map;
+	}
+	
 	
 	
 	
