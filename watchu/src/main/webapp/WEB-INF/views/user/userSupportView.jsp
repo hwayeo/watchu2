@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/support.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/contact.reply.js"></script>
 <div class="page-main-style container">
@@ -38,7 +39,7 @@
 			              fn:endsWith(contact.filename,'.GIF') ||
 			              fn:endsWith(contact.filename,'.png') ||
 			              fn:endsWith(contact.filename,'.PNG')}">
-			<img src="imageView.do?contact_num=${contact.contact_num}" style="max-width:300px">
+			<img src="imageView.do?contact_num=${contact.contact_num}">
 			</c:if>
 			<p><br>
 				${contact.content}
@@ -53,15 +54,5 @@
 			<input type="button" class="btn btn-default" value="목록" onclick="location.href='userSupportList.do'"/>
 		</c:if>
 	</div>
-	
-	<!-- 목록 출력 -->
-	<div id="output"></div>
-	<div class="paging-button" style="display:none;">
-		<input type="button" value="다음글 보기">
-	</div>
-	<div id="loading" style="display:none;">
-		<img src="${pageContext.request.contextPath}/resources/images/ajax-loader.gif">
-	</div> 
-	
 </div>
 

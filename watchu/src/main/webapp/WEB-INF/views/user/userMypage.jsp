@@ -58,7 +58,7 @@
 		</div>
 		<br><br><hr>
 	
-	<div class="col-xs-12 col-md-12 text-center"> 
+		<div class="col-xs-12 col-md-12 text-center"> 
 			<div class="col-xs-7 col-md-6"><br>
 				<p style="font-size:22px">최고의 작품</p><br>
 			</div>
@@ -70,20 +70,24 @@
 			
 		<div class="col-xs-12 col-md-12 text-center"> 
 			
-			<div class="col-md-3"></div>
-			<div class="col-xs-4 col-md-2">
+			<div class="col-md-2"></div>
+			<div class="col-xs-3 col-md-2">
 				<img class="image" src="${pageContext.request.contextPath}/resources/images/gad.jpg" ><br>
 				<p>가디언즈 오브 갤럭시</p>
 			</div>
-			<div class="col-xs-4 col-md-2">
+			<div class="col-xs-3 col-md-2">
 				<img class="image" src="${pageContext.request.contextPath}/resources/images/gad2.jpg" ><br>
 				<p>수어사이드 스쿼드</p>
 			</div>
-			<div class="col-xs-4 col-md-2">
+			<div class="col-xs-3 col-md-2">
 				<img class="image" src="${pageContext.request.contextPath}/resources/images/gad3.jpg" ><br>
 				<p>앤트맨</p>
 			</div>
-			<div class="col-md-3"></div>
+			<div class="col-xs-3 col-md-2">
+				<img class="image" src="${pageContext.request.contextPath}/resources/images/gad3.jpg" ><br>
+				<p>앤트맨</p>
+			</div>
+			<div class="col-md-2"></div>
 		</div>
 	</div>
 </div>
