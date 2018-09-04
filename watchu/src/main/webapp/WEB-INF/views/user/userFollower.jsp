@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/admin-main.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/follow_unfollow.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/my_follow_unfollow.js"></script>
 
 
 </head>
@@ -37,6 +37,7 @@
                 <div class="panel-heading">팔로워 목록</div>
                 
                 <input type="hidden" id="user_id" name="user_id" value="${user.id}">
+                <input type="hidden" id="loginUser_id" name="loginUser_id" value="${loginUser.id}">
                 
                  <ul class="list-group">
                  	
@@ -52,7 +53,7 @@
                     <!-- 내 팔로워만 -->
                     <c:if test="${follower.contains(article.id) == true}">
 						<li class="list-group-item">
-						<a href="#" class="following_profile_img"> 
+						<a href="userPage.do?id=${article.id}" class="following_profile_img"> 
 							<c:if test="${empty article.profile_img}">
 								<img src="${pageContext.request.contextPath}/resources/images/default-profile.jpg"
 											class="img-circle" id="following_profile_img"
@@ -62,7 +63,10 @@
 								<img src="${pageContext.request.contextPath}/main/imageView.do?id=${article.id}" width="50" height="50" class="img-circle">
 							</c:if>
 						</a> 
-						<span class="name_span"><label class="name">${article.name}</label></span>
+						<span class="name_span"><label class="name"><a href="userPage.do?id=${article.id}">${article.name}</a></label></span>
+								<!-- get으로 넘겨받은 아이디랑 로그인한 아이디가 불일치하면 버튼 숨김 -->
+								<c:if test="${loginUser.id == user.id }">
+									
 									<!-- 내친구면 팔로잉버튼위로,아니면 팔로우버튼이 위로 -->
 									<c:if test="${follow.contains(article.id) == true}">
 									<div class="pull-right">
@@ -71,7 +75,7 @@
 											<input type="button" class="btn btn-success unfollow" data-id="${article.id}" name="unfollow" value="팔로잉">
 										</div> 
 									</div>
-									</c:if>
+									
 									<c:if test="${follow.contains(article.id) == false}">
 									<div class="pull-right">
 										<div class="follow_unfollow" > 
@@ -80,6 +84,10 @@
 										</div> 
 									</div>
 									</c:if>
+									
+									</c:if>
+									
+								</c:if>
 						</li>
 						</c:if>
 						</c:if>

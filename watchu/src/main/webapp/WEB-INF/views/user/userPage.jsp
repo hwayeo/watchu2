@@ -12,42 +12,41 @@
 				<div class="col-xs-8 col-md-10">
 				</div>
 				<div class="col-xs-4 col-md-2">
-					<a href="follow.do?id=${user_id}" class="glyphicon glyphicon-user"></a>&emsp;
-					<a href="setup.do?id=${user_id}" class="glyphicon glyphicon-cog" data-toggle="modal" data-target="#myModal2"></a>
+					<a href="setup.do" class="glyphicon glyphicon-cog" data-toggle="modal" data-target="#myModal2"></a>
 				</div><hr/>
 			</div>
 			
 			<div class="col-xs-7 col-md-6 text-center">
 				<a href="#" class="following_profile_img"> 
-					<c:if test="${empty user.profile_img}">
+					<c:if test="${empty anotheruser.profile_img}">
 							<img src="${pageContext.request.contextPath}/resources/images/default-profile.jpg"
 											class="img-circle" id="following_profile_img"
 											style="width: 50px; height: 50px;">
 					</c:if> 
-					<c:if test="${!empty user.profile_img}">
-							<img src="${pageContext.request.contextPath}/main/imageView.do?id=${user.id}" width="70" height="70" class="img-circle">
+					<c:if test="${!empty anotheruser.profile_img}">
+							<img src="${pageContext.request.contextPath}/main/imageView.do?id=${anotheruser.id}" width="70" height="70" class="img-circle">
 					</c:if>
 				</a> 
-				<p style="font-size:22px"> ${user.name}</p>
+				<p style="font-size:22px"> ${anotheruser.name}</p>
 				<div>
 					<ul class="wcPc-Arrange">
 						<li class="wcPc-ArrangeSizeFit" style="list-style:none;">
-								<a href="myfollowing.do?id=${user_id}">Following&emsp;</a>
-								<a href="myfollowing.doid=${user_id}">${list.size()}</a>
+								<a href="myfollowing.do?id=${anotheruser.id}">Following&emsp;</a>
+								<a href="myfollowing.do?id=${anotheruser.id}">${list.size()}</a>
 						</li>
 						<li class="wcPc-ArrangeSizeFit" style="list-style:none;">
-								<a href="myfollower.do?id=${user_id}">Followers&emsp;</a>
-								<a href="myfollower.do?id=${user_id}">${list2.size()}</a>
+								<a href="myfollower.do?id=${anotheruser.id}">Followers&emsp;</a>
+								<a href="myfollower.do?id=${anotheruser.id}">${list2.size()}</a>
 						</li>
 					</ul>
 				</div>
 			</div>
 			<div class="col-md-2"></div>
-			<div class="col-xs-5 col-md-1"><br>
-				<button class="btn btn-md btn-primary active" type="button" onclick="location.href='updateUser.do'">프로필 수정</button>
-			</div><hr><br><br>
+			
 		</div>
 		
+		
+		<!-- 겟방식으로 id 넘기는걸로 고쳐야댐 시작-->
 		<div class="col-xs-12 col-md-12"> 
 		<div class="container" style="border:1px solid gray"><br>
 				<div class="col-xs-7 col-md-7 text-center">
@@ -62,41 +61,33 @@
 		</div>
 		</div>
 		<br><br><hr>
-	
-		<div class="col-xs-12 col-md-12 text-center"> 
+		<!-- 겟방식으로 id 넘기는걸로 고쳐야댐 끝-->
+		
+	<div class="col-xs-12 col-md-12 text-center"> 
 			<div class="col-xs-7 col-md-6"><br>
 				<p style="font-size:22px">최고의 작품</p><br>
 			</div>
 			<div class="col-xs-1 col-md-2"></div>
-			<div class="col-xs-2 col-md-2"><br><br>
-				<button class="btn btn-md btn-primary active" type="button">취향 분석</button> 
-			</div>
+			
 		</div>
 			
 		<div class="col-xs-12 col-md-12 text-center"> 
 			
-			<div class="col-md-2"></div>
+			<div class="col-md-3"></div>
 			<div class="col-xs-4 col-md-2">
-				<img class="image" src="${pageContext.request.contextPath}/resources/images/gad.jpg"><br>
+				<img class="image" src="${pageContext.request.contextPath}/resources/images/gad.jpg" ><br>
 				<p>가디언즈 오브 갤럭시</p>
 			</div>
 			<div class="col-xs-4 col-md-2">
-				<img class="image" src="${pageContext.request.contextPath}/resources/images/gad2.jpg"><br>
+				<img class="image" src="${pageContext.request.contextPath}/resources/images/gad2.jpg" ><br>
 				<p>수어사이드 스쿼드</p>
 			</div>
 			<div class="col-xs-4 col-md-2">
-				<img class="image" src="${pageContext.request.contextPath}/resources/images/gad3.jpg"><br>
+				<img class="image" src="${pageContext.request.contextPath}/resources/images/gad3.jpg" ><br>
 				<p>앤트맨</p>
 			</div>
-			<div class="col-xs-4 col-md-2">
-				<img class="image" src="${pageContext.request.contextPath}/resources/images/gad3.jpg"><br>
-				<p>앤트맨</p>
-			</div>
-			<div class="col-md-2"></div>
+			<div class="col-md-3"></div>
 		</div>
-		
-		
-		
 	</div>
 </div>
 
@@ -118,47 +109,14 @@
 					<!--     여기부터 넣어라 -->
 					<ul class="list-group">
 
-						<li class="list-group-item">
-							<div class="">
-								<a href="updateUser.do"><label>내 설정</label></a>
-							</div>
-						</li>
-
-						<li class="list-group-item"></li>
-
-
-						<li class="list-group-item">
-
-							<div class="">
-								<a href="#"><label>공지사항</label></a>
-							</div>
-						</li>
-
-
-						<li class="list-group-item">
-							<div class="">
-								<a onclick="location.href='userSupportList.do'"><label>고객센터</label></a>
-							</div>
-
-						</li>
-
 						<li class="list-group-item"></li>
 
 						<li class="list-group-item">
 							<div class="">
-								<a href="logout.do"><label>로그아웃</label></a>
+								<a href="#"><label>BLOCK</label></a>
 							</div>
 
 						</li>
-
-						<li class="list-group-item">
-							<div class="">
-								<a href="deleteUser.do"><label>회원탈퇴</label></a>
-							</div>
-
-						</li>
-
-
 
 					</ul>
 

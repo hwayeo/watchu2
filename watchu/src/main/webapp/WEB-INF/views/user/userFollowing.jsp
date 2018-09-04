@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/admin-main.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/follow_unfollow.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/my_follow_unfollow.js"></script>
 
 
 </head>
@@ -52,7 +52,7 @@
                     <!-- 내가 팔로잉한 친구만 -->
                     <c:if test="${follow.contains(article.id) == true}">
 						<li class="list-group-item">
-						<a href="#" class="following_profile_img"> 
+						<a href="userPage.do?id=${article.id}" class="following_profile_img"> 
 							<c:if test="${empty article.profile_img}">
 								<img src="${pageContext.request.contextPath}/resources/images/default-profile.jpg"
 											class="img-circle" id="following_profile_img"
@@ -62,13 +62,16 @@
 								<img src="${pageContext.request.contextPath}/main/imageView.do?id=${article.id}" width="50" height="50" class="img-circle">
 							</c:if>
 						</a> 
-						<span class="name_span"><label class="name">${article.name}</label></span>
+						<span class="name_span"><label class="name"><a href="userPage.do?id=${article.id}">${article.name}</a></label></span>
+								<!-- get으로 넘겨받은 아이디랑 로그인한 아이디가 불일치하면 버튼 숨김 -->
+								<c:if test="${loginUser.id == user.id }">
 									<div class="pull-right">
 										<div class="follow_unfollow" > 
 											<input type="button" class="btn btn-primary active follow" data-id="${article.id}" name="follow" value="팔로우" style="display: none;">
 											<input type="button" class="btn btn-success unfollow" data-id="${article.id}" name="unfollow" value="팔로잉">
 										</div> 
 									</div>
+								</c:if>
 						</li>
 						</c:if>
 						</c:if>
