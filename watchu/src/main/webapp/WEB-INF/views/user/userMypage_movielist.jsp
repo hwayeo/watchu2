@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/mypagemovie.css">
 	<div class="container-fluid">
 		<div class="container text-center">
 			<div class="col-xs-12 col-md-12">
@@ -30,47 +31,23 @@
 
 					<div class="row container">
 						<div class="col-xs-12 col-md-12">
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="100%" height="100%">
 								<br><span>가디언즈 오브 갤럭시</span>
 								<br><span style="color: #ffbf00">★4.5</span><br><br>
 							</div>
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad2.jpg" width="100%" height="100%">
 								<br><span>수어사이드 스쿼드</span>
 								<br><span style="color: #ffbf00">★1.5</span><br><br>
 
 							</div>
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad3.jpg" width="100%" height="100%">
 								<br><span>앤트맨</span>
 								<br><span style="color: #ffbf00">★5.0</span><br><br>
 							</div> 
-							<div class="col-xs-3 col-md-3">
-								<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="100%" height="100%">
-								<br><span>가디언즈 오브 갤럭시</span>
-								<br><span style="color: #ffbf00">★4.5</span><br><br>
-							</div>
-						</div> 
-						
-						<div class="col-xs-12 col-md-12">
-							<div class="col-xs-3 col-md-3">
-								<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="100%" height="100%">
-								<br><span>가디언즈 오브 갤럭시</span>
-								<br><span style="color: #ffbf00">★4.5</span><br><br>
-							</div>
-							<div class="col-xs-3 col-md-3">
-								<img src="${pageContext.request.contextPath}/resources/images/gad2.jpg" width="100%" height="100%">
-								<br><span>수어사이드 스쿼드</span>
-								<br><span style="color: #ffbf00">★1.5</span><br><br>
-
-							</div>
-							<div class="col-xs-3 col-md-3">
-								<img src="${pageContext.request.contextPath}/resources/images/gad3.jpg" width="100%" height="100%">
-								<br><span>앤트맨</span>
-								<br><span style="color: #ffbf00">★5.0</span><br><br>
-							</div> 
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="100%" height="100%">
 								<br><span>가디언즈 오브 갤럭시</span>
 								<br><span style="color: #ffbf00">★4.5</span><br><br>
@@ -97,23 +74,23 @@
 					
 					<div class="row container">
 						<div class="col-xs-12 col-md-12">
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="100%" height="100%">
 								<br><span>가디언즈 오브 갤럭시</span>
 								<br><span style="color: #ffbf00">★4.5</span><br><br>
 							</div>
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad2.jpg" width="100%" height="100%">
 								<br><span>수어사이드 스쿼드</span>
 								<br><span style="color: #ffbf00">★1.5</span><br><br>
 
 							</div>
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad3.jpg" width="100%" height="100%">
 								<br><span>앤트맨</span>
 								<br><span style="color: #ffbf00">★5.0</span><br><br>
 							</div> 
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="100%" height="100%">
 								<br><span>가디언즈 오브 갤럭시</span>
 								<br><span style="color: #ffbf00">★4.5</span><br><br>
@@ -135,28 +112,28 @@
 					
 					<div class="row container">
 						<div class="col-xs-12 col-md-12">
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="100%" height="100%">
 								<br><span>가디언즈 오브 갤럭시</span>
 								<br><span style="color: #ffbf00">★4.5</span><br><br>
 							</div>
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad2.jpg" width="100%" height="100%">
 								<br><span>수어사이드 스쿼드</span>
 								<br><span style="color: #ffbf00">★1.5</span><br><br>
 
 							</div>
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad3.jpg" width="100%" height="100%">
 								<br><span>앤트맨</span>
 								<br><span style="color: #ffbf00">★5.0</span><br><br>
 							</div> 
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="100%" height="100%">
 								<br><span>가디언즈 오브 갤럭시</span>
 								<br><span style="color: #ffbf00">★4.5</span><br><br>
 							</div>
-						</div> 
+						</div>  
 					</div> <hr/>
 					 
 					 <div class="col-xs-12 col-md-12">
@@ -173,23 +150,23 @@
 					
 					<div class="row container">
 						<div class="col-xs-12 col-md-12">
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="100%" height="100%">
 								<br><span>가디언즈 오브 갤럭시</span>
 								<br><span style="color: #ffbf00">★4.5</span><br><br>
 							</div>
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad2.jpg" width="100%" height="100%">
 								<br><span>수어사이드 스쿼드</span>
 								<br><span style="color: #ffbf00">★1.5</span><br><br>
 
 							</div>
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad3.jpg" width="100%" height="100%">
 								<br><span>앤트맨</span>
 								<br><span style="color: #ffbf00">★5.0</span><br><br>
 							</div> 
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="100%" height="100%">
 								<br><span>가디언즈 오브 갤럭시</span>
 								<br><span style="color: #ffbf00">★4.5</span><br><br>
@@ -211,23 +188,23 @@
 					
 					<div class="row container">
 						<div class="col-xs-12 col-md-12">
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="100%" height="100%">
 								<br><span>가디언즈 오브 갤럭시</span>
 								<br><span style="color: #ffbf00">★4.5</span><br><br>
 							</div>
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad2.jpg" width="100%" height="100%">
 								<br><span>수어사이드 스쿼드</span>
 								<br><span style="color: #ffbf00">★1.5</span><br><br>
 
 							</div>
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad3.jpg" width="100%" height="100%">
 								<br><span>앤트맨</span>
 								<br><span style="color: #ffbf00">★5.0</span><br><br>
 							</div> 
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="100%" height="100%">
 								<br><span>가디언즈 오브 갤럭시</span>
 								<br><span style="color: #ffbf00">★4.5</span><br><br>
@@ -249,23 +226,23 @@
 					
 					<div class="row container">
 						<div class="col-xs-12 col-md-12">
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="100%" height="100%">
 								<br><span>가디언즈 오브 갤럭시</span>
 								<br><span style="color: #ffbf00">★4.5</span><br><br>
 							</div>
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad2.jpg" width="100%" height="100%">
 								<br><span>수어사이드 스쿼드</span>
 								<br><span style="color: #ffbf00">★1.5</span><br><br>
 
 							</div>
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad3.jpg" width="100%" height="100%">
 								<br><span>앤트맨</span>
 								<br><span style="color: #ffbf00">★5.0</span><br><br>
 							</div> 
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="100%" height="100%">
 								<br><span>가디언즈 오브 갤럭시</span>
 								<br><span style="color: #ffbf00">★4.5</span><br><br>
@@ -287,23 +264,23 @@
 					
 					<div class="row container">
 						<div class="col-xs-12 col-md-12">
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="100%" height="100%">
 								<br><span>가디언즈 오브 갤럭시</span>
 								<br><span style="color: #ffbf00">★4.5</span><br><br>
 							</div>
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad2.jpg" width="100%" height="100%">
 								<br><span>수어사이드 스쿼드</span>
 								<br><span style="color: #ffbf00">★1.5</span><br><br>
 
 							</div>
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad3.jpg" width="100%" height="100%">
 								<br><span>앤트맨</span>
 								<br><span style="color: #ffbf00">★5.0</span><br><br>
 							</div> 
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="100%" height="100%">
 								<br><span>가디언즈 오브 갤럭시</span>
 								<br><span style="color: #ffbf00">★4.5</span><br><br>
@@ -325,23 +302,23 @@
 					
 					<div class="row container">
 						<div class="col-xs-12 col-md-12">
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="100%" height="100%">
 								<br><span>가디언즈 오브 갤럭시</span>
 								<br><span style="color: #ffbf00">★4.5</span><br><br>
 							</div>
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad2.jpg" width="100%" height="100%">
 								<br><span>수어사이드 스쿼드</span>
 								<br><span style="color: #ffbf00">★1.5</span><br><br>
 
 							</div>
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad3.jpg" width="100%" height="100%">
 								<br><span>앤트맨</span>
 								<br><span style="color: #ffbf00">★5.0</span><br><br>
 							</div> 
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="100%" height="100%">
 								<br><span>가디언즈 오브 갤럭시</span>
 								<br><span style="color: #ffbf00">★4.5</span><br><br>
@@ -363,23 +340,23 @@
 					
 					<div class="row container">
 						<div class="col-xs-12 col-md-12">
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="100%" height="100%">
 								<br><span>가디언즈 오브 갤럭시</span>
 								<br><span style="color: #ffbf00">★4.5</span><br><br>
 							</div>
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad2.jpg" width="100%" height="100%">
 								<br><span>수어사이드 스쿼드</span>
 								<br><span style="color: #ffbf00">★1.5</span><br><br>
 
 							</div>
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad3.jpg" width="100%" height="100%">
 								<br><span>앤트맨</span>
 								<br><span style="color: #ffbf00">★5.0</span><br><br>
 							</div> 
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="100%" height="100%">
 								<br><span>가디언즈 오브 갤럭시</span>
 								<br><span style="color: #ffbf00">★4.5</span><br><br>
@@ -401,23 +378,23 @@
 					
 					<div class="row container">
 						<div class="col-xs-12 col-md-12">
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="100%" height="100%">
 								<br><span>가디언즈 오브 갤럭시</span>
 								<br><span style="color: #ffbf00">★4.5</span><br><br>
 							</div>
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad2.jpg" width="100%" height="100%">
 								<br><span>수어사이드 스쿼드</span>
 								<br><span style="color: #ffbf00">★1.5</span><br><br>
 
 							</div>
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad3.jpg" width="100%" height="100%">
 								<br><span>앤트맨</span>
 								<br><span style="color: #ffbf00">★5.0</span><br><br>
 							</div> 
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="100%" height="100%">
 								<br><span>가디언즈 오브 갤럭시</span>
 								<br><span style="color: #ffbf00">★4.5</span><br><br>
@@ -439,23 +416,23 @@
 					
 					<div class="row container">
 						<div class="col-xs-12 col-md-12">
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="100%" height="100%">
 								<br><span>가디언즈 오브 갤럭시</span>
 								<br><span style="color: #ffbf00">★4.5</span><br><br>
 							</div>
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad2.jpg" width="100%" height="100%">
 								<br><span>수어사이드 스쿼드</span>
 								<br><span style="color: #ffbf00">★1.5</span><br><br>
 
 							</div>
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad3.jpg" width="100%" height="100%">
 								<br><span>앤트맨</span>
 								<br><span style="color: #ffbf00">★5.0</span><br><br>
 							</div> 
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-3">
 								<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="100%" height="100%">
 								<br><span>가디언즈 오브 갤럭시</span>
 								<br><span style="color: #ffbf00">★4.5</span><br><br>

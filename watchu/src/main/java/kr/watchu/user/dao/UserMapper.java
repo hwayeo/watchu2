@@ -33,18 +33,16 @@ public interface UserMapper {
 	@Delete("delete from user_relation where id=#{id}")
 	public void deleteUserRelation(String id);
 	
-	//목록
+	//친구목록
 	public int selectUserCnt(Map<String, Object> map);	
 	public List<UserCommand> selectUserList(Map<String,Object> map);
-	
-	//팔로우목록
-	@Select("select * from user_basic b LEFT OUTER JOIN user_info i ON b.id=i.id")
-	public List<UserCommand> selectfollowList();
 	
 	//팔로우버튼누르면  user_relation 테이블에 등록
 	@Update("update user_relation set follow=#{follow} where id=#{id}")
 	public void insertFollow(UserCommand user);
-	
+	//상대방 팔로워에 나 추가
+	@Update("update user_relation set follower=#{follower} where id=#{id}")
+	public void insertFollower(UserCommand user);
 	
 	//친구관계(팔로우,팔로워,블락)
 	//회원가입시 user_relation 테이블에 등록

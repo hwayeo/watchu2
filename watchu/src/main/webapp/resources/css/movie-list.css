@@ -64,13 +64,9 @@
 	-webkit-line-clamp: 3; 
 	-webkit-box-orient: vertical;
 }
-.ptitle{
-	font-size:24px;
-	font-weight:800;
-}
 
 .ptitle{
-	font-size:20px;
+	font-size:18px;
 	font-weight:800;
 }
 
@@ -149,13 +145,9 @@
 	-webkit-line-clamp: 3; 
 	-webkit-box-orient: vertical;
 }
-.ptitle{
-	font-size:24px;
-	font-weight:800;
-}
 
 .ptitle{
-	font-size:14px;
+	font-size:12px;
 	font-weight:800;
 }
 

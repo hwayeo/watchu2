@@ -65,10 +65,6 @@ public class MovieController {
 		return mav;
 	}
 	
-	/*@RequestMapping("/movie/movieList.do")
-	public String movieList(){
-		return "movieList";
-	}*/
 	@RequestMapping("/movie/movieList.do")
 	public ModelAndView mlist2(
 			@RequestParam(value="pageNum",defaultValue="1") int currentPage,
@@ -86,7 +82,7 @@ public class MovieController {
 		int count = movieService.selectMovieCnt(map);
 		
 		if(log.isDebugEnabled()) {
-			log.debug("<<count>> : " + count);
+			log.debug("<<리스트 총값>> : " + count);
 		}
 		
 		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,rowCount,pageCount,"movieList.do");
@@ -98,8 +94,7 @@ public class MovieController {
 		list = movieService.selectMovieList(map);
 		
 		if(log.isDebugEnabled()) {
-			log.debug("<<list>> : " + list);
-			log.debug("<<page>> : " + page);
+			log.debug("<<리스트 내용값>> : " + list);
 		}
 		
 		ModelAndView mav = new ModelAndView();
