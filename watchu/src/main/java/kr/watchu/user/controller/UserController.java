@@ -243,15 +243,10 @@ public class UserController {
 	@ResponseBody
 	public Map<String,String> follwing(@RequestParam(value="follow_id") String follow_id,@RequestParam(value="user_id") String user_id){
 
-		if(log.isDebugEnabled()) {
-			log.debug("<<follow_id~~~>>:" + follow_id);
-		}
-		if(log.isDebugEnabled()) {
-			log.debug("<<user_id~~~>>:" + user_id);
-		}
-
-		UserCommand user = userService.selectUser(user_id);
+		UserCommand user = userService.selectUser(user_id);//내 커맨드
+		UserCommand follow_user = userService.selectUser(follow_id);//내가 팔로우한사람의 커맨드
 		
+		//------------------내 커맨드 follow에 추가
 		if(user.getFollow() == null) {//기존 팔로우한사람 없으면 그냥 추가
 			user.setFollow(follow_id);
 		}else{//있으면 쉼표찍고 새로 팔로우한 사람 추가
@@ -259,9 +254,115 @@ public class UserController {
 			String new_follow = origin_follow+","+follow_id;
 			user.setFollow(new_follow);
 		}
-		
-		//팔로우누른 친구 db에 update
+		//내 follow update
 		userService.insertFollow(user);
+		
+		//-----------------내가 팔로우한 사람의 커맨드 follower에 추가
+		if(follow_user.getFollower() == null) {//팔로워 비어있으면 그냥 추가
+			follow_user.setFollower(user_id);
+		}else {//있으면 쉽표찍고 추가
+			String origin_follower = follow_user.getFollower();
+			String new_follow = origin_follower+","+user_id;
+			follow_user.setFollower(new_follow);
+		}
+		//상대방 follower update
+		userService.insertFollower(follow_user);
+		
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("result", "success");
+
+		return map;
+	}
+	
+	//언팔로우버튼 처리
+	@RequestMapping("/user/unfollow.do")
+	@ResponseBody
+	public Map<String,String> unfollow(@RequestParam(value="unfollow_id") String unfollow_id,@RequestParam(value="user_id") String user_id){
+		
+		ModelAndView mav = new ModelAndView();
+		UserCommand user = userService.selectUser(user_id);//내 커맨드
+		UserCommand unfollow_user = userService.selectUser(unfollow_id);//내가 언팔한사람의 커맨드
+		
+		//--------------------------------------------------------------------------
+		//내 follow에 있는 친구들 쉼표제거해서 arrayList로 만들기 시작
+		List<String> user_follow3 = new ArrayList<String>();
+
+		if(user.getFollow() != null) {
+			String user_follow = user.getFollow();
+			String[] user_follow2 = SplitUtil.splitByComma(user_follow);//쉼표제거
+
+			//for문 돌려서 String배열요소 Array리스트에 넣기
+			for(int i=0;i<user_follow2.length; i++) {
+				user_follow3.add(user_follow2[i]);
+			}
+
+		}else {
+			user_follow3.add(null);
+		}
+		
+		mav.addObject("follow",user_follow3);
+		//내 follow에 있는 친구들 쉼표제거해서 arrayList로 만들기 끝
+		
+		//내 follow에서 언팔한 친구 지우기
+		if(user_follow3.contains(unfollow_id)==true) {//언팔누르는 아이디가 내 친구목록에 있으면
+			user_follow3.remove(unfollow_id);
+		}
+
+		//언팔제거한 follow_id3요소들을 다시 쉽표붙여서 String문자열로 만들기
+		String followback = "";
+		if(user_follow3.isEmpty()) {//모두 언팔해서 follow 비어있으면
+			followback = "";
+		}else {//follow에 한명이상 있을경우
+
+			for(int i=0; i<user_follow3.size(); i++) {
+				followback += user_follow3.get(i) + "," ;
+			}
+			//마지막 쉼표는 제거해야댐
+			followback = followback.substring(0,followback.length()-1);//인덱스0~마지막전까지 문자만 가져옴
+		}
+		
+		user.setFollow(followback);
+
+		//내 follow update
+		userService.insertFollow(user);
+		//--------------------------------------------------------------------------
+		
+		//내가 언팔한사람의 follwer를 쉼표제거해서 arrayList로 만들기 시작
+		List<String> unfollow_follower3 = new ArrayList<String>();
+		if(unfollow_user.getFollower() != null) {
+			String unfollow_follower = unfollow_user.getFollower();
+			String[] unfollow_follower2 = SplitUtil.splitByComma(unfollow_follower);//쉼표제거
+			
+			//for문 돌려서 String배열요소 Array리스트에 넣기
+			for(int i=0;i<unfollow_follower2.length; i++) {
+				unfollow_follower3.add(unfollow_follower2[i]);
+			}
+		}else {
+			unfollow_follower3.add(null);
+		}
+		//내가 언팔한사람의 follwer를 쉼표제거해서 arrayList로 만들기 끝
+		
+		//상대방 follower에서 나 지우기
+		if(unfollow_follower3.contains(user_id)==true) {
+			unfollow_follower3.remove(user_id);
+		}
+		//unfollow_follower3요소들을 다시 쉼표붙여서 String문자열로 만들기
+		String followerback ="";
+		if(unfollow_follower3.isEmpty()) {
+			followerback="";
+		}else {
+			for(int i =0;i<unfollow_follower3.size();i++) {
+				followerback += unfollow_follower3.get(i) + ",";
+			}
+			//마지막 쉼표는 제거
+			followerback= followerback.substring(0,followerback.length()-1);//인덱스0~마지막전까지 문자만 가져옴
+		}
+		
+		unfollow_user.setFollower(followerback);
+		
+		//상대방 follower update
+		userService.insertFollower(unfollow_user);
+		//--------------------------------------------------------------------------------
 		
 		Map<String,String> map = new HashMap<String,String>();
 		map.put("result", "success");
