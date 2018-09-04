@@ -59,17 +59,21 @@ $(document).ready(function(){
 		$.ajax({ 
 			type:'post',
 			data:{pageNum:pageNum,movie_num:movie_num,keyword:keyword,keyfield:keyfield},
-			url:'movieMlist2.do',
+			url:'movieMlist.do',
 			dataType:'json',
 			cache:false,
 			timeout:30000,
 			success:function(data){
 				count = data.count;
 				rowCount = data.rowCount;
+				keyword = data.keyword;
+				keyfield = data.keyfield;
 				var list = data.list;
 				
 				if(count < 0 || list == null){
 					alert('if문으로 빠짐');
+				}else if(keyfield == 'title'){
+					
 				}else{
 					$(list).each(function(index,item){
 						var slist = '<div class="col-sm-6 col-md-3 col-xs-6" id="main-category">';
@@ -87,7 +91,8 @@ $(document).ready(function(){
 				alert('에러페이지');
 			}
 		});
-	}  
+	}
+  selectList(1,$('#movie_num').val());
   
   //영화 평가 화면
   function selectEva(pageNum,movie_num){
@@ -141,15 +146,14 @@ $(document).ready(function(){
 		if(currentPage>=Math.ceil(count/rowCount)){
 			
 		}else{
-			if(currentPage < 5){
+			/*if(currentPage < 5){
 				var pageNum = currentPage + 6;
 				selectList(pageNum,$('#movie_num').val());
 				selectEva(pageNum,$('#movie_num').val(),keyfield,keyword);
-			}else{
+			}else{*/
 				pageNum = currentPage + 1;
 				selectList(pageNum,$('#movie_num').val());
 				selectEva(pageNum,$('#movie_num').val());
-			}
 		}		
 	   }
 	});
