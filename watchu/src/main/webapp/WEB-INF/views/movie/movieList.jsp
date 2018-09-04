@@ -166,14 +166,15 @@
 </div>
 
 <div class="row">
-<c:forEach var="ml" items="${list}">
-	<div class="col-sm-6 col-md-3 col-xs-6" id="main-category">
+	<div class="slist"></div>
+<%-- <div class="col-sm-6 col-md-3 col-xs-6" id="main-category">
 		<div class="thumbnail" onclick="location.href='movieDetail.do?movie_num=${ml.movie_num}'"><img src="${pageContext.request.contextPath}/resources/images/img4.jpg"></div>
 		<div class="sub-category caption">
 			<p class="ptitle">${ml.title}</p>
 			<p class="pgeren">${ml.country}</p>
 		</div>
-	</div>
+	</div> --%>
+<c:forEach var="ml" items="${list}">
+	<input type="hidden" value="${ml.movie_num}">
 </c:forEach>
-<div class="slist"></div>
 </div>

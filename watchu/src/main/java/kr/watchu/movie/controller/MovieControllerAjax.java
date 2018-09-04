@@ -29,7 +29,7 @@ public class MovieControllerAjax {
 		return new MovieCommand();
 	}
 	
-	@RequestMapping("/movie/movieMlist.do")
+	@RequestMapping("/movie/movieMlist.do") 
 	@ResponseBody
 	public Map<String,Object> getMovieList(
 			@RequestParam(value="pageNum",defaultValue="1") int currentPage,
@@ -39,11 +39,13 @@ public class MovieControllerAjax {
 		int rowCount = 4;
 		int pageCount = 10;
 		
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
+		
 		if(log.isDebugEnabled()) {
 			log.debug("<<currentPage>> : " + currentPage);
 		}
-		
-		Map<String,Object> map = new HashMap<String,Object>();
 		
 		int count = movieService.selectMovieAjaxCnt(map);
 		
@@ -57,7 +59,7 @@ public class MovieControllerAjax {
 			log.debug("<<count>> : " + count);
 		}
 		
-		if(count > 0) { 
+		if(count > 0) {
 			list = movieService.selectMovieAjaxList(map);
 		}
 		 

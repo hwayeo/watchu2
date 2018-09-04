@@ -49,7 +49,7 @@ $(document).ready(function(){
   selectHome(1,$('#movie_num').val());
   
   //영화 목록 화면
-  function selectList(pageNum,movie_num){
+  function selectList(pageNum,movie_num,keyword,keyfield){
 		currentPage = pageNum;
 		
 		if(pageNum == 1){
@@ -58,8 +58,8 @@ $(document).ready(function(){
 		
 		$.ajax({ 
 			type:'post',
-			data:{pageNum:pageNum},
-			url:'movieMlist.do',
+			data:{pageNum:pageNum,movie_num:movie_num,keyword:keyword,keyfield:keyfield},
+			url:'movieMlist2.do',
 			dataType:'json',
 			cache:false,
 			timeout:30000,
@@ -144,7 +144,7 @@ $(document).ready(function(){
 			if(currentPage < 5){
 				var pageNum = currentPage + 6;
 				selectList(pageNum,$('#movie_num').val());
-				selectEva(pageNum,$('#movie_num').val());
+				selectEva(pageNum,$('#movie_num').val(),keyfield,keyword);
 			}else{
 				pageNum = currentPage + 1;
 				selectList(pageNum,$('#movie_num').val());

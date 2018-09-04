@@ -20,7 +20,7 @@
          <li><a href="movieList.do">카테고리</a></li>
          <li><a href="movieEva.do">평가하기</a></li>
       </ul>
-   </div>
+   </div> 
 </nav>
 
 <!-- 모바일 환경 -->
