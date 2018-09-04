@@ -58,4 +58,14 @@ public class MovieServiceImpl implements MovieService {
 		return movieMapper.selectMovieAjaxList(map);
 	}
 
+	@Override
+	public int selectMovieAjaxCnt2(Map<String, Object> map) {
+		return movieMapper.selectMovieAjaxCnt2(map);
+	}
+
+	@Override
+	public List<MovieCommand> selectMovieAjaxList2(Map<String, Object> map) {
+		return movieMapper.selectMovieAjaxList2(map);
+	}
+
 }

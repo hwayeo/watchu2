@@ -16,8 +16,8 @@
 			<if test="keyword != '' and keyfield == 'title'" >
 				title like '%' || #{keyword} || '%'
 			</if>
-			<if test="keyword != '' and keyfield == 'director'" >
-				director like '%' || #{keyword} || '%'
+			<if test="keyword != '' and keyfield == 'country'" >
+				country like '%' || #{keyword} || '%'
 			</if>
 			<if test="keyword != '' and keyfield == 'actors'" >
 				actors like '%' || #{keyword} || '%'
@@ -34,14 +34,14 @@
 	]]>	
 	</select>
 	
-	<select id="selectMovieCnt" resultType="Integer">
+	<select id="selectMovieCnt" parameterType="map" resultType="integer">
 		SELECT count(*) FROM movie_info
 		<where>
 			<if test="keyword != '' and keyfield == 'title'" >
 				title like '%' || #{keyword} || '%'
 			</if>
-			<if test="keyword != '' and keyfield == 'director'" >
-				director like '%' || #{keyword} || '%'
+			<if test="keyword != '' and keyfield == 'country'" >
+				country like '%' || #{keyword} || '%'
 			</if>
 			<if test="keyword != '' and keyfield == 'actors'" >
 				actors like '%' || #{keyword} || '%'
@@ -63,18 +63,53 @@
 			<if test="keyword != '' and keyfield == 'title'" >
 				title like '%' || #{keyword} || '%'
 			</if>
+			<if test="keyword != '' and keyfield == 'country'" >
+				country like '%' || #{keyword} || '%'
+			</if>
 	</where>	
 	ORDER BY title desc)a)
 	<![CDATA[
 		WHERE rnum >= #{start} AND rnum <= #{end}
 	]]>	
-	</select>
-	
-	<select id="selectMovieAjaxCnt" resultType="Integer">
+	</select>	
+	<select id="selectMovieAjaxCnt" parameterType="map" resultType="Integer">
 		SELECT count(*) FROM movie_info
 		<where>
 			<if test="keyword != '' and keyfield == 'title'" >
 				title like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'country'" >
+				country like '%' || #{keyword} || '%'
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectMovieAjaxList2" parameterType="Map" resultType="MovieCommand">
+		SELECT * FROM
+	(SELECT a.*,rownum rnum FROM
+	(SELECT * 
+	FROM movie_info
+	<where>
+			<if test="keyword != '' and keyfield == 'title'" >
+				title like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'country'" >
+				country like '%' || #{keyword} || '%'
+			</if>
+	</where>	
+	ORDER BY title desc)a)
+	<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+	]]>	
+	</select>	
+	<select id="selectMovieAjaxCnt2" parameterType="map" resultType="Integer">
+		SELECT count(*) FROM movie_info
+		<where>
+			<if test="keyword != '' and keyfield == 'title'" >
+				title like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'country'" >
+				country like '%' || #{keyword} || '%'
 			</if>
 		</where>
 	</select>
