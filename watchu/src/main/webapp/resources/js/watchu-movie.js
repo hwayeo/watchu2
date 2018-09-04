@@ -48,13 +48,58 @@ $(document).ready(function(){
 	}
   selectHome(1,$('#movie_num').val());
   
-  
-  //영화 평가 화면
-  function selectEva(pageNum){
+  //영화 목록 화면
+  function selectList(pageNum,movie_num,keyword,keyfield){
 		currentPage = pageNum;
 		
 		if(pageNum == 1){
-			$('.mlist4').empty();
+			$('.sList').empty();
+		}
+		
+		$.ajax({ 
+			type:'post',
+			data:{pageNum:pageNum,movie_num:movie_num,keyword:keyword,keyfield:keyfield},
+			url:'movieMlist.do',
+			dataType:'json',
+			cache:false,
+			timeout:30000,
+			success:function(data){
+				count = data.count;
+				rowCount = data.rowCount;
+				keyword = data.keyword;
+				keyfield = data.keyfield;
+				var list = data.list;
+				
+				if(count < 0 || list == null){
+					alert('if문으로 빠짐');
+				}else if(keyfield == 'title'){
+					
+				}else{
+					$(list).each(function(index,item){
+						var slist = '<div class="col-sm-6 col-md-3 col-xs-6" id="main-category">';
+						slist += '<div class="thumbnail" onclick="location.href=\'movieDetail.do?movie_num='+item.movie_num+'\'"><img src="../resources/images/img4.jpg"></div>';
+						slist += '<div class="sub-category caption">';
+						slist += '<p class="ptitle">'+item.title+'</p>';
+						slist += '<p class="pgeren">'+item.country+'</p>';
+						slist += '</div>';
+						slist += '</div>';
+						
+						$('.slist').append(slist);
+					});
+				}
+			},error:function(){
+				alert('에러페이지');
+			}
+		});
+	}
+  selectList(1,$('#movie_num').val());
+  
+  //영화 평가 화면
+  function selectEva(pageNum,movie_num){
+		currentPage = pageNum;
+		
+		if(pageNum == 1){
+			$('.eList').empty();
 		}
 		
 		$.ajax({ 
@@ -73,15 +118,16 @@ $(document).ready(function(){
 					alert('if문으로 빠짐');
 				}else{
 					$(list).each(function(index,item){
-						var mlist4 = '<div class="col-sm-6 col-md-3 col-xs-6" id="main-category">';
-						mlist4 += '<div class="thumbnail"><img src="${pageContext.request.contextPath}/resources/images/'+item.poster_img+'"></div>';
-						mlist4 += '<div class="sub-category caption">';
-						mlist4 += '<p class="ptitle">'+item.title+'</h3>';
-						mlist4 += '<p class="pgeren">★★★★☆</p>';
-						mlist4 += '</div>';
-						mlist4 += '</div>';
+						var elist = '<div class="col-sm-6 col-md-3 col-xs-6" id="main-category">';
+						elist += '<div class="thumbnail"><img src="../resources/images/img4.jpg"></div>';
+						elist += '<div class="sub-category caption"> ';
+						elist += '<p class="ptitle">'+item.title+'</p>';
+						elist += '<p class="ptitle">'+item.reg_date+'</p>';
+						elist += '<p class="pgeren">★★★★☆</p>';
+						elist += '</div>';
+						elist += '</div>';
 						
-						$('.mlist4').append(mlist4);						
+						$('.elist').append(elist);						
 					});
 				}
 			},error:function(){
@@ -89,16 +135,27 @@ $(document).ready(function(){
 			}
 		});
 	}
-  selectEva(1);
-
-  $('#mscroll').scroll(function(){
-	  var scrollT = $(this).scrollTop();
-	  var scrollH = $(this).height();
-	  var contentH = $('.container').height();
-	  
-	  if(scrollT + scrollH >= contentH){
-		  var pageNum = currentPage + 1;
-		  selectData(pageNum,$('#movie_num').val());
-	  }
-  });
+  $(window).scroll(function(){
+	   if($(window).scrollTop() == $(document).height() - $(window).height()){ 
+		   
+		   console.log("1 : "+currentPage);
+		   console.log("3 : "+count);
+		   console.log("4 : "+rowCount);
+		   
+		   
+		if(currentPage>=Math.ceil(count/rowCount)){
+			
+		}else{
+			/*if(currentPage < 5){
+				var pageNum = currentPage + 6;
+				selectList(pageNum,$('#movie_num').val());
+				selectEva(pageNum,$('#movie_num').val(),keyfield,keyword);
+			}else{*/
+				pageNum = currentPage + 1;
+				selectList(pageNum,$('#movie_num').val());
+				selectEva(pageNum,$('#movie_num').val());
+		}		
+	   }
+	});
+  
 });

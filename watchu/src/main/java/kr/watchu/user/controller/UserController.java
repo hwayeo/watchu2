@@ -1,6 +1,7 @@
 package kr.watchu.user.controller;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,6 +28,7 @@ import kr.watchu.user.service.ContactService;
 import kr.watchu.user.service.UserService;
 import kr.watchu.util.CipherTemplate;
 import kr.watchu.util.PagingUtil;
+import kr.watchu.util.SplitUtil;
 import kr.watchu.util.StringUtil;
 
 @Controller
@@ -181,19 +183,45 @@ public class UserController {
 		
 		String id = (String)session.getAttribute("user_id");
 		UserCommand user = userService.selectUser(id);
-		
-		List<UserCommand> list = null;
-		
-		list = userService.selectfollowList();
 		ModelAndView mav = new ModelAndView();
+		
+		//시작
+		List<String> follow_id3 = new ArrayList<String>();
+		
+		if(user.getFollow() != null) {
+			String follow_id = user.getFollow();
+			String[] follow_id2 = SplitUtil.splitByComma(follow_id);//쉼표제거
+		
+			//for문 돌려서 String배열요소 Array리스트에 넣기
+			for(int i=0;i<follow_id2.length; i++) {
+				follow_id3.add(follow_id2[i]);
+			}
+			
+		}else {
+			follow_id3.add(null);
+		}
+		//로그확인
+		if(log.isDebugEnabled()) {
+			log.debug("<<☆★follow_id3~~~>>:" + follow_id3);
+		}
+		mav.addObject("follow",follow_id3);
+		//끝
+		
+		//가입한 모든 사람 리스트목록
+		List<UserCommand> list = null;
+		list = userService.selectfollowList();
+		
+	
+		
 		mav.setViewName("userfollow");
 		mav.addObject("list",list);
 		mav.addObject("user",user);
 		
+		
 		return mav;
 	}
 	
-	//==========================================팔로우버튼 처리(미완료)========================================
+	//팔로우버튼 처리
 	@RequestMapping("/user/following.do")
 	@ResponseBody
 	public Map<String,String> follwing(@RequestParam(value="follow_id") String follow_id,@RequestParam(value="user_id") String user_id){
@@ -205,25 +233,24 @@ public class UserController {
 			log.debug("<<user_id~~~>>:" + user_id);
 		}
 
-		
 		UserCommand user = userService.selectUser(user_id);
 		
-		
-		String origin_follow = user.getFollow();
-		String new_follow = origin_follow+","+follow_id;
-		
-		if(log.isDebugEnabled()) {
-			log.debug("<<new_follow~~~>>:" + new_follow);
+		if(user.getFollow() == null) {//기존 팔로우한사람 없으면 그냥 추가
+			user.setFollow(follow_id);
+		}else{//있으면 쉼표찍고 새로 팔로우한 사람 추가
+			String origin_follow = user.getFollow();
+			String new_follow = origin_follow+","+follow_id;
+			user.setFollow(new_follow);
 		}
 		
-		userService.insertFollow(new_follow, user_id);//파라미터 안받아영...
+		//팔로우누른 친구 db에 update
+		userService.insertFollow(user);
 		
 		Map<String,String> map = new HashMap<String,String>();
 		map.put("result", "success");
 
 		return map;
 	}
-		
 	
 	// ========================================타임라인================================================
 	@RequestMapping("/user/userTimeline.do")
@@ -238,10 +265,10 @@ public class UserController {
 	public String form(HttpSession session, Model model) {
 		String id = (String)session.getAttribute("user_id");
 		
-		ContactCommand command = new ContactCommand();
-		command.setId(id);
+		ContactCommand contactCommand = new ContactCommand();
+		contactCommand.setId(id);
 		
-		model.addAttribute("command",command);
+		model.addAttribute("command",contactCommand);
 		
 		return "userSupportWrite";
 	}
@@ -300,31 +327,87 @@ public class UserController {
 		return mav;
 	}
 	//게시판 글 상세
-	@RequestMapping("/user/userSupport.do")
-	public ModelAndView process(@RequestParam("contact_num") int contact_num) {
+	@RequestMapping("/user/userSupportView.do")
+	public ModelAndView process(@RequestParam(value="contact_num",required=true) int contact_num) {
 		if(log.isDebugEnabled()) {
 			log.debug("<<contact_num>> : " + contact_num);
 		}
 		
 		ContactCommand contact = contactService.selectContact(contact_num);
-		//줄바꿈 처리
+		//줄바꿈 처리 
 		contact.setContent(StringUtil.useBrNoHtml(contact.getContent()));
 		
 		return new ModelAndView("userSupportView","contact",contact);
 	}
 	
 	//파일 다운로드
+	@RequestMapping("/user/file.do")
+	public ModelAndView download(@RequestParam("contact_num")int contact_num) {
+		ContactCommand contact = contactService.selectContact(contact_num);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("downloadView");
+		mav.addObject("downloadFile",contact.getUpload_file());
+		mav.addObject("filename",contact.getFilename());
+		
+		return mav;
+	}
 	
 	//이미지 출력
+	@RequestMapping("/user/imageView.do")
+	public ModelAndView viewImage(@RequestParam("contact_num") int contact_num) {
+		ContactCommand contact = contactService.selectContact(contact_num);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("imageView");
+		mav.addObject("imageFile",contact.getUpload_file());
+		mav.addObject("filename",contact.getFilename());
+		
+		return mav; 
+	}
 	
 	//게시판 글 수정
 	//수정 폼
+	@RequestMapping(value="/user/userSupportUpdate.do",method=RequestMethod.GET)
+	public String form(@RequestParam("contact_num") int contact_num, Model model) {
+		ContactCommand contactCommand = contactService.selectContact(contact_num);
+		model.addAttribute("contactCommand", contactCommand);
+		
+		return "userSupportModify";
+	}
 	//수정 폼에서 전송된 데이터 처리
+	@RequestMapping(value="/user/userSupportUpdate.do",method=RequestMethod.POST)
+	public String submit(@ModelAttribute("contactCommand") 
+						 ContactCommand contactCommand, 
+						 BindingResult result,
+						 HttpSession session, 
+						 HttpServletRequest request) {
+		if(log.isDebugEnabled()) {
+			log.debug("<<contactCommand>> : " + contactCommand);
+		}
+		
+		/*if(result.hasErrors()) {
+			return "userSupportModify";
+		}*/
+		contactService.updateContact(contactCommand);
+
+		return "redirect:/user/userSupportList.do"; 
+	}
 	
 	//게시판 글 삭제
-	
+	@RequestMapping("/user/userSupportDelete.do")
+	public String submit(@RequestParam("contact_num")int contact_num) {
+		if(log.isDebugEnabled()) {
+			log.debug("<<contact_num>> : " + contact_num);
+		}
+		contactService.deleteContact(contact_num);
+		
+		return "redirect:/user/userSupportList.do";
+	}
 }	
 	
+
+
+
 	
 	
 	

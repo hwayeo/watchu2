@@ -20,8 +20,26 @@
 	</div>
 </nav>
 
+<form action="movieList.do" id="search_form" method="get">
+		<ul class="search">
+			<li>
+				<select name="keyfield">
+					<option value="title">제목</option>
+				</select>
+			</li>
+			<li>
+				<input type="text" name="keyword" id="keyword">
+			</li>
+			<li>
+				<input type="submit" value="찾기">
+			</li>
+		</ul>
+	</form>
+
+
 <!-- for:each문으로 데이터를 가져와 리스트를 생성할것 -->
 <!-- 모바일 환경 -->
+<div id="categoryHr">
 <select class="visible-xs visible-sm form-control">
   <option selected>모든 장르</option>
   <option>드라마</option>
@@ -145,15 +163,18 @@
   <option>추천 순</option>
   <option>별점 순</option>
 </select>
+</div>
 
 <div class="row">
-<c:forEach var="ml" items="${list}">
-	<div class="col-sm-6 col-md-3 col-xs-6" id="main-category">
+	<div class="slist"></div>
+<%-- <div class="col-sm-6 col-md-3 col-xs-6" id="main-category">
 		<div class="thumbnail" onclick="location.href='movieDetail.do?movie_num=${ml.movie_num}'"><img src="${pageContext.request.contextPath}/resources/images/img4.jpg"></div>
 		<div class="sub-category caption">
 			<p class="ptitle">${ml.title}</p>
 			<p class="pgeren">${ml.country}</p>
 		</div>
-	</div>
+	</div> --%>
+<c:forEach var="ml" items="${list}">
+	<input type="hidden" value="${ml.movie_num}">
 </c:forEach>
 </div>

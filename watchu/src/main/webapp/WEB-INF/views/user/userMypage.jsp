@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/setup.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/mypage.js"></script>
-    
+<div id="main-content">
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-xs-12 col-md-12"><br><br>
@@ -24,7 +24,7 @@
 					<ul class="wcPc-Arrange">
 						<li class="wcPc-ArrangeSizeFit" style="list-style:none;">
 							<a href="#" title="885 Following">
-								<a href="#">Following&emsp;</a>&emsp;
+								<a href="myfollowing.do">Following&emsp;</a>&emsp;
 								<a href="#">885&emsp;</a>
 							</a>
 						</li>
@@ -174,3 +174,4 @@
 			</div>
 		</div>
 	</div>
+</div>   

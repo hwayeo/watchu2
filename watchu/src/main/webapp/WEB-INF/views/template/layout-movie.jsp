@@ -18,7 +18,7 @@
 </head>
 <body>
 	<tiles:insertAttribute name="header"/>
-<div class="container">
+<div id="main-content" class="container">
 	<tiles:insertAttribute name="movieHome"/>
 </div> 
 	<tiles:insertAttribute name="footer"/>
