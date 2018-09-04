@@ -50,7 +50,24 @@ public class MyPageController {
 			log.debug("<<userCommand>> : " + user);
 		}
 		
+		//팔로잉 숫자 표시하기위해 친구 arraylist만듬
+		List<String> follow_id3 = new ArrayList<String>();
+		
+		if(user.getFollow() != null) {
+			String follow_id = user.getFollow();
+			String[] follow_id2 = SplitUtil.splitByComma(follow_id);//쉼표제거
+		
+			//for문 돌려서 String배열요소 Array리스트에 넣기
+			for(int i=0;i<follow_id2.length; i++) {
+				follow_id3.add(follow_id2[i]);
+			}
+			
+		}else {
+			follow_id3.add(null);
+		}
+		
 		model.addAttribute("user", user);
+		model.addAttribute("list",follow_id3);
 		
 		return "userMypage";
 	}

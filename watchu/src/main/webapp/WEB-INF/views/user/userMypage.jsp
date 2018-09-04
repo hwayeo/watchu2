@@ -25,13 +25,13 @@
 						<li class="wcPc-ArrangeSizeFit" style="list-style:none;">
 							<a href="#" title="885 Following">
 								<a href="myfollowing.do">Following&emsp;</a>&emsp;
-								<a href="#">885&emsp;</a>
+								<a href="myfollowing.do">${list.size()}</a>
 							</a>
 						</li>
 						<li class="wcPc-ArrangeSizeFit" style="list-style:none;">
 							<a href="https://watcha.com/ko-KR" title="1.810 Followers">
 								<a href="#">Followers&emsp;</a>
-								<a href="#">1.810&emsp;</a><br><br>
+								<a href="#"></a><br><br>
 							</a>
 						</li>
 					</ul>

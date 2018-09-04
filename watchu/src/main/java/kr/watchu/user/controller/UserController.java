@@ -142,11 +142,7 @@ public class UserController {
 			log.debug("<<userCommand>>:"+ userCommand);
 		}
 		
-		/*userService.deleteUser(userCommand.getId());
-		//로그아웃
-		session.invalidate();
-		return "redirect:/main/main.do";*/
-		//passwd 필드의 에러만 체크
+		
 		if(result.hasFieldErrors("passwd")) {
 			return "userDelete";
 		}
@@ -223,6 +219,7 @@ public class UserController {
 			log.debug("<<☆★follow_id3~~~>>:" + follow_id3);
 		}
 		mav.addObject("follow",follow_id3);
+		
 		//끝
 		
 		//추천친구 전부or검색한친구 리스트목록

@@ -33,7 +33,7 @@ public interface UserMapper {
 	@Delete("delete from user_relation where id=#{id}")
 	public void deleteUserRelation(String id);
 	
-	//眠玫模备格废
+	//模备格废
 	public int selectUserCnt(Map<String, Object> map);	
 	public List<UserCommand> selectUserList(Map<String,Object> map);
 	
