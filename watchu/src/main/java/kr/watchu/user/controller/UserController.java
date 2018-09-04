@@ -177,10 +177,28 @@ public class UserController {
 				}
 	}
 	
-	//==========================================추천친구목록(회원전체 목록)========================================
+	//==========================================추천친구목록========================================
 	@RequestMapping("/user/follow.do")
-	public ModelAndView follow(HttpSession session) {		
+	public ModelAndView follow(HttpSession session,@RequestParam(value="pageNum",defaultValue="1") int currentPage,
+												   @RequestParam(value="keyfield",defaultValue="") String keyfield,
+			                                       @RequestParam(value="keyword",defaultValue="") String keyword) {		
 		
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
+		
+		//총글의 갯수 또는 검색된 글의 갯수
+		int count = userService.selectUserCnt(map);
+		if(log.isDebugEnabled()) {
+			log.debug("<<count>>:" + count);
+		}
+		
+		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,rowCount,pageCount,"follow.do");
+		
+		map.put("start", page.getStartCount());
+		map.put("end", page.getEndCount());
+		
+		//--------------------------------------------
 		String id = (String)session.getAttribute("user_id");
 		UserCommand user = userService.selectUser(id);
 		ModelAndView mav = new ModelAndView();
@@ -207,14 +225,16 @@ public class UserController {
 		mav.addObject("follow",follow_id3);
 		//끝
 		
-		//가입한 모든 사람 리스트목록
+		//추천친구 전부or검색한친구 리스트목록
 		List<UserCommand> list = null;
-		list = userService.selectfollowList();
-		
+		list = userService.selectUserList(map);
+		//----------------------------------------------
 	
 		
 		mav.setViewName("userfollow");
 		mav.addObject("list",list);
+		mav.addObject("count",count);
+		mav.addObject("pagingHtml",page.getPagingHtml());
 		mav.addObject("user",user);
 		
 		

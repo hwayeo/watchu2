@@ -17,8 +17,8 @@ public interface UserService {
 	//목록
 	public int selectUserCnt(Map<String, Object> map);
 	public List<UserCommand> selectUserList(Map<String,Object> map);
-	//팔로우(추천친구)목록
-	public List<UserCommand> selectfollowList();
+	/*//팔로우(추천친구)목록
+	public List<UserCommand> selectfollowList();*/
 	//팔로잉버튼
 	public void insertFollow(UserCommand user);
 }
