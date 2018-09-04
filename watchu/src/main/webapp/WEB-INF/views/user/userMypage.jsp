@@ -23,16 +23,12 @@
 				<div>
 					<ul class="wcPc-Arrange">
 						<li class="wcPc-ArrangeSizeFit" style="list-style:none;">
-							<a href="#" title="885 Following">
-								<a href="myfollowing.do">Following&emsp;</a>&emsp;
+								<a href="myfollowing.do">Following&emsp;</a>
 								<a href="myfollowing.do">${list.size()}</a>
-							</a>
 						</li>
 						<li class="wcPc-ArrangeSizeFit" style="list-style:none;">
-							<a href="https://watcha.com/ko-KR" title="1.810 Followers">
-								<a href="#">Followers&emsp;</a>
-								<a href="#"></a><br><br>
-							</a>
+								<a href="myfollower.do">Followers&emsp;</a>
+								<a href="myfollower.do">${list2.size()}</a>
 						</li>
 					</ul>
 				</div>
