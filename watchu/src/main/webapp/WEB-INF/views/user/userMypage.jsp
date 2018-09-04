@@ -19,20 +19,16 @@
 			
 			<div class="col-xs-7 col-md-6 text-center">
 				<img src="${pageContext.request.contextPath}/main/imageView.do?id=${user_id}" width="50" height="50" class="img-circle">
-				<h2> ${user.name}</h2>
+				<p style="font-size:22px"> ${user.name}</p>
 				<div>
 					<ul class="wcPc-Arrange">
 						<li class="wcPc-ArrangeSizeFit" style="list-style:none;">
-							<a href="#" title="885 Following">
-								<a href="myfollowing.do">Following&emsp;</a>&emsp;
-								<a href="#">885&emsp;</a>
-							</a>
+								<a href="myfollowing.do">Following&emsp;</a>
+								<a href="myfollowing.do">${list.size()}</a>
 						</li>
 						<li class="wcPc-ArrangeSizeFit" style="list-style:none;">
-							<a href="https://watcha.com/ko-KR" title="1.810 Followers">
-								<a href="#">Followers&emsp;</a>
-								<a href="#">1.810&emsp;</a><br><br>
-							</a>
+								<a href="myfollower.do">Followers&emsp;</a>
+								<a href="myfollower.do">${list2.size()}</a>
 						</li>
 					</ul>
 				</div>
@@ -44,7 +40,7 @@
 		</div>
 		
 		<div class="col-xs-12 col-md-12"> 
-		<div class="container" style="border:1px solid gray"><br><br>
+		<div class="container" style="border:1px solid gray"><br>
 				<div class="col-xs-7 col-md-7 text-center">
 					<span class="wc-StatLabel2 wcPc-block"><a onclick="location.href='userMypage_movie.do'">영화</a></span> 234<br>
 					<span class="wc-StatLabel wcPc-block"><a onclick="location.href='userWish.do'">보고싶어요</a></span> 12
@@ -52,15 +48,15 @@
 				</div>
 				<div class="col-xs-5 col-md-5">
 					<span class="wc-StatLabel wcPc-block"><a onclick="location.href='userComment.do'">코멘트</a></span> 11<br>
-					<span class="wc-StatLabel wcPc-block"><a onclick="location.href='userLikeComment.do'">좋아요</a></span> 120<br><br><br>
+					<span class="wc-StatLabel wcPc-block"><a onclick="location.href='userLikeComment.do'">좋아요</a></span> 120<br><br>
 				</div>
 		</div>
 		</div>
 		<br><br><hr>
 	
-	<div class="col-xs-12 col-md-12 text-center"> 
+		<div class="col-xs-12 col-md-12 text-center"> 
 			<div class="col-xs-7 col-md-6"><br>
-				<h2>최고의 작품</h2><br>
+				<p style="font-size:22px">최고의 작품</p><br>
 			</div>
 			<div class="col-xs-1 col-md-2"></div>
 			<div class="col-xs-2 col-md-2"><br><br>
@@ -70,38 +66,28 @@
 			
 		<div class="col-xs-12 col-md-12 text-center"> 
 			
-			<c:if test="col-xs">
-				 <div class="col-xs-4">
-				<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="50" height="50"><br>
-				<p>가디언즈 오브 갤럭시</p>
-				</div>
-				<div class="col-xs-4">
-					<img src="${pageContext.request.contextPath}/resources/images/gad2.jpg" width="80" height="130"><br>
-					<p>수어사이드 스쿼드</p>
-				</div>
-				<div class="col-xs-4">
-					<img src="${pageContext.request.contextPath}/resources/images/gad3.jpg" width="80" height="130"><br>
-					<p>앤트맨</p>
-				</div> 
-			</c:if>
-			
-			
-			
-			<div class="col-md-3"></div>
+			<div class="col-md-2"></div>
 			<div class="col-xs-4 col-md-2">
-				<img src="${pageContext.request.contextPath}/resources/images/gad.jpg" width="130" height="180"><br>
+				<img class="image" src="${pageContext.request.contextPath}/resources/images/gad.jpg"><br>
 				<p>가디언즈 오브 갤럭시</p>
 			</div>
 			<div class="col-xs-4 col-md-2">
-				<img src="${pageContext.request.contextPath}/resources/images/gad2.jpg" width="130" height="180"><br>
+				<img class="image" src="${pageContext.request.contextPath}/resources/images/gad2.jpg"><br>
 				<p>수어사이드 스쿼드</p>
 			</div>
 			<div class="col-xs-4 col-md-2">
-				<img src="${pageContext.request.contextPath}/resources/images/gad3.jpg" width="130" height="180"><br>
+				<img class="image" src="${pageContext.request.contextPath}/resources/images/gad3.jpg"><br>
 				<p>앤트맨</p>
 			</div>
-			<div class="col-md-3"></div>
+			<div class="col-xs-4 col-md-2">
+				<img class="image" src="${pageContext.request.contextPath}/resources/images/gad3.jpg"><br>
+				<p>앤트맨</p>
+			</div>
+			<div class="col-md-2"></div>
 		</div>
+		
+		
+		
 	</div>
 </div>
 

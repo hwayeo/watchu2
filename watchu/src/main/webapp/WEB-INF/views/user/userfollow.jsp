@@ -12,55 +12,20 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/admin-main.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/follow_unfollow.js"></script>
 
-
-<script type="text/javascript">
-/* 나중에 폴더로 옮길거임! */
-$(document).ready(function(){
-	
-	$('.follow').click(function(){
-		
-		var preBtn = $(this);
-		
-		var follow_id = $(this).attr('data-id');
-		var user_id = $('#user_id').val();
-		
-		$.ajax({
-			url:'following.do',
-			type:'post',
-			data:{follow_id:follow_id,user_id:user_id},
-			dataType:'json',
-			cache:false,
-			timeout:30000,
-			success:function(data){
-				if(data.result == 'success'){
-					preBtn.parent().find('.unfollow').show(); //이벤트발생한 버튼의 부모영역에서 찾아야함
-					preBtn.hide(); 
-					
-				}else{
-					
-				}			
-			},
-			error:function(){
-				alert('네트워크 오류 발생');
-			}
-		});
-	});
-	
- 
-	
-});
-</script>
 </head>
 <body>
 
 
 <div class="container">
-    <div class="row">
-     <div class="col-md-8 col-md-offset-4">
+    <div class="row" style="margin: 80px;">
+     <div class="col-md-8 col-md-offset-4" style="margin: 80px;" >
+     
      		<!-- 검색폼 시작 -->
-  			<form class="navbar-form" role="search" id="search_form" action="" method="get" >
+  			<form class="navbar-form" role="search" id="search_form" action="follow.do" method="get" >
                 <div class="input-group">
+              	    <input type="hidden" name="keyfield" id="keyfield">
                     <input type="text" class="form-control" placeholder="Search" name="keyword" id="keyword">
                     <div class="input-group-btn">
                         <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
@@ -76,7 +41,13 @@ $(document).ready(function(){
                 <input type="hidden" id="follow22" name="follow22" value="${follow}">
                 
                 <ul class="list-group">
-                    <c:forEach var="article" items="${list}">
+                
+						<c:if test="${count == 0}">
+							<div class="align-center">검색하신 친구가 없습니다.</div>
+						</c:if>
+						
+						<c:if test="${count > 0}">
+						<c:forEach var="article" items="${list}">
                     <!-- 본인,관리자제외 -->
                     <c:if test="${article.auth==1 && article.id != user.id }">
                     
@@ -105,8 +76,10 @@ $(document).ready(function(){
 						</c:if>
 						
 						</c:forEach>
+						</c:if>
                     
                 </ul>
+                <div class="align-center">${pagingHtml}</div>
             </div>
         </div>
     </div>

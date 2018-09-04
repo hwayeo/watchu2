@@ -5,7 +5,7 @@ import java.sql.Date;
 public class CommentCommand {
 	
 	private Integer comment_num;
-	private Integer moive_num;
+	private Integer movie_num;
 	private String id;
 	private String content;
 	private Integer likes;
@@ -18,11 +18,11 @@ public class CommentCommand {
 	public void setComment_num(Integer comment_num) {
 		this.comment_num = comment_num;
 	}
-	public Integer getMoive_num() {
-		return moive_num;
+	public Integer getMovie_num() {
+		return movie_num;
 	}
-	public void setMoive_num(Integer moive_num) {
-		this.moive_num = moive_num;
+	public void setMovie_num(Integer moive_num) {
+		this.movie_num = moive_num;
 	}
 	public String getId() {
 		return id;
@@ -56,7 +56,7 @@ public class CommentCommand {
 	}
 	@Override
 	public String toString() {
-		return "CommentCommand [comment_num=" + comment_num + ", moive_num=" + moive_num + ", id=" + id + ", content="
+		return "CommentCommand [comment_num=" + comment_num + ", moive_num=" + movie_num + ", id=" + id + ", content="
 				+ content + ", likes=" + likes + ", reg_date=" + reg_date + ", recomment_cnt=" + recomment_cnt + "]";
 	}
 }

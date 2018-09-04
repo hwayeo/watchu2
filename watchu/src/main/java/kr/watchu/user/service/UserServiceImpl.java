@@ -46,27 +46,32 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public int selectUserCnt(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return userMapper.selectUserCnt(map);
 	}
 
 	@Override
 	public List<UserCommand> selectUserList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+		return userMapper.selectUserList(map);
 	}
 
 
-	@Override
+	/*@Override
 	public List<UserCommand> selectfollowList() {
 		
 		return userMapper.selectfollowList();
-	}
+	}*/
 
 
 	@Override
 	public void insertFollow(UserCommand user) {
 		userMapper.insertFollow(user);
+		
+	}
+
+
+	@Override
+	public void insertFollower(UserCommand user) {
+		userMapper.insertFollower(user);
 		
 	}
 

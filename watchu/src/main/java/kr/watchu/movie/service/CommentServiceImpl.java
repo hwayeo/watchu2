@@ -3,24 +3,28 @@ package kr.watchu.movie.service;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 
+import kr.watchu.movie.dao.CommentMapper;
 import kr.watchu.movie.domain.CommentCommand;
 import kr.watchu.movie.domain.RecommentCommand;
 
 @Service("commentService")
 public class CommentServiceImpl implements CommentService{
-
+	
+	@Resource
+	private CommentMapper commentMapper;
+	
 	@Override
 	public void insertComment(CommentCommand comment) {
-		// TODO Auto-generated method stub
-		
+		commentMapper.insertComment(comment);
 	}
 
 	@Override
 	public CommentCommand selectComment(Integer comment_num) {
-		// TODO Auto-generated method stub
-		return null;
+		return commentMapper.selectComment(comment_num);
 	}
 
 	@Override
