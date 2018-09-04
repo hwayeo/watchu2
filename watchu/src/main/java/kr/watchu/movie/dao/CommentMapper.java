@@ -3,6 +3,9 @@ package kr.watchu.movie.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
+
 import kr.watchu.movie.domain.CommentCommand;
 import kr.watchu.movie.domain.RecommentCommand;
 
@@ -13,8 +16,11 @@ public interface CommentMapper {
 	
 	//======= 코멘트
 	//코멘트 쓰기
+	@Insert("INSERT INTO movie_comment (comment_num, movie_num, id, content, reg_date) "
+			+ "VALUES (comment_seq.nextval, #{movie_num}, #{id}, #{content}, SYSDATE)") 
 	public void insertComment(CommentCommand comment);
 	//상세정보
+	@Select("SELECT * FROM movie_comment WHERE comment_num=${comment_num}")
 	public CommentCommand selectComment(Integer comment_num);
 	//수정
 	public void updateComment(CommentCommand comment);

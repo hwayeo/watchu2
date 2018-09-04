@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/movie-detail.css">	
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/watchu-view.css">	
 <div id="main-page">
@@ -21,12 +23,12 @@
 		<!-- 영화 기본정보 pc 화면 -->
 	<div class="col-sm-12 col-md-12 col-xs-12 hidden-xs">
 		 <div class="col-sm-6 col-md-6 col-xs-6" id="poster3">
-			<div class="hidden-xs"><img src="#" id="image2"></div> 
+			<div class="hidden-xs"><img src="${pageContext.request.contextPath}/resources/images/img1.jpg" id="image2"></div> 
 		</div>
 	
 	<div class="col-sm-6 col-md-6 col-xs-6" id="poster2">
-		 <h3><b>어벤져스:인피니티워</b></h3>
-		 	<p>2018.sf.미국</p>
+		 <h3><b>${movie.title}</b></h3>
+		 	<p>${movie.released}.${movie.main_genre}.${movie.country}</p>
 		 		<hr width="90%" align="left">	
 					<p>평점★4.5</p>
 				<hr width="90%" align="left">
@@ -38,18 +40,20 @@
 		
 		<!-- 영화 기본정보 모바일 화면 -->
 		<div class="col-sm-12 col-md-12-xs-12 hidden-md hidden-lg hidden-sm" style="text-align:center"> 
-		<h3>어벤져스:인피니티워</h3>
-		 	<p>2018.sf.미국</p>
+		<h3>${movie.title}</h3>
+		 	<p>${movie.released}.${movie.main_genre}.${movie.country}</p>
 		 		<hr width="90%" align="left">	
 					<p>평점★4.5</p>
 				<hr width="90%" align="left">
 		<button type="button" style="width: 200px;" 
 		class="btn btn-primary btn-default btn-danger">보고싶어요</button>
 		<hr width="90%" align="left">
+		
 		<div class="visible-xs">
-				<a href="#"><button type="button" style="width: 200px;" 
-			 class="btn btn-primary btn-default btn-info">코멘트 남기기</button></a>
+			<button type="button" style="width: 200px;" 
+			 class="btn btn-info" data-toggle="modal" data-target="#myModal">코멘트 남기기</button>
 		</div>
+		
 	</div>
 	<!-- 영화 기본정보 모바일 화면 끝-->
 	</div>
@@ -59,13 +63,15 @@
 	<!-- 상세정보 시작 -->
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-sm-12 col-md-12 col-xs-12" id="middle">
+			<div class="col-sm-12 col-md-12 col-xs-12 col-lg-12" id="middle">
 				<!-- 코멘트 -->
 				<div class="comment hidden-xs">대단한 작품이군요 회원님의 코멘트를 남겨주세요
-					<a href="#"><button 
-						class="btn btn-primary btn-default btn-info">코멘트 남기기
-					</button></a>
+					<button 
+						class="btn btn-info" data-toggle="modal" data-target="#myModal">코멘트 남기기
+					</button>
 				</div>
+			
+		
 				<!-- 코멘트 끝 -->
 				
 				<!-- pc상세정보 -->
@@ -77,6 +83,7 @@
 
 				<div>
 					<h5>본 친구</h5>
+					
 				</div>
 				<hr>
 
@@ -103,12 +110,14 @@
 				<div>
 					<h4><b>기본정보</b></h4>
 				</div>
-				
-				<div>내용</div>
+				<div>${movie.summary}</div>
 				<hr>
+				
 				<div>
 					<h4><b>출연제작</b></h4>
 				</div>
+				<div></div>     
+				<div></div>  
 				<hr>
 
 				<div>
@@ -131,26 +140,44 @@
 					</div>
 				<div class="division2">
 						<h4><span>아이디</span></h4>
-					</div>
+				</div>
 				</div>
 				
 				<hr>
-
-				<div>
 					<h4><b>비슷한 작품</b></h4>
-					<a href="#"><img src="#" id="image3"></a>
-					<a href="#"><img src="#" id="image3"></a>
-					<a href="#"><img src="#" id="image3"></a>
-					<a href="#"><img src="#" id="image3"></a>
-					<a href="#"><img src="#" id="image3"></a>
-					<a href="#"><img src="#" id="image3"></a>
-					<a href="#"><img src="#" id="image3"></a>
-					<a href="#"><img src="#" id="image3"></a>
+					<div class="othermovie">
+					<div class="col-sm-3 col-md-3 col-xs-6">
+					<a href="#"><img src="${pageContext.request.contextPath}/resources/images/img1.jpg" id="image3"></a>
+					<p style="text-align:center">어벤져스</p>
+					</div>
+					<div class="col-sm-3 col-md-3 col-xs-6">
+					<a href="#"><img src="${pageContext.request.contextPath}/resources/images/img1.jpg" id="image3"></a>
+					<p style="text-align:center">어벤져스</p>
+					</div>
+					<div class="col-sm-3 col-md-3 col-xs-6">
+					<a href="#"><img src="${pageContext.request.contextPath}/resources/images/img1.jpg" id="image3"></a>
+					<p style="text-align:center">어벤져스</p>
+					</div>
+					<div class="col-sm-3 col-md-3 col-xs-6">
+					<a href="#"><img src="${pageContext.request.contextPath}/resources/images/img1.jpg" id="image3"></a>
+					<p style="text-align:center">어벤져스</p>
+					</div>
+					<div class="col-sm-3 col-md-3 col-xs-6">
+					<a href="#"><img src="${pageContext.request.contextPath}/resources/images/img1.jpg" id="image3"></a>
+					<p style="text-align:center">어벤져스</p>
+					</div>
+					<div class="col-sm-3 col-md-3 col-xs-6">
+					<a href="#"><img src="${pageContext.request.contextPath}/resources/images/img1.jpg" id="image3"></a>
+					<p style="text-align:center">어벤져스</p>
+					</div>
 				</div>
 			</div>	
+		</div>
+	</div>
 				<!-- pc상세정보 끝 -->
 				
 				<!-- 모바일 상세정보 시작-->
+				
 				<div class="col-sm-12 col-md-12 col-xs-12 hidden-md hidden-lg hidden-sm" id="box2">
 				<div>
 					<h4><b>내 예상 별점</b></h4>
@@ -185,12 +212,13 @@
 				<div>
 					<h4><b>기본정보</b></h4>
 				</div>
-				
-				<div>내용</div>
+				<div>${movie.summary}</div>
 				<hr>
 				<div>
 					<h4><b>출연제작</b></h4>
 				</div>
+				<div></div>
+				<div></div>
 				<hr>
 
 				<div>
@@ -204,11 +232,11 @@
 				<hr>
 
 				<div>
-					<h4><b>코멘트</b>  </h4>
+					<h4><b>코멘트</b></h4>
 				</div>
 				
 				<div class="jumbotron division3">
-					<h4><span>아이디</span></h4>
+					<h4><span></span></h4>
 				</div>
 				<hr>
 				
@@ -227,7 +255,32 @@
 				<!-- 모바일 상세정보 끝-->
 			</div>
 		</div>
+<!-- 상세정보 끝 -->
+
+<!-- modal -->
+
+<div class="modal fade" id="myModal">
+		<div class="modal-dialog">
+			<div class="modal-content" id="modal">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">x</button>
+					<h4 style="text-align:center"><b>${movie.title}</b></h4>
+				</div>
+				<div class="modal-body">
+					<form:form commandName="commentCommand" action="commentWrite.do" id="commentRegisterForm"> 
+					<input type="hidden" name="movie_num" value="${movie.movie_num}">
+					<input type="hidden" name="id" value="${user_id}">
+					<textarea name="content" id="text" placeholder="이 작품에 대한 생각을 자유롭게 표현해 주세요" class="form-control" rows="5"></textarea><br>
+					<div class="text-right">
+						<button class="btn" data-dismiss="modal">닫기</button>
+						<button class="btn btn-primary" value="submit">코멘트 작성</button>
+					</div>
+					</form:form>
+				</div>
+			</div>
+		</div>
 	</div>
-</div>
-	<!-- 상세정보 끝 -->
+	
+
 <input type="hidden" value="${movie.movie_num}">
+
