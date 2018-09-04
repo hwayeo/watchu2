@@ -24,7 +24,7 @@
 	<div class="col-sm-12 col-md-12 col-xs-12 hidden-xs">
 		 <div class="col-sm-6 col-md-6 col-xs-6" id="poster3">
 			<div class="hidden-xs"><img src="${pageContext.request.contextPath}/resources/images/img1.jpg" id="image2"></div> 
-		</div>
+		</div>  
 	
 	<div class="col-sm-6 col-md-6 col-xs-6" id="poster2">
 		 <h3><b>${movie.title}</b></h3>
