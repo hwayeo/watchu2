@@ -18,8 +18,7 @@ public interface ContactMapper {
 	@Select("SELECT * FROM user_contact WHERE contact_num=#{contact_num}")
 	public ContactCommand selectContact(Integer contact_num);
 	//수정
-	//@Update("UPDATE user_contact SET title=#{title},content=#{content},uploadfile=#{uploadfile},filename=#{filename} WHERE contact_num=#{contact_num}")
-	@Update("UPDATE user_contact SET content=#{content},filename=#{filename},upload_file=#{upload_file},title=#{title} WHERE contact_num=#{contact_num}")
+	@Update("UPDATE user_contact SET title=#{title},content=#{content},upload_file=#{upload_file},filename=#{filename} WHERE contact_num=#{contact_num}")
 
 	public void updateContact(ContactCommand contact);
 	//삭제
