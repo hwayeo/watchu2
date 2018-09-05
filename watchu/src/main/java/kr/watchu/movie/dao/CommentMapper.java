@@ -3,8 +3,10 @@ package kr.watchu.movie.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import kr.watchu.movie.domain.CommentCommand;
 import kr.watchu.movie.domain.RecommentCommand;
@@ -20,17 +22,21 @@ public interface CommentMapper {
 			+ "VALUES (comment_seq.nextval, #{movie_num}, #{id}, #{content}, SYSDATE)") 
 	public void insertComment(CommentCommand comment);
 	//상세정보
-	@Select("SELECT * FROM movie_comment WHERE comment_num=${comment_num}")
-	public CommentCommand selectComment(Integer comment_num);
+	@Select("SELECT * FROM movie_comment WHERE movie_num=#{movie_num} AND id=#{id}")
+	public CommentCommand selectComment(Map<String,Object> map);
 	//수정
+	@Update("UPDATE movie_comment SET content=#{content} WHERE movie_num=#{movie_num} AND id=#{id}")
 	public void updateComment(CommentCommand comment);
 	//삭제
+	@Delete("DELETE FROM movie_comment WHERE comment_num=#{comment_num}")
 	public void deleteComment(Integer comment_num);
 	
 	//목록
-	public List<CommentCommand> selectCommentList(Map<String, Object> map);
+	@Select("SELECT * FROM movie_comment WHERE movie_num=#{movie_num} ORDER BY movie_num DESC")
+	public List<CommentCommand> selectCommentList(Integer movie_num);
 	//카운트
-	public int selectCommentCnt(Map<String, Object> map);
+	@Select("SELECT COUNT(*) FROM movie_comment WHERE movie_num=#{movie_num}")
+	public int selectCommentCnt(Integer movie_num);
 	
 	//======= 코멘트 댓글
 	//코멘트 쓰기

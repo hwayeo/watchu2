@@ -23,32 +23,30 @@ public class CommentServiceImpl implements CommentService{
 	}
 
 	@Override
-	public CommentCommand selectComment(Integer comment_num) {
-		return commentMapper.selectComment(comment_num);
+	public CommentCommand selectComment(Map<String,Object> map) {
+		return commentMapper.selectComment(map);
 	}
 
 	@Override
 	public void updateComment(CommentCommand comment) {
-		// TODO Auto-generated method stub
+		commentMapper.updateComment(comment);
 		
 	}
 
 	@Override
 	public void deleteComment(Integer comment_num) {
-		// TODO Auto-generated method stub
+		commentMapper.deleteComment(comment_num);
 		
 	}
 
 	@Override
-	public List<CommentCommand> selectCommentList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<CommentCommand> selectCommentList(Integer movie_num) {
+		return commentMapper.selectCommentList(movie_num);
 	}
 
 	@Override
-	public int selectCommentCnt(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int selectCommentCnt(Integer movie_num) {
+		return commentMapper.selectCommentCnt(movie_num);
 	}
 
 	@Override
