@@ -21,10 +21,13 @@
 </nav>
 
 <form action="movieList.do" id="search_form" method="get">
+        <input type="hidden" id="ajx_keyfield" value="${param.keyfield}">
+        <input type="hidden" id="ajx_keyword" value="${param.keyword}">
 		<ul class="search">
 			<li>
 				<select name="keyfield">
 					<option value="title">제목</option>
+					<option value="country">나라</option>
 				</select>
 			</li>
 			<li>
@@ -166,14 +169,15 @@
 </div>
 
 <div class="row">
-<c:forEach var="ml" items="${list}">
-	<div class="col-sm-6 col-md-3 col-xs-6" id="main-category">
+	<div class="slist"></div>
+	<%-- <div class="col-sm-6 col-md-3 col-xs-6" id="main-category">
 		<div class="thumbnail" onclick="location.href='movieDetail.do?movie_num=${ml.movie_num}'"><img src="${pageContext.request.contextPath}/resources/images/img4.jpg"></div>
 		<div class="sub-category caption">
 			<p class="ptitle">${ml.title}</p>
 			<p class="pgeren">${ml.country}</p>
 		</div>
-	</div>
-</c:forEach>
-<div class="slist"></div>
+	</div> --%>
 </div>
+<c:forEach var="ml" items="${list}">
+	<input type="hidden" value="${ml.movie_num}">
+</c:forEach>

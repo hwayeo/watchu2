@@ -1,5 +1,9 @@
 package kr.watchu.main.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -13,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.watchu.movie.domain.MovieCommand;
+import kr.watchu.movie.service.MovieService;
 import kr.watchu.user.domain.UserCommand;
 import kr.watchu.user.service.UserService;
 import kr.watchu.util.CipherTemplate;
@@ -26,6 +32,9 @@ public class MainController {
 	private UserService userService;
 
 	@Resource
+	private MovieService movieService;
+	
+	@Resource
 	private CipherTemplate cipherAES;
 	
 	//자바빈 초기화
@@ -33,11 +42,31 @@ public class MainController {
 	public UserCommand initCommand() {
 		return new UserCommand();
 	}
+	@ModelAttribute("movieCommand")
+	public MovieCommand initMovie() {
+		return new MovieCommand();
+	}
 	
 	@RequestMapping("/main/main.do")
-	public String process() {
-
-		return "main";
+	public ModelAndView process() {
+		ModelAndView mav = new ModelAndView();
+		
+		//랜덤 영화 추천 
+		Map<String,Object> map = new HashMap<String,Object>();
+		int totalMovieCnt = movieService.selectMovieCnt(map);
+		
+		int ranMovie = (int) ((Math.random()*totalMovieCnt)+1);
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<totalMovieCnt>> : " + totalMovieCnt);
+			log.debug("<<ranMovie>> : " + ranMovie);
+		}
+		
+		MovieCommand randomMovie = movieService.selectMovie(ranMovie);
+		
+		mav.setViewName("main");
+		mav.addObject("randomMovie",randomMovie);
+		return mav;
 	}
 
 	//로그인 폼 호출
@@ -138,4 +167,21 @@ public class MainController {
 		mav.addObject("imageFile");
 		return mav; 
 	}*/
+	
+	/*@RequestMapping("/main/search.do")
+	public ModelAndView search(@RequestParam(value="keyword",defaultValue="") String keyword) {
+		ModelAndView mav = new ModelAndView();
+		
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("keyword",keyword);
+		
+		List<MovieCommand> movieList = movieService.selectMovieList(map);
+		
+		mav.setViewName("result");
+		mav.addObject("movieList", movieList);
+		return mav;
+	}*/
+	
+	
+	
 }

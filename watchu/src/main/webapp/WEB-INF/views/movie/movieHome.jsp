@@ -24,23 +24,23 @@
 <!-- 최신 등록 영화 -->
 <div class="row">
 	<div class="home-text1">최신영화
-	<a href="#" class="home-text2">모두보기</a></div>
+	<a href="movieList.do" class="home-text2">모두보기</a></div>
 	<div class="mlist"></div>
 </div>  
 
 
 <!-- 추천 영화 태그1 -->
 <div class="row">
-	<div class="home-text1">추천영화1
-	<a href="#" class="home-text2">모두보기</a></div>
+	<div class="home-text1">미쿸영화
+	<a href="movieList.do?keyfield=country&keyword=미국" class="home-text2">미쿸보귀</a></div>
 	<div class="mlist2"></div>
 </div>
 
 
 <!-- 추천 영화 태그2 -->
 <div class="row">
-	<div class="home-text1">추천영화2
-	<a href="#" class="home-text2">모두보기</a></div>
+	<div class="home-text1">한쿸영화
+	<a href="movieList.do?keyfield=country&keyword=한국" class="home-text2">한쿸보기</a></div>
 	<div class="mlist3"></div>
 </div>
 

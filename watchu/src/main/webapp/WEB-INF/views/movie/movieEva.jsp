@@ -20,7 +20,7 @@
          <li><a href="movieList.do">카테고리</a></li>
          <li><a href="movieEva.do">평가하기</a></li>
       </ul>
-   </div>
+   </div> 
 </nav>
 
 <!-- 모바일 환경 -->
@@ -107,8 +107,10 @@
 </select>
 
 <div class="row">
-   <c:forEach var="ml" items="${list}">
-   <div class="col-sm-6 col-md-3 col-xs-6" id="main-category">
+	<div class="elist"></div>
+	<c:forEach var="ml" items="${list}">
+	<input type="hidden" value="${ml.movie_num}">
+  <%--  <div class="col-sm-6 col-md-3 col-xs-6" id="main-category">
       <div class="thumbnail">
          <img src="${pageContext.request.contextPath}/resources/images/img4.jpg" class="mimg">
          <div class="overlay">
@@ -132,10 +134,6 @@
             </div>
          </div>
       </div>
-      
-      <div class="sub-category caption">
-         <p class="ptitle">${ml.title}</p>
-      </div>
-   </div>
+   </div> --%>
    </c:forEach>
 </div>

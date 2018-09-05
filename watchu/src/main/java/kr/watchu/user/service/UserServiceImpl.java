@@ -55,17 +55,27 @@ public class UserServiceImpl implements UserService {
 	}
 
 
-	@Override
+	/*@Override
 	public List<UserCommand> selectfollowList() {
 		
 		return userMapper.selectfollowList();
+	}*/
+
+
+	@Override
+	public void insertFollow(UserCommand user) {
+		userMapper.insertFollow(user);
+		
 	}
 
 
 	@Override
-	public void insertFollow(String follow_id, String id) {
-		userMapper.insertFollow(follow_id, id);
+	public void insertFollower(UserCommand user) {
+		userMapper.insertFollower(user);
+		
 	}
+
+
 
 
 	

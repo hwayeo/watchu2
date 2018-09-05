@@ -16,8 +16,8 @@
 			<if test="keyword != '' and keyfield == 'title'" >
 				title like '%' || #{keyword} || '%'
 			</if>
-			<if test="keyword != '' and keyfield == 'director'" >
-				director like '%' || #{keyword} || '%'
+			<if test="keyword != '' and keyfield == 'country'" >
+				country like '%' || #{keyword} || '%'
 			</if>
 			<if test="keyword != '' and keyfield == 'actors'" >
 				actors like '%' || #{keyword} || '%'
@@ -34,14 +34,14 @@
 	]]>	
 	</select>
 	
-	<select id="selectMovieCnt" resultType="Integer">
+	<select id="selectMovieCnt" parameterType="map" resultType="integer">
 		SELECT count(*) FROM movie_info
 		<where>
 			<if test="keyword != '' and keyfield == 'title'" >
 				title like '%' || #{keyword} || '%'
 			</if>
-			<if test="keyword != '' and keyfield == 'director'" >
-				director like '%' || #{keyword} || '%'
+			<if test="keyword != '' and keyfield == 'country'" >
+				country like '%' || #{keyword} || '%'
 			</if>
 			<if test="keyword != '' and keyfield == 'actors'" >
 				actors like '%' || #{keyword} || '%'
@@ -55,14 +55,14 @@
 	</select>
 	
 	<!-- 글 수정 -->
-	<update id="update">
+<!-- 	<update id="update">
 		<if test="poster_img == '' and banner_img == ''">
 			UPDATE movie_info SET title=#{title}, country=#{country}, released=#{released}, director=${director}, summary=#{summary}, main_genre=#{main_genre}, sub_genre=#{sub_genre}, trailer=#{trailer} WHERE movie_num=#{movie_num}
 		</if>
 		<if test="poster_img != '' and banner_img != ''">
 			UPDATE movie_info SET title=#{title}, country=#{country}, released=#{released}, director=${director}, summary=#{summary}, poster_img=#{poster_img}, banner_img=#{banner_img}, main_genre=#{main_genre}, sub_genre=#{sub_genre}, trailer=#{trailer} WHERE movie_num=#{movie_num}
 		</if>
-	</update>
+	</update> -->
 		
 	<select id="selectMovieAjaxList" parameterType="Map" resultType="MovieCommand">
 		SELECT * FROM
@@ -73,18 +73,53 @@
 			<if test="keyword != '' and keyfield == 'title'" >
 				title like '%' || #{keyword} || '%'
 			</if>
+			<if test="keyword != '' and keyfield == 'country'" >
+				country like '%' || #{keyword} || '%'
+			</if>
 	</where>	
 	ORDER BY title desc)a)
 	<![CDATA[
 		WHERE rnum >= #{start} AND rnum <= #{end}
 	]]>	
-	</select>
-	
-	<select id="selectMovieAjaxCnt" resultType="Integer">
+	</select>	
+	<select id="selectMovieAjaxCnt" parameterType="map" resultType="Integer">
 		SELECT count(*) FROM movie_info
 		<where>
 			<if test="keyword != '' and keyfield == 'title'" >
 				title like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'country'" >
+				country like '%' || #{keyword} || '%'
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectMovieAjaxList2" parameterType="Map" resultType="MovieCommand">
+		SELECT * FROM
+	(SELECT a.*,rownum rnum FROM
+	(SELECT * 
+	FROM movie_info
+	<where>
+			<if test="keyword != '' and keyfield == 'title'" >
+				title like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'country'" >
+				country like '%' || #{keyword} || '%'
+			</if>
+	</where>	
+	ORDER BY title desc)a)
+	<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+	]]>	
+	</select>	
+	<select id="selectMovieAjaxCnt2" parameterType="map" resultType="Integer">
+		SELECT count(*) FROM movie_info
+		<where>
+			<if test="keyword != '' and keyfield == 'title'" >
+				title like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'country'" >
+				country like '%' || #{keyword} || '%'
 			</if>
 		</where>
 	</select>

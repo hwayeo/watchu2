@@ -29,7 +29,7 @@ public class MovieControllerAjax {
 		return new MovieCommand();
 	}
 	
-	@RequestMapping("/movie/movieMlist.do")
+	@RequestMapping("/movie/movieMlist.do") 
 	@ResponseBody
 	public Map<String,Object> getMovieList(
 			@RequestParam(value="pageNum",defaultValue="1") int currentPage,
@@ -39,11 +39,13 @@ public class MovieControllerAjax {
 		int rowCount = 4;
 		int pageCount = 10;
 		
-		if(log.isDebugEnabled()) {
-			log.debug("<<currentPage>> : " + currentPage);
-		}
-		
 		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<ajaxpage>> : " + currentPage);
+		}
 		
 		int count = movieService.selectMovieAjaxCnt(map);
 		
@@ -54,11 +56,53 @@ public class MovieControllerAjax {
 		List<MovieCommand> list = null;
 		
 		if(log.isDebugEnabled()) {
-			log.debug("<<count>> : " + count);
+			log.debug("<<ajaxcount>> : " + count);
 		}
 		
-		if(count > 0) { 
+		if(count > 0) {
 			list = movieService.selectMovieAjaxList(map);
+		}
+		 
+		Map<String,Object> mapJson = new HashMap<String,Object>();
+		mapJson.put("count", count);
+		mapJson.put("rowCount", rowCount);
+		mapJson.put("list", list);
+		
+		return mapJson;
+	}
+	
+	@RequestMapping("/movie/movieMlist2.do") 
+	@ResponseBody
+	public Map<String,Object> getMovieList2(
+			@RequestParam(value="pageNum",defaultValue="1") int currentPage,
+			@RequestParam(value="keyfield",defaultValue="") String keyfield,
+			@RequestParam(value="keyword",defaultValue="" ) String keyword){
+		
+		int rowCount = 24;
+		int pageCount = 10;
+		
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<ajax2page>> : " + currentPage);
+		}
+		
+		int count = movieService.selectMovieAjaxCnt2(map);
+		
+		PagingUtil page = new PagingUtil(currentPage,count,rowCount,pageCount,null);
+		map.put("start", page.getStartCount());
+		map.put("end", page.getEndCount());
+		
+		List<MovieCommand> list = null;
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<ajax2count>> : " + count);
+		}
+		
+		if(count > 0) {
+			list = movieService.selectMovieAjaxList2(map);
 		}
 		 
 		Map<String,Object> mapJson = new HashMap<String,Object>();

@@ -3,48 +3,50 @@ package kr.watchu.movie.service;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 
+import kr.watchu.movie.dao.CommentMapper;
 import kr.watchu.movie.domain.CommentCommand;
 import kr.watchu.movie.domain.RecommentCommand;
 
 @Service("commentService")
 public class CommentServiceImpl implements CommentService{
-
+	
+	@Resource
+	private CommentMapper commentMapper;
+	
 	@Override
 	public void insertComment(CommentCommand comment) {
-		// TODO Auto-generated method stub
-		
+		commentMapper.insertComment(comment);
 	}
 
 	@Override
-	public CommentCommand selectComment(Integer comment_num) {
-		// TODO Auto-generated method stub
-		return null;
+	public CommentCommand selectComment(Map<String,Object> map) {
+		return commentMapper.selectComment(map);
 	}
 
 	@Override
 	public void updateComment(CommentCommand comment) {
-		// TODO Auto-generated method stub
+		commentMapper.updateComment(comment);
 		
 	}
 
 	@Override
 	public void deleteComment(Integer comment_num) {
-		// TODO Auto-generated method stub
+		commentMapper.deleteComment(comment_num);
 		
 	}
 
 	@Override
-	public List<CommentCommand> selectCommentList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<CommentCommand> selectCommentList(Integer movie_num) {
+		return commentMapper.selectCommentList(movie_num);
 	}
 
 	@Override
-	public int selectCommentCnt(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int selectCommentCnt(Integer movie_num) {
+		return commentMapper.selectCommentCnt(movie_num);
 	}
 
 	@Override

@@ -28,4 +28,8 @@ public interface OfficialsMapper {
 	//¸ñ·Ï
 	public int selectOffCnt(Map<String, Object> map);
 	public List<OfficialsCommand> selectOffList(Map<String, Object> map);
+	
+	//ajax
+	public List<OfficialsCommand> selectOffAjaxList(Map<String, Object> map);
+	
 }

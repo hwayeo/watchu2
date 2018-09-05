@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<div id="main-content">
 <div class="container">
 <table class="table table-bordered">
     <thead>
@@ -37,4 +38,5 @@
         </form:form>
     </tbody>
 </table>
+</div>
 </div>

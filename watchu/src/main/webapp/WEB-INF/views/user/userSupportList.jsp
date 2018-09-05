@@ -4,13 +4,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/support.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/support.js"></script>
-
+<div id="main-content">
 <div class="container">
    <h2 class="title">고객센터</h2>
    <p class="subTitle">Watchu의 고객센터입니다.</p>
 
    <div class="content-body">
-      <div class="tab-pane active" id="support_list">
+      <div class="tab-pane active text-center" id="support_list">
          <div class="col-md-12 col-xs-12 content-header">
             <!-- 검색 -->
             <p class="search-title">검색 구분 </p>
@@ -20,7 +20,7 @@
                <option value="faq3">1:1 상담</option>
             </select>
             
-            <input type="text">
+            <input type="text" style="width:110px">
             
             <input type="button" value="검색" class="btnSearch">
          </div>
@@ -30,9 +30,9 @@
          <!-- 상담 목록 -->
          <table class="table table-hover table-condensed">
             <tr class="sup_title">
-               <th class="col-md-2">번호</th>
+               <th class="col-md-1">번호</th>
                <th class="col-md-2">아이디</th>
-               <th class="col-md-2">제목</th>
+               <th class="col-md-3">제목</th>
                <th class="col-md-2">분류</th>
                <th class="col-md-2">상태</th>
                <th class="col-md-2">등록일</th>
@@ -42,7 +42,7 @@
             <tr class="sup_content" a onclick="location.href='userSupportView.do?contact_num=${contact.contact_num}'" style="cursor:pointer">
                <td>${contact.contact_num}</td>
                <td>${contact.id}</td>
-               <td>제목</td>
+               <td>${contact.title}</td>
                <td>App 오류</td>
                <td>
                	<c:if test="${contact.recotentable == 0}">
@@ -64,4 +64,5 @@
 		</c:if>
       </div>
    </div>
+</div>
 </div>

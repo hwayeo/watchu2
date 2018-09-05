@@ -19,7 +19,7 @@ public interface UserMapper {
 	public void insertUserDetail(UserCommand user);
 	
 	//회원상세정보확인
-	@Select("SELECT * FROM user_basic b LEFT OUTER JOIN user_info i ON b.id=i.id WHERE i.id=#{id}")
+	@Select("select * from user_basic b left outer join user_info i on b.id=i.id left outer join user_relation c on b.id=c.id where i.id=#{id}")
 	public UserCommand selectUser(String id);
 	//수정
 	@Update("update user_info set passwd=#{passwd},name=#{name},phone=#{phone},email=#{email},profile_img=#{profile_img} where id=#{id}")
@@ -33,19 +33,16 @@ public interface UserMapper {
 	@Delete("delete from user_relation where id=#{id}")
 	public void deleteUserRelation(String id);
 	
-	//목록
+	//친구목록
 	public int selectUserCnt(Map<String, Object> map);	
 	public List<UserCommand> selectUserList(Map<String,Object> map);
 	
-	//팔로우목록
-	@Select("select * from user_basic b LEFT OUTER JOIN user_info i ON b.id=i.id")
-	public List<UserCommand> selectfollowList();
-	
 	//팔로우버튼누르면  user_relation 테이블에 등록
-	@Insert("update user_relation set follow=#{follow_id} where id=#{id}")
-	public void insertFollow(String follow_id,String id);
-	
-	
+	@Update("update user_relation set follow=#{follow} where id=#{id}")
+	public void insertFollow(UserCommand user);
+	//상대방 팔로워에 나 추가
+	@Update("update user_relation set follower=#{follower} where id=#{id}")
+	public void insertFollower(UserCommand user);
 	
 	//친구관계(팔로우,팔로워,블락)
 	//회원가입시 user_relation 테이블에 등록

@@ -11,16 +11,16 @@ public interface CommentService {
 	//코멘트 쓰기
 	public void insertComment(CommentCommand comment);
 	//상세정보
-	public CommentCommand selectComment(Integer comment_num);
+	public CommentCommand selectComment(Map<String,Object> map);
 	//수정
 	public void updateComment(CommentCommand comment);
 	//삭제
 	public void deleteComment(Integer comment_num);
 
 	//목록
-	public List<CommentCommand> selectCommentList(Map<String, Object> map);
+	public List<CommentCommand> selectCommentList(Integer movie_num);
 	//카운트
-	public int selectCommentCnt(Map<String, Object> map);
+	public int selectCommentCnt(Integer movie_num);
 
 	//======= 코멘트 댓글
 	//코멘트 쓰기

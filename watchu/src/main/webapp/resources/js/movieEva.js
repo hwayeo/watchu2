@@ -11,3 +11,6 @@ $(document).ready(function(){
       });
    });
 });
+
+/* radio 별 평가 후 초기화 */
+$('input:radio[name=rating]:input[value=""]').attr("checked", true);

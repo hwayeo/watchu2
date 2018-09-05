@@ -8,10 +8,8 @@ $(document).ready(function(){
 			return false;
 		}
 	});
-});
 
 //genreModify 모달에 데이터 넘기기
-$(document).ready(function() {
 	$('.modify_btn').on('click', function () {
 		var num = $(this).attr('data-whatever');
 		var data = $(this).text();
@@ -23,7 +21,6 @@ $(document).ready(function() {
 		var modifyUrl = modify+num+"'";
 		$('#modifyBtn').attr("onclick", modifyUrl);
 	});
-});
 
 //======자동완성=====//
 $(function(){
@@ -58,17 +55,28 @@ $(function(){
 	});
 });
 
-$(function(){
-	var directorList = [
-		"박보검",
-		"박한솔",
-		"박찬욱",
-		"박원영",
-		"박박박"
-	];
-	$('#auto_director').autocomplete({source: directorList});
+var directorList = [];
+
+$('#auto_director').on('keyup',function(){
+	var keyword = $(this).val();
+	var keyfield = 'DIRECTOR';
+	$.ajax({
+		url:'',
+		type:'post',
+		data:{keyword:keyword,keyfield:keyfield},
+		dataType:'json',
+		cache:false,
+		timeout:30000,
+		success:function(data){
+		},
+		error:function(){
+
+		}
+	});
+
 });
 
+//$('#auto_director').autocomplete({source: directorList});
 //=====태그생성=====//
 function pressEnter(){
 	if(event.keyCode == 13){
@@ -81,3 +89,4 @@ function pressEnter(){
 	}
 	
 }
+});

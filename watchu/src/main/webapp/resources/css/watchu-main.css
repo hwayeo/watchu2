@@ -96,9 +96,19 @@
 }
 #scroll-header{
 	position:fixed;
+	vertical-align: middle;
+	margin-bottom: 0;
+	padding-top: 5px;
+	padding-bottom: 10px;
+	width: 100%;
+	border-bottom: 1px solid rgba(120, 120, 120, 0.3);
+	box-shadow: 2px 2px 5px rgba(120, 120, 120, 0.2);
+	z-index: 4;
+	background-color:white;
+	border-radius:none;
 }
 
-#brand_text {
+#brand_text {	
 	color: #f74788;
 	font-size: 1.5em;
 	margin-top: 10px;
@@ -212,6 +222,7 @@ font-family:'PT Sans', sans-serif;
 }
 #etc-navbar{
 	position:fixed;
+	top:0;
 	vertical-align: middle;
 	margin-bottom: 0;
 	padding-top: 5px;
@@ -295,6 +306,7 @@ font-family:'PT Sans', sans-serif;
 		padding-top: 160px;
 		font-size: 3.5em;
 		color: white;
+		text-shadow: 1px 1px 10px rgba(255,255,255,0.7);
 	}
 	
 	.search-form {
@@ -329,8 +341,11 @@ font-family:'PT Sans', sans-serif;
 		width: 50%;
 	}
 	#main-content {
-		top: 100px;
-		position: relative;
+<<<<<<< HEAD
+		padding-top:100px;
+=======
+		padding-top:100px;	
+>>>>>>> branch 'master' of https://github.com/hwayeo/watchu2.git
 	}
 	#img-test {
 		width: 50%;
@@ -360,6 +375,7 @@ font-family:'PT Sans', sans-serif;
 		padding-top: 160px;
 		font-size: 3.5em;
 		color: white;
+		text-shadow: 1px 1px 10px rgba(255,255,255,0.7);
 	}
 	.search-form {
 		z-index:10;
@@ -394,8 +410,7 @@ font-family:'PT Sans', sans-serif;
 		width: 40%;
 	}
 	#main-content {
-		top: 100px;
-		position: absoulte;
+		padding-top:100px;
 	}
 	#img-test {
 		width: 60%;
@@ -424,6 +439,7 @@ font-family:'PT Sans', sans-serif;
 		margin: 0;
 		padding-top: 100px;
 		color: white;
+		text-shadow: 1px 1px 10px rgba(255,255,255,0.7);
 	}
 	.search-form {
 		z-index:10;
@@ -484,8 +500,7 @@ font-family:'PT Sans', sans-serif;
 		z-index: 4;
 	}
 	#main-content {
-		top: 100px;
-		position: relative;
+		padding-top:100px
 	}
 	#img-test {
 		width: 80%;
@@ -514,6 +529,7 @@ font-family:'PT Sans', sans-serif;
 		margin: 0;
 		padding-top: 100px;
 		color: white;
+		text-shadow: 1px 1px 10px rgba(0,0,0,0.7);
 	}
 	.search-form {
 		z-index:10;
@@ -576,8 +592,7 @@ font-family:'PT Sans', sans-serif;
 		z-index: 4;
 	}
 	#main-content {
-		top: 100px;
-		position: relative;
+		padding-top:100px;
 	}
 	#img-test {
 		width: 100%;
