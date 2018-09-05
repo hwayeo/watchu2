@@ -82,9 +82,7 @@ function pressEnter(){
 	if(event.keyCode == 13){
 		event.preventDefault();
 		var name = $("#auto_actor").val();
-		var list = '<input type="textarea" class="list" value="';
-		list += name + '">';
-		$('.actor_list').append(list)
+		alert(name);
 		$('#auto_actor').val('');
 	}
 	

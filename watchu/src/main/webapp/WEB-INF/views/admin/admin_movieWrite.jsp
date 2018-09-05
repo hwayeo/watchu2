@@ -46,7 +46,7 @@
 		<li>
 			<label for="actors">배우</label>
 			<input id="auto_actor" type="text" name="actors" onKeyDown="pressEnter()" />
-			<div class="actor_list"></div>
+			<input type="text" class="actor_list">
 		</li>
 		<li>
 			<label for="summary">줄거리</label>
