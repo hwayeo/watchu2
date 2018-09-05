@@ -80,9 +80,26 @@ public class MyPageController {
 			follower3.clear();
 		}
 		
+		//블락숫자
+		List<String> blockList = new ArrayList<String>();
+		if(user.getBlock() != null) {
+			String block = user.getBlock();
+			String[] block2 = SplitUtil.splitByComma(block);//쉼표제거
+
+			//for문 돌려서 String배열요소 Array리스트에 넣기
+			for(int i=0;i<block2.length; i++) {
+				blockList.add(block2[i]);
+			}
+		}else {
+			blockList.clear();
+		}
+		
 		model.addAttribute("user", user);
 		model.addAttribute("list",follow3);
 		model.addAttribute("list2",follower3);
+		model.addAttribute("blockList",blockList);
+				
+				
 		
 		return "userMypage";
 	}
@@ -306,5 +323,63 @@ public class MyPageController {
 
 		return mav;
 	}
+	
+	//===============================내 블락 목록 보기====================================
+		//팔로잉목록
+		@RequestMapping("/user/myBlock.do")
+		public ModelAndView myBlock(HttpSession session,
+				   					    @RequestParam(value="pageNum",defaultValue="1") int currentPage,
+				   					    @RequestParam(value="keyfield",defaultValue="") String keyfield,
+				   					    @RequestParam(value="keyword",defaultValue="") String keyword) {		
+			
+			Map<String,Object> map = new HashMap<String,Object>();
+			map.put("keyfield", keyfield);
+			map.put("keyword", keyword);
+			
+			//총글의 갯수 또는 검색된 글의 갯수
+			int count = userService.selectUserCnt(map);
+			if(log.isDebugEnabled()) {
+				log.debug("<<count>>:" + count);
+			}
+			
+			PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,rowCount,pageCount,"myfollowing.do");
+			
+			map.put("start", page.getStartCount());
+			map.put("end", page.getEndCount());
+			//------------------------------------------------
+			String user_id = (String)session.getAttribute("user_id");
+			UserCommand user = userService.selectUser(user_id);//현재 로그인한 아이디의 커맨드
+			
+			ModelAndView mav = new ModelAndView();
+			//내 커맨드에 블락 쉼표빼고 arrayList로 만들기
+			List<String> blockList = new ArrayList<String>();
+			if(user.getBlock() != null) {
+				String block = user.getBlock();
+				String[] block2 = SplitUtil.splitByComma(block);//쉼표제거
+
+				//for문 돌려서 String배열요소 Array리스트에 넣기
+				for(int i=0;i<block2.length; i++) {
+					blockList.add(block2[i]);
+				}
+			}else {
+				blockList.clear();
+			}
+			
+			//끝
+			
+			//블락한 사람들의 command필요하므로 가입한 모든 사람 리스트목록 불러옴
+			List<UserCommand> list = null;
+			list = userService.selectUserList(map);
+			//-------------------------------------------
+			
+			mav.setViewName("userBlockList");
+			mav.addObject("list",list);
+			mav.addObject("count",count);
+			mav.addObject("pagingHtml",page.getPagingHtml());
+			mav.addObject("user",user);
+			mav.addObject("blockList",blockList);
+
+			return mav;
+		}
 
 }

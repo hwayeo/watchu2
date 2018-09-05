@@ -33,11 +33,15 @@
 					<ul class="wcPc-Arrange">
 						<li class="wcPc-ArrangeSizeFit" style="list-style:none;">
 								<a href="myfollowing.do?id=${user_id}">Following&emsp;</a>
-								<a href="myfollowing.doid=${user_id}">${list.size()}</a>
+								<a href="myfollowing.do?id=${user_id}">${list.size()}</a>
 						</li>
 						<li class="wcPc-ArrangeSizeFit" style="list-style:none;">
 								<a href="myfollower.do?id=${user_id}">Followers&emsp;</a>
 								<a href="myfollower.do?id=${user_id}">${list2.size()}</a>
+						</li>
+						<li class="wcPc-ArrangeSizeFit" style="list-style:none;">
+								<a href="myBlock.do?id=${user_id}">Block&emsp;</a>
+								<a href="myBlock.do">${blockList.size()}</a>
 						</li>
 					</ul>
 				</div>

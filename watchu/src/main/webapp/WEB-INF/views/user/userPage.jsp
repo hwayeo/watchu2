@@ -198,14 +198,14 @@
 							<!-- 내가 블락한 친구면 블락해제버튼이 위로-->
 							<c:if test="${blockList.contains(anotheruser.id) == false}">								
 							<div class="block_unblock">
-								<input type="button" class="btn btn-primary block" data-id="${anotheruser.id}" name="block" value="BLOCK" > 
-								<input type="button" class="btn btn-default active unblock" data-id="${anotheruser.id}" name="unblock" value="BLOCK 해제" style="display: none;">
+								<input type="button" class="btn btn-secondary block" data-id="${anotheruser.id}" name="block" value="BLOCK" > 
+								<input type="button" class="btn btn-secondary active unblock" data-id="${anotheruser.id}" name="unblock" value="BLOCK 해제" style="display: none;">
 							</div>
 							</c:if>
 							<c:if test="${blockList.contains(anotheruser.id) == true}">								
 							<div class="block_unblock">
-								<input type="button" class="btn btn-primary active block" data-id="${anotheruser.id}" name="block" value="BLOCK" style="display: none;"> 
-								<input type="button" class="btn btn-default unblock" data-id="${anotheruser.id}" name="unblock" value="BLOCK 해제" >
+								<input type="button" class="btn btn-secondary active block" data-id="${anotheruser.id}" name="block" value="BLOCK" style="display: none;"> 
+								<input type="button" class="btn btn-secondary unblock" data-id="${anotheruser.id}" name="unblock" value="BLOCK 해제" >
 							</div>
 							</c:if>
 						</li>

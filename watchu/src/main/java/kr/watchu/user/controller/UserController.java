@@ -534,7 +534,7 @@ public class UserController {
 	
 	
 	
-	//===============================================다른유저 마이페이지===============================================
+	//===============================================다른유저 페이지===============================================
 	@RequestMapping("/user/userPage.do")
 	public ModelAndView anotherUserpage(HttpSession session,@RequestParam("id") String id) {
 		
