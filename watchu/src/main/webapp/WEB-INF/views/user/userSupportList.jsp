@@ -15,12 +15,13 @@
             <!-- 검색 -->
 	        <form action="userSupportList.do" id="search_form" method="get">
 				<ul class="search">
-					<li>
+					<li style="none">
 						<p class="search-title">검색 구분 </p>
 	            <select name="keyfield">
-	               <option value="faq1">App 오류</option>
-	               <option value="faq2">콘텐츠 오류</option>
-	               <option value="faq3">1:1 상담</option>
+	               <option value="title">제목</option>
+					<option value="id">ID</option>
+					<option value="content">내용</option>
+					<option value="all">전체</option>
 	            </select>
 					<input type="text" name="keyword" id="keyword" style="width:110px">
 					<input type="submit" value="검색" class="btnSearch">

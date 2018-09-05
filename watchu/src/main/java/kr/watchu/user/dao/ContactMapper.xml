@@ -17,15 +17,19 @@
 						JOIN user_info i 
 						ON c.id=i.id
 		<where>
+			<if test="keyword != '' and keyfield == 'title'">
+			 	c.title like '%' || #{keyword} || '%'
+			</if>
 			<if test="keyword != '' and keyfield == 'id'">
-				b.id like '%' || #{keyword} || '%'
+				c.id like '%' || #{keyword} || '%'
 			</if>
 			<if test="keyword != '' and keyfield == 'content'">
-				b.content like '%' || #{keyword} || '%'
+				c.content like '%' || #{keyword} || '%'
 			</if>
 			<if test="keyword != '' and keyfield == 'all'">
-				id like '%' || #{keyword} || '%' or
-				content like '%' || #{keyword} || '%'
+				c.title like '%' || #{keyword} || '%' or
+			 	c.id like '%' || #{keyword} || '%' or
+			 	c.content like '%' || #{keyword} || '%'
 			</if>
 		</where>
 		ORDER BY c.reg_date DESC)a)
@@ -41,6 +45,9 @@
 		count(*)
 		FROM user_contact
 		<where>
+			<if test="keyword != '' and keyfield == 'title'">
+			 	title like '%' || #{keyword} || '%'
+			</if>
 			<if test="keyword != '' and keyfield == 'content'">
 				title like '%' || #{keyword} || '%'
 			</if>
@@ -48,8 +55,9 @@
 				id like '%' || #{keyword} || '%'
 			</if>
 			<if test="keyword != '' and keyfield == 'all'">
-				id like '%' || #{keyword} || '%' or
-				content like '%' || #{keyword} || '%'
+				title like '%' || #{keyword} || '%' or
+			 	id like '%' || #{keyword} || '%' or
+			 	content like '%' || #{keyword} || '%'
 			</if>
 		</where>
 	</select>
