@@ -17,7 +17,8 @@ public interface UserService {
 	//¸ñ·Ï
 	public int selectUserCnt(Map<String, Object> map);
 	public List<UserCommand> selectUserList(Map<String,Object> map);
-	//ÆÈ·ÎÀ×¹öÆ°
+	//ÆÈ·Î¿ì,ÆÈ·Î¿ö,ºí¶ô
 	public void insertFollow(UserCommand user);
 	public void insertFollower(UserCommand user);
+	public void insertBlock(UserCommand user);
 }

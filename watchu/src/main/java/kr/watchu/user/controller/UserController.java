@@ -582,16 +582,113 @@ public class UserController {
 			user_follow3.clear();
 		}
 		//내 follow에 있는 친구들 쉼표제거해서 arrayList로 만들기 끝
-				
+		
+		//내 커맨드에 블락 쉼표빼고 arrayList로 만들기
+		List<String> blockList = new ArrayList<String>();
+		if(user.getBlock() != null) {
+			String block = user.getBlock();
+			String[] block2 = SplitUtil.splitByComma(block);//쉼표제거
+
+			//for문 돌려서 String배열요소 Array리스트에 넣기
+			for(int i=0;i<block2.length; i++) {
+				blockList.add(block2[i]);
+			}
+		}else {
+			blockList.clear();
+		}
+		
+		
 		mav.setViewName("userPage");
 		mav.addObject("anotheruser",anotheruser);
 		mav.addObject("user",user);
 		mav.addObject("list",follow3);
 		mav.addObject("list2",follower3);
 		mav.addObject("mylist",user_follow3);
+		mav.addObject("blockList",blockList);
 		
 		return mav;
 	}
+	
+	
+	//block처리
+	@RequestMapping("/user/block.do")
+	@ResponseBody
+	public Map<String,String> block(HttpSession session,@RequestParam("block_id") String block_id) {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		String my_id = (String)session.getAttribute("user_id");
+		UserCommand user = userService.selectUser(my_id);//내 커맨드
+		
+		//내 커맨드에 블락 추가
+		if(user.getBlock() ==null) {
+			user.setBlock(block_id);
+		}else {
+			String origin_block = user.getBlock();
+			String new_block = origin_block +","+ block_id;
+			user.setBlock(new_block);
+		}
+		//DB에 블락 추가
+		userService.insertBlock(user);
+		
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("result", "success");
+		
+		return map;
+		
+	}
+	
+	//unblock처리
+	@RequestMapping("/user/unblock.do")
+	@ResponseBody
+	public Map<String,String> unblock(HttpSession session,@RequestParam("unblock_id") String unblock_id) {
+
+		ModelAndView mav = new ModelAndView();
+
+		String my_id = (String)session.getAttribute("user_id");
+		UserCommand user = userService.selectUser(my_id);//내 커맨드
+		
+		//내 커맨드에 블락 쉼표빼고 arrayList로 만들기
+		List<String> blockList = new ArrayList<String>();
+		if(user.getBlock() != null) {
+			String block = user.getBlock();
+			String[] block2 = SplitUtil.splitByComma(block);//쉼표제거
+			
+			//for문 돌려서 String배열요소 Array리스트에 넣기
+			for(int i=0;i<block2.length; i++) {
+				blockList.add(block2[i]);
+			}
+		}else {
+			blockList.clear();
+		}
+		mav.addObject("blockList",blockList);
+		//내 block에서 블락해제한 친구 지우기
+		if(blockList.contains(unblock_id)==true) {
+			blockList.remove(unblock_id);
+		}
+		//블락해제한친구 지운 arraylist를 다시 String문자열로 만듬
+		String blockList2 = "";
+		if(blockList.isEmpty()) {
+			blockList2 = "";
+		}else {
+			for(int i=0; i<blockList.size(); i++) {
+				blockList2 += blockList.get(i) + "," ;
+			}
+			//마지막 쉼표는 제거해야댐
+			blockList2 = blockList2.substring(0,blockList2.length()-1);//인덱스0~마지막전까지 문자만 가져옴
+		}
+		
+		user.setBlock(blockList2);
+		//내 block update
+		userService.insertBlock(user);
+		
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("result", "success");
+
+		return map;
+
+	}
+	
 	
 }	
 	

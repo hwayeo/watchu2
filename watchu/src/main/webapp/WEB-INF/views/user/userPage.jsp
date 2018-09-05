@@ -12,8 +12,6 @@
 		
 		<div class="col-xs-12 col-md-12"> <!-- 프로필,팔로잉부분 시작-->
 			
-			<hr>
-			
 			<div class="col-md-3 text-center">
 			</div>
 			<div class="col-xs-6 col-md-2 text-center"> <!-- 왼쪽 -->
@@ -35,7 +33,7 @@
 				<p style="font-size:22px"> ${anotheruser.name}<span><a href="setup.do" class="glyphicon glyphicon-cog" data-toggle="modal" data-target="#myModal2"></a></span></p>
 				</div><!-- 이름,톱니바퀴 끝 -->
 				
-			</div>
+			</div><!-- 왼쪽 -->
 			
 			<div class="col-xs-6 col-md-4 text-center" style="margin-top:40px;"> <!-- 오른쪽 -->
 			
@@ -60,8 +58,6 @@
 				<div class="col-md-2">
 				
 				</div>
-				
-			
 			
 			<input type="hidden" id="user_id" name="user_id" value="${user.id}">
 					<!-- 내친구면 팔로잉버튼위로,아니면 팔로우버튼이 위로 -->
@@ -79,9 +75,6 @@
 							</div>
 					</c:if> 
 			
-			
-			
-			
 		</div><!-- 오른쪽 -->
 		
 		<div class="col-md-3">
@@ -95,19 +88,16 @@
 		<div class="col-xs-12 col-md-12"> 
 		
 		<div class="col-md-2">
-		
 		</div>
 		
 		<div class="col-xs-3 col-md-2 text-center" style="border:1px solid #e5e3e3;">
 			<div style="margin-top:20px;">	
 				<div>
-					<img src="${pageContext.request.contextPath}/resources/images/movie.png"
-												id="movie_img"
-												style="width: 50px; height: 50px;">
+					<img src="${pageContext.request.contextPath}/resources/images/movie.png" id="movie_img" style="width: 50px; height: 50px;">
 				</div>	
 				<span>영화</span>
 				<div>
-					<a onclick="location.href='userMypage_movie.do'">0</a>
+					<a onclick="location.href='userMypage_movie.do?id=${anotheruser.id}'">0</a>
 				</div>
 			</div>
 		</div>
@@ -115,13 +105,11 @@
 		<div class="col-xs-3 col-md-2 text-center" style="border:1px solid #e5e3e3;">
 			<div style="margin-top:20px;">	
 				<div>
-					<img src="${pageContext.request.contextPath}/resources/images/like2.png"
-														id="like2_img"
-														style="width: 50px; height: 50px;">
+					<img src="${pageContext.request.contextPath}/resources/images/like2.png" id="like2_img" style="width: 50px; height: 50px;">
 				</div>
 				<span>보고싶어요</span>
 				<div>
-					<a onclick="location.href='userWish.do'">0</a>
+					<a onclick="location.href='userWish.do?id=${anotheruser.id}'">0</a>
 				</div>
 			</div>
 		</div>
@@ -129,13 +117,11 @@
 		<div class="col-xs-3 col-md-2 text-center" style="border:1px solid #e5e3e3;">
 			<div style="margin-top:20px;">
 				<div>
-					<img src="${pageContext.request.contextPath}/resources/images/comment.png"
-														id="comment_img"
-														style="width: 50px; height: 50px;">
+					<img src="${pageContext.request.contextPath}/resources/images/comment.png" id="comment_img" style="width: 50px; height: 50px;">
 				</div>			
 				<span>코멘트</span>
 				<div>
-					<a onclick="location.href='userComment.do'">0</a>
+					<a onclick="location.href='userComment.do?id=${anotheruser.id}'">0</a>
 				</div>
 			</div>
 		</div>
@@ -143,13 +129,11 @@
 		<div class="col-xs-3 col-md-2 text-center" style="border:1px solid #e5e3e3;">
 			<div style="margin-top:20px;">	
 				<div>
-					<img src="${pageContext.request.contextPath}/resources/images/like.png"
-														id="like_img"
-														style="width: 50px; height: 50px;">
+					<img src="${pageContext.request.contextPath}/resources/images/like.png" id="like_img" style="width: 50px; height: 50px;">
 				</div>												
 				<span>좋아요</span>
 				<div>
-					<a onclick="location.href='userLikeComment.do'">0</a>
+					<a onclick="location.href='userLikeComment.do?id=${anotheruser.id}'">0</a>
 				</div>
 			</div>	
 		</div>
@@ -211,10 +195,19 @@
 						<li class="list-group-item"></li>
 
 						<li class="list-group-item">
-							<div class="">
-								<a href="#"><label>BLOCK</label></a>
+							<!-- 내가 블락한 친구면 블락해제버튼이 위로-->
+							<c:if test="${blockList.contains(anotheruser.id) == false}">								
+							<div class="block_unblock">
+								<input type="button" class="btn btn-primary block" data-id="${anotheruser.id}" name="block" value="BLOCK" > 
+								<input type="button" class="btn btn-default active unblock" data-id="${anotheruser.id}" name="unblock" value="BLOCK 해제" style="display: none;">
 							</div>
-
+							</c:if>
+							<c:if test="${blockList.contains(anotheruser.id) == true}">								
+							<div class="block_unblock">
+								<input type="button" class="btn btn-primary active block" data-id="${anotheruser.id}" name="block" value="BLOCK" style="display: none;"> 
+								<input type="button" class="btn btn-default unblock" data-id="${anotheruser.id}" name="unblock" value="BLOCK 해제" >
+							</div>
+							</c:if>
 						</li>
 
 					</ul>

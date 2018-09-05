@@ -37,18 +37,19 @@ public interface UserMapper {
 	public int selectUserCnt(Map<String, Object> map);	
 	public List<UserCommand> selectUserList(Map<String,Object> map);
 	
-	//팔로우버튼누르면  user_relation 테이블에 등록
+	//친구관계(팔로우,팔로워,블락)
+	//회원가입시 user_relation 테이블에 등록
+	@Insert("INSERT INTO user_relation (id) VALUES (#{id})")
+	public void insertRelation(String id);
+	//내 팔로우에 상대방 추가
 	@Update("update user_relation set follow=#{follow} where id=#{id}")
 	public void insertFollow(UserCommand user);
 	//상대방 팔로워에 나 추가
 	@Update("update user_relation set follower=#{follower} where id=#{id}")
 	public void insertFollower(UserCommand user);
-	
-	//친구관계(팔로우,팔로워,블락)
-	//회원가입시 user_relation 테이블에 등록
-	@Insert("INSERT INTO user_relation (id) VALUES (#{id})")
-	public void insertRelation(String id);
-	
+	//블락 추가
+	@Update("update user_relation set block=#{block} where id=#{id}")
+	public void insertBlock(UserCommand user);
 	
 	
 }
