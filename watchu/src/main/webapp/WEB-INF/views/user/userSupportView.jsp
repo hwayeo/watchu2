@@ -5,6 +5,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/support.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/contact.reply.js"></script>
+<div id="main-content">
 <div class="page-main-style container">
 	<table width="700" style="font-size:16px">
 		<tr>
@@ -55,4 +56,4 @@
 		</c:if>
 	</div>
 </div>
-
+</div>
