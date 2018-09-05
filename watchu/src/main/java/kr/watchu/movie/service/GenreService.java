@@ -8,7 +8,8 @@ import kr.watchu.movie.domain.GenreCommand;
 public interface GenreService {
 	//장르추가
 	public void insertGenre(GenreCommand genre);
-	//상세정보 -> 없어도 무관할것 같은
+	//상세정보 
+	public GenreCommand selectGenre(Integer genre_num);
 	//수정
 	public void updateGenre(GenreCommand genre);
 	//삭제

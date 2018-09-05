@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import kr.watchu.movie.dao.GenreMapper;
 import kr.watchu.movie.domain.GenreCommand;
+import kr.watchu.movie.domain.OfficialsCommand;
 
 @Service("genreService")
 public class GenreServiceImpl implements GenreService{
@@ -21,20 +22,24 @@ public class GenreServiceImpl implements GenreService{
 	}
 
 	@Override
+	public GenreCommand selectGenre(Integer genre_num) {
+		return genreMapper.selectGenre(genre_num);
+	}
+	
+	@Override
 	public void updateGenre(GenreCommand genre) {
-		// TODO Auto-generated method stub
+		genreMapper.updateGenre(genre);
 		
 	}
 
 	@Override
 	public void deleteGenre(Integer genre_num) {
-		// TODO Auto-generated method stub
+		genreMapper.deleteGenre(genre_num);
 		
 	}
 
 	@Override
 	public int selectGenreCnt(Map<String, Object> map) {
-		// TODO Auto-generated method stub
 		return genreMapper.selectGenreCnt(map);
 	}
 

@@ -18,28 +18,29 @@
 		<put-attribute name="title" value="왓츄 -영화 목록"/>
 		<put-attribute name="body" value="/WEB-INF/views/admin/admin_movieList.jsp"/>
 	</definition>
-	<definition name="admin_movieView" extends="admin">
+	<definition name="admin_movieWrite" extends="admin">
+		<put-attribute name="title" value="왓츄 -영화 등록"/>
+		<put-attribute name="body" value="/WEB-INF/views/admin/admin_movieWrite.jsp"/>
+	</definition>
+	<definition name="admin_movieDetail" extends="admin">
 		<put-attribute name="title" value="왓츄 -영화 상세 정보"/>
-		<put-attribute name="body" value="/WEB-INF/views/admin/admin_movieView.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/admin/admin_movieDetail.jsp"/>
 	</definition>
 	
 	<definition name="officialList" extends="admin">
 		<put-attribute name="title" value="왓츄 -영화 관계자 목록"/>
 		<put-attribute name="body" value="/WEB-INF/views/admin/officialList.jsp"/>
 	</definition>
-	<definition name="officialView" extends="admin">
-		<put-attribute name="title" value="왓츄 -영화 상세 정보"/>
-		<put-attribute name="body" value="/WEB-INF/views/admin/officialView.jsp"/>
-	</definition>
-	<definition name="officialModify" extends="admin">
-		<put-attribute name="title" value="왓츄 -영화 관계자 수정"/>
-		<put-attribute name="body" value="/WEB-INF/views/admin/officialModify.jsp"/>
+	<definition name="officialDetail" extends="admin">
+		<put-attribute name="title" value="왓츄 -영화 관계자 상세/수정 및 삭제"/>
+		<put-attribute name="body" value="/WEB-INF/views/admin/officialDetail.jsp"/>
 	</definition>
 	
 	<definition name="genreList" extends="admin">
 		<put-attribute name="title" value="왓츄 -영화 장르 목록"/>
 		<put-attribute name="body" value="/WEB-INF/views/admin/genreList.jsp"/>
 	</definition>
+	
 	<definition name="movieRating" extends="admin">
 		<put-attribute name="title" value="왓츄 -영화 별점 관리"/>
 		<put-attribute name="body" value="/WEB-INF/views/admin/movieRating.jsp"/>
@@ -52,9 +53,9 @@
 		<put-attribute name="title" value="왓츄 -신고 회원 내역"/>
 		<put-attribute name="body" value="/WEB-INF/views/admin/reportedUser.jsp"/>
 	</definition>
-	<definition name="support" extends="admin">
+	<definition name="userSupportList" extends="admin">
 		<put-attribute name="title" value="왓츄 -고객 문의"/>
-		<put-attribute name="body" value="/WEB-INF/views/admin/support.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/user/userSupportList.jsp"/>
 	</definition>
 	<!-- 관리자 로그인 -->
 	<definition name="adminLogin" template="/WEB-INF/views/admin/adminLogin.jsp">

@@ -77,6 +77,8 @@ z-index: 2150000000;
 .content-header .search{
 	float: right;
 }
+div .off_photo{margin-top: 0px;}
+
 
 /* 영화목록: 상세 정보 테이블 - 추후 수정 예정 */
 .movieView table tr td {
