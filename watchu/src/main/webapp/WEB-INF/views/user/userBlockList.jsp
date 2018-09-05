@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>팔로잉</title>
+<title>블락</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/follow.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap-theme.min.css">
@@ -25,7 +25,6 @@
      		<!-- 검색폼 시작 -->
   			<form class="navbar-form" role="search" id="search_form" action="" method="get" >
                 <div class="input-group">
-                	<input type="hidden" id="id" name="id" value="${user.id}">
                     <input type="text" class="form-control" placeholder="Search" name="keyword" id="keyword">
                     <div class="input-group-btn">
                         <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
@@ -35,7 +34,9 @@
             <!-- 검색폼 끝 -->
             
 				<div class="panel panel-default">
-                <div class="panel-heading">팔로잉 목록</div>
+                <div class="panel-heading">블락 목록</div>
+                
+                
                 
                  <ul class="list-group">
                  	
@@ -48,8 +49,8 @@
                     <!-- 본인,관리자제외 -->
                     <c:if test="${article.auth==1 && article.id != user.id }">
                     
-                    <!-- 내가 팔로잉한 친구만 -->
-                    <c:if test="${follow.contains(article.id) == true}">
+                    <!-- 내가 블락한 친구만 -->
+                    <c:if test="${blockList.contains(article.id) == true}">
 						<li class="list-group-item">
 						<a href="userPage.do?id=${article.id}" class="following_profile_img"> 
 							<c:if test="${empty article.profile_img}">
@@ -62,15 +63,12 @@
 							</c:if>
 						</a> 
 						<span class="name_span"><label class="name"><a href="userPage.do?id=${article.id}">${article.name}</a></label></span>
-								<!-- get으로 넘겨받은 아이디랑 로그인한 아이디가 불일치하면 버튼 숨김 -->
-								<c:if test="${loginUser.id == user.id }">
+							
 									<div class="pull-right">
-										<div class="follow_unfollow" > 
-											<input type="button" class="btn btn-primary active follow" data-id="${article.id}" name="follow" value="팔로우" style="display: none;">
-											<input type="button" class="btn btn-success unfollow" data-id="${article.id}" name="unfollow" value="팔로잉">
-										</div> 
+										<input type="button" class="btn btn-secondary active block" data-id="${article.id}" name="block" value="BLOCK" style="display: none;"> 
+										<input type="button" class="btn btn-secondary unblock" data-id="${article.id}" name="unblock" value="BLOCK 해제" >	
 									</div>
-								</c:if>
+								
 						</li>
 						</c:if>
 						</c:if>

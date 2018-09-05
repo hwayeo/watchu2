@@ -59,4 +59,63 @@ $(document).ready(function(){
 		});
 		
 	});
+	
+	
+	//block
+	$('.block').click(function(){
+		var preBtn = $(this);
+		var block_id = $(this).attr('data-id');
+		
+		$.ajax({
+			url:'block.do',
+			type:'post',
+			data:{block_id:block_id},
+			dataType:'json',
+			cache:false,
+			timeout:30000,
+			success:function(data){
+				if(data.result == 'success'){
+					preBtn.parent().find('.unblock').show(); 
+					preBtn.hide(); 
+					
+				}else{
+					
+				}			
+			},
+			error:function(){
+				alert('네트워크 오류 발생');
+			}
+		});
+		
+	});
+	
+	//unblock
+	$('.unblock').click(function(){
+		var preBtn = $(this);
+		var unblock_id = $(this).attr('data-id');
+		
+		$.ajax({
+			url:'unblock.do',
+			type:'post',
+			data:{unblock_id:unblock_id},
+			dataType:'json',
+			cache:false,
+			timeout:30000,
+			success:function(data){
+				if(data.result == 'success'){
+					preBtn.parent().find('.block').show(); 
+					preBtn.hide(); 
+					
+				}else{
+					
+				}			
+			},
+			error:function(){
+				alert('네트워크 오류 발생');
+			}
+		});
+		
+	});
+	
+	
 });

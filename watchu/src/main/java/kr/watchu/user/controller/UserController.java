@@ -213,7 +213,7 @@ public class UserController {
 			}
 			
 		}else {
-			follow_id3.add(null);
+			follow_id3.clear();
 		}
 		//로그확인
 		if(log.isDebugEnabled()) {
@@ -298,7 +298,7 @@ public class UserController {
 			}
 
 		}else {
-			user_follow3.add(null);
+			user_follow3.clear();
 		}
 		
 		mav.addObject("follow",user_follow3);
@@ -339,7 +339,7 @@ public class UserController {
 				unfollow_follower3.add(unfollow_follower2[i]);
 			}
 		}else {
-			unfollow_follower3.add(null);
+			unfollow_follower3.clear();
 		}
 		//내가 언팔한사람의 follwer를 쉼표제거해서 arrayList로 만들기 끝
 		
@@ -504,9 +504,18 @@ public class UserController {
 			log.debug("<<contactCommand>> : " + contactCommand);
 		}
 		
-		/*if(result.hasErrors()) {
+		ContactCommand contact = contactService.selectContact(contactCommand.getContact_num());
+		
+		if(result.hasErrors()) {
+			contactCommand.setFilename(contact.getFilename());
 			return "userSupportModify";
-		}*/
+		}
+		
+		if(contactCommand.getUpload().isEmpty()) {
+			contactCommand.setUpload_file(contact.getUpload_file());
+			contactCommand.setFilename(contact.getFilename());
+		}
+		
 		contactService.updateContact(contactCommand);
 
 		return "redirect:/user/userSupportList.do"; 
@@ -525,7 +534,7 @@ public class UserController {
 	
 	
 	
-	//===============================================다른유저 마이페이지===============================================
+	//===============================================다른유저 페이지===============================================
 	@RequestMapping("/user/userPage.do")
 	public ModelAndView anotherUserpage(HttpSession session,@RequestParam("id") String id) {
 		
@@ -535,7 +544,7 @@ public class UserController {
 		UserCommand anotheruser = userService.selectUser(id);//다른유저 커맨드
 		UserCommand user = userService.selectUser(my_id);//내 커맨드
 		
-		//팔로잉 숫자 표시하기위해 친구 arraylist만듬
+		//다른유저 팔로잉 숫자 표시하기위해 친구 arraylist만듬
 		List<String> follow3 = new ArrayList<String>();
 
 		if(anotheruser.getFollow() != null) {
@@ -564,14 +573,131 @@ public class UserController {
 		}else {
 			follower3.clear();
 		}
-				
+		
+		//내 친구목록 구하기 
+		//내 follow에 있는 친구들 쉼표제거해서 arrayList로 만들기 시작
+		List<String> user_follow3 = new ArrayList<String>();
+
+		if(user.getFollow() != null) {
+			String user_follow = user.getFollow();
+			String[] user_follow2 = SplitUtil.splitByComma(user_follow);//쉼표제거
+
+			//for문 돌려서 String배열요소 Array리스트에 넣기
+			for(int i=0;i<user_follow2.length; i++) {
+				user_follow3.add(user_follow2[i]);
+			}
+
+		}else {
+			user_follow3.clear();
+		}
+		//내 follow에 있는 친구들 쉼표제거해서 arrayList로 만들기 끝
+		
+		//내 커맨드에 블락 쉼표빼고 arrayList로 만들기
+		List<String> blockList = new ArrayList<String>();
+		if(user.getBlock() != null) {
+			String block = user.getBlock();
+			String[] block2 = SplitUtil.splitByComma(block);//쉼표제거
+
+			//for문 돌려서 String배열요소 Array리스트에 넣기
+			for(int i=0;i<block2.length; i++) {
+				blockList.add(block2[i]);
+			}
+		}else {
+			blockList.clear();
+		}
+		
+		
 		mav.setViewName("userPage");
 		mav.addObject("anotheruser",anotheruser);
 		mav.addObject("user",user);
 		mav.addObject("list",follow3);
 		mav.addObject("list2",follower3);
+		mav.addObject("mylist",user_follow3);
+		mav.addObject("blockList",blockList);
+		
 		return mav;
 	}
+	
+	
+	//block처리
+	@RequestMapping("/user/block.do")
+	@ResponseBody
+	public Map<String,String> block(HttpSession session,@RequestParam("block_id") String block_id) {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		String my_id = (String)session.getAttribute("user_id");
+		UserCommand user = userService.selectUser(my_id);//내 커맨드
+		
+		//내 커맨드에 블락 추가
+		if(user.getBlock() ==null) {
+			user.setBlock(block_id);
+		}else {
+			String origin_block = user.getBlock();
+			String new_block = origin_block +","+ block_id;
+			user.setBlock(new_block);
+		}
+		//DB에 블락 추가
+		userService.insertBlock(user);
+		
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("result", "success");
+		
+		return map;
+		
+	}
+	
+	//unblock처리
+	@RequestMapping("/user/unblock.do")
+	@ResponseBody
+	public Map<String,String> unblock(HttpSession session,@RequestParam("unblock_id") String unblock_id) {
+
+		ModelAndView mav = new ModelAndView();
+
+		String my_id = (String)session.getAttribute("user_id");
+		UserCommand user = userService.selectUser(my_id);//내 커맨드
+		
+		//내 커맨드에 블락 쉼표빼고 arrayList로 만들기
+		List<String> blockList = new ArrayList<String>();
+		if(user.getBlock() != null) {
+			String block = user.getBlock();
+			String[] block2 = SplitUtil.splitByComma(block);//쉼표제거
+			
+			//for문 돌려서 String배열요소 Array리스트에 넣기
+			for(int i=0;i<block2.length; i++) {
+				blockList.add(block2[i]);
+			}
+		}else {
+			blockList.clear();
+		}
+		mav.addObject("blockList",blockList);
+		//내 block에서 블락해제한 친구 지우기
+		if(blockList.contains(unblock_id)==true) {
+			blockList.remove(unblock_id);
+		}
+		//블락해제한친구 지운 arraylist를 다시 String문자열로 만듬
+		String blockList2 = "";
+		if(blockList.isEmpty()) {
+			blockList2 = "";
+		}else {
+			for(int i=0; i<blockList.size(); i++) {
+				blockList2 += blockList.get(i) + "," ;
+			}
+			//마지막 쉼표는 제거해야댐
+			blockList2 = blockList2.substring(0,blockList2.length()-1);//인덱스0~마지막전까지 문자만 가져옴
+		}
+		
+		user.setBlock(blockList2);
+		//내 block update
+		userService.insertBlock(user);
+		
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("result", "success");
+
+		return map;
+
+	}
+	
 	
 }	
 	

@@ -60,6 +60,11 @@
 	<put-attribute name="body" value="/WEB-INF/views/user/userFollower.jsp"/>
 	</definition>
 	
+	<definition name="userBlockList" extends="userWrite">
+	<put-attribute name="title" value="내 블락페이지"/>
+	<put-attribute name="body" value="/WEB-INF/views/user/userBlockList.jsp"/>
+	</definition>
+	
 	<definition name="userPage" extends="userWrite">
 		<put-attribute name="title" value="왓츄 - 다른유저페이지"/>
 		<put-attribute name="body" value="/WEB-INF/views/user/userPage.jsp"/>

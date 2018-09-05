@@ -25,6 +25,7 @@
      		<!-- 검색폼 시작 -->
   			<form class="navbar-form" role="search" id="search_form" action="" method="get" >
                 <div class="input-group">
+                	<input type="hidden" id="id" name="id" value="${user.id}">
                     <input type="text" class="form-control" placeholder="Search" name="keyword" id="keyword">
                     <div class="input-group-btn">
                         <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
@@ -36,13 +37,13 @@
 				<div class="panel panel-default">
                 <div class="panel-heading">팔로워 목록</div>
                 
-                <input type="hidden" id="user_id" name="user_id" value="${user.id}">
+                
                 <input type="hidden" id="loginUser_id" name="loginUser_id" value="${loginUser.id}">
                 
                  <ul class="list-group">
                  	
                  	<c:if test="${count == 0}">
-							<div class="align-center">검색하신 친구가 없습니다.</div>
+							<div class="align-center">없음</div>
 					</c:if>
 					
 					<c:if test="${count > 0}">

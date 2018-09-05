@@ -26,29 +26,25 @@
 					<div class="container">
 						<a onclick="location.href='userMypage.do'" class="profile_img"> 
 							<c:if test="${empty user.profile_img}">
-								<img src="${pageContext.request.contextPath}/resources/images/default-profile.jpg" class="img-circle" id="profile_img" style="width: 50px; height: 50px;"> ${user.name}
+								<img src="${pageContext.request.contextPath}/resources/images/default-profile.jpg" class="img-circle" id="profile_img"> ${user.name}
 							</c:if> 
 							<c:if test="${!empty user.profile_img}">
-								<img src="${pageContext.request.contextPath}/main/imageView.do?id=${user.id}" width="50" height="50" class="img-circle"> ${user.name}
+								<img src="${pageContext.request.contextPath}/main/imageView.do?id=${user.id}" class="img-circle"> ${user.name}
 							</c:if>
 						</a>	
-						<p align="right"> 
-							<li>
-								<span class="glyphicon glyphicon-star"></span> 
-								<span class="glyphicon glyphicon-star"></span> 
-								<span class="glyphicon glyphicon-star"></span> 
-								<span class="glyphicon glyphicon-star"></span> 
-								<span class="glyphicon glyphicon-star-empty"></span>
-							</li>
-					</div><hr/>
+					</div><br>
+					
 					<div class="container" onclick="location.href='userComment_detail.do'" style="cursor:pointer;">  
-						<a class="pull-left" href="#"> 
-							<img class="media-object" src="resources/images/gad.jpg" width="170" height="250">
-						</a>
-						<h2 class="media-heading">&emsp;가디언즈 오브 갤럭시</h2>
-						<p> &emsp; &emsp;2014</p>
-						<h4>&emsp;&emsp;We are groot!</h4> 
-						<br><br><br><br><br><br>
+						<div class="col-md-2">
+							<a href="#"> 
+								<img class="media-object" src="${pageContext.request.contextPath}/resources/images/gad.jpg">
+							</a>
+						</div>
+						<div class="col-md-9">
+						<span class="media-heading">가디언즈 오브 갤럭시</span>
+						<p class="ptag"> &emsp; &emsp;2014</p>
+						<span class="commentspan">&emsp;&emsp;We are groot!</span> 
+						<br><br><br><br><br> 
 						<ul class="list-inline list-unstyled">
 							&emsp;<li><span><i class="glyphicon glyphicon-calendar"></i> ${user.reg_date} </span></li>
 							<li>|</li>
@@ -56,9 +52,12 @@
 							<li>|</li>
 							<span><i class="glyphicon glyphicon-comment"></i> 2comments</span>
 							<li>|</li>
+							<span><i class="glyphicon glyphicon-star"></i> 4.5</span>
+							<li>|</li>
 						</ul>
 					</div>
-				</div><hr/>
+					</div>
+				</div><br>
 				<a href="#">좋아요</a>&emsp;
 				<a href="userCommentWrite.do" data-toggle="modal" data-target="#CommentWrite">댓글</a>&emsp;
 				
