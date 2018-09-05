@@ -55,8 +55,8 @@ $(function(){
 	});
 });
 
-var directorList = [];
 
+var directorList = "";
 $('#auto_director').on('keyup',function(){
 	var keyword = $(this).val();
 	var keyfield = 'DIRECTOR';
@@ -68,15 +68,18 @@ $('#auto_director').on('keyup',function(){
 		cache:false,
 		timeout:30000,
 		success:function(data){
+			$.each(data, function (index, item) { 
+				directorList.push(item.name);	 
+			});
 		},
 		error:function(){
-
+			alert('네트워크 오류!');
 		}
 	});
-
+	
+	$('#auto_director').autocomplete({source: directorList});
 });
 
-//$('#auto_director').autocomplete({source: directorList});
 //=====태그생성=====//
 function pressEnter(){
 	if(event.keyCode == 13){
