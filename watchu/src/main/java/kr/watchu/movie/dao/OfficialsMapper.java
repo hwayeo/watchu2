@@ -29,7 +29,7 @@ public interface OfficialsMapper {
 	public int selectOffCnt(Map<String, Object> map);
 	public List<OfficialsCommand> selectOffList(Map<String, Object> map);
 	
-	//ajax
+	//자동완성 ajax
 	public List<OfficialsCommand> selectOffAjaxList(Map<String, Object> map);
 	
 }

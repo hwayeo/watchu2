@@ -4,66 +4,164 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/setup.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/mypage.js"></script>
-<div id="main-content">
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-xs-12 col-md-12"><br><br>
-			<div class="col-xs-12 col-md-12">
-				<div class="col-xs-8 col-md-10">
-				</div>
-				<div class="col-xs-4 col-md-2">
-					<a href="setup.do" class="glyphicon glyphicon-cog" data-toggle="modal" data-target="#myModal2"></a>
-				</div><hr/>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/my_follow_unfollow.js"></script>
+
+<div id="main-content"><!-- 1 -->
+<div class="container-fluid"><!-- 2 -->
+	<div class="row" style="margin-top:80px;"><!-- 3 -->
+		
+		<div class="col-xs-12 col-md-12"> <!-- 프로필,팔로잉부분 시작-->
+			
+			<hr>
+			
+			<div class="col-md-3 text-center">
+			</div>
+			<div class="col-xs-6 col-md-2 text-center"> <!-- 왼쪽 -->
+				
+				<div style="margin:20px"> <!-- 프로필사진영역 시작-->
+					<a href="#" class="following_profile_img"> 
+						<c:if test="${empty anotheruser.profile_img}">
+								<img src="${pageContext.request.contextPath}/resources/images/default-profile.jpg"
+												class="img-circle" id="following_profile_img"
+												style="width: 50px; height: 50px;">
+						</c:if> 
+						<c:if test="${!empty anotheruser.profile_img}">
+								<img src="${pageContext.request.contextPath}/main/imageView.do?id=${anotheruser.id}" width="70" height="70" class="img-circle">
+						</c:if>
+					</a> 
+				</div><!-- 프로필사진영역 끝-->
+				
+				<div style="margin:20px"> <!-- 이름,톱니바퀴 시작 -->
+				<p style="font-size:22px"> ${anotheruser.name}<span><a href="setup.do" class="glyphicon glyphicon-cog" data-toggle="modal" data-target="#myModal2"></a></span></p>
+				</div><!-- 이름,톱니바퀴 끝 -->
+				
 			</div>
 			
-			<div class="col-xs-7 col-md-6 text-center">
-				<a href="#" class="following_profile_img"> 
-					<c:if test="${empty anotheruser.profile_img}">
-							<img src="${pageContext.request.contextPath}/resources/images/default-profile.jpg"
-											class="img-circle" id="following_profile_img"
-											style="width: 50px; height: 50px;">
-					</c:if> 
-					<c:if test="${!empty anotheruser.profile_img}">
-							<img src="${pageContext.request.contextPath}/main/imageView.do?id=${anotheruser.id}" width="70" height="70" class="img-circle">
+			<div class="col-xs-6 col-md-4 text-center" style="margin-top:40px;"> <!-- 오른쪽 -->
+			
+			
+				<div class="col-md-2">
+				
+				</div>
+				<div >	
+					<div class="col-xs-6 col-md-4">
+						<div>
+							<a href="myfollower.do?id=${anotheruser.id}">${list2.size()}</a>
+						</div>
+						<span>Followers</span>
+					</div>
+					<div class="col-xs-6 col-md-4">
+						<div>
+							<a href="myfollowing.do?id=${anotheruser.id}">${list.size()}</a>
+						</div>
+						<span>Following</span>
+					</div>
+				</div>	
+				<div class="col-md-2">
+				
+				</div>
+				
+			
+			
+			<input type="hidden" id="user_id" name="user_id" value="${user.id}">
+					<!-- 내친구면 팔로잉버튼위로,아니면 팔로우버튼이 위로 -->
+					<c:if test="${mylist.contains(anotheruser.id) == true}">
+						
+							<div class="follow_unfollow">
+								<input type="button" class="btn btn-primary active follow" data-id="${anotheruser.id}" name="follow" value="팔로우" style="display: none; width:250px;">
+								<input type="button" class="btn btn-success unfollow" data-id="${anotheruser.id}" name="unfollow" value="팔로잉" style="width:250px;">
+							</div>
 					</c:if>
-				</a> 
-				<p style="font-size:22px"> ${anotheruser.name}</p>
-				<div>
-					<ul class="wcPc-Arrange">
-						<li class="wcPc-ArrangeSizeFit" style="list-style:none;">
-								<a href="myfollowing.do?id=${anotheruser.id}">Following&emsp;</a>
-								<a href="myfollowing.do?id=${anotheruser.id}">${list.size()}</a>
-						</li>
-						<li class="wcPc-ArrangeSizeFit" style="list-style:none;">
-								<a href="myfollower.do?id=${anotheruser.id}">Followers&emsp;</a>
-								<a href="myfollower.do?id=${anotheruser.id}">${list2.size()}</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-md-2"></div>
+					<c:if test="${mylist.contains(anotheruser.id) == false}">
+							<div class="follow_unfollow">
+								<input type="button" class="btn btn-primary follow" data-id="${anotheruser.id}" name="follow" value="팔로우" style="width:250px;"> 
+								<input type="button" class="btn btn-success active unfollow" data-id="${anotheruser.id}" name="unfollow" value="팔로잉" style="display: none; width:250px;">
+							</div>
+					</c:if> 
 			
+			
+			
+			
+		</div><!-- 오른쪽 -->
+		
+		<div class="col-md-3">
 		</div>
+	
+		</div><!-- 프로필,팔로잉부분 끝-->
+		
 		
 		
 		<!-- 겟방식으로 id 넘기는걸로 고쳐야댐 시작-->
 		<div class="col-xs-12 col-md-12"> 
-		<div class="container" style="border:1px solid gray"><br>
-				<div class="col-xs-7 col-md-7 text-center">
-					<span class="wc-StatLabel2 wcPc-block"><a onclick="location.href='userMypage_movie.do'">영화</a></span> 234<br>
-					<span class="wc-StatLabel wcPc-block"><a onclick="location.href='userWish.do'">보고싶어요</a></span> 12
-					
-				</div>
-				<div class="col-xs-5 col-md-5">
-					<span class="wc-StatLabel wcPc-block"><a onclick="location.href='userComment.do'">코멘트</a></span> 11<br>
-					<span class="wc-StatLabel wcPc-block"><a onclick="location.href='userLikeComment.do'">좋아요</a></span> 120<br><br>
-				</div>
+		
+		<div class="col-md-2">
+		
 		</div>
+		
+		<div class="col-xs-3 col-md-2 text-center" style="border:1px solid #e5e3e3;">
+			<div style="margin-top:20px;">	
+				<div>
+					<img src="${pageContext.request.contextPath}/resources/images/movie.png"
+												id="movie_img"
+												style="width: 50px; height: 50px;">
+				</div>	
+				<span>영화</span>
+				<div>
+					<a onclick="location.href='userMypage_movie.do'">0</a>
+				</div>
+			</div>
 		</div>
-		<br><br><hr>
+		
+		<div class="col-xs-3 col-md-2 text-center" style="border:1px solid #e5e3e3;">
+			<div style="margin-top:20px;">	
+				<div>
+					<img src="${pageContext.request.contextPath}/resources/images/like2.png"
+														id="like2_img"
+														style="width: 50px; height: 50px;">
+				</div>
+				<span>보고싶어요</span>
+				<div>
+					<a onclick="location.href='userWish.do'">0</a>
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-xs-3 col-md-2 text-center" style="border:1px solid #e5e3e3;">
+			<div style="margin-top:20px;">
+				<div>
+					<img src="${pageContext.request.contextPath}/resources/images/comment.png"
+														id="comment_img"
+														style="width: 50px; height: 50px;">
+				</div>			
+				<span>코멘트</span>
+				<div>
+					<a onclick="location.href='userComment.do'">0</a>
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-xs-3 col-md-2 text-center" style="border:1px solid #e5e3e3;">
+			<div style="margin-top:20px;">	
+				<div>
+					<img src="${pageContext.request.contextPath}/resources/images/like.png"
+														id="like_img"
+														style="width: 50px; height: 50px;">
+				</div>												
+				<span>좋아요</span>
+				<div>
+					<a onclick="location.href='userLikeComment.do'">0</a>
+				</div>
+			</div>	
+		</div>
+		
+		<div class="col-md-2">
+		</div>
+		
+		</div>
 		<!-- 겟방식으로 id 넘기는걸로 고쳐야댐 끝-->
 		
-	<div class="col-xs-12 col-md-12 text-center"> 
+		
+		<div class="col-xs-12 col-md-12 text-center"> 
 			<div class="col-xs-7 col-md-6"><br>
 				<p style="font-size:22px">최고의 작품</p><br>
 			</div>
@@ -88,8 +186,9 @@
 			</div>
 			<div class="col-md-3"></div>
 		</div>
-	</div>
-</div>
+		
+	</div><!-- 3 -->
+</div> <!-- 2 -->
 
 
 <!-- 톱니바퀴 누르면 나오는 모달 -->
@@ -127,4 +226,5 @@
 			</div>
 		</div>
 	</div>
-</div>   
+	
+</div>   <!-- 1 -->

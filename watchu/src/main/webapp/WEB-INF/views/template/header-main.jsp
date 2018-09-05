@@ -33,7 +33,7 @@
 	</div>
 	<div class="form-group search-form">
 		<div class="input-group input-group-lg">
-      		<input type="text" class="form-control" id="xs-search" name="keyword" placeholder="작품 제목,배우,감독 검색">
+      		<input type="text" class="form-control search-input" id="xs-search" name="keyword" placeholder="작품 제목,배우,감독 검색">
       		<span class="input-group-btn">
         		<button class="btn search-btn" id="search-btn"><span id="search-icon" class="glyphicon glyphicon-search"></span></button>
       		</span>
@@ -49,7 +49,7 @@
     <div class="collapse navbar-collapse" id="navbar-main">
       <form class="navbar-form" role="search">
         <div id="search-field" class="input-group input-group-lg">
-      		<input type="text" class="form-control" placeholder="작품 제목,배우,감독 검색">
+      		<input type="text" class="form-control search-input" placeholder="작품 제목,배우,감독 검색">
       		<span class="input-group-btn">
         		<button class="btn btn-default" type="submit"><span id="search-icon" class="glyphicon glyphicon-search"></span></button>
       		</span>

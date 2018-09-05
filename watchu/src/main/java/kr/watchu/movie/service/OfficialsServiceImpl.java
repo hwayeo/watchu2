@@ -47,4 +47,9 @@ public class OfficialsServiceImpl implements OfficialsService {
 		return officialsMapper.selectOffList(map);
 	}
 
+	@Override
+	//자동완성 ajax
+	public List<OfficialsCommand> selectOffAjaxList(Map<String, Object> map){
+		return officialsMapper.selectOffAjaxList(map);
+	}
 }

@@ -18,4 +18,7 @@ public interface OfficialsService {
 	//목록
 	public int selectOffCnt(Map<String, Object> map);
 	public List<OfficialsCommand> selectOffList(Map<String, Object> map);
+	
+	//자동완성 ajax
+	public List<OfficialsCommand> selectOffAjaxList(Map<String, Object> map);
 }

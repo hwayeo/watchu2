@@ -111,7 +111,7 @@ $(document).ready(function(){
 		}
 	
 	
-	//검색
+	/* //검색
 	$('#search-btn').on('click',function(){
 		var keyword = $('#xs-search').val();
 		if(keyword == ''){
@@ -125,5 +125,32 @@ $(document).ready(function(){
 			cache:false,
 			timeout:30000
 		});
+	}); */
+
+	//검색어 자동완성
+	var movieNames = new Array();
+	$('.search-input').keyup(function (event) {
+		var keyword = $(this).val();
+		var keyfield = 'title';
+		$.ajax({
+			type: 'post',
+			url: '/watchu/main/autoComplete.do',
+			data: {keyword:keyword,keyfield:keyfield},
+			dataType: 'json',
+			success: function (data) {
+				keyword = '';
+				movieNames = [];
+				$(data).each(function (index, element) {
+					$(element.list).each(function (index, value) {
+						movieNames.push(value.title);
+					});
+				});
+			}
+		});
+		$('.search-input').autocomplete({source: movieNames});
 	});
+
+	/* $(function(){
+		$('.search-input').autocomplete({source: movieNames});
+	}); */
 });

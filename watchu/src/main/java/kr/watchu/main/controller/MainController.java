@@ -12,9 +12,11 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.watchu.movie.domain.MovieCommand;
@@ -182,6 +184,25 @@ public class MainController {
 		return mav;
 	}*/
 	
+	@RequestMapping("/main/autoComplete.do")
+	@ResponseBody
+	public Map<String,Object> autoSearch(@RequestParam(value="keyword",defaultValue="") String keyword,
+								   @RequestParam(value="keyfield") String keyfield) {
+		
+		Map<String,Object> jsonMap = new HashMap<String,Object>();
+		Map<String,Object> data = new HashMap<String,Object>();
+		data.put("keyword", keyword);
+		data.put("keyfield", keyfield);
+		data.put("start", 1);
+		data.put("end", 20);
+		
+		if(!keyword.equals("")) {
+			List<MovieCommand> list = movieService.selectMovieList(data);
+			jsonMap.put("list", list);
+		}
+		
+		return jsonMap;
+	}
 	
 	
 }

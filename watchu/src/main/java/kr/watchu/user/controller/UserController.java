@@ -213,7 +213,7 @@ public class UserController {
 			}
 			
 		}else {
-			follow_id3.add(null);
+			follow_id3.clear();
 		}
 		//로그확인
 		if(log.isDebugEnabled()) {
@@ -298,7 +298,7 @@ public class UserController {
 			}
 
 		}else {
-			user_follow3.add(null);
+			user_follow3.clear();
 		}
 		
 		mav.addObject("follow",user_follow3);
@@ -339,7 +339,7 @@ public class UserController {
 				unfollow_follower3.add(unfollow_follower2[i]);
 			}
 		}else {
-			unfollow_follower3.add(null);
+			unfollow_follower3.clear();
 		}
 		//내가 언팔한사람의 follwer를 쉼표제거해서 arrayList로 만들기 끝
 		
@@ -544,7 +544,7 @@ public class UserController {
 		UserCommand anotheruser = userService.selectUser(id);//다른유저 커맨드
 		UserCommand user = userService.selectUser(my_id);//내 커맨드
 		
-		//팔로잉 숫자 표시하기위해 친구 arraylist만듬
+		//다른유저 팔로잉 숫자 표시하기위해 친구 arraylist만듬
 		List<String> follow3 = new ArrayList<String>();
 
 		if(anotheruser.getFollow() != null) {
@@ -573,12 +573,32 @@ public class UserController {
 		}else {
 			follower3.clear();
 		}
+		
+		//내 친구목록 구하기 
+		//내 follow에 있는 친구들 쉼표제거해서 arrayList로 만들기 시작
+		List<String> user_follow3 = new ArrayList<String>();
+
+		if(user.getFollow() != null) {
+			String user_follow = user.getFollow();
+			String[] user_follow2 = SplitUtil.splitByComma(user_follow);//쉼표제거
+
+			//for문 돌려서 String배열요소 Array리스트에 넣기
+			for(int i=0;i<user_follow2.length; i++) {
+				user_follow3.add(user_follow2[i]);
+			}
+
+		}else {
+			user_follow3.clear();
+		}
+		//내 follow에 있는 친구들 쉼표제거해서 arrayList로 만들기 끝
 				
 		mav.setViewName("userPage");
 		mav.addObject("anotheruser",anotheruser);
 		mav.addObject("user",user);
 		mav.addObject("list",follow3);
 		mav.addObject("list2",follower3);
+		mav.addObject("mylist",user_follow3);
+		
 		return mav;
 	}
 	
