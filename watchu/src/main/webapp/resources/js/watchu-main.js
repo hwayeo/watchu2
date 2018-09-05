@@ -110,4 +110,20 @@ $(document).ready(function(){
 		   return num.toString().replace(regexp, ',');
 		}
 	
+	
+	//검색
+	$('#search-btn').on('click',function(){
+		var keyword = $('#xs-search').val();
+		if(keyword == ''){
+			alert('검색어를 입력하세요');
+		}
+		
+		$.ajax({
+			url:'search.do',
+			method:'get',
+			data:{keyword:keyword},
+			cache:false,
+			timeout:30000
+		});
+	});
 });

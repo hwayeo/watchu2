@@ -33,9 +33,9 @@
 	</div>
 	<div class="form-group search-form">
 		<div class="input-group input-group-lg">
-      		<input type="text" class="form-control" id="xs-search" placeholder="작품 제목,배우,감독 검색">
+      		<input type="text" class="form-control" id="xs-search" name="keyword" placeholder="작품 제목,배우,감독 검색">
       		<span class="input-group-btn">
-        		<button class="btn search-btn" type="button"><span id="search-icon" class="glyphicon glyphicon-search"></span></button>
+        		<button class="btn search-btn" id="search-btn"><span id="search-icon" class="glyphicon glyphicon-search"></span></button>
       		</span>
       	</div>
 	</div>
@@ -51,7 +51,7 @@
         <div id="search-field" class="input-group input-group-lg">
       		<input type="text" class="form-control" placeholder="작품 제목,배우,감독 검색">
       		<span class="input-group-btn">
-        		<button class="btn btn-default" type="button"><span id="search-icon" class="glyphicon glyphicon-search"></span></button>
+        		<button class="btn btn-default" type="submit"><span id="search-icon" class="glyphicon glyphicon-search"></span></button>
       		</span>
       </div>
       </form>
