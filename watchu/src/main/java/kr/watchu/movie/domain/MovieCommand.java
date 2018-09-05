@@ -99,7 +99,7 @@ public class MovieCommand {
 	public void setMain_genre(String main_genre) {
 		this.main_genre = main_genre;
 	}
-	public String getSub_genre() {
+	public String getSub_genre() { 
 		return sub_genre;
 	}
 	public void setSub_genre(String sub_genre) {
