@@ -51,7 +51,7 @@ public class MainController {
 	public ModelAndView process() {
 		ModelAndView mav = new ModelAndView();
 		
-		//랜덤 영화 추천
+		//랜덤 영화 추천 
 		Map<String,Object> map = new HashMap<String,Object>();
 		int totalMovieCnt = movieService.selectMovieCnt(map);
 		
