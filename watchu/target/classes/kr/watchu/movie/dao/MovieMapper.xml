@@ -53,6 +53,16 @@
 			</if> -->
 		</where>
 	</select>
+	
+	<!-- 글 수정 -->
+<!-- 	<update id="update">
+		<if test="poster_img == '' and banner_img == ''">
+			UPDATE movie_info SET title=#{title}, country=#{country}, released=#{released}, director=${director}, summary=#{summary}, main_genre=#{main_genre}, sub_genre=#{sub_genre}, trailer=#{trailer} WHERE movie_num=#{movie_num}
+		</if>
+		<if test="poster_img != '' and banner_img != ''">
+			UPDATE movie_info SET title=#{title}, country=#{country}, released=#{released}, director=${director}, summary=#{summary}, poster_img=#{poster_img}, banner_img=#{banner_img}, main_genre=#{main_genre}, sub_genre=#{sub_genre}, trailer=#{trailer} WHERE movie_num=#{movie_num}
+		</if>
+	</update> -->
 		
 	<select id="selectMovieAjaxList" parameterType="Map" resultType="MovieCommand">
 		SELECT * FROM

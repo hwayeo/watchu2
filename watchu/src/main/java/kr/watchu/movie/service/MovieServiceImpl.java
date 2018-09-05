@@ -28,13 +28,13 @@ public class MovieServiceImpl implements MovieService {
 
 	@Override
 	public void updateMovie(MovieCommand movie) {
-		// TODO Auto-generated method stub
+		movieMapper.updateMovie(movie);
 		
 	}
 
 	@Override
-	public void deleteMovie(Integer num) {
-		// TODO Auto-generated method stub
+	public void deleteMovie(Integer movie_num) {
+		movieMapper.deleteMovie(movie_num);
 		
 	}
 

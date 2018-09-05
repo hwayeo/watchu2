@@ -55,13 +55,6 @@ public class UserServiceImpl implements UserService {
 	}
 
 
-	/*@Override
-	public List<UserCommand> selectfollowList() {
-		
-		return userMapper.selectfollowList();
-	}*/
-
-
 	@Override
 	public void insertFollow(UserCommand user) {
 		userMapper.insertFollow(user);
@@ -73,6 +66,12 @@ public class UserServiceImpl implements UserService {
 	public void insertFollower(UserCommand user) {
 		userMapper.insertFollower(user);
 		
+	}
+
+
+	@Override
+	public void insertBlock(UserCommand user) {
+		userMapper.insertBlock(user);
 	}
 
 

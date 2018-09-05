@@ -53,9 +53,6 @@ p.total{
 .sup_content{
    border-bottom:1px solid #f0f0f0;
 }
-table,th{
-	text-align:center;
-}
 img{
 		max-width: 55%; /* 이미지의 최대사이즈 */
 	    width: auto;
@@ -63,7 +60,7 @@ img{
 	}
 .Viewtable{
 	width:500px;
-	font-size:16px;
+	font-size:14px;
 }
 }
 
@@ -122,17 +119,15 @@ p.total{
 .sup_content{
    border-bottom:1px solid #f0f0f0;
 }
-table,th{
-	text-align:center;
-}
 img{
-		max-width: 100%; /* 이미지의 최대사이즈 */
+		max-width: 60%; /* 이미지의 최대사이즈 */
 	    width: auto;
 	    height: auto;
 	}
 .Viewtable{
-	width:300px;
+	width:400px;
 	font-size:14px;
+	
 }
 }
 

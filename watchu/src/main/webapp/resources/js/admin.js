@@ -8,25 +8,88 @@ $(document).ready(function(){
 			return false;
 		}
 	});
-});
+
+//genreModify 모달에 데이터 넘기기
+	$('.modify_btn').on('click', function () {
+		var num = $(this).attr('data-whatever');
+		var data = $(this).text();
+		$('#genre_num').val(num);
+		$('#show-num').text(num);
+		$('#name').val(data);
+		//장르 삭제 버튼
+		var modify = "location.href='genreDelete.do?genre_num=";
+		var modifyUrl = modify+num+"'";
+		$('#modifyBtn').attr("onclick", modifyUrl);
+	});
 
 //======자동완성=====//
-$(function() {
-	var directorList = [
-		  "오다영",
-		  "이정은"
-	];
-	$("#auto_director").autocomplete({
-	    source: directorList
+$(function(){
+	$("#auto_actor").autocomplete({
+		minLength: 1,
+		source: function(request, response){
+			var param = {value:request.term};
+			$.ajax({
+				url: "/admin/auto",
+				
+			});
+		}
 	});
 });
-$(function() {
+$(function(){
 	var actorList = [
 		"가나다",
-		"라마바",
-		"한국"
-	];
+		"가나",
+		"가나다라",
+		"가나바바",
+		"가라마",
+		"가위바위",
+		"가ㅏ가가",
+		"가어ㅏ악",
+		"apple",
+		"apply",
+		"approve",
+		"나라"
+		];
 	$("#auto_actor").autocomplete({
 		source: actorList
 	});
+});
+
+
+var directorList = "";
+$('#auto_director').on('keyup',function(){
+	var keyword = $(this).val();
+	var keyfield = 'DIRECTOR';
+	$.ajax({
+		url:'',
+		type:'post',
+		data:{keyword:keyword,keyfield:keyfield},
+		dataType:'json',
+		cache:false,
+		timeout:30000,
+		success:function(data){
+			$.each(data, function (index, item) { 
+				directorList.push(item.name);	 
+			});
+		},
+		error:function(){
+			alert('네트워크 오류!');
+		}
+	});
+	
+	$('#auto_director').autocomplete({source: directorList});
+});
+
+//=====태그생성=====//
+function pressEnter(){
+	if(event.keyCode == 13){
+		event.preventDefault();
+		var name = $("#auto_actor").val();
+		var list = '<input type="textarea" class="list" value="';
+		list += name + '">';
+		$('.actor_list').append(list)
+		$('#auto_actor').val('');
+	}
+	
+}
 });

@@ -111,6 +111,7 @@
 				
 				<!-- pc상세정보 -->
 				<div class="hidden-xs" id="box">
+				<c:if test="${!empty user_id}">
 				<div>
 					<h4><b>내 예상 별점</b></h4>
 				<br>
@@ -141,11 +142,15 @@
 					<h5>선호하는 태그</h5>
 				</div>
 				<hr>
-
+				</c:if>
+				
 				<div>
 					<h4><b>기본정보</b></h4>
 				</div>
-				<div>${movie.summary}</div>
+				<br>
+			
+				<div class="summary">${movie.summary}</div>
+				
 				<hr>
 				
 				<div>
@@ -169,12 +174,13 @@
 					<h4><b>코멘트</b></h4>
 				</div>
 				
-				<div id="comment-box">
+				
+			<div id="comment-box">
 				<c:forEach var="list" items="${commentList}">
 					<div class="division1">
 					<div class=inner-box1>
 					<h4><span>아이디 : ${list.id}</span></h4></div>
-					<hr class="one">
+					<hr>
 					<div class="inner-box2">내용: ${list.content}</div>
 					<hr>
 					<div class="inner-box3">좋아요 : ${list.likes}</div>  
@@ -183,43 +189,56 @@
 					</div>
 				</c:forEach>
 				</div>
+			
+
 				
 				<hr>
+				<div>
 					<h4><b>비슷한 작품</b></h4>
-					<div class="othermovie">
-					<div class="col-sm-3 col-md-3 col-xs-6">
-					<a href="#"><img src="${pageContext.request.contextPath}/resources/images/img1.jpg" id="image3"></a>
-					<p style="text-align:center">어벤져스</p>
-					</div>
-					<div class="col-sm-3 col-md-3 col-xs-6">
-					<a href="#"><img src="${pageContext.request.contextPath}/resources/images/img1.jpg" id="image3"></a>
-					<p style="text-align:center">어벤져스</p>
-					</div>
-					<div class="col-sm-3 col-md-3 col-xs-6">
-					<a href="#"><img src="${pageContext.request.contextPath}/resources/images/img1.jpg" id="image3"></a>
-					<p style="text-align:center">어벤져스</p>
-					</div>
-					<div class="col-sm-3 col-md-3 col-xs-6">
-					<a href="#"><img src="${pageContext.request.contextPath}/resources/images/img1.jpg" id="image3"></a>
-					<p style="text-align:center">어벤져스</p>
-					</div>
-					<div class="col-sm-3 col-md-3 col-xs-6">
-					<a href="#"><img src="${pageContext.request.contextPath}/resources/images/img1.jpg" id="image3"></a>
-					<p style="text-align:center">어벤져스</p>
-					</div>
-					<div class="col-sm-3 col-md-3 col-xs-6">
-					<a href="#"><img src="${pageContext.request.contextPath}/resources/images/img1.jpg" id="image3"></a>
-					<p style="text-align:center">어벤져스</p>
-					</div>
 				</div>
+				
+				<div class="row">
+				<div class="othermovie">
+					<div class="col-sm-3 col-md-3 col-xs-6">
+					<a href="#"><img src="${pageContext.request.contextPath}/resources/images/img1.jpg" id="image3"></a>
+					<div class="poster-name">어벤져어어어어어어어어스 이ㅇ이이인피니이이이티</div>
+					</div>
+					<div class="col-sm-3 col-md-3 col-xs-6">
+					<a href="#"><img src="${pageContext.request.contextPath}/resources/images/img1.jpg" id="image3"></a>
+					<div class="poster-name">어벤져스</div>
+					</div>
+					<div class="col-sm-3 col-md-3 col-xs-6">
+					<a href="#"><img src="${pageContext.request.contextPath}/resources/images/img1.jpg" id="image3"></a>
+					<div class="poster-name">어벤져스</div>
+					</div>
+					<div class="col-sm-3 col-md-3 col-xs-6">
+					<a href="#"><img src="${pageContext.request.contextPath}/resources/images/img1.jpg" id="image3"></a>
+					<div class="poster-name">어벤져스</div>
+					</div>
+					<div class="col-sm-3 col-md-3 col-xs-6">
+					<a href="#"><img src="${pageContext.request.contextPath}/resources/images/img1.jpg" id="image3"></a>
+					<div class="poster-name">어벤져스</div>
+					</div>
+					<div class="col-sm-3 col-md-3 col-xs-6">
+					<a href="#"><img src="${pageContext.request.contextPath}/resources/images/img1.jpg" id="image3"></a>
+					<div class="poster-name">어벤져스</div>
+					</div>
+					</div>
+				</div>	
+				<div class="more">더보기</div>
 			</div>	
+			
 		</div>
 	</div>
+</div>
 				<!-- pc상세정보 끝 -->
 				
 				<!-- 모바일 상세정보 시작-->
-				
+				<div class="container-fluid">
+				<div class="row">
 				<div class="col-sm-12 col-md-12 col-xs-12 hidden-md hidden-lg hidden-sm" id="box2">
+				
+				<c:if test="${!empty user_id}">
 				<div>
 					<h4><b>내 예상 별점</b></h4>
 				<br>
@@ -249,6 +268,7 @@
 					<h5>선호하는 태그</h5>
 				</div>
 				<hr>
+				</c:if>
 
 				<div>
 					<h4><b>기본정보</b></h4>
@@ -275,29 +295,43 @@
 				<div>
 					<h4><b>코멘트</b></h4>
 				</div>
+				<div class="row">
+					<div class="col-xs-12" id="comment-box">
 				<c:forEach var="list" items="${commentList}">
-					<div class="jumbotron division3 col-md-12 col-xs-12">
-					<h4><span>${list.id}</span></h4>
-					<hr class="one">
-					<span>${list.content}</span>
+					<div class="division1">
+					<div class="inner-box1">
+					<h4><span>아이디 : ${list.id}</span></h4></div>
+					<hr>
+					<div class="inner-box2">내용: ${list.content}</div>
+					<hr>
+					<div class="inner-box3">좋아요 : ${list.likes}</div>  
+					<hr>
+					<div class="inner-box4">작성날짜 : ${list.reg_date}</div>                
 					</div>
 				</c:forEach>
-				<hr>
+				</div>
+				</div>
+				
+				<br>
 				
 				<div class="row">
 				<h4><b>비슷한 작품</b></h4>
 					<div class="col-xs-4">
 					<a href="#"><img src="${pageContext.request.contextPath}/resources/images/img1.jpg" id="image4"></a>
+					<div class="poster-name">어벤져어어어어어어어어스 이ㅇ이이인피니이이이티</div>
 					</div>
 					<div class="col-xs-4">
 					<a href="#"><img src="${pageContext.request.contextPath}/resources/images/img1.jpg" id="image4"></a>
+					<div class="poster-name">어벤져어어어어어어어어스 이ㅇ이이인피니이이이티</div>
 					</div>
 					<div class="col-xs-4">
 					<a href="#"><img src="${pageContext.request.contextPath}/resources/images/img1.jpg" id="image4"></a>
+					<div class="poster-name">어벤져어어어어어어어어스 이ㅇ이이인피니이이이티</div>
 					</div>
 				</div>
 				<!-- 모바일 상세정보 끝-->
 			</div>
+		</div>
 		</div>
 <!-- 상세정보 끝 -->
 

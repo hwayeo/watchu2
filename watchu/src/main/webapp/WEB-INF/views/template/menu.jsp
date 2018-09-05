@@ -54,7 +54,7 @@
     <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
       <div class="panel-body">
       <ul>
-         <li class='last'><a href='${pageContext.request.contextPath}/admin/support.do'><span>고객 문의 관리</span></a></li>
+         <li class='last'><a href='${pageContext.request.contextPath}/user/userSupportList.do'><span>고객 문의 관리</span></a></li>
       </ul>
       </div>
     </div>
