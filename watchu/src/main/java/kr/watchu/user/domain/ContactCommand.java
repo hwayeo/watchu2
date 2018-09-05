@@ -14,6 +14,7 @@ public class ContactCommand {
 	private byte[] upload_file; //DB에 저장된 파일
 	private Date reg_date;
 	private Integer recotentable;
+	private String title;
 	
 	public Integer getContact_num() {
 		return contact_num;
@@ -65,9 +66,16 @@ public class ContactCommand {
 	public void setRecotentable(Integer recotentable) {
 		this.recotentable = recotentable;
 	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	@Override
 	public String toString() {
 		return "ContactCommand [contact_num=" + contact_num + ", id=" + id + ", content=" + content + ", upload="
-				+ upload + ", filename=" + filename + ", reg_date=" + reg_date + ", recotentable=" + recotentable + "]";
+				+ upload + ", filename=" + filename + ", reg_date=" + reg_date + ", recotentable=" + recotentable
+				+ ", title=" + title + "]";
 	}
 }
