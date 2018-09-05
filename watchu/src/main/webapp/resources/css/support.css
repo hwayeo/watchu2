@@ -61,6 +61,10 @@ img{
 	    width: auto;
 	    height: auto;
 	}
+.Viewtable{
+	width:500px;
+	font-size:16px;
+}
 }
 
 @media screen and (min-width:0px) and (max-width:767px) { /*모바일*/
@@ -126,4 +130,9 @@ img{
 	    width: auto;
 	    height: auto;
 	}
+.Viewtable{
+	width:300px;
+	font-size:14px;
 }
+}
+

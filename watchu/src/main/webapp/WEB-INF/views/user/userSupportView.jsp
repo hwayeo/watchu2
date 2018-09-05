@@ -7,7 +7,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/contact.reply.js"></script>
 <div id="main-content">
 <div class="page-main-style container">
-	<table width="700" style="font-size:16px">
+	<table class="Viewtable">
 		<tr>
 			<th>제목</th>
 			<td></td>
@@ -31,8 +31,8 @@
 	</table>
 	<hr size="1" width="100%">
 	
-	<table>
-		<th width="250">내용</th>
+	<table class="Viewtable">
+		<th>내용</th>
 		<td>
 			<c:if test="${fn:endsWith(contact.filename,'.jpg') || 
 			              fn:endsWith(contact.filename,'.JPG') ||

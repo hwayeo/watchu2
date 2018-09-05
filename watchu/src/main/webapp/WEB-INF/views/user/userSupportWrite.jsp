@@ -19,7 +19,7 @@
 		<form:errors element="div" cssClass="error-color"/>	
             <tr>
                 <th>제목 </th>
-                <td><input type="text" placeholder="제목을 입력하세요. " name="subject" class="form-control"/></td>
+                <td><input type="text" placeholder="제목을 입력하세요. " name="title" class="form-control"/></td>
             </tr>
             <tr>
                 <th>내용 </th>

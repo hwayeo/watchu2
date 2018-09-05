@@ -42,7 +42,7 @@
             <tr class="sup_content" a onclick="location.href='userSupportView.do?contact_num=${contact.contact_num}'" style="cursor:pointer">
                <td>${contact.contact_num}</td>
                <td>${contact.id}</td>
-               <td>제목</td>
+               <td>${contact.title}</td>
                <td>App 오류</td>
                <td>
                	<c:if test="${contact.recotentable == 0}">
