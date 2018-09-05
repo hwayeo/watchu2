@@ -13,7 +13,7 @@
 	<table class="Viewtable">
 		<tr>
 			<th>제목</th>
-			<td></td>
+			<td>${contact.title}</td>
 		</tr>
 		<tr>
 			<th>작성자</th>
@@ -36,7 +36,7 @@
 	
 	<table class="Viewtable">
 		<th>내용</th>
-		<td>
+		<td width="300px">
 			<c:if test="${fn:endsWith(contact.filename,'.jpg') || 
 			              fn:endsWith(contact.filename,'.JPG') ||
 			              fn:endsWith(contact.filename,'.gif') ||

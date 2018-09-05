@@ -504,9 +504,18 @@ public class UserController {
 			log.debug("<<contactCommand>> : " + contactCommand);
 		}
 		
-		/*if(result.hasErrors()) {
+		ContactCommand contact = contactService.selectContact(contactCommand.getContact_num());
+		
+		if(result.hasErrors()) {
+			contactCommand.setFilename(contact.getFilename());
 			return "userSupportModify";
-		}*/
+		}
+		
+		if(contactCommand.getUpload().isEmpty()) {
+			contactCommand.setUpload_file(contact.getUpload_file());
+			contactCommand.setFilename(contact.getFilename());
+		}
+		
 		contactService.updateContact(contactCommand);
 
 		return "redirect:/user/userSupportList.do"; 
