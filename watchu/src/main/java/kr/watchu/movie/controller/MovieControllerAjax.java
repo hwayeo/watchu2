@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -76,10 +77,12 @@ public class MovieControllerAjax {
 	public Map<String,Object> getMovieList2(
 			@RequestParam(value="pageNum",defaultValue="1") int currentPage,
 			@RequestParam(value="keyfield",defaultValue="") String keyfield,
-			@RequestParam(value="keyword",defaultValue="" ) String keyword){
+			@RequestParam(value="keyword",defaultValue="" ) String keyword
+			){
 		
 		int rowCount = 24;
 		int pageCount = 10;
+		
 		
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("keyfield", keyfield);
@@ -109,7 +112,6 @@ public class MovieControllerAjax {
 		mapJson.put("count", count);
 		mapJson.put("rowCount", rowCount);
 		mapJson.put("list", list);
-		
 		return mapJson;
 	}
 }

@@ -1,22 +1,22 @@
 $(document).ready(function(){
-   $('.thumbnail').each(function(){
-      //이미지에 마우스를 올렸을 시 평점 오버레이
-      $(this).mouseover(function(){
-         $(this).find('.overlay').css('display','block');
-      });
 
-      //이미지에서 마우스가 벗어날 시 원상태 복귀
-      $(this).mouseout(function(){
-         $(this).find('.overlay').css('display','none');
-      });
-   });
-   
+      //이미지에 마우스를 올렸을 시 평점 오버레이	   
+	  $(document).on('mouseover','.thumbnail',function(){
+		  $(this).find('.overlay').css('display','block');
+	  }); 
+	  //이미지에서 마우스가 벗어날 시 원상태 복귀
+	  $(document).on('mouseout','.thumbnail',function(){
+		  $(this).find('.overlay').css('display','none');
+	  });
+
    // ajax(비동기처리)로 input 값을 해당 영화 고유번호로 저장(누적)
    $(document).on('click','input[name="rating"]',function(){
 	   var movie_num = $(this).parents('.starRating').attr('data-num');
-	   var id = $(this).parents('.starRating').attr('data-id');
+	   var id = $('#user_id').val();
 	   var rate = $('input[name="rating"]:checked').val();
-
+	   
+	   alert(movie_num);
+	   
 	   if(id == null || id == ""){
 		   alert('로그인을 해야 서비스를 이용할 수 있습니다.');
 		   
@@ -24,7 +24,7 @@ $(document).ready(function(){
 	   }
 	   
 	   $.ajax({
-			 url:'/watchu/movie/rating.do',
+			 url:'rating.do',
 			 type:'post',
 			 data:{movie_num:movie_num,id:id,rate:rate},  //평가 점수 db에 저장
 			 dataType:'json',

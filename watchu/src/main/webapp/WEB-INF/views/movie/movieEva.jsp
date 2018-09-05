@@ -44,7 +44,7 @@
   <option>액션</option>
   <option>히어로</option>
 </select>
-<select class="visible-xs visible-sm form-control">
+<select id="keyfield" name="keyfield" class="visible-xs visible-sm form-control">
   <option selected>모든 국가</option>
   <option>한국</option>
   <option>미국</option>
@@ -65,7 +65,7 @@
   <option>별점 순</option>
 </select>
 <!-- 웹환경 -->
-<select id="rate-menu" class="hidden-xs hidden-sm">
+<select  class="hidden-xs hidden-sm rate-menu">
   <option selected>모든 장르</option>
   <option>드라마</option>
   <option>판타지</option>
@@ -85,10 +85,10 @@
   <option>액션</option>
   <option>히어로</option>
 </select>
-<select id="rate-menu" class="hidden-xs hidden-sm">
-  <option selected>모든 국가</option>
-  <option>한국</option>
-  <option>미국</option>
+<select id="evafield" name="keyfield" class="hidden-xs hidden-sm rate-menu">
+  <option value="" selected>모든 국가</option>
+  <option value="한국">한국</option>
+  <option value="미국">미국</option>
   <option>일본</option>
   <option>중국</option>
   <option>독일</option>
@@ -100,16 +100,16 @@
   <option>캐나다</option>
   <option>스페인</option>
 </select>
-<select id="rate-menu" class="hidden-xs hidden-sm category-right"> 
+<select  class="hidden-xs hidden-sm rate-menu category-right"> 
   <option selected>최신 순</option>
   <option>추천 순</option>
   <option>별점 순</option>
 </select>
-
+<input type="hidden" id="user_id" value="${user_id}">
 <div class="row">
-	<div class="elist"></div>
-   <c:forEach var="ml" items="${list}">
-  <%--  <div class="col-sm-6 col-md-3 col-xs-6" id="main-category">
+	<div id="elist"></div>
+   <%-- <c:forEach var="ml" items="${list}">
+  <div class="col-sm-6 col-md-3 col-xs-6" id="main-category">
       <div class="thumbnail">
          <img src="${pageContext.request.contextPath}/resources/images/img4.jpg" class="mimg">
          <div class="overlay">
@@ -143,9 +143,9 @@
             </div>
          </div>
       </div> 
-   </div>	--%>
+   </div>
+   </c:forEach> --%>
    <%-- <div class="sub-category caption">
          <p class="ptitle">${ml.title}</p>
-      </div> --%>
-   </c:forEach>
+   </div> --%>
 </div>

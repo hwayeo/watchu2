@@ -31,6 +31,10 @@ public class MovieratedController {
 	@ResponseBody
 	public Map<String,String> insertRated(@ModelAttribute("rateCommand") MovieratedCommand im) {
 		
+		
+		if(log.isDebugEnabled()) {
+			log.debug("[[rateCommand]] : " + im);
+		}
 		Map<String,String> map = new HashMap<String, String>();
 	
 		//기존 영화 평가 데이터를 받아오기 위해 파라미터값을 넣어주는 맵
