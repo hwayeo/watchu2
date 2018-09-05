@@ -13,21 +13,29 @@
       <div class="tab-pane active text-center" id="support_list">
          <div class="col-md-12 col-xs-12 content-header">
             <!-- 검색 -->
-            <p class="search-title">검색 구분 </p>
-            <select name="category">
-               <option value="faq1">App 오류</option>
-               <option value="faq2">콘텐츠 오류</option>
-               <option value="faq3">1:1 상담</option>
-            </select>
-            
-            <input type="text" style="width:110px">
-            
-            <input type="button" value="검색" class="btnSearch">
+	        <form action="userSupportList.do" id="search_form" method="get">
+				<ul class="search">
+					<li style="none">
+						<p class="search-title">검색 구분 </p>
+	            <select name="keyfield">
+	               <option value="title">제목</option>
+					<option value="id">ID</option>
+					<option value="content">내용</option>
+					<option value="all">전체</option>
+	            </select>
+					<input type="text" name="keyword" id="keyword" style="width:110px">
+					<input type="submit" value="검색" class="btnSearch">
+				</ul>
+			</form>
          </div>
          
-         <p class="total">총 <span class="watchucolor">12</span>건의 상담내역이 있습니다.</p>
+         <p class="total">총 <span class="watchucolor">${contact.count}</span>건의 상담내역이 있습니다.</p>
 
          <!-- 상담 목록 -->
+        <c:if test="${count == 0}">
+			<div class="align-center">등록된 게시물이 없습니다.</div>
+		</c:if>
+		<c:if test="${count > 0}">
          <table class="table table-hover table-condensed">
             <tr class="sup_title">
                <th class="col-md-1">번호</th>
@@ -56,12 +64,10 @@
             </tr>
             </c:forEach>
          </table>
+         </c:if>
       </div>
-      
       <div class="etc text-center">
-      	<c:if test="${!empty user_id}">
-			<input type="button" class="btn btn-default" value="글쓰기" onclick="location.href='userSupportWrite.do'">
-		</c:if>
+		<input type="button" class="btn btn-default" value="글쓰기" onclick="location.href='userSupportWrite.do'">
       </div>
    </div>
 </div>

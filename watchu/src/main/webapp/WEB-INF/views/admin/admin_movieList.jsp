@@ -24,14 +24,14 @@
 			<!-- 영화 목록 -->
 			<table class="table table-hover table-condensed">
 				<tr>
-					<th class="col-md-2">번호</th>
+					<th class="col-md-2">영화 코드</th>
 					<th class="col-md-8">영화명</th>
 					<th class="col-md-2">선택</th>
 				</tr>
 				<c:forEach var="movie" items="${movie_list}">
 				<tr>
 					<td>${movie.movie_num}</td>
-					<td onclick="location.href='admin_movieView.do?movie_num=${movie.movie_num}'" style="cursor:pointer;">${movie.title}</td>
+					<td onclick="location.href='admin_movieDetail.do?movie_num=${movie.movie_num}'" style="cursor:pointer;">${movie.title}</td>
 					<td><input type="checkbox" data-num="${movie.movie_num}" name="checked"></td>
 				</tr>
 				</c:forEach>
@@ -40,9 +40,11 @@
 
 			<!-- 영화 등록 및 삭제버튼 -->
 			<div class="edit_btn" align="right">
-				<input type="button" value="영화 등록" id="register_movie"
+				<input type="button" value="영화 등록" onclick="location.href='admin_movieWrite.do'">
+				<input type="button" value="선택 삭제">
+				<!-- <input type="button" value="영화 등록" id="register_movie"
 					data-toggle="modal" data-target="#registerModal"> <input
-					type="submit" value="선택 삭제" id="delete_movie">
+					type="submit" value="선택 삭제" id="delete_movie"> -->
 			</div>
 			<br>
 
@@ -85,18 +87,18 @@
 					<label for="released">개봉연도</label>
 					<input type="date" name="released" id="released">
 				</div>
-				<div class="form-group ui-widget">
+				<div class="form-group">
 					<label for="director">감독</label>
-					<input type="text" name="director" class="auto" id="auto_director">
+					<form:input path="director" id="auto_director" />
+					<!-- <input type="text" name="director" class="auto" id="auto_director"> -->
 				</div>
-				<div class="form-group ui-widget">
+				<div class="form-group">
 					<label for="actors">배우</label>
-					<input type="text" name="actors" class="auto" id="auto_actor">
-					<form:errors path="actors" cssClass="error-color"/>
+					<input id="auto_actor" type="text" name="actors" />
 				</div>
 				<div class="form-group">
 					<label for="summary">줄거리</label>
-					<form:textarea path="summary" cols="50" rows="3" />
+					<form:textarea path="summary" cols="50" rows="5" />
 					<form:errors path="summary" cssClass="error-color"/>
 				</div>
 				<div class="form-group">

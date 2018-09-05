@@ -89,7 +89,7 @@ public class MyPageController {
 	
 	//평가한 영화 목록
 	@RequestMapping("/user/userMypage_movie.do")
-	public String mypage_movie() {
+	public String mypage_movie(@RequestParam(value="id") String id) {
 		return "userMypage_movie";
 	}
 	
@@ -137,7 +137,7 @@ public class MyPageController {
 	
 	//보고싶어요
 	@RequestMapping("/user/userWish.do")
-	public String wish() {
+	public String wish(@RequestParam(value="id") String id) {
 		return "userWish";
 	}
 	
