@@ -70,7 +70,7 @@
 				name like '%' || #{keyword} || '%' and jobs='DIRECTOR'
 			</if>
 			<if test="keyword != '' and keyfield == 'ACTOR">
-				name like '%' || #{keyword} || '%' and jobs='DIRECTOR'
+				name like '%' || #{keyword} || '%' and jobs='ACTOR'
 			</if>
 		</where>
 	</select>
