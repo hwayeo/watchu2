@@ -22,72 +22,110 @@ $(document).ready(function(){
 		$('#modifyBtn').attr("onclick", modifyUrl);
 	});
 
-//======자동완성=====//
-$(function(){
-	$("#auto_actor").autocomplete({
-		minLength: 1,
-		source: function(request, response){
-			var param = {value:request.term};
-			$.ajax({
-				url: "/admin/auto",
-				
-			});
-		}
-	});
-});
-$(function(){
-	var actorList = [
-		"가나다",
-		"가나",
-		"가나다라",
-		"가나바바",
-		"가라마",
-		"가위바위",
-		"가ㅏ가가",
-		"가어ㅏ악",
-		"apple",
-		"apply",
-		"approve",
-		"나라"
-		];
-	$("#auto_actor").autocomplete({
-		source: actorList
-	});
-});
-
-
-var directorList = "";
-$('#auto_director').on('keyup',function(){
+//======감독_자동완성=====//
+var directorList = new Array();
+$('.auto_director').keyup(function (event) {
+	
 	var keyword = $(this).val();
 	var keyfield = 'DIRECTOR';
+	
+	director_List(keyword,keyfield);
+});
+$('.auto_director').keydown(function (event) {
+	
+	var keyword = $(this).val();
+	var keyfield = 'DIRECTOR';
+	
+	director_List(keyword,keyfield);
+	
+	if (event.keyCode === 13) {
+        event.preventDefault();
+    }
+});
+$('.auto_director').keypress(function (event) {
+	
+	var keyword = $(this).val();
+	var keyfield = 'DIRECTOR';
+	
+	director_List(keyword,keyfield);
+});
+
+function director_List(keyword,keyfield){
 	$.ajax({
-		url:'',
-		type:'post',
-		data:{keyword:keyword,keyfield:keyfield},
-		dataType:'json',
-		cache:false,
-		timeout:30000,
-		success:function(data){
-			$.each(data, function (index, item) { 
-				directorList.push(item.name);	 
+		type: 'post',
+		url: '/watchu/admin/auto_offList.do',
+		data: {keyword:keyword,keyfield:keyfield},
+		dataType: 'json',
+		success: function (data) {
+			directorList = [];
+			$(data).each(function (index, element) {
+				$(element.list).each(function (index, value) {
+					directorList.push(value.name);
+					$('.auto_director').autocomplete({source: directorList});
+				});
 			});
 		},
 		error:function(){
-			alert('네트워크 오류!');
+			console.log('목록 호출 실패');
 		}
-	});
+	});	
+}
+
+//======배우_자동완성=====//
+var actorList = new Array();
+$('.auto_actor').keyup(function (event) {
 	
-	$('#auto_director').autocomplete({source: directorList});
+	var keyword = $(this).val();
+	var keyfield = 'ACTOR';
+	
+	actor_List(keyword,keyfield);
+});
+$('.auto_actor').keydown(function (event) {
+	
+	var keyword = $(this).val();
+	var keyfield = 'ACTOR';
+	
+	actor_List(keyword,keyfield);
+	
+	//배우 목록
+	var actor_value = new Array();
+	if (event.keyCode === 13) {
+		event.preventDefault();
+		$(this).each(function(){
+			actor_value += $(this).val() + ", ";
+		});
+		$('.input_actor').val(actor_value);
+		$('.auto_actor').val('').focus();
+    }
+});
+$('.auto_actor').keypress(function (event) {
+	
+	var keyword = $(this).val();
+	var keyfield = 'ACTOR';
+	
+	actor_List(keyword,keyfield);
 });
 
-//=====태그생성=====//
-function pressEnter(){
-	if(event.keyCode == 13){
-		event.preventDefault();
-		var name = $("#auto_actor").val();
-		alert(name);
-		$('#auto_actor').val('');
-	}
-	
+function actor_List(keyword,keyfield){
+	$.ajax({
+		type: 'post',
+		url: '/watchu/admin/auto_offList.do',
+		data: {keyword:keyword,keyfield:keyfield},
+		dataType: 'json',
+		success: function (data) {
+			actorList = [];
+			$(data).each(function (index, element) {
+				$(element.list).each(function (index, value) {
+					actorList.push(value.name);
+					$('.auto_actor').autocomplete({source: actorList});
+				});
+			});
+		},
+		error:function(){
+			console.log('목록 호출 실패');
+		}
+	});	
 }
+
+
 });

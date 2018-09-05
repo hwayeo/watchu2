@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,8 @@ import kr.watchu.movie.service.OfficialsService;
 
 @Controller
 public class AdminAjaxController {	
+	
+	private Logger log = Logger.getLogger(this.getClass());
 	@Resource
 	private OfficialsService officialsService;
 	
@@ -25,19 +28,22 @@ public class AdminAjaxController {
 		return new OfficialsCommand();
 	}
 	
-	@RequestMapping("/amdin/Auto_offList.do")
+	@RequestMapping("/admin/auto_offList.do")
 	@ResponseBody
 	public Map<String, Object> getAuto_offList(@RequestParam(value="keyfield",defaultValue="") String keyfield,
 											   @RequestParam(value="keyword",defaultValue="" ) String keyword){
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("keyfield", keyfield);
-		map.put("keyword", keyword);
 		
-		List<OfficialsCommand> offList = null;
-		offList = officialsService.selectOffAjaxList(map);
 		
+		Map<String, Object> data = new HashMap<String, Object>();
 		Map<String, Object> mapJson = new HashMap<String, Object>();
-		mapJson.put("offList", offList);
+		data.put("keyfield", keyfield);
+		data.put("keyword", keyword);
+		
+		List<OfficialsCommand> list = officialsService.selectOffAjaxList(data);
+		mapJson.put("list", list);
+		if(log.isDebugEnabled()) {
+			log.debug("<<list>> : " + list);
+		}
 		
 		return mapJson;
 	}

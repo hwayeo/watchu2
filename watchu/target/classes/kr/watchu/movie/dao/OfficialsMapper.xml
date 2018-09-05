@@ -61,17 +61,22 @@
 		</if>
 	</update>
 	
+	<!-- 감독&배우 자동완성 -->
 	<select id="selectOffAjaxList" parameterType="map" resultType="OfficialsCommand">
 		SELECT 
-		* 
+			* 
 		FROM officials 
 		<where>
-			<if test="keyword != '' and keyfield == 'DIRECTOR">
-				name like '%' || #{keyword} || '%' and jobs='DIRECTOR'
+			<if test="keyword != '' and keyfield == 'DIRECTOR'">
+			 	name like '%' || #{keyword} || '%' and jobs=#{keyfield}
 			</if>
-			<if test="keyword != '' and keyfield == 'ACTOR">
-				name like '%' || #{keyword} || '%' and jobs='ACTOR'
+			<if test="keyword != '' and keyfield == 'ACTOR'">
+			 	name like '%' || #{keyword} || '%' and jobs=#{keyfield}
 			</if>
 		</where>
 	</select>
+		<!-- SELECT 
+		* 
+		FROM officials 
+		WHERE name like '%' || #{keyword} || '%' and jobs='DIRECTOR' -->
 </mapper>

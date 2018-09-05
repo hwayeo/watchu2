@@ -41,16 +41,20 @@
 		<hr size="1" noshade>
 		<li>
 			<label for="director">감독</label>
-			<form:input path="director" id="auto_director" class="tm-input"/>
+			<input class="auto_director" type="text" name="director" >
+			<form:input path="director" class="input_director"/>
+			<form:errors path="director" cssClass="error-color" />
+			<%-- <form:input path="director" class="auto_director"/> --%>
 		</li>
 		<li>
 			<label for="actors">배우</label>
-			<input id="auto_actor" type="text" name="actors" onKeyDown="pressEnter()" />
-			<input type="text" class="actor_list">
+			<input class="auto_actor" type="text" name="actors"/>
+			<form:input path="actors" size="80" class="input_actor"/>
+			<form:errors path="actors" cssClass="error-color" />
 		</li>
 		<li>
 			<label for="summary">줄거리</label>
-			<form:textarea path="summary" cols="50" rows="5" />
+			<form:textarea path="summary" cols="80" rows="10" />
 			<form:errors path="summary" cssClass="error-color" />
 		</li>
 		<hr size="1" noshade>
