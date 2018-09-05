@@ -17,8 +17,8 @@ public class MovieCommand {
 	private byte[] poster_img;
 	private MultipartFile uploadBanner;
 	private byte[] banner_img;
-	private Integer main_genre;
-	private Integer sub_genre;
+	private String main_genre;
+	private String sub_genre;
 	private String trailer;
 	private Date reg_date;
 	private float rate;
@@ -93,16 +93,16 @@ public class MovieCommand {
 	public void setBanner_img(byte[] banner_img) {
 		this.banner_img = banner_img;
 	}
-	public Integer getMain_genre() {
+	public String getMain_genre() {
 		return main_genre;
 	}
-	public void setMain_genre(Integer main_genre) {
+	public void setMain_genre(String main_genre) {
 		this.main_genre = main_genre;
 	}
-	public Integer getSub_genre() {
+	public String getSub_genre() {
 		return sub_genre;
 	}
-	public void setSub_genre(Integer sub_genre) {
+	public void setSub_genre(String sub_genre) {
 		this.sub_genre = sub_genre;
 	}
 	public String getTrailer() {
