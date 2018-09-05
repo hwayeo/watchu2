@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.watchu.movie.domain.GenreCommand;
@@ -206,62 +205,6 @@ public class AdminController {
 		return "redirect:/admin/movieList.do";
 	}
 
-	/*@RequestMapping("/admin/movieList.do") 
-	public ModelAndView movie_list(@RequestParam(value="pageNum", defaultValue="1") int currentPage,
-			@RequestParam(value="keyfield", defaultValue="") String keyfield,
-			@RequestParam(value="keyword", defaultValue="") String keyword) {
-
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("keyfield", keyfield);
-		map.put("keyword", keyword);
-
-		//총 글의 갯수 또는 검색된 글의 갯수
-		int movie_count = movieService.selectMovieCnt(map);
-
-		//로그 출력
-		if(log.isDebugEnabled()) {
-			log.debug("<<movie_count>>: " + movie_count);
-		}
-
-		//페이징 처리
-		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, movie_count, rowCount, pageCount, "/admin/main.do");
-
-		map.put("start", page.getStartCount());
-		map.put("end", page.getEndCount());
-
-		List<MovieCommand> movie_list = null;
-		if(movie_count > 0) {
-			movie_list = movieService.selectMovieList(map);
-
-			//로그 출력
-			if(log.isDebugEnabled()) {
-				log.debug("<movie_list>: " + movie_list);
-			} 
-		}
-
-		//ModelAndView객체 생성, 데이터 저장
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("adminMovieList");
-		mav.addObject("movie_count", movie_count);
-		mav.addObject("movie_list", movie_list);
-		mav.addObject("pagingHtml", page.getPagingHtml());
-
-		return mav;
-	}
-
-	//01_2_전송된 데이터 처리
-	@RequestMapping(value="/admin/main.do", method=RequestMethod.POST)
-	public String movie_submit(@ModelAttribute("movie_command") @Valid MovieCommand movieCommand, BindingResult result, HttpServletRequest request) {
-		//로그 출력
-		if(log.isDebugEnabled()) {
-			log.debug("<<MovieCommand>>: " + movieCommand);
-		}
-
-		movieService.insertMovie(movieCommand);
-
-		return "redirect:/admin/main.do";
-	}
-*/
 	//01_3_영화 상세&수정
 	//상세보기&수정 폼 호출
 	@RequestMapping(value="/admin/admin_movieDetail.do", method=RequestMethod.GET)
@@ -545,12 +488,50 @@ public class AdminController {
 	}
 
 	//==========05_회원 관리_회원 목록==========//
+	//05_1_회원목록&검색
 	@RequestMapping("/admin/userList.do")
-	public String process4() {
+	public ModelAndView user_list(@RequestParam(value="pageNum", defaultValue="1") int currentPage,
+								  @RequestParam(value="keyfield", defaultValue="") String keyfield,
+								  @RequestParam(value="keyword", defaultValue="") String keyword) {
 
-		return "userList";
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
+
+		//총 글의 갯수 또는 검색된 글의 갯수
+		int user_count = userService.selectUserCnt(map);
+
+		//로그 출력
+		if(log.isDebugEnabled()) {
+			log.debug("<<user_count>>: " + user_count);
+		}
+
+		//페이징 처리
+		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, user_count, rowCount, pageCount, "userList.do");
+
+		map.put("start", page.getStartCount());
+		map.put("end", page.getEndCount());
+
+		List<UserCommand> user_list = null;
+		if(user_count > 0) {
+			user_list = userService.selectUserList(map);
+
+			//로그 출력
+			if(log.isDebugEnabled()) {
+				log.debug("<user_list>: " + user_list);
+			} 
+		}
+
+		//ModelAndView객체 생성, 데이터 저장
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("userList");
+		mav.addObject("user_count", user_count);
+		mav.addObject("user_list", user_list);
+		mav.addObject("pagingHtml", page.getPagingHtml());
+
+		return mav;
 	}
-
+	
 	//==========06_회원 관리_신고 회원==========//
 	@RequestMapping("/admin/reportedUser.do")
 	public String process5() {

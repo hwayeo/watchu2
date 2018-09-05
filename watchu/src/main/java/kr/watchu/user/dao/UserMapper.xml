@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="kr.watchu.user.dao.UserMapper">
+	<!-- 목록&검사 -->
+	<select id="selectUserList" parameterType="map" resultType="UserCommand">
+		SELECT
+			*
+		FROM (SELECT
+				a.*, rownum rnum
+			FROM (SELECT
+					*
+				FROM user_info
+				
+				<where>
+					<if test="keyword != '' and keyfield =='id'">
+						id like '%' || #{keyword} || '%'
+					</if>
+					<if test="keyword != '' and keyfield == 'name'">
+						name like '%' || #{keyword} || '%'
+					</if> 
+				</where>
+				
+				ORDER BY reg_date)a)
+		<![CDATA[WHERE rnum >= #{start} AND rnum <= #{end}]]>
+	</select>
+	
+	<!-- 글 갯수(cnt) -->
+	<select id="selectUserCnt" parameterType="map" resultType="integer">
+		SELECT
+			count(*)
+		FROM user_info
+		<where>
+			<if test="keyword != '' and keyfield =='id'">
+				id like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'name'">
+				name like '%' || #{keyword} || '%'
+			</if> 
+		</where>
+	</select>
+</mapper>

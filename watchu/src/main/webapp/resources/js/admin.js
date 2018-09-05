@@ -38,7 +38,7 @@ $(function(){
 		}
 	});
 });
-/*$(function(){
+$(function(){
 	var actorList = [
 		"가나다",
 		"가나",
@@ -57,7 +57,7 @@ $(function(){
 		source: actorList
 	});
 });
-*/
+
 $(function(){
 	var directorList = [
 		"박보검",
@@ -68,3 +68,16 @@ $(function(){
 	];
 	$('#auto_director').autocomplete({source: directorList});
 });
+
+//=====태그생성=====//
+function pressEnter(){
+	if(event.keyCode == 13){
+		event.preventDefault();
+		var name = $("#auto_actor").val();
+		var list = '<input type="textarea" class="list" value="';
+		list += name + '">';
+		$('.actor_list').append(list)
+		$('#auto_actor').val('');
+	}
+	
+}

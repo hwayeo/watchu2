@@ -1,57 +1,66 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <div class="admin_main">
 	<div id="user_list">
 		<h2>회원 목록</h2>
 		<br>
 		<div class="content-header">
 			<!-- 검색 -->
-			<select name="category">
-				<option value="user_name">이름</option>
-				<option value="user_id">ID</option>
-			</select> <input type="text"> <input type="button" value="검색"><br>
-			<Br>
+			<form action="userList.do" id="user_search" method="get" class="search">
+			<select name="keyfield">
+				<option value="name">이름</option>
+				<option value="id">ID</option>
+			</select>
+			<input type="text" name="keyword" id="keyword"> 
+			<input type="submit" value="검색">
+			</form>
 		</div>
  
 		<div class="content-body">
 			<!-- 회원 목록 -->
 			<table class="table table-hover table-condensed">
 				<tr>
-					<th class="col-md-2">회원 코드</th>
 					<th class="col-md-2">아이디</th>
-					<th class="col-md-3">회원명</th>
-					<th class="col-md-2">누적 신고 수</th>
-					<th class="col-md-2">누적 좋아요 수</th>
+					<th class="col-md-2">회원명</th>
+					<th class="col-md-2">전화번호</th>
+					<th class="col-md-3">이메일</th>
+					<th class="col-md-2">가입일</th>
 					<th class="col-md-1">선택</th>
 				</tr>
+				<c:forEach var="user" items="${user_list}">
 				<tr>
-					<td>1</td>
-					<td>admin</td>
-					<td>홍길동</td>
-					<td>3</td>
-					<td>12</td>
-					<td><input type="checkbox"></td>
+					<td>${user.id}</td>
+					<td>${user.name}</td>
+					<td>${user.phone}</td>
+					<td>${user.email}</td>
+					<td>${user.reg_date}</td>
+					<td><input type="checkbox" name="checked"></td>
 				</tr>
+				</c:forEach>
 			</table>
 			<br>
 
-			<!-- 회원 등급 수정 -->
+			<!-- 선택 삭제 -->
 			<div class="edit_btn" align="right">
-				<input type="submit" value="선택 삭제" id="modify_level">
+				<input type="submit" value="선택 삭제" id="delete_user">
 			</div>
 			<br>
 
 			<!-- 페이지버튼 -->
-			<nav align="center">
+			<div align="center">${pagingHtml}</div>
+			<!-- <nav align="center">
 				<ul class="pagination pagination-sm">
 					<li class="disabled"><a href="#" aria-label="Previous"><span
 							aria-hidden="true">&laquo;</span></a></li>
 					<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
 				</ul>
-			</nav>
+			</nav> -->
 			<br>
 		</div>
 	</div>
+</div>
 	
 	<!-- 회원 상세정보 모달창 -->
 		<div class="modal fade" id="modifyModal" tabindex="-1" role="dialog" aria-labelledby="modifyModalLabel" aria-hidden="true">
@@ -91,4 +100,3 @@
  		 </div>
 		</div>
 	
-</div>

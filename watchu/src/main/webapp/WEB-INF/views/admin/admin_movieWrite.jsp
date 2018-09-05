@@ -41,11 +41,12 @@
 		<hr size="1" noshade>
 		<li>
 			<label for="director">감독</label>
-			<form:input path="director" id="auto_director" />
+			<form:input path="director" id="auto_director" class="tm-input"/>
 		</li>
 		<li>
 			<label for="actors">배우</label>
-			<input id="auto_actor" type="text" name="actors" />
+			<input id="auto_actor" type="text" name="actors" onKeyDown="pressEnter()" />
+			<div class="actor_list"></div>
 		</li>
 		<li>
 			<label for="summary">줄거리</label>
