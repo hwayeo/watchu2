@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/support.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/support.js"></script>
-
+<div id="main-content">
 <div class="container">
    <h2 class="title">고객센터</h2>
    <p class="subTitle">Watchu의 고객센터입니다.</p>
@@ -42,7 +42,7 @@
             <tr class="sup_content" a onclick="location.href='userSupportView.do?contact_num=${contact.contact_num}'" style="cursor:pointer">
                <td>${contact.contact_num}</td>
                <td>${contact.id}</td>
-               <td>제목</td>
+               <td>${contact.title}</td>
                <td>App 오류</td>
                <td>
                	<c:if test="${contact.recotentable == 0}">
@@ -64,4 +64,5 @@
 		</c:if>
       </div>
    </div>
+</div>
 </div>
