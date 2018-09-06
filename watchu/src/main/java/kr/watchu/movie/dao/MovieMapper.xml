@@ -5,24 +5,23 @@
     
 <mapper namespace="kr.watchu.movie.dao.MovieMapper">
 	<select id="selectMovieList" parameterType="map" resultType="MovieCommand">
-	SELECT 
-		* 
-	FROM (SELECT 
-			a.*,rownum rnum
-		FROM (SELECT
-				 *
-			FROM movie_info 
+	SELECT * FROM
+	(SELECT a.*,rownum rnum FROM
+	(SELECT * FROM movie_info i LEFT OUTER JOIN
+	(SELECT genre,COUNT(*) genre_num
+	FROM movie_genre GROUP BY genre)g
+	ON i.main_genre = g.genre
 		<where>
 			<if test="keyword != '' and keyfield == 'title'" >
-				title like '%' || #{keyword} || '%'
+				i.title like '%' || #{keyword} || '%'
 			</if>
 			<if test="keyword != '' and keyfield == 'country'" >
-				country like '%' || #{keyword} || '%'
+				i.country like '%' || #{keyword} || '%'
 			</if>
-			<if test="keyword != '' and keyfield == 'actors'" >
-				actors like '%' || #{keyword} || '%'
+			<if test="keyword != '' and keyfield == 'genre'" >
+				i.main_genre like '%' || #{keyword} || '%'
 			</if>
-		<!-- 	<if test="keyword != '' and keyfield.equals('all')" >
+			<!-- <if test="keyword != '' and keyfield.equals('all')" >
 				title like '%' || #{keyword} || '%' or
 				director like '%' || #{keyword} || '%' or
 				actors like '%' || #{keyword} || '%'	
@@ -43,8 +42,8 @@
 			<if test="keyword != '' and keyfield == 'country'" >
 				country like '%' || #{keyword} || '%'
 			</if>
-			<if test="keyword != '' and keyfield == 'actors'" >
-				actors like '%' || #{keyword} || '%'
+			<if test="keyword != '' and keyfield == 'genre'" >
+				main_genre like '%' || #{keyword} || '%'
 			</if>
 			<!-- <if test="keyword != '' and keyfield.equals('all')" >
 				title like '%' || #{keyword} || '%' or
@@ -55,7 +54,7 @@
 	</select>
 	
 	<!-- 글 수정 -->
-<!-- 	<update id="update">
+	<!-- <update id="update">
 		<if test="poster_img == '' and banner_img == ''">
 			UPDATE movie_info SET title=#{title}, country=#{country}, released=#{released}, director=${director}, summary=#{summary}, main_genre=#{main_genre}, sub_genre=#{sub_genre}, trailer=#{trailer} WHERE movie_num=#{movie_num}
 		</if>
@@ -65,16 +64,21 @@
 	</update> -->
 		
 	<select id="selectMovieAjaxList" parameterType="Map" resultType="MovieCommand">
-		SELECT * FROM
+	SELECT * FROM
 	(SELECT a.*,rownum rnum FROM
-	(SELECT * 
-	FROM movie_info
+	(SELECT * FROM movie_info i LEFT OUTER JOIN
+	(SELECT genre,COUNT(*) genre_num
+	FROM movie_genre GROUP BY genre)g
+	ON i.main_genre = g.genre
 	<where>
 			<if test="keyword != '' and keyfield == 'title'" >
-				title like '%' || #{keyword} || '%'
+				i.title like '%' || #{keyword} || '%'
 			</if>
 			<if test="keyword != '' and keyfield == 'country'" >
-				country like '%' || #{keyword} || '%'
+				i.country like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'genre'" >
+				i.main_genre like '%' || #{keyword} || '%'
 			</if>
 	</where>	
 	ORDER BY released desc)a)
@@ -91,20 +95,28 @@
 			<if test="keyword != '' and keyfield == 'country'" >
 				country like '%' || #{keyword} || '%'
 			</if>
+			<if test="keyword != '' and keyfield == 'genre'" >
+				main_genre like '%' || #{keyword} || '%'
+			</if>
 		</where>
 	</select>
 	
 	<select id="selectMovieAjaxList2" parameterType="Map" resultType="MovieCommand">
-		SELECT * FROM
+	SELECT * FROM
 	(SELECT a.*,rownum rnum FROM
-	(SELECT * 
-	FROM movie_info
+	(SELECT * FROM movie_info i LEFT OUTER JOIN
+	(SELECT genre,COUNT(*) genre_num
+	FROM movie_genre GROUP BY genre)g
+	ON i.main_genre = g.genre
 	<where>
 			<if test="keyword != '' and keyfield == 'title'" >
-				title like '%' || #{keyword} || '%'
+				i.title like '%' || #{keyword} || '%'
 			</if>
 			<if test="keyword != '' and keyfield == 'country'" >
-				country like '%' || #{keyword} || '%'
+				i.country like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'genre'" >
+				i.main_genre like '%' || #{keyword} || '%'
 			</if>
 	</where>	
 	ORDER BY released desc)a)
@@ -120,6 +132,9 @@
 			</if>
 			<if test="keyword != '' and keyfield == 'country'" >
 				country like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'genre'" >
+				main_genre like '%' || #{keyword} || '%'
 			</if>
 		</where>
 	</select>
