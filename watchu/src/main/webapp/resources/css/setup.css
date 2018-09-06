@@ -122,7 +122,10 @@
 	width: 180px;
 	height: 140px;
 }
-
+.img-circle2 { /*프로필사진*/
+    border-radius: 100%;
+    max-width: 20%;
+}
 
 /*코멘트*/
 .img-circle {
@@ -289,7 +292,10 @@ ptag {
 	width: 180px;
 	height: 140px;
 }
-
+.img-circle2 { /*프로필사진*/
+    border-radius: 100%;
+    max-width: 40%;
+}
 
 /*코멘트*/
 .img-circle {
