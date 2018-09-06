@@ -49,13 +49,7 @@
 
 			<!-- 페이지버튼 -->
 			<div align="center">${pagingHtml}</div>
-			<!-- <nav align="center">
-				<ul class="pagination pagination-sm">
-					<li class="disabled"><a href="#" aria-label="Previous"><span
-							aria-hidden="true">&laquo;</span></a></li>
-					<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-				</ul>
-			</nav> -->
+			
 			<br>
 		</div>
 	</div>

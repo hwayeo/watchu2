@@ -16,7 +16,7 @@
 			</div>
 			<div class="col-xs-6 col-md-2 text-center"> <!-- 왼쪽 -->
 				
-				<div style="margin:20px"> <!-- 프로필사진영역 시작-->
+				<div style="margin:20px;"> <!-- 프로필사진영역 시작-->
 					<a href="#" class="following_profile_img"> 
 						<c:if test="${empty anotheruser.profile_img}">
 								<img src="${pageContext.request.contextPath}/resources/images/default-profile.jpg"
@@ -24,7 +24,7 @@
 												style="width: 50px; height: 50px;">
 						</c:if> 
 						<c:if test="${!empty anotheruser.profile_img}">
-								<img src="${pageContext.request.contextPath}/main/imageView.do?id=${anotheruser.id}" width="70" height="70" class="img-circle">
+								<img src="${pageContext.request.contextPath}/main/imageView.do?id=${anotheruser.id}" width="70" height="70" >
 						</c:if>
 					</a> 
 				</div><!-- 프로필사진영역 끝-->
@@ -39,9 +39,9 @@
 			
 			
 				<div class="col-md-2">
-				
 				</div>
-				<div >	
+				
+				<div>	
 					<div class="col-xs-6 col-md-4">
 						<div>
 							<a href="myfollower.do?id=${anotheruser.id}">${list2.size()}</a>
@@ -55,8 +55,8 @@
 						<span>Following</span>
 					</div>
 				</div>	
-				<div class="col-md-2">
 				
+				<div class="col-md-2">
 				</div>
 			
 			<input type="hidden" id="user_id" name="user_id" value="${user.id}">

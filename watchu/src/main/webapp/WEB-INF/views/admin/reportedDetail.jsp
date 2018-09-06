@@ -1,6 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  	
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+ <script>
+ $(document).ready(function(){
+	 
+	 
+	 
+	 
+	 
+	 
+ });
+ 
+ </script>
 <div class="admin-main">
 	<div class="tab-pane" id="reported_user">
 		<h2>신고 상세정보</h2>
@@ -32,8 +43,10 @@
 						</div>
 							
 						<div class="text-center">
-							<input type="submit" class="btn btn-md btn-primary" value="처리완료">
+							<input type="button" id="processing" class="btn btn-md btn-primary" value="처리완료">
 							<input type="button" class="btn btn-primary" value="취소" onclick="location.href='reportedUser.do'">
+							
+							
 						</div>
 						
 			</div>
