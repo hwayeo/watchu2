@@ -23,21 +23,21 @@ $(document).ready(function(){
 	   movieRate(movie_num,id,rate);
    }); */
 	// ajax(비동기처리)로 input 값을 해당 영화 고유번호로 저장(누적)
-	$(document).on('click','.starRating',function(event){
+	$(document).on('change','input[name=rating]',function(event){
 			var movie_num = $(this).attr('data-num'); 
-			var rate = $(this).find('input[name=rating]:checked').val();
 			var id = $('#user_id').val();
 			if(id == null || id == ""){
 				alert('로그인을 해야 서비스를 이용할 수 있습니다.');
 				
 				return false;
 			}
-			movieRate();
+			movieRate(movie_num,id);
 			console.log(movie_num+':'+id+':'+rate);
 			event.stopPropagation();
 	});
 
-	function movieRate(){
+	function movieRate(movie_num,id){
+		var rate = $('.starRating').find('input[name=rating]:checked').val();
 		/*$.ajax({
 		   url:'rating.do',
 		   type:'post',
