@@ -40,6 +40,16 @@ public class CommentServiceImpl implements CommentService{
 	}
 
 	@Override
+	public List<CommentCommand> selectMyCommentList(String id) {
+		return commentMapper.selectMyCommentList(id);
+	}
+
+	@Override
+	public int selectMyCommentCnt(String id) {
+		return commentMapper.selectMyCommentCnt(id);
+	}
+
+	@Override
 	public List<CommentCommand> selectCommentList(Integer movie_num) {
 		return commentMapper.selectCommentList(movie_num);
 	}

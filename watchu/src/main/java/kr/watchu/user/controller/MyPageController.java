@@ -124,22 +124,26 @@ public class MyPageController {
 	
 	//코멘트
 	@RequestMapping("/user/userComment.do")
-	public String comment(@ModelAttribute("commentCommand")@Valid CommentCommand commentCommand,HttpSession session) {
+	public ModelAndView comment(HttpSession session) {
 		
-		if(log.isDebugEnabled()) {
-			log.debug("<<commentCommand>> : "+commentCommand);
-		}
-		
+		ModelAndView mav = new ModelAndView();
 		String id = (String)session.getAttribute("user_id");
 		
-		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("id", id);
-		map.put("movie_num", commentCommand.getMovie_num());
+		if(log.isDebugEnabled()) {
+			log.debug("<<user_id>> : "+id);
+		}
 		
-		CommentCommand comment = commentService.selectComment(map);
-			commentService.insertComment(commentCommand);
+		int count = commentService.selectMyCommentCnt(id);
 		
-		return "userComment";
+		List<CommentCommand> list = null;
+		if(count >0) {
+			list = commentService.selectMyCommentList(id);
+		}
+		
+		mav.setViewName("userComment");
+		mav.addObject("commentList",list);
+		mav.addObject("count",count);
+		return mav;
 	}
 	
 	//코멘트 상세페이지
