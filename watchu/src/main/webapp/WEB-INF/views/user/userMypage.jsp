@@ -50,13 +50,13 @@
 		
 		<div class="col-xs-12 col-md-12"> 
 		<div class="container" style="border:1px solid gray"><br>
-				<div class="col-xs-7 col-md-7 text-center">
-					<span class="wc-StatLabel2 wcPc-block"><a onclick="location.href='userMypage_movie.do'">영화</a></span> 234<br>
-					<span class="wc-StatLabel wcPc-block"><a onclick="location.href='userWish.do'">보고싶어요</a></span> 12
-					
+				<div class="col-xs-4 col-md-4 text-center">
+					<span class="wc-StatLabel2 wcPc-block"><a onclick="location.href='userMypage_movielist.do'">영화</a></span> 234<br>
 				</div>
-				<div class="col-xs-5 col-md-5">
+				<div class="col-xs-4 col-md-4 text-center">
 					<span class="wc-StatLabel wcPc-block"><a onclick="location.href='userComment.do'">코멘트</a></span> 11<br>
+				</div>
+				<div class="col-xs-4 col-md-4">
 					<span class="wc-StatLabel wcPc-block"><a onclick="location.href='userLikeComment.do'">좋아요</a></span> 120<br><br>
 				</div>
 		</div>
