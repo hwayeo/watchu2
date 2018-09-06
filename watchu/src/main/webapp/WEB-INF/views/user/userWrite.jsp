@@ -2,7 +2,40 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/confirmId.js"></script>
+<script type="text/javascript">
+	//나중에 파일로 만들거임
+	/* $(document).ready(function(){
+		$('#upload').click(function(){
+			var formData = new FormData();
+			for(var i=0; i<$('#upload')[0].files.length; i++){
+		        formData.append('uploadFile', $('#upload')[0].files[i]);
+		    }
 
+
+			$.ajax({
+				url:'imgUpload.do',
+				type:'post',
+				data:{},
+				dataType:'json',
+				cache:false,
+				timeout:30000,
+				success:function(data){
+					if(data.result == 'success'){
+						 
+						
+					}else{
+						
+					}			
+				},
+				error:function(){
+					alert('네트워크 오류 발생');
+				}
+			});
+		});
+		
+	}); */
+	
+</script>
 <div id="page-register">
 	<div id="form-register">
 		<div class="text-center">
@@ -12,11 +45,12 @@
 
 <div class="container">  
          <div class="row"> 
-            <div class="col-md-10 col-md-offset-2">
+            <div class="col-xs-12 col-md-12" style="border:1px solid red;"><!-- 시작 -->
     
                      <form:form commandName="command" action="write.do" id="insert_Form" enctype="multipart/form-data">
                      <form:errors element="div" cssClass="error-color"/>	
-                        	 <div class="col-md-6">
+                        	 
+                        	 <div class="col-md-6 text-center"><!-- 왼쪽 -->
                                 
                                     <div class="form-group row">
                                         <div class="col-xs-8 col-xs-offset-2 col-md-8 col-md-offset-3">
@@ -41,7 +75,7 @@
 												<ul class="dropdown-menu">
 													<li><a href="#" class="rollbackImage">기본이미지</a></li>
 													<li><a href="#" class="modifyImage" >앨범에서 선택
-													<input type="file" name="upload" id="upload">
+													<input type="file" name="upload" id="upload" >
 													</a></li>
 												</ul>
 											</div>
@@ -49,8 +83,9 @@
 										</div>
 									</div>
 							
-                            </div>
-                            <div class="col-md-6">
+                            </div><!-- 왼쪽 -->
+                            
+                            <div class="col-md-6"><!-- 오른쪽 -->
                                     <div class="form-group row">
                                         <div class="col-md-4">
                                             <label for="id">아이디</label>
@@ -143,10 +178,10 @@
                                     <br>
                                     <br>
                                                                
-                            </div>  
+                            </div><!-- 오른쪽 -->
                     </form:form>
                     
-                </div>
+                </div><!-- 끝 -->
             </div>
         </div>
     </div>

@@ -258,7 +258,7 @@ public class MyPageController {
 		if(log.isDebugEnabled()) {
 			log.debug("<<count>>:" + count);
 		}
-
+		
 		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,rowCount,pageCount,"myfollowing.do");
 
 		map.put("start", page.getStartCount());
@@ -305,6 +305,9 @@ public class MyPageController {
 
 		mav.addObject("follow",follow3);
 		//³» ÆÈ·ÎÀ× arrayList ³¡
+		if(log.isDebugEnabled()) {
+			log.debug("<<follow3>>:" + follow3);
+		}
 		
 		
 

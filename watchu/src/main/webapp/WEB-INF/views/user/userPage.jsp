@@ -84,7 +84,7 @@
 		
 		
 		
-		<!-- 겟방식으로 id 넘기는걸로 고쳐야댐 시작-->
+		<!-- 겟방식으로 id 넘기는걸로 컨트롤러 고쳐야댐 시작-->
 		<div class="col-xs-12 col-md-12"> 
 		
 		<div class="col-md-2">
@@ -208,6 +208,12 @@
 								<input type="button" class="btn btn-secondary unblock" data-id="${anotheruser.id}" name="unblock" value="BLOCK 해제" >
 							</div>
 							</c:if>
+						</li>
+						
+						<li class="list-group-item">
+							<div>
+								<button class="btn btn-md btn-primary active" type="button" onclick="location.href='report.do?id=${anotheruser.id}'">신고하기</button>
+							</div>
 						</li>
 
 					</ul>
