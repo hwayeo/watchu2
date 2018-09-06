@@ -1,6 +1,6 @@
-var windowHeight;
-var windowWidth;
 $(document).ready(function(){
+	var windowHeight;
+	var windowWidth;
 	//날짜 구하기
 	var date = new Date();
 	var year = date.getFullYear();
@@ -127,18 +127,32 @@ $(document).ready(function(){
 		});
 	}); */
 
+	
 	//검색어 자동완성
 	var movieNames = new Array();
 	$('.search-input').keyup(function (event) {
 		var keyword = $(this).val();
 		var keyfield = 'title';
+		autolist(keyword,keyfield);
+	});
+	$('.search-input').keydown(function (event) {
+		var keyword = $(this).val();
+		var keyfield = 'title';
+		autolist(keyword,keyfield);
+	});
+	$('.search-input').keypress(function (event) {
+		var keyword = $(this).val();
+		var keyfield = 'title';
+		autolist(keyword,keyfield);
+	});
+	
+	function autolist(keyword,keyfield){
 		$.ajax({
 			type: 'post',
 			url: '/watchu/main/autoComplete.do',
 			data: {keyword:keyword,keyfield:keyfield},
 			dataType: 'json',
 			success: function (data) {
-				keyword = '';
 				movieNames = [];
 				$(data).each(function (index, element) {
 					$(element.list).each(function (index, value) {
@@ -147,10 +161,7 @@ $(document).ready(function(){
 				});
 			}
 		});
-		$('.search-input').autocomplete({source: movieNames});
-	});
-
-	/* $(function(){
-		$('.search-input').autocomplete({source: movieNames});
-	}); */
+		$('.search-input').autocomplete({source:movieNames});
+	}
 });
+
