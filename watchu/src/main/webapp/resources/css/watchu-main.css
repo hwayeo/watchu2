@@ -15,7 +15,7 @@
 }
 
 .footer-item {
-	color: #f74788;
+	color: grey;
 	
 }
 
@@ -30,7 +30,6 @@
 }
 
 .footer-item:visited {
-	color: #f74788;
 	text-decoration: none;
 }
 
@@ -223,6 +222,7 @@ font-family:'PT Sans', sans-serif;
 #etc-navbar{
 	position:fixed;
 	top:0;
+	left:0;	
 	vertical-align: middle;
 	margin-bottom: 0;
 	padding-top: 5px;
@@ -308,7 +308,9 @@ font-family:'PT Sans', sans-serif;
 		color: white;
 		text-shadow: 1px 1px 10px rgba(255,255,255,0.7);
 	}
-	
+	#main-content{
+		padding-top:130px;
+	}
 	.search-form {
 		z-index:10;
 		position: absolute;
@@ -332,20 +334,18 @@ font-family:'PT Sans', sans-serif;
 	.header-item {
 		font-size: 1.1em;
 		padding: 10px 10px 10px 10px;
-		background-color: white;
+		background-color: rgba(255,255,255,0.1);
+		border:1px solid rgba(255,255,255,0.3);
+		color:rgba(255,255,255,0.7);
+	}
+	.header-item:hover{
+		color:rgba(255,255,255,0.9);
 	}
 	#search-field {
 		padding-top: 5px;
 		margin-left: 20%;
 		float: left;
 		width: 50%;
-	}
-	#main-content {
-<<<<<<< HEAD
-		padding-top:100px;
-=======
-		padding-top:100px;	
->>>>>>> branch 'master' of https://github.com/hwayeo/watchu2.git
 	}
 	#img-test {
 		width: 50%;
@@ -400,8 +400,12 @@ font-family:'PT Sans', sans-serif;
 	.header-item {
 		font-size: 1.1em;
 		padding: 10px 10px 10px 10px;
-		border-radius: 5px;
-		background-color: white;
+		background-color: rgba(255,255,255,0.1);
+		border:1px solid rgba(255,255,255,0.3);
+		color:rgba(255,255,255,0.7);
+	}
+	.header-item:hover{
+		color:rgba(255,255,255,0.9);
 	}
 	#search-field {
 		padding-top: 5px;
