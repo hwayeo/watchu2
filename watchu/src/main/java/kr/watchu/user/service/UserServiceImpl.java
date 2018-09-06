@@ -7,6 +7,8 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import kr.watchu.movie.dao.CommentMapper;
+import kr.watchu.movie.domain.CommentCommand;
 import kr.watchu.user.dao.UserMapper;
 import kr.watchu.user.domain.UserCommand;
 
@@ -76,7 +78,10 @@ public class UserServiceImpl implements UserService {
 
 
 
-
+	@Override
+	public List<CommentCommand> CommentList(String id) {
+		return userMapper.CommentList(id);
+	}
 	
 
 	

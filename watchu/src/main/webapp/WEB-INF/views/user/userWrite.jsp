@@ -12,32 +12,36 @@
 
 <div class="container">  
          <div class="row"> 
+<<<<<<< HEAD
+            <div class="col-xs-12 col-md-12"><!-- 시작 -->
+=======
             <div class="col-md-10 col-md-offset-2">
+>>>>>>> branch 'master' of https://github.com/hwayeo/watchu2.git
     
                      <form:form commandName="command" action="write.do" id="insert_Form" enctype="multipart/form-data">
                      <form:errors element="div" cssClass="error-color"/>	
                         	 <div class="col-md-6">
                                 
                                     <div class="form-group row">
-                                        <div class="col-xs-8 col-xs-offset-2 col-md-8 col-md-offset-3">
                                             <label>프로필 사진 설정</label>
-                                        </div>
                                     </div>
                                     <hr>
                            
-									<!-- <div class="form-group row">
-										<label
-											class="col-xs-3 col-xs-offset-5 col-md-3 col-md-offset-5">-프로필-</label>
-									</div> -->
-									<div class="form-group row">
-										<div class="col-md-8 col-md-offset-2">
 											
-											<div class="profile">
+									<div class="profile">
 												
-												<a href="#" class="profile_img" data-toggle="dropdown"><img
-												src="${pageContext.request.contextPath}/resources/images/default-profile.jpg"
-												class="img-size img-circle" id="profile_img" style="width:100px;height:100px;"></a>
+										<a href="#" class="profile_img" data-toggle="dropdown"><img
+										src="${pageContext.request.contextPath}/resources/images/default-profile.jpg"
+										class="img-size img-circle" id="profile_img" style="width:100px;height:100px;"></a>
 												
+<<<<<<< HEAD
+										<ul class="dropdown-menu">
+											<li><a href="#" class="rollbackImage">기본이미지</a></li>
+											<li><a href="#" class="modifyImage" >앨범에서 선택
+											<input type="file" name="upload" id="upload" >
+											</a></li>
+										</ul>
+=======
 												<ul class="dropdown-menu">
 													<li><a href="#" class="rollbackImage">기본이미지</a></li>
 													<li><a href="#" class="modifyImage" >앨범에서 선택
@@ -47,7 +51,9 @@
 											</div>
 
 										</div>
+>>>>>>> branch 'master' of https://github.com/hwayeo/watchu2.git
 									</div>
+
 							
                             </div>
                             <div class="col-md-6">
@@ -127,13 +133,11 @@
                                     		<!-- 임시 -->
                                     		<input type="hidden" name="permit">
 
-									<div class="form-group row">
-                                        <p class="text-center">welcome! </p>
-                                    	<!-- <div class="form-group row"> -->
+									<div class="form-group row text-center">
                                         <div class="col-md-4">
                                         
                                         </div>
-                                        <div class="col-md-8">
+                                        <div class="col-md-8 text-center">
                                         	<input type="submit" class="btn btn-primary" value="가입">
                                         	<input type="button" class="btn btn-primary" value="취소" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
                                         </div>

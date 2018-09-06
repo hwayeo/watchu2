@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.watchu.movie.domain.GenreCommand;
 import kr.watchu.movie.domain.MovieCommand;
+import kr.watchu.movie.service.GenreService;
 import kr.watchu.movie.service.MovieService;
 import kr.watchu.util.PagingUtil;
 import kr.watchu.util.StringUtil;
@@ -22,6 +24,9 @@ public class MovieController {
 	private Logger log = Logger.getLogger(this.getClass());
 	@Resource
 	private MovieService movieService;
+	
+	@Resource
+	private GenreService genreService;
 	
 	//===영화 메인 목록===//
 	@RequestMapping("/movie/movieHome.do")
@@ -90,8 +95,10 @@ public class MovieController {
 		map.put("end", page.getEndCount());
 		
 		List<MovieCommand> list = null;
+		List<GenreCommand> list2 = null;
 		
 		list = movieService.selectMovieList(map);
+		list2 = genreService.selectGenreList(map);
 		
 		if(log.isDebugEnabled()) {
 			log.debug("<<리스트 내용값>> : " + list);
@@ -101,6 +108,7 @@ public class MovieController {
 		mav.setViewName("movieList");
 		mav.addObject("count",count);
 		mav.addObject("list",list);
+		mav.addObject("list2",list2);
 		mav.addObject("pagingHtml",page.getPagingHtml());
 		
 		return mav;

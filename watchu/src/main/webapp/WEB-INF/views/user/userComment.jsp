@@ -1,10 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/setup.css">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 	<div class="container text-center">
 		<h2>코멘트</h2><hr/>
 	</div>
 <div class="tab-content container">
+	<form:form commandName="commentCommand"> 
+		<input type="hidden" name="comment_num" value="${comment.comment_num}">
+		<input type="hidden" name="movie_num" value="${comment.movie_num}">
+		<input type="hidden" name="id" value="${user_id}">
+		<input type="hidden" name="content" value="${comment.content}">
+	</form:form>
 	<div id="home" class="tab-pane fade in active">
 		<div class="nav-collapse">
 				<ul class="nav">
@@ -18,8 +25,8 @@
 						</ul></li>
 				</ul><hr>
 		</div> 
-		
 	<div class="container">
+		<c:forEach var="list" items="${commentList}">
 		<div class="well"> 
 			<div class="media">
 				<div class="media-body">
@@ -29,6 +36,7 @@
 								<img src="${pageContext.request.contextPath}/resources/images/default-profile.jpg" class="img-circle" id="profile_img"> ${user.name}
 							</c:if> 
 							<c:if test="${!empty user.profile_img}">
+								<img src="${pageContext.request.contextPath}/main/imageView.do?id=${list.id}" class="img-circle review" style="width: 50px; height: 50px;"> ${user.name}
 								<img src="${pageContext.request.contextPath}/main/imageView.do?id=${user.id}" class="img-circle"> ${user.name}
 							</c:if>
 						</a>	
@@ -41,20 +49,38 @@
 							</a>
 						</div>
 						<div class="col-md-9">
-						<span class="media-heading">가디언즈 오브 갤럭시</span>
-						<p class="ptag"> &emsp; &emsp;2014</p>
-						<span class="commentspan">&emsp;&emsp;We are groot!</span> 
-						<br><br><br><br><br> 
-						<ul class="list-inline list-unstyled">
-							&emsp;<li><span><i class="glyphicon glyphicon-calendar"></i> ${user.reg_date} </span></li>
-							<li>|</li>
-							<span><i class="glyphicon glyphicon-thumbs-up"></i> 12likes</span>
-							<li>|</li>
-							<span><i class="glyphicon glyphicon-comment"></i> 2comments</span>
-							<li>|</li>
-							<span><i class="glyphicon glyphicon-star"></i> 4.5</span>
-							<li>|</li>
-						</ul>
+						
+							<span class="media-heading">가디언즈 오브 갤럭시</span>
+							<p class="ptag"> &emsp; &emsp;2014</p>
+							<span class="commentspan">&emsp;&emsp;${list.content}</span> 
+							<br><br><br><br><br> 
+							<ul class="list-inline list-unstyled">
+								&emsp;<li><span><i class="glyphicon glyphicon-calendar"></i> ${list.reg_date} </span></li>
+								<li>|</li>
+								<span><i class="glyphicon glyphicon-thumbs-up"></i> ${list.likes}likes</span>
+								<li>|</li>
+								<span><i class="glyphicon glyphicon-comment"></i> 2comments</span>
+								<li>|</li>
+								<span><i class="glyphicon glyphicon-star"></i> 4.5</span>
+								<li>|</li>
+							</ul>
+						
+						<%-- <div id="comment-box">
+							<c:forEach var="list" items="${commentList}">
+								<div class="division1">
+								<div class=inner-box1>
+								<h4><span>아이디 : ${list.id}</span></h4></div>
+								<hr>
+								<div class="inner-box2">내용: ${list.content}</div>
+								<hr>
+								<div class="inner-box3">좋아요 : ${list.likes}</div>  
+								<hr>
+								<div class="inner-box4">작성날짜 : ${list.reg_date}</div>                
+								</div>
+							</c:forEach>
+						</div>
+						 --%>
+						
 					</div>
 					</div>
 				</div><br>
@@ -65,6 +91,7 @@
 				<a href="#" style="text-align:right"><span class="glyphicon glyphicon-option-horizontal"></span></a>
 			</div>
 		</div>
+		</c:forEach>
 	</div><br>
 	
 	<!-- 댓글 쓰기 모달창 -->

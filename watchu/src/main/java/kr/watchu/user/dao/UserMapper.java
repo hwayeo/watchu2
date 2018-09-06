@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import kr.watchu.movie.domain.CommentCommand;
 import kr.watchu.user.domain.UserCommand;
  
 public interface UserMapper {
@@ -52,4 +53,7 @@ public interface UserMapper {
 	public void insertBlock(UserCommand user);
 	
 	
+	// ¸ñ·Ï
+	@Select("SELECT * FROM movie_comment b left outer join user_info i on b.id=i.id WHERE i.id=#{id}")
+	public List<CommentCommand> CommentList(String id);
 }
