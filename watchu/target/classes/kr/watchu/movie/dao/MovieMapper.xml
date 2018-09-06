@@ -28,7 +28,7 @@
 				actors like '%' || #{keyword} || '%'	
 			</if> -->
 		</where>	
-		ORDER BY title desc)a)
+		ORDER BY released desc)a)
 	<![CDATA[
 		WHERE rnum >= #{start} AND rnum <= #{end}
 	]]>	
@@ -77,7 +77,7 @@
 				country like '%' || #{keyword} || '%'
 			</if>
 	</where>	
-	ORDER BY title desc)a)
+	ORDER BY released desc)a)
 	<![CDATA[
 		WHERE rnum >= #{start} AND rnum <= #{end}
 	]]>	
@@ -107,7 +107,7 @@
 				country like '%' || #{keyword} || '%'
 			</if>
 	</where>	
-	ORDER BY title desc)a)
+	ORDER BY released desc)a)
 	<![CDATA[
 		WHERE rnum >= #{start} AND rnum <= #{end}
 	]]>	

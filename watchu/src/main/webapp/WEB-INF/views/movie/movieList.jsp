@@ -20,18 +20,20 @@
 	</div>
 </nav>
 
+
+<!-- 검색하면 값 남기기 -->
 <form action="movieList.do" id="search_form" method="get">
         <input type="hidden" id="ajx_keyfield" value="${param.keyfield}">
         <input type="hidden" id="ajx_keyword" value="${param.keyword}">
 		<ul class="search">
 			<li>
 				<select name="keyfield">
-					<option value="title">제목</option>
-					<option value="country">나라</option>
+					<option value="title" <c:if test="${param.keyfield == 'title'}">selected</c:if>>제목</option>
+					<option value="country" <c:if test="${param.keyfield == 'country'}">selected</c:if>>나라</option>
 				</select>
 			</li>
 			<li>
-				<input type="text" name="keyword" id="keyword">
+				<input type="text" name="keyword" id="keyword" value="${param.keyword}">
 			</li>
 			<li>
 				<input type="submit" value="찾기">
@@ -39,9 +41,9 @@
 		</ul>
 	</form>
 
-
 <!-- for:each문으로 데이터를 가져와 리스트를 생성할것 -->
 <!-- 모바일 환경 -->
+<form action="movieList.do" method="get">
 <div id="categoryHr">
 <select class="visible-xs visible-sm form-control">
   <option selected>모든 장르</option>
@@ -167,6 +169,7 @@
   <option>별점 순</option>
 </select>
 </div>
+</form>
 
 <div class="row">
 	<div class="slist"></div>
