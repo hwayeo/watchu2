@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/mypagemovie.css">
+<div id="main-content">
 	<div class="container-fluid">
 		<div class="container text-center">
 			<div class="col-xs-12 col-md-12">
@@ -444,3 +445,4 @@
 			</div>
 		</div>
 	</div>
+</div>

@@ -159,7 +159,8 @@
                                         	<form:errors path="email"/>
                                         </div>
                                     </div>
-                                    
+                                    		<!-- 임시 -->
+                                    		<input type="hidden" name="permit">
 
 									<div class="form-group row">
                                         <p class="text-center">welcome! </p>

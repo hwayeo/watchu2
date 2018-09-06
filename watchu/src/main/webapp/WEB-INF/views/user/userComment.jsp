@@ -26,10 +26,10 @@
 					<div class="container">
 						<a onclick="location.href='userMypage.do'" class="profile_img"> 
 							<c:if test="${empty user.profile_img}">
-								<img src="${pageContext.request.contextPath}/resources/images/default-profile.jpg" class="img-circle" id="profile_img"> ${user.name}
+								<img src="${pageContext.request.contextPath}/resources/images/default-profile.jpg" class="img-circle review" id="profile_img" style="width: 50px; height: 50px;"> ${user.name}
 							</c:if> 
 							<c:if test="${!empty user.profile_img}">
-								<img src="${pageContext.request.contextPath}/main/imageView.do?id=${user.id}" class="img-circle"> ${user.name}
+								<img src="${pageContext.request.contextPath}/main/imageView.do?id=${user.id}" class="img-circle review" style="width: 50px; height: 50px;"> ${user.name}
 							</c:if>
 						</a>	
 					</div><br>
@@ -58,11 +58,10 @@
 					</div>
 					</div>
 				</div><br>
-				<a href="#">좋아요</a>&emsp;
-				<a href="userCommentWrite.do" data-toggle="modal" data-target="#CommentWrite">댓글</a>&emsp;
+				<a class="like2" href="#" style="padding-left:30px">좋아요</a>&emsp;
+				<a class="like2" href="userCommentWrite.do" data-toggle="modal" data-target="#CommentWrite">댓글</a>&emsp;
 				
-				<a href="#">공유</a>
-				<a href="#" style="text-align:right"><span class="glyphicon glyphicon-option-horizontal"></span></a>
+				<a class="like2" href="#">공유</a>
 			</div>
 		</div>
 	</div><br>

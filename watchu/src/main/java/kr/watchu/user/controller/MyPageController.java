@@ -98,21 +98,22 @@ public class MyPageController {
 		model.addAttribute("list",follow3);
 		model.addAttribute("list2",follower3);
 		model.addAttribute("blockList",blockList);
-				
-				
 		
 		return "userMypage";
 	}
 	
 	//평가한 영화 목록
-	@RequestMapping("/user/userMypage_movie.do")
-	public String mypage_movie(@RequestParam(value="id") String id) {
-		return "userMypage_movie";
-	}
-	
-	//평가한 영화 목록 더보기
 	@RequestMapping("/user/userMypage_movielist.do")
-	public String mypage_movielist() {
+	public String mypage_movie(HttpSession session,Model model) {
+		String id = (String)session.getAttribute("user_id");
+		UserCommand user = userService.selectUser(id);
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<userCommand>> : " + user);
+		}
+		
+		model.addAttribute("user", user);
+		
 		return "userMypage_movielist";
 	}
 	
@@ -150,18 +151,6 @@ public class MyPageController {
 	@RequestMapping("/user/userLikeComment.do")
 	public String likeComment() {
 		return "userLikeComment";
-	}
-	
-	//보고싶어요
-	@RequestMapping("/user/userWish.do")
-	public String wish(@RequestParam(value="id") String id) {
-		return "userWish";
-	}
-	
-	//보는중
-	@RequestMapping("/user/userWatching.do")
-	public String watching() {
-		return "userWatching";
 	}
 	
 	//댓글 쓰기

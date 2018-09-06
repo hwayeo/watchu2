@@ -187,7 +187,7 @@ public class MainController {
 	@RequestMapping("/main/autoComplete.do")
 	@ResponseBody
 	public Map<String,Object> autoSearch(@RequestParam(value="keyword",defaultValue="") String keyword,
-								   @RequestParam(value="keyfield") String keyfield) {
+								   @RequestParam("keyfield") String keyfield) {
 		
 		Map<String,Object> jsonMap = new HashMap<String,Object>();
 		Map<String,Object> data = new HashMap<String,Object>();
