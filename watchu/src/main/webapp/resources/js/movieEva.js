@@ -34,18 +34,18 @@ $(document).ready(function(){
          }
          movieRate(movie_num,rate,id);
    });
-
-   function movieRate(movie_num,rate,id){
-      $.ajax({
-         url:'rating.do',
-         type:'post',
-         data:{movie_num:movie_num,id:id,rate:rate},  //평가 점수 db에 저장
-         dataType:'json',
-         timeout:30000,
-         cache:false,
-         success:function(data){
-            if(data.result == 'insert'){
-               alert('입력하신 점수가 성공적으로 저장되었습니다.');
+	
+	function movieRate(movie_num,rate,id){
+		$.ajax({
+		   url:'rating.do',
+		   type:'post',
+		   data:{movie_num:movie_num,id:id,rate:rate},  //평가 점수 db에 저장
+		   dataType:'json',
+		   timeout:30000,
+		   cache:false,
+		   success:function(data){
+			   if(data.result == 'insert'){
+				   alert('입력하신 점수가 성공적으로 저장되었습니다.');
 
                return false;
             }else if(data.result == 'update'){
