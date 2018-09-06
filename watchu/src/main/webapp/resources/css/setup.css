@@ -196,6 +196,16 @@ span.commmm {
     font-size: 26px;
     font-weight: 550;
 }
+
+/*마이페이지*/
+a.mylike {
+    color: gray;
+    font-size: 13px;
+}
+a.num {
+    color: black;
+    padding-left: 0px;
+}
 }
 
 
@@ -393,5 +403,14 @@ span.reviewm {
 span.commmm {
     font-size: 25px;
     font-weight: 550;
+}
+
+a.mylike {
+    color: gray;
+    font-size: 12px;
+}
+a.num {
+    color: black;
+    padding-left: 0px;
 }
 }
