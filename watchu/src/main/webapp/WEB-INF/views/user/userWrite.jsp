@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/confirmId.js"></script>
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/userWrite.js"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/userWrite.css">
 <div id="page-register">
 	<div id="form-register">
 		<div class="text-center">
@@ -124,15 +125,17 @@
                                         	<form:errors path="email"/>
                                         </div>
                                     </div>
-                                    
 
 									<div class="form-group row">
-                                        <p class="text-center">welcome! </p>
-                                    	<!-- <div class="form-group row"> -->
+                                        <a href="#" class="click">
+                                        	<span class="text-center">이메일 인증</span>
+                                        </a>
+                                        
                                         <div class="col-md-4">
                                         
                                         </div>
-                                        <div class="col-md-8">
+                                        
+                                        <div class="col-md-8 buttonClick">
                                         	<input type="submit" class="btn btn-primary" value="가입">
                                         	<input type="button" class="btn btn-primary" value="취소" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
                                         </div>
