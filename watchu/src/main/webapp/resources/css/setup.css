@@ -159,12 +159,43 @@ ptag {
 }
 
 /*코멘트 디테일*/
+img.img-circle {
+	border-radius: 100%;
+    max-width: 50%;
+}
 .classpadding{
-	padding-left: 100px;
+	padding-left: 0px;
 	padding-top: 10px;
 }
-
-
+p.days{
+	margin-left: 64%;
+    font-size: 11px;
+    color: gray;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+span.media-heading.user_name {
+    margin-left: -1px;
+    font-size: 16px;
+    font-weight: 550;
+}
+span.detailcomm {
+    padding-left: 8px;
+    font-size: 13px;
+}
+a.like {
+    color: #F74788;
+    padding-right: 50px;
+    padding-left: 50px;
+}
+a.profile_img {
+    color: black;
+    font-size: 15px;
+}
+span.commmm {
+    font-size: 26px;
+    font-weight: 550;
+}
 }
 
 
@@ -326,5 +357,41 @@ ptag{
 
 
 /*코멘트 디테일*/
-
+img.img-circle {
+	border-radius: 100%;
+    max-width: 50%;
+}
+p.days{
+	margin-left: 80%;
+    font-size: 9px;
+    color: gray;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+span.media-heading.user_name {
+    margin-left: -1px;
+    font-size: 14px;
+    font-weight: 550;
+}
+span.detailcomm {
+    padding-left: 5px;
+    font-size: 12px;
+}
+a.like {
+    color: #F74788;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+a.profile_img {
+    color: black;
+    font-size: 15px;
+}
+span.reviewm {
+    padding-left: 0px;
+    font-size: 12px;
+}
+span.commmm {
+    font-size: 25px;
+    font-weight: 550;
+}
 }

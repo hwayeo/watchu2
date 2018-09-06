@@ -12,8 +12,8 @@
 				<div class="col-xs-8 col-md-10">
 				</div>
 				<div class="col-xs-4 col-md-2">
-					<a href="follow.do?id=${user_id}" class="glyphicon glyphicon-user"></a>&emsp;
-					<a href="setup.do?id=${user_id}" class="glyphicon glyphicon-cog" data-toggle="modal" data-target="#myModal2"></a>
+					<a href="follow.do?id=${user_id}" class="glyphicon glyphicon-user" style="font-size:20px;"></a>&emsp;
+					<a href="setup.do?id=${user_id}" class="glyphicon glyphicon-cog" style="font-size:20px;" data-toggle="modal" data-target="#myModal2"></a>
 				</div><hr/>
 			</div>
 			
@@ -21,10 +21,10 @@
 				<a href="#" class="following_profile_img"> 
 					<c:if test="${empty user.profile_img}">
 							<img src="${pageContext.request.contextPath}/resources/images/default-profile.jpg"
-											class="img-circle2" id="following_profile_img">
+											class="img-circle2" id="following_profile_img" style="width: 60px; height: 60px;">
 					</c:if> 
 					<c:if test="${!empty user.profile_img}">
-							<img src="${pageContext.request.contextPath}/main/imageView.do?id=${user.id}"class="img-circle2">
+							<img src="${pageContext.request.contextPath}/main/imageView.do?id=${user.id}"class="img-circle2" style="width: 60px; height: 60px;">
 					</c:if>
 				</a> 
 				<p style="font-size:22px"> ${user.name}</p>
@@ -46,9 +46,6 @@
 				</div>
 			</div>
 			<div class="col-md-2"></div>
-			<div class="col-xs-5 col-md-1"><br>
-				<button class="btn btn-md btn-primary active" type="button" onclick="location.href='updateUser.do'">프로필 수정</button>
-			</div><hr><br><br>
 		</div>
 		
 		<div class="col-xs-12 col-md-12"> 
@@ -123,7 +120,7 @@
 
 						<li class="list-group-item">
 							<div class="">
-								<a href="updateUser.do"><label>내 설정</label></a>
+								<a href="updateUser.do"><label>프로필 수정</label></a>
 							</div>
 						</li>
 
