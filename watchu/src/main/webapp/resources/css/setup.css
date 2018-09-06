@@ -188,6 +188,10 @@ a.like {
     padding-right: 50px;
     padding-left: 50px;
 }
+a.like2 {
+    color: #F74788;
+    padding-right: 5px;
+}
 a.profile_img {
     color: black;
     font-size: 15px;
@@ -412,5 +416,9 @@ a.mylike {
 a.num {
     color: black;
     padding-left: 0px;
+}
+a.like2 {
+    color: #F74788;
+    padding-right: 50px;
 }
 }

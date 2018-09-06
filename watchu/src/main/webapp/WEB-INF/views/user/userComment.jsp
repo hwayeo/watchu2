@@ -58,11 +58,10 @@
 					</div>
 					</div>
 				</div><br>
-				<a class="like" href="#">좋아요</a>&emsp;
-				<a class="like" href="userCommentWrite.do" data-toggle="modal" data-target="#CommentWrite">댓글</a>&emsp;
+				<a class="like2" href="#" style="padding-left:30px">좋아요</a>&emsp;
+				<a class="like2" href="userCommentWrite.do" data-toggle="modal" data-target="#CommentWrite">댓글</a>&emsp;
 				
-				<a class="like" href="#">공유</a>
-				<a class="like" href="#" style="text-align:right"><span class="glyphicon glyphicon-option-horizontal"></span></a>
+				<a class="like2" href="#">공유</a>
 			</div>
 		</div>
 	</div><br>
