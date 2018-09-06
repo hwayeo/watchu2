@@ -11,14 +11,14 @@
 <!-- 추천 영화 태그1 -->
 <div class="row">
 	<div class="home-text1">미국영화
-	<a href="movieList.do?country=미국" class="home-text2">미쿸보귀</a></div>
+	<a href="movieList.do?country=미국" class="home-text2">American</a></div>
 	<div class="mlist2"></div>
 </div>
 
 <!-- 추천 영화 태그2 -->
 <div class="row">
-	<div class="home-text1">한국영화
-	<a href="movieList.do?keyfield=country&keyword=한국" class="home-text2">한쿸보기</a></div>
+	<div class="home-text1">공포영화
+	<a href="movieList.do?keyfield=genre&keyword=공포" class="home-text2">무섭다</a></div>
 	<div class="mlist3"></div>
 </div>
 
