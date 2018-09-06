@@ -21,16 +21,17 @@
 		</li>
 		<li>
 			<label for="released">개봉연도</label>
-			<input type="date" name="released" id="released">
+			<form:input path="released" placeholder="YYYY-MM-DD"/>
+			<form:errors path="released" cssClass="error-color" />
 		</li>
 		<li>
 			<label for="main_genre">메인 장르</label>
-			<form:input path="main_genre" />
+			<form:input path="main_genre" class="auto_genre"/>
 			<form:errors path="main_genre" cssClass="error-color" />
 		</li>
 		<li>
 			<label for="sub_genre">서브 장르</label>
-			<form:input path="sub_genre" />
+			<form:input path="sub_genre" class="auto_genre" />
 			<form:errors path="sub_genre" cssClass="error-color" />
 		</li>
 		<li>
@@ -69,7 +70,7 @@
 	</ul>
 
 	<div class="edit_btn" align="right">
-		<input type="button" value="목록" onclick="location.href='movieList.do'">
+		<input type="button" value="목록" onclick="location.href='admin_movieList.do'">
 		<input type="submit" value="등록">
 	</div>
 	</form:form>

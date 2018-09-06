@@ -48,5 +48,9 @@ public class GenreServiceImpl implements GenreService{
 		return genreMapper.selectGenreList(map);
 	}
 	
-	
+	//자동완성 ajax
+	@Override
+	public List<GenreCommand> selectGenreAjaxList(Map<String, Object> map){
+		return genreMapper.selectGenreAjaxList(map);
+	}
 }

@@ -31,7 +31,7 @@
 				<tr>
 					<td>${genre.genre_num}</td>
 					<td class="modify_btn" style="cursor:pointer;" data-toggle="modal" data-target="#genreModify" data-whatever="${genre.genre_num}">${genre.genre}</td>
-					<td><input type="checkbox" name="checked"></td>
+					<td><input type="checkbox" name="genreChecked" value="${genre.genre_num}"/></td>
 <%-- 				<td>${genre.genre_num}</td>
 					<td onclick="location.href='genreDetail.do?genre_num=${genre.genre_num}'" style="cursor:pointer;" data-toggle="modal" data-target="#genreModify">${genre.genre}</td>
 					<td><input type="checkbox" name="checked"></td> --%>
@@ -43,7 +43,8 @@
 			<!-- 장르 등록 및 삭제버튼 -->
 			<div class="edit_btn" align="right">
 				<input type="button" value="장르 등록" id="register_genre" data-toggle="modal" data-target="#genreModal">
-				<input type="submit" value="선택 삭제" id="delete_genre">
+				<input type="button" value="선택 삭제" name="check_genreDel">
+				<!-- <input type="submit" value="선택 삭제" id="delete_genre" action="genreDelete.do"> -->
 			</div>
 			<br>
 

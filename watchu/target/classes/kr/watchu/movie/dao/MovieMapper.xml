@@ -28,7 +28,7 @@
 				actors like '%' || #{keyword} || '%'	
 			</if> -->
 		</where>	
-		ORDER BY title desc)a)
+		ORDER BY movie_num)a)
 	<![CDATA[
 		WHERE rnum >= #{start} AND rnum <= #{end}
 	]]>	
@@ -55,7 +55,7 @@
 	</select>
 	
 	<!-- 글 수정 -->
-<!-- 	<update id="update">
+<!-- 	<update id="updateMovie">
 		<if test="poster_img == '' and banner_img == ''">
 			UPDATE movie_info SET title=#{title}, country=#{country}, released=#{released}, director=${director}, summary=#{summary}, main_genre=#{main_genre}, sub_genre=#{sub_genre}, trailer=#{trailer} WHERE movie_num=#{movie_num}
 		</if>

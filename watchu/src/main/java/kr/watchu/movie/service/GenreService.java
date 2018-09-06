@@ -17,4 +17,7 @@ public interface GenreService {
 	//목록
 	public int selectGenreCnt(Map<String, Object> map);
 	public List<GenreCommand> selectGenreList(Map<String,Object> map);
+	
+	//자동완성 ajax
+	public List<GenreCommand> selectGenreAjaxList(Map<String, Object> map);
 }

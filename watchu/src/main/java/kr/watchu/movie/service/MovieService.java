@@ -15,6 +15,8 @@ public interface MovieService {
 	//영화 삭제
 	//영화 삭제시 관련 평가 테이블도 삭제해야 함
 	public void deleteMovie(Integer movie_num);
+	//영화 삭제 시 코멘트 삭제
+	public void delComment(Integer movie_num);
 
 	//영화 목록작업
 	public int selectMovieCnt(Map<String,Object> map);

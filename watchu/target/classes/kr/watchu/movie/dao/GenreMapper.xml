@@ -50,4 +50,20 @@
 			 </if> -->
 		 </where>
 	</select>
+		 
+	<!-- 장르 자동완성 -->
+	<select id="selectGenreAjaxList" parameterType="map" resultType="GenreCommand">
+		SELECT 
+			* 
+		FROM movie_genre
+		<where>
+			<if test="keyword != '' and keyfield == 'genre'">
+				genre like '%' || #{keyword} || '%'
+			</if>
+			<!-- <if test="keyword != '' and keyfield == 'GENRE'">
+			 	genre like '%' || #{keyword} || '%' and genre=#{keyfield}
+			</if> -->
+		</where>
+	</select>	 
+	
 </mapper>
