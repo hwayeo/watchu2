@@ -23,9 +23,9 @@
     <div class="row" style="margin: 80px;">
      <div class="col-md-8 col-md-offset-4" style="margin: 80px;" >
      		<!-- 검색폼 시작 -->
-  			<form class="navbar-form" role="search" id="search_form" action="myfollower.do?" method="get" >
+  			<form class="navbar-form" role="search" id="search_form" action="" method="get" >
                 <div class="input-group">
-               		 <input type="hidden" id="id" name="id" value="${user.id}">
+                	<input type="hidden" id="id" name="id" value="${user.id}">
                     <input type="text" class="form-control" placeholder="Search" name="keyword" id="keyword">
                     <div class="input-group-btn">
                         <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
@@ -37,7 +37,7 @@
 				<div class="panel panel-default">
                 <div class="panel-heading">팔로워 목록</div>
                 
-                <input type="hidden" id="user_id" name="user_id" value="${user.id}">
+                
                 <input type="hidden" id="loginUser_id" name="loginUser_id" value="${loginUser.id}">
                 
                  <ul class="list-group">
@@ -76,9 +76,8 @@
 											<input type="button" class="btn btn-success unfollow" data-id="${article.id}" name="unfollow" value="팔로잉">
 										</div> 
 									</div>
-									</c:if>
 									
-									<c:if test="${follow.contains(article.id) != true}">
+									<c:if test="${follow.contains(article.id) == false}">
 									<div class="pull-right">
 										<div class="follow_unfollow" > 
 											<input type="button" class="btn btn-primary follow" data-id="${article.id}" name="follow" value="팔로우" >
@@ -87,7 +86,7 @@
 									</div>
 									</c:if>
 									
-									
+									</c:if>
 									
 								</c:if>
 						</li>

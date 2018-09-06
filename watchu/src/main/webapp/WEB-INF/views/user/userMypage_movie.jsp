@@ -47,4 +47,26 @@
 				
 			</div>
 		</div>
+
+		<div class="container text-center" onclick="location.href='userWish.do'" style="cursor:pointer;">
+			<div class="col-xs-10 col-md-11">
+				<hr>
+				<p style="font-size:22px" class="text-left">보고싶어요</p>
+			</div>
+			<div class="col-xs-2 col-md-1">
+				<hr>
+				<h4>15</h4>
+			</div>
+		</div>
+
+		<div class="container text-center" onclick="location.href='userWatching.do'" style="cursor:pointer;">
+			<div class="col-xs-10 col-md-11">
+				<hr>
+				<p style="font-size:22px" class="text-left">보는중</p>
+			</div>
+			<div class="col-xs-2 col-md-1">
+				<hr>
+				<h4>3</h4>
+			</div>
+		</div>
 	</div>

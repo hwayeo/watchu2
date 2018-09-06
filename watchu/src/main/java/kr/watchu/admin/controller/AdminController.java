@@ -25,9 +25,7 @@ import kr.watchu.movie.domain.OfficialsCommand;
 import kr.watchu.movie.service.GenreService;
 import kr.watchu.movie.service.MovieService;
 import kr.watchu.movie.service.OfficialsService;
-import kr.watchu.user.domain.ReportCommand;
 import kr.watchu.user.domain.UserCommand;
-import kr.watchu.user.service.ReportService;
 import kr.watchu.user.service.UserService;
 import kr.watchu.util.CipherTemplate;
 import kr.watchu.util.PagingUtil;
@@ -48,8 +46,6 @@ public class AdminController {
 	private UserService userService;
 	@Resource
 	private CipherTemplate cipherAES;
-	@Resource
-	private ReportService reportService;
 
 	//자바빈 초기화
 	@ModelAttribute("movie_command")
@@ -537,54 +533,11 @@ public class AdminController {
 	}
 	
 	//==========06_회원 관리_신고 회원==========//
-	//목록
 	@RequestMapping("/admin/reportedUser.do")
-	public ModelAndView process5( @RequestParam(value="pageNum",defaultValue="1") int currentPage,
-								  @RequestParam(value="keyfield",defaultValue="") String keyfield,
-								  @RequestParam(value="keyword",defaultValue="") String keyword) {
-		
-		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("keyfield", keyfield);
-		map.put("keyword", keyword);
-		
-		//총글의 갯수 또는 검색된 글의 갯수
-		int count = reportService.selectReportCnt(map);
-		if(log.isDebugEnabled()) {
-			log.debug("<<count>>:" + count);
-		}
-		
-		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,rowCount,pageCount,"reportedUser.do");
-		
-		map.put("start", page.getStartCount());
-		map.put("end", page.getEndCount());
-		
-		//목록불러오기
-		List<ReportCommand> list = null;
-		list = reportService.selectReportList(map);
-		
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("reportedUser");
-		mav.addObject("count",count);
-		mav.addObject("list",list);
-		mav.addObject("pagingHtml",page.getPagingHtml());
-		
-		return mav;
+	public String process5() {
+
+		return "reportedUser";
 	}
-	//상세신고정보
-	@RequestMapping("/admin/detailReport.do")
-	public ModelAndView process55(@RequestParam(value="num") String report_num) {
-		
-		int num = Integer.parseInt(report_num);
-		
-		ReportCommand report = reportService.selectDetailReport(num);
-		
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("reportedDetail");
-		mav.addObject("report",report);
-		
-		return mav;
-	}
-	
 
 	//==========07_고객 지원_고객 문의==========//
 	@RequestMapping("/admin/support.do")

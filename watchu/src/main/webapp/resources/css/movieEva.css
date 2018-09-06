@@ -83,7 +83,7 @@
    .rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
 }
 
-@media screen and (min-width:481px) and (max-width:767px) {
+@media screen and (min-width:426px) and (max-width:767px) {
    #rate-menu{
       height:36px;
       margin-bottom:20px;
@@ -166,6 +166,76 @@
    .rating > input:checked ~ label:hover ~ label { color: #FFED85;  }    
 }
 
-@media screen and (min-width:0px) and (max-width:480px) {
+@media screen and (min-width:0px) and (max-width:425px) {
+   .posters{
+   
+   		border-radius:3px;
+   }
+   div[class|="col-xs"]{
+   }
+   div[class*="movie-cell"]{
+   		position:relative;
+   		right:0;
+   		margin-top:3px;
+   		border-bottom:1px solid rgba(120,120,120,0.5);
+   }
+   div[class*="posters"]{
+   		padding-top:1px;
+   		padding-bottom:3px;
+   		padding-left:15px;
+   		padding-right:8px;
+   }
+   div[class*="info-cell"]{
+   		padding-top:3px;
+   		padding-bottom:3px;
+   		padding-left:5px;
+   		padding-right:16px;
+   }
+   .ml-title{
+   		font-size:1.1em;
+   		font-weight:bold;
+   }
+   .ml-info{
+   		font-size:0.85em;
+   }
+   .movie-link{
+   		font-size:0.85em;
+   		color:rgba(120,120,120,0.9);
+   }
+   .rating { 
+     border: none;
+     float: left;
+   }
+	div[class="starRating"]{
+		width:100%;
+	}
+   .rating > input { display: none; } 
+   .rating > label:before { 
+   	padding-left:3px;
+     margin-right:3px;
+     font-size: 2em;
+     font-family: FontAwesome;
+     display: inline-block;
+     content: "\f005";
+   }
+   
+   .rating > .half:before { 
+     content: "\f089";
+     position: absolute;
+   }
+   
+   .rating > label { 
+     color: #ddd; 
+    float: right; 
+   }
+
+   .rating > input:checked ~ label, /* show gold star when clicked */
+   .rating:not(:checked) > label:hover, /* hover current star */
+   .rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+   
+   .rating > input:checked + label:hover, /* hover current star when changing rating */
+   .rating > input:checked ~ label:hover,
+   .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+   .rating > input:checked ~ label:hover ~ label { color: #FFED85;  }    
    
 }

@@ -23,10 +23,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.watchu.user.domain.ContactCommand;
-import kr.watchu.user.domain.ReportCommand;
 import kr.watchu.user.domain.UserCommand;
 import kr.watchu.user.service.ContactService;
-import kr.watchu.user.service.ReportService;
 import kr.watchu.user.service.UserService;
 import kr.watchu.util.CipherTemplate;
 import kr.watchu.util.PagingUtil;
@@ -47,9 +45,6 @@ public class UserController {
 	private ContactService contactService;
 	
 	@Resource
-	private ReportService reportService;
-	
-	@Resource
 	private CipherTemplate cipherAES;
 	
 	/*@Resource
@@ -58,10 +53,6 @@ public class UserController {
 	@ModelAttribute("command")
 	public UserCommand initCommand() {
 		return new UserCommand();
-	}
-	@ModelAttribute("reportCommand")
-	public ReportCommand initReportCommand() {
-		return new ReportCommand();
 	}
 	@ModelAttribute("contactCommand")
 	public ContactCommand initContactCommand() {
@@ -707,40 +698,7 @@ public class UserController {
 
 	}
 	
-	//신고하기 
-	//폼 불러오기
-	@RequestMapping(value="/user/report.do",method=RequestMethod.GET)
-	public ModelAndView reportForm(@RequestParam(value="id") String id,HttpSession session) {
-		
-		String user_id = (String)session.getAttribute("user_id");
-		UserCommand user = userService.selectUser(user_id);//내 커맨드
-		UserCommand user2 = userService.selectUser(id);//내가 신고한 사람 커맨드
-		
-		
-		ModelAndView mav = new ModelAndView();
-		
-		
-		mav.setViewName("userReport");
-		mav.addObject("user",user);
-		mav.addObject("user2",user2);
-		
-		return mav;
-	}
-	//신고데이터 넘기기
-	@RequestMapping(value="/user/report.do",method=RequestMethod.POST)
-	public ModelAndView report(@ModelAttribute(value="reportCommand") ReportCommand report,@RequestParam(value="id") String id,HttpSession session) {
-		
-		String user_id = (String)session.getAttribute("user_id");
-		report.setId(user_id);
-		report.setReport_user(id);
-		
-		reportService.insertReport(report);
-		
-		ModelAndView mav = new ModelAndView();
-		
-		mav.setViewName("userMypage");
-		return mav;
-	}
+	
 }	
 	
 

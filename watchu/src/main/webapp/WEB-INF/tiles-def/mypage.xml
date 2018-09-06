@@ -35,26 +35,40 @@
 		<put-attribute name="body" value="/WEB-INF/views/user/userLikeComment.jsp"/>
 	</definition>	
 	
+	<definition name="userWish" extends="userWrite">
+		<put-attribute name="title" value="왓츄 - 보고싶어요"/>
+		<put-attribute name="body" value="/WEB-INF/views/user/userWish.jsp"/>
+	</definition>
+	
+	<definition name="userWatching" extends="userWrite">
+		<put-attribute name="title" value="왓츄 - 보는중"/>
+		<put-attribute name="body" value="/WEB-INF/views/user/userWatching.jsp"/>
+	</definition>
+	
 	<definition name="userfollow" extends="userWrite">
 		<put-attribute name="title" value="추천친구페이지"/>
 		<put-attribute name="body" value="/WEB-INF/views/user/userfollow.jsp"/>
 	</definition>
 	
 	<definition name="userFollowing" extends="userWrite">
-		<put-attribute name="title" value="내 팔로잉페이지"/>
-		<put-attribute name="body" value="/WEB-INF/views/user/userFollowing.jsp"/>
+	<put-attribute name="title" value="내 팔로잉페이지"/>
+	<put-attribute name="body" value="/WEB-INF/views/user/userFollowing.jsp"/>
 	</definition>
 	
 	<definition name="userFollower" extends="userWrite">
-		<put-attribute name="title" value="내 팔로워페이지"/>
-		<put-attribute name="body" value="/WEB-INF/views/user/userFollower.jsp"/>
+	<put-attribute name="title" value="내 팔로워페이지"/>
+	<put-attribute name="body" value="/WEB-INF/views/user/userFollower.jsp"/>
 	</definition>
 	
 	<definition name="userBlockList" extends="userWrite">
-		<put-attribute name="title" value="내 블락페이지"/>
-		<put-attribute name="body" value="/WEB-INF/views/user/userBlockList.jsp"/>
+	<put-attribute name="title" value="내 블락페이지"/>
+	<put-attribute name="body" value="/WEB-INF/views/user/userBlockList.jsp"/>
 	</definition>
 	
+	<definition name="userPage" extends="userWrite">
+		<put-attribute name="title" value="왓츄 - 다른유저페이지"/>
+		<put-attribute name="body" value="/WEB-INF/views/user/userPage.jsp"/>
+	</definition>
 	
 </tiles-definitions>
 

@@ -10,7 +10,7 @@ public interface ReportService {
 	//신고
 	public void insertReport(ReportCommand report);
 	//상세정보
-	public ReportCommand selectDetailReport(Integer report_num);
+	public ReportCommand selectReport(Integer report_num);
 	//신고 취소
 	public void deleteReport(Integer report_num);
 	//목록

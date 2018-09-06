@@ -499,9 +499,12 @@ font-family:'PT Sans', sans-serif;
 	}
 	#md-search {
 		position: fixed;
+		top:0;
+		left:0;
 		background-color: white;
 		padding: 10px 8px;
 		z-index: 4;
+		border-bottom:1px solid rgba(120,120,120,0.5);
 	}
 	#main-content {
 		padding-top:100px
@@ -589,11 +592,14 @@ font-family:'PT Sans', sans-serif;
 	}
 	#md-search {
 		position: fixed;
+		top:0;
+		left:0;
 		width: 100%;
 		background-color: white;
 		margin: 0 auto;
 		padding: 10px 8px 10px 8px;
 		z-index: 4;
+		border-bottom:1px solid rgba(120,120,120,0.5);
 	}
 	#main-content {
 		padding-top:100px;

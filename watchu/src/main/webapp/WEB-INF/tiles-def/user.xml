@@ -11,7 +11,12 @@
 		<put-attribute name="body" value="/WEB-INF/views/user/userWrite.jsp"/>
 		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
 	</definition>
-		
+	
+	<definition name="userWrite2" extends="userWrite">
+		<put-attribute name="title" value="왓츄 - 회원가입성공"/>
+		<put-attribute name="body" value="/WEB-INF/views/user/userWrite2.jsp"/>
+	</definition>
+	
 	<definition name="userLogin" template="/WEB-INF/views/user/userLogin.jsp">
 		<put-attribute name="title" value="왓츄 - 로그인"/>
 	</definition>
@@ -47,18 +52,6 @@
 		<put-attribute name="title" value="왓츄 - 고객센터 - 글 수정"/>
 		<put-attribute name="body" value="/WEB-INF/views/user/userSupportModify.jsp"/>
 	</definition>
-	
-	
-		
-	<definition name="userPage" extends="userWrite">
-		<put-attribute name="title" value="왓츄 - 다른유저페이지"/>
-		<put-attribute name="body" value="/WEB-INF/views/user/userPage.jsp"/>
-	</definition>
-	<definition name="userReport" extends="userWrite">
-		<put-attribute name="title" value="내 신고페이지"/>
-		<put-attribute name="body" value="/WEB-INF/views/user/userReport.jsp"/>
-	</definition>
-	
 	
 </tiles-definitions>
 
