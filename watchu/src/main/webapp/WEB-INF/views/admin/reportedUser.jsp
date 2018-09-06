@@ -28,6 +28,10 @@
 			<br>
 
 			<!-- 페이지버튼 -->
+<<<<<<< HEAD
+			<div align="center">${pagingHtml}</div>
+			
+=======
 			<nav align="center">
 				<ul class="pagination pagination-sm">
 					<li class="disabled"><a href="#" aria-label="Previous"><span
@@ -35,6 +39,7 @@
 					<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
 				</ul>
 			</nav>
+>>>>>>> branch 'master' of https://github.com/hwayeo/watchu2.git
 			<br>
 		</div>
 	</div>

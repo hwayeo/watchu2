@@ -8,16 +8,20 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.watchu.movie.domain.CommentCommand;
+import kr.watchu.movie.service.CommentService;
 import kr.watchu.user.domain.UserCommand;
 import kr.watchu.user.service.UserService;
 import kr.watchu.util.PagingUtil;
@@ -33,6 +37,8 @@ public class MyPageController {
 	private int pageCount = 10;
 	@Resource
 	private UserService userService;
+	@Resource
+	private CommentService commentService;
 	
 	//자바빈 초기화
 	@ModelAttribute("userCommand")
@@ -118,17 +124,26 @@ public class MyPageController {
 	
 	//코멘트
 	@RequestMapping("/user/userComment.do")
-	public String comment(HttpSession session,Model model) {
+	public ModelAndView comment(HttpSession session) {
+		
+		ModelAndView mav = new ModelAndView();
 		String id = (String)session.getAttribute("user_id");
-		UserCommand user = userService.selectUser(id);
 		
 		if(log.isDebugEnabled()) {
-			log.debug("<<userCommand>> : " + user);
+			log.debug("<<user_id>> : "+id);
 		}
 		
-		model.addAttribute("user", user);
+		int count = commentService.selectMyCommentCnt(id);
 		
-		return "userComment";
+		List<CommentCommand> list = null;
+		if(count >0) {
+			list = commentService.selectMyCommentList(id);
+		}
+		
+		mav.setViewName("userComment");
+		mav.addObject("commentList",list);
+		mav.addObject("count",count);
+		return mav;
 	}
 	
 	//코멘트 상세페이지

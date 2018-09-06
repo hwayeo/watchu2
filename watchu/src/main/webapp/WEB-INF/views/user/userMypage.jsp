@@ -21,10 +21,11 @@
 				<a href="#" class="following_profile_img"> 
 					<c:if test="${empty user.profile_img}">
 							<img src="${pageContext.request.contextPath}/resources/images/default-profile.jpg"
-											class="img-circle2" id="following_profile_img">
+											class="img-circle" id="following_profile_img"
+											style="width: 50px; height: 50px;">
 					</c:if> 
 					<c:if test="${!empty user.profile_img}">
-							<img src="${pageContext.request.contextPath}/main/imageView.do?id=${user.id}"class="img-circle2">
+							<img src="${pageContext.request.contextPath}/main/imageView.do?id=${user.id}" width="70" height="70" class="img-circle">
 					</c:if>
 				</a> 
 				<p style="font-size:22px"> ${user.name}</p>
