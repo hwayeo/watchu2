@@ -38,12 +38,6 @@ public class MovieServiceImpl implements MovieService {
 	}
 	
 	@Override
-	//영화 삭제 시 코멘트 삭제
-	public void delComment(Integer movie_num) {
-		movieMapper.delComment(movie_num);
-	}
-
-	@Override
 	public int selectMovieCnt(Map<String, Object> map) {
 		return movieMapper.selectMovieCnt(map);
 	}

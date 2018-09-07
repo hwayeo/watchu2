@@ -30,6 +30,9 @@ public interface CommentMapper {
 	//삭제
 	@Delete("DELETE FROM movie_comment WHERE comment_num=#{comment_num}")
 	public void deleteComment(Integer comment_num);
+	//영화 삭제 전 코멘트 삭제
+	@Delete("DELETE FROM movie_comment WHERE movie_num=#{movie_num}")
+	public void deleteCommentByMovie(Integer movie_num);
 	
 	//목록
 	@Select("SELECT * FROM movie_comment WHERE movie_num=#{movie_num} ORDER BY movie_num DESC")

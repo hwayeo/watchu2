@@ -1,6 +1,7 @@
-//장르 검색
 $(document).ready(function(){
-	//검색 유효성 체크
+	//영화 삭제 시 경고창
+	
+	//장르 검색 유효성 체크
 	$('#genre_search').submit(function(){
 		if($('#keyword').val() == ''){
 			alert('검색어를 입력하세요!');
@@ -25,43 +26,36 @@ $(document).ready(function(){
 //======감독_자동완성=====//
 var directorList = new Array();
 $('.auto_director').keyup(function (event) {
-	
 	var keyword = $(this).val();
 	var keyfield = 'DIRECTOR';
-	
 	director_List(keyword,keyfield);
+	
+	if (event.keyCode === 13) {
+		$('.auto_director').val('');
+	}
 });
 
-var director_value = $('.input_director').val();
+var director_value = '';
 var director_count = 0;
 $('.auto_director').keydown(function (event) {
-	
 	var keyword = $(this).val();
 	var keyfield = 'DIRECTOR';
-	
 	director_List(keyword,keyfield);
 	
 	//감독 목록
 	if (event.keyCode === 13) {
 		event.preventDefault();
-		if(director_value != ''){
-			director_count++;
-			if(director_count > 0) director_value += ',';
-			director_value += $(this).val();
-			$('.input_director').val(director_value);
-			$('.auto_director').val('').focus();
-			director_count++;
-			//수정 시 기존 값 지우고 새로 입력할 경우 기존 값도 다시 불러옴.. 왜...?
-		}
-		
+		if(director_count > 0) director_value += ',';
+		director_value += $(this).val();
+		console.log(director_value);
+		$('.input_director').val(director_value);
+		director_count++;
     }
 });
 
 $('.auto_director').keypress(function (event) {
-	
 	var keyword = $(this).val();
 	var keyfield = 'DIRECTOR';
-	
 	director_List(keyword,keyfield);
 });
 
@@ -76,28 +70,27 @@ function director_List(keyword,keyfield){
 			$(data).each(function (index, element) {
 				$(element.list).each(function (index, value) {
 					directorList.push(value.name);
-					$('.auto_director').autocomplete({source: directorList});
 				});
 			});
-		},
-		error:function(){
-			console.log('목록 호출 실패');
 		}
 	});	
+	$('.auto_director').autocomplete({source: directorList});
 }
 
 //======배우_자동완성=====//
 var actorList = new Array();
 $('.auto_actor').keyup(function (event) {
-	
 	var keyword = $(this).val();
 	var keyfield = 'ACTOR';
-	
 	actor_List(keyword,keyfield);
+	
+	if (event.keyCode === 13) {
+		$('.auto_actor').val('');
+	}
 });
 
-var actor_value = $('.input_actor').val();
-//var actor_count = 0;
+var actor_value = '';
+var actor_count = 0;
 $('.auto_actor').keydown(function (event) {
 	
 	var keyword = $(this).val();
@@ -108,11 +101,12 @@ $('.auto_actor').keydown(function (event) {
 	//배우 목록
 	if (event.keyCode === 13) {
 		event.preventDefault();
-		if(actor_value != '') actor_value += ',';
+		$('.input_actor').val('');
+		if(actor_count > 0) actor_value += ',';
 		actor_value += $(this).val();
+		console.log(actor_value);
 		$('.input_actor').val(actor_value);
-		$('.auto_actor').val('').focus();
-		//actor_count++;
+		actor_count++;
     }
 });
 
@@ -136,41 +130,31 @@ function actor_List(keyword,keyfield){
 			$(data).each(function (index, element) {
 				$(element.list).each(function (index, value) {
 					actorList.push(value.name);
-					$('.auto_actor').autocomplete({source: actorList});
 				});
 			});
-		},
-		error:function(){
-			console.log('목록 호출 실패');
 		}
 	});	
+	$('.auto_actor').autocomplete({source: actorList});
 }
 
 //======장르_자동완성=====//
 var genreList = new Array();
 $('.auto_genre').keyup(function (event) {
-	
 	var keyword = $(this).val();
 	var keyfield = 'genre';
-	
 	genre_List(keyword,keyfield);
 });
 
 $('.auto_genre').keydown(function (event) {
-	
 	var keyword = $(this).val();
 	var keyfield = 'genre';
-
 	genre_List(keyword,keyfield);
-	
 	if (event.keyCode === 13) event.preventDefault();
 });
 
 $('.auto_genre').keypress(function (event) {
-	
 	var keyword = $(this).val();
 	var keyfield = 'genre';
-	
 	genre_List(keyword,keyfield);
 });
 
@@ -185,29 +169,30 @@ function genre_List(keyword,keyfield){
 			$(data).each(function (index, element) {
 				$(element.genre_list).each(function (index, value) {
 					genreList.push(value.genre);
-					$('.auto_genre').autocomplete({source: genreList});
 				});
 			});
-			console.log(genreList);
-		},
-		error:function(){
-			console.log('목록 호출 실패');
 		}
 	});	
+	$('.auto_genre').autocomplete({source: genreList});
 }
 
 //======장르_선택항목 삭제=====//
-function check_genreDelArr(){
-	var c_genreArr = [];
-	$("input[name:'genreChecked']:checked").each(function(i){
-		c_genreArr.push($(this).val());
+var checked_genre = '';
+var checked_count = 0;
+$("#check_genreDel").click(function() {
+	$("input[name=genreChecked]:checked").each(function() {
+		if(checked_count > 0) checked_genre += ',';
+		checked_genre += $(this).val();
+		console.log(checked_genre);
+		checked_count++;
 	});
-	console.log(c_genreArr);
+	
 	$.ajax({
-		url: ''
+		type: 'post',
+		url: '/watchu/admin/check_genreDel.do',
+		data: {}
 	});
-	//https://m.blog.naver.com/PostView.nhn?blogId=genesis1343&logNo=220484120985&proxyReferer=https%3A%2F%2Fwww.google.co.kr%2F
-}
+});
 
 
 });

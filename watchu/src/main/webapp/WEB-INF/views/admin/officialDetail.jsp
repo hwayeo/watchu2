@@ -16,7 +16,7 @@
 				<img src="${pageContext.request.contextPath}/resources/images/no_img.png">
 				</c:if>
 				<c:if test="${!empty officials.off_photo}">
-					<img src="off_imgView.do?num=${officials.off_num}" style="max-width: 100px">
+					<img src="off_imgView.do?off_num=${officials.off_num}" style="max-width: 200px">
 				</c:if>
 				</div>
 			</td>

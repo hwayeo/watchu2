@@ -1,9 +1,7 @@
 package kr.watchu.movie.service;
 
 import java.util.Map;
-
 import javax.annotation.Resource;
-
 import org.springframework.stereotype.Service;
 
 
@@ -28,5 +26,10 @@ public class MovieratedServiceImpl implements MovieratedService {
 	@Override
 	public void updateMovierated(MovieratedCommand im) {
 		mapper.updateMovierated(im);
+	}
+	
+	@Override
+	public void deleteRatedByMovie(Integer movie_num) {
+		mapper.deleteRatedByMovie(movie_num);
 	}
 }

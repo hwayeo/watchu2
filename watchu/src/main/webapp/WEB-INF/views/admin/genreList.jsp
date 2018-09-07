@@ -43,7 +43,7 @@
 			<!-- 장르 등록 및 삭제버튼 -->
 			<div class="edit_btn" align="right">
 				<input type="button" value="장르 등록" id="register_genre" data-toggle="modal" data-target="#genreModal">
-				<input type="button" value="선택 삭제" name="check_genreDel">
+				<input type="button" value="선택 삭제" id="check_genreDel">
 				<!-- <input type="submit" value="선택 삭제" id="delete_genre" action="genreDelete.do"> -->
 			</div>
 			<br>

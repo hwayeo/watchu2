@@ -47,10 +47,10 @@
         			<label for="country">제작국가: </label>
         			<form:input path="country" />
         			<form:errors path="country" cssClass="error-color" /></li>
-        		<li><label for="director">감독: </label>
+				<li><label for="director">감독: </label>
         			<input class="auto_director" type="text" name="actors"/>
-					<form:input path="director"  size="50" class="input_director"/>
-					<form:errors path="director" cssClass="error-color" /></li>
+					<input id="director" name="director" value="${movie_command.director}" size="50" class="input_director" readonly="readonly"/>
+					<span>※ 수정 시 기존 데이터는 삭제됩니다 ※</span>
 				<li><label for="trailer">예고편 코드: </label>
 					<form:input path="trailer" />
 					<form:errors path="trailer" cssClass="error-color" /></li>
@@ -65,21 +65,20 @@
 					<label for="actors">출연배우</label>
 					<div class="actors">
 					<c:if test="${!empty movie.actors}">
-					<form:textarea path="actors" cols="80" class="input_actor"/>
-					<form:errors path="actors" cssClass="error-color" />
+					<input type="text" id="actors" name="actors" value="${movie_command.actors}" size="70" class="input_actor" readonly="readonly"/>
 					<br>수정 입력: <input class="auto_actor" type="text" name="actors"/>
+					<span>※ 수정 시 기존 데이터는 삭제됩니다 ※</span>
 					</c:if>
 					<c:if test="${movie.actors == null}">
 					등록된 출연배우 없음
-					<form:textarea path="actors" cols="80" class="input_actor"/>
-					<form:errors path="actors" cssClass="error-color" />
+					<input type="text" id="actors" name="actors" value="${movie_command.actors}" size="70" class="input_actor" readonly="readonly"/>
 					<br>배우 입력: <input class="auto_actor" type="text" name="actors"/>
 					</c:if>
 					</div>
 				</li>
 				<hr size="1" noshade>
 				<li>
-					<label for="summar">줄거리</label>
+					<label for="summary">줄거리</label>
 					<div class="summary">
 					<c:if test="${!empty movie.summary}">
 					<form:textarea path="summary" cols="100" rows="5" />
@@ -185,7 +184,7 @@
 	
 	</div>
 	<div class="edit_btn" align="right">
-		<input type="button" value="삭제" onclick="location.href='admin_movieDelete.do?movie_num=${movie.movie_num}'">
+		<input type="button" value="삭제" onclick="location.href='admin_movieDelete.do?movie_num=${movie.movie_num}'" id="del_movie">
 		<input type="submit" value="수정">
 		<input type="button" onclick="location.href='admin_movieList.do'" value="목록">
 	</div>

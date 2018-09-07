@@ -23,6 +23,11 @@ public class CommentServiceImpl implements CommentService{
 	}
 
 	@Override
+	public void deleteCommentByMovie(Integer movie_num) {
+		commentMapper.deleteCommentByMovie(movie_num);
+	}
+
+	@Override
 	public CommentCommand selectComment(Map<String,Object> map) {
 		return commentMapper.selectComment(map);
 	}

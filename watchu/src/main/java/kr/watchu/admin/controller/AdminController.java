@@ -12,19 +12,21 @@ import javax.validation.Valid;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.watchu.movie.domain.GenreCommand;
 import kr.watchu.movie.domain.MovieCommand;
 import kr.watchu.movie.domain.OfficialsCommand;
+import kr.watchu.movie.service.CommentService;
 import kr.watchu.movie.service.GenreService;
 import kr.watchu.movie.service.MovieService;
+import kr.watchu.movie.service.MovieratedService;
 import kr.watchu.movie.service.OfficialsService;
 import kr.watchu.user.domain.UserCommand;
 import kr.watchu.user.service.UserService;
@@ -45,6 +47,11 @@ public class AdminController {
 	private MovieService movieService;
 	@Resource
 	private UserService userService;
+	@Resource
+	private CommentService commentService;
+	@Resource
+	private MovieratedService movieRatedService;
+	
 	@Resource
 	private CipherTemplate cipherAES;
 
@@ -266,6 +273,10 @@ public class AdminController {
 			log.debug("<<movie_num>>: " + movie_num);
 		}
 		
+		//영화 삭제 전에 해당 영화에 달린 코멘트 삭제
+		commentService.deleteCommentByMovie(movie_num);
+		//영화 삭제 전에 해당 영화에 달린 평가 삭제
+		movieRatedService.deleteRatedByMovie(movie_num);
 		//글 삭제
 		movieService.deleteMovie(movie_num);
 		
@@ -352,8 +363,9 @@ public class AdminController {
 				
 		//데이터를 ModelAndView객체에 차곡차곡 저장
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("off_imgView");
+		mav.setViewName("imageView");
 						//속성명		속성값(byte[]의 데이터)
+		mav.addObject("filename", "officials.jpg");
 		mav.addObject("imageFile", officials.getOff_photo());
 				
 		return mav;
@@ -489,13 +501,10 @@ public class AdminController {
 	}
 	
 	//장르 선택 삭제
-	/*@RequestMapping(value="/admin/genreDelete.do", method=RequestMethod.POST)
-	public ModelAndView check_genreDel(@RequestParam Map<String, Object> map) {
-		ModelAndView mav = new ModelAndView();
-		System.out.println(map.get("delSeqNo"));
-		mav.addAllObjects(genreService.deleteGenre();
-		mav.setViewName("JSON");
-		return mav;
+/*	@ResponseBody
+	@RequestMapping("check_genreDel.do")
+	public c_genreDel(){
+		
 	}*/
 
 	

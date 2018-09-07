@@ -19,6 +19,7 @@ public interface CommentService {
 	//삭제
 	public void deleteComment(Integer comment_num);
 
+	public void deleteCommentByMovie(Integer movie_num);
 	//목록
 	public List<CommentCommand> selectCommentList(Integer movie_num);
 	//카운트
