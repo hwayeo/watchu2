@@ -3,7 +3,7 @@ package kr.watchu.movie.domain;
 import java.sql.Date;
 
 public class AnalysisGenreCommand {
-	private Integer movie_num;
+	private Integer movie_num; 
 	private String id;
 	private String genre;
 	private float rate;
