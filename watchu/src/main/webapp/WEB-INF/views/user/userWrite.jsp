@@ -12,11 +12,8 @@
 
 <div class="container">  
          <div class="row"> 
-<<<<<<< HEAD
             <div class="col-xs-12 col-md-12"><!-- 시작 -->
-=======
             <div class="col-md-10 col-md-offset-2">
->>>>>>> branch 'master' of https://github.com/hwayeo/watchu2.git
     
                      <form:form commandName="command" action="write.do" id="insert_Form" enctype="multipart/form-data">
                      <form:errors element="div" cssClass="error-color"/>	
@@ -34,14 +31,12 @@
 										src="${pageContext.request.contextPath}/resources/images/default-profile.jpg"
 										class="img-size img-circle" id="profile_img" style="width:100px;height:100px;"></a>
 												
-<<<<<<< HEAD
 										<ul class="dropdown-menu">
 											<li><a href="#" class="rollbackImage">기본이미지</a></li>
 											<li><a href="#" class="modifyImage" >앨범에서 선택
 											<input type="file" name="upload" id="upload" >
 											</a></li>
 										</ul>
-=======
 												<ul class="dropdown-menu">
 													<li><a href="#" class="rollbackImage">기본이미지</a></li>
 													<li><a href="#" class="modifyImage" >앨범에서 선택
@@ -51,7 +46,6 @@
 											</div>
 
 										</div>
->>>>>>> branch 'master' of https://github.com/hwayeo/watchu2.git
 									</div>
 
 							
