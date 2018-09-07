@@ -209,6 +209,12 @@
 							</div>
 							</c:if>
 						</li>
+						
+						<li class="list-group-item">
+							<div class="report">
+								<button class="btn btn-md btn-primary active" type="button" onclick="location.href='inserReport.do?id=${anotheruser.id}'">신고하기</button>							
+							</div>
+						</li>
 
 					</ul>
 

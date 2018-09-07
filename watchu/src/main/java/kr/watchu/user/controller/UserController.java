@@ -23,8 +23,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.watchu.user.domain.ContactCommand;
+import kr.watchu.user.domain.ReportCommand;
 import kr.watchu.user.domain.UserCommand;
 import kr.watchu.user.service.ContactService;
+import kr.watchu.user.service.ReportService;
 import kr.watchu.user.service.UserService;
 import kr.watchu.util.CipherTemplate;
 import kr.watchu.util.PagingUtil;
@@ -45,6 +47,9 @@ public class UserController {
 	private ContactService contactService;
 	
 	@Resource
+	private ReportService reportService;
+	
+	@Resource
 	private CipherTemplate cipherAES;
 	
 	/*@Resource
@@ -57,6 +62,10 @@ public class UserController {
 	@ModelAttribute("contactCommand")
 	public ContactCommand initContactCommand() {
 		return new ContactCommand();
+	}
+	@ModelAttribute("reportCommand")
+	public ReportCommand initReportCommand() {
+		return new ReportCommand();
 	}
 	//==========================================회원가입========================================
 	//회원가입 폼 호출
@@ -698,7 +707,44 @@ public class UserController {
 
 	}
 	
-	
+	//신고하기
+	//form
+	@RequestMapping(value="/user/inserReport.do",method=RequestMethod.GET)
+	public ModelAndView userReportForm(HttpSession session,@RequestParam("id") String id) {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		String user_id = (String)session.getAttribute("user_id");
+		
+		UserCommand user = userService.selectUser(user_id);//내 커맨드
+		UserCommand user2 = userService.selectUser(id);//신고한애 커맨드
+		
+		mav.setViewName("userReport");
+		mav.addObject("user",user);
+		mav.addObject("user2",user2);
+		
+		
+		return mav;
+	}
+	//데이터보내기
+	@RequestMapping(value="/user/inserReport.do",method=RequestMethod.POST)
+	public ModelAndView userReport(@ModelAttribute("reportCommand") ReportCommand report,@RequestParam("id") String id,HttpSession session) {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		String user_id = (String)session.getAttribute("user_id");
+		
+		report.setId(user_id);
+		report.setReport_user(id);
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<report>> : " + report);
+		}
+		reportService.insertReport(report);
+		
+		mav.setViewName("userPage");
+		return mav;
+	}
 }	
 	
 

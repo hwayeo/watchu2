@@ -9,6 +9,15 @@
 			<input type="radio" name="status" value="all" checked> 전체 <input
 				type="radio" name="status" value="incomplete"> 미처리<br>
 			<Br> 
+			<!-- 검색 -->
+			<form action="user.do" id="user_search" method="get" class="search">
+			<select name="keyfield">
+				<option value="name">ID</option>
+				<option value="id">신고내용</option>
+			</select>
+			<input type="text" name="keyword" id="keyword"> 
+			<input type="submit" value="검색">
+			</form>
 		</div>
 
 		<div class="content-body">
@@ -32,13 +41,13 @@
 			<div align="center">${pagingHtml}</div>
 			
 =======
-			<nav align="center">
+		<!-- 	<nav align="center">
 				<ul class="pagination pagination-sm">
 					<li class="disabled"><a href="#" aria-label="Previous"><span
 							aria-hidden="true">&laquo;</span></a></li>
 					<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
 				</ul>
-			</nav>
+			</nav> -->
 >>>>>>> branch 'master' of https://github.com/hwayeo/watchu2.git
 			<br>
 		</div>

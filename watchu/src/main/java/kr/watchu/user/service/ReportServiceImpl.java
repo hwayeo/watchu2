@@ -3,17 +3,23 @@ package kr.watchu.user.service;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 
+import kr.watchu.user.dao.ContactMapper;
+import kr.watchu.user.dao.ReportMapper;
 import kr.watchu.user.domain.ReportCommand;
 
 @Service("reportService")
 public class ReportServiceImpl implements ReportService {
-
+	
+	@Resource
+	private ReportMapper reportMapper;
+	
 	@Override
 	public void insertReport(ReportCommand report) {
-		// TODO Auto-generated method stub
-		
+		reportMapper.insertReport(report);
 	}
 
 	@Override
