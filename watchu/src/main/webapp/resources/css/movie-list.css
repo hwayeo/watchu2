@@ -23,7 +23,7 @@
 	color:gray;
 }
 
-#rate-menu{
+.rate-menu{
 	padding:10px;
 	font-weight:bold;
 	color:gray;
@@ -34,7 +34,7 @@
 }
 
 #main-category{
-	margin:0;
+	margin:15px 0;
 	padding:10px;
 }
 
@@ -66,12 +66,12 @@
 }
 
 .ptitle{
-	font-size:18px;
+	font-size:17px;
 	font-weight:800;
 }
 
 .pgeren{
-	font-size:16px;
+	font-size:15px;
 }
 
 #mscroll{
@@ -106,7 +106,7 @@
 	padding:5px;
 }
 
-#rate-menu{
+.rate-menu{
 	padding:5px;
 }
 
@@ -115,7 +115,7 @@
 }
 
 #main-category{
-	margin:0;
+	margin:15px 0;
 	padding:10px;
 }
 
@@ -147,11 +147,11 @@
 }
 
 .ptitle{
-	font-size:12px;
+	font-size:13px;
 	font-weight:800;
 }
 
 .pgeren{
-	font-size:10px;
+	font-size:11px;
 }
 }

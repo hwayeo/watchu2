@@ -8,16 +8,20 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.watchu.movie.domain.CommentCommand;
+import kr.watchu.movie.service.CommentService;
 import kr.watchu.user.domain.UserCommand;
 import kr.watchu.user.service.UserService;
 import kr.watchu.util.PagingUtil;
@@ -33,6 +37,8 @@ public class MyPageController {
 	private int pageCount = 10;
 	@Resource
 	private UserService userService;
+	@Resource
+	private CommentService commentService;
 	
 	//ÀÚ¹Ùºó ÃÊ±âÈ­
 	@ModelAttribute("userCommand")
@@ -118,15 +124,20 @@ public class MyPageController {
 	
 	//ÄÚ¸àÆ®
 	@RequestMapping("/user/userComment.do")
-	public String comment(HttpSession session,Model model) {
-		String id = (String)session.getAttribute("user_id");
-		UserCommand user = userService.selectUser(id);
+	public String comment(@ModelAttribute("commentCommand")@Valid CommentCommand commentCommand,HttpSession session) {
 		
 		if(log.isDebugEnabled()) {
-			log.debug("<<userCommand>> : " + user);
+			log.debug("<<commentCommand>> : "+commentCommand);
 		}
 		
-		model.addAttribute("user", user);
+		String id = (String)session.getAttribute("user_id");
+		
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("id", id);
+		map.put("movie_num", commentCommand.getMovie_num());
+		
+		CommentCommand comment = commentService.selectComment(map);
+			commentService.insertComment(commentCommand);
 		
 		return "userComment";
 	}

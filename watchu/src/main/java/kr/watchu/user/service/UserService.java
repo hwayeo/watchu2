@@ -3,6 +3,7 @@ package kr.watchu.user.service;
 import java.util.List;
 import java.util.Map;
 
+import kr.watchu.movie.domain.CommentCommand;
 import kr.watchu.user.domain.UserCommand;
 
 public interface UserService {
@@ -21,4 +22,8 @@ public interface UserService {
 	public void insertFollow(UserCommand user);
 	public void insertFollower(UserCommand user);
 	public void insertBlock(UserCommand user);
+	
+	// ¸ñ·Ï
+	public List<CommentCommand> CommentList(String id);
+
 }
