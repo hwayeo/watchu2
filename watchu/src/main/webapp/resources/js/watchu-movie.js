@@ -208,8 +208,26 @@ $(document).ready(function(){
 					$('#elist').append(elist);
 				}
 			},
-			error:function(){				
+			error:function(){		
 			}
  		});
 	}
+	
+	//스크롤 이벤트 발생시 pageNum값을 증가 시킨다.
+ 	$(window).scroll(function(){
+ 		if($(window).scrollTop() == $(document).height() - $(window).height()){ 
+ 			if(currentPage>=Math.ceil(count/rowCount)){
+ 			}else{
+ 				console.log("keyfield : "+keyfield);
+ 				console.log("keyword : "+keyword);
+ 				console.log("page : "+currentPage);
+ 				console.log("count : "+count);
+ 				console.log("rowCount : "+rowCount);
+ 
+ 				pageNum = currentPage + 1;
+ 				selectList(pageNum,$('#movie_num').val(),keyword,keyfield);
+ 				selectEva(pageNum,$('#movie_num').val(),keyword,keyfield);
+ 			}
+ 		}
+ 	});
 });

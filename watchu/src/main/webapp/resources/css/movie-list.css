@@ -1,4 +1,8 @@
 @media screen and (min-width:768px) and (max-width:2550px){
+.navmenu{
+	display:none;
+}
+	
 .drop{
 	margin-right:30px;
 	padding-right:30px;
@@ -84,6 +88,10 @@
 }
 
 @media screen and (min-width:0px) and (max-width:767px){
+.navmenu{
+	display:block;
+}
+	
 .drop{
 	margin-right:30px;
 	padding-right:30px;
