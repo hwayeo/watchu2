@@ -37,9 +37,6 @@
 				<div class="panel panel-default">
                 <div class="panel-heading">팔로잉 목록</div>
                 
-                <input type="hidden" id="user_id" name="user_id" value="${user.id}"><!-- ajax에서 사용할 데이터 -->
-                
-                
                  <ul class="list-group">
                  	
                  	<c:if test="${count == 0}">

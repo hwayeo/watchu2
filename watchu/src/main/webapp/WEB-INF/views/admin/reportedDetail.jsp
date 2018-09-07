@@ -43,7 +43,7 @@
 						</div>
 							
 						<div class="text-center">
-							<input type="button" id="processing" class="btn btn-md btn-primary" value="처리완료(삭제)" onclick="location.href='reportDelete.do?num=${report.report_num}'">
+							<input type="button" id="processing" class="btn btn-md btn-primary" value="처리완료">
 							<input type="button" class="btn btn-primary" value="취소" onclick="location.href='reportedUser.do'">
 							
 							

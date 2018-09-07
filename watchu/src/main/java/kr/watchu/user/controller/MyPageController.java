@@ -340,7 +340,7 @@ public class MyPageController {
 	}
 	
 	//===============================내 블락 목록 보기====================================
-		//블락목록
+		//팔로잉목록
 		@RequestMapping("/user/myBlock.do")
 		public ModelAndView myBlock(HttpSession session,
 				   					    @RequestParam(value="pageNum",defaultValue="1") int currentPage,
