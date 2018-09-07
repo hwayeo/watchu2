@@ -31,8 +31,8 @@
 				</tr>
 				<c:forEach var="user" items="${user_list}">
 				<tr>
-					<td>${user.id}</td>
-					<td>${user.name}</td>
+					<td onclick="location.href='userDetail.do?id=${user.id}'" style="cursor:pointer;">${user.id}</td>
+					<td onclick="location.href='userDetail.do?id=${user.id}'" style="cursor:pointer;">${user.name}</td>
 					<td>${user.phone}</td>
 					<td>${user.email}</td>
 					<td>${user.reg_date}</td>

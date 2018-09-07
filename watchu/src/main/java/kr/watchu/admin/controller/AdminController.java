@@ -12,6 +12,7 @@ import javax.validation.Valid;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -70,7 +71,7 @@ public class AdminController {
 	private int pageCount = 10;
 
 	//관리자 메인	
-	@RequestMapping("/admin/movieList.do")
+	@RequestMapping("/admin/admin_movieList.do")
 	public ModelAndView mainProcess(@RequestParam(value="pageNum", defaultValue="1") int currentPage,
 			@RequestParam(value="keyfield", defaultValue="") String keyfield,
 			@RequestParam(value="keyword", defaultValue="") String keyword) {
@@ -88,7 +89,7 @@ public class AdminController {
 		}
 
 		//페이징 처리
-		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, movie_count, rowCount, pageCount, "/admin/main.do");
+		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, movie_count, rowCount, pageCount, "admin_movieList.do");
 
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
@@ -105,7 +106,7 @@ public class AdminController {
 
 		//ModelAndView객체 생성, 데이터 저장
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("adminMovieList");
+		mav.setViewName("admin_movieList");
 		mav.addObject("movie_count", movie_count);
 		mav.addObject("movie_list", movie_list);
 		mav.addObject("pagingHtml", page.getPagingHtml());
@@ -113,7 +114,7 @@ public class AdminController {
 		return mav;
 	}
 
-	//==========관리자 로그인============//
+	//====================관리자 로그인======================//
 	//로그인 폼 호출
 	@RequestMapping(value="/admin/login.do",method=RequestMethod.GET)
 	public String loginForm(HttpSession session) {
@@ -160,7 +161,7 @@ public class AdminController {
 						log.debug("<<user_auth>> : " + user.getAuth());
 					}
 
-					return "admin";
+					return "redirect:/admin/admin_movieList.do";
 				}else {
 					//인증실패 
 					throw new Exception();
@@ -181,7 +182,7 @@ public class AdminController {
 		}
 	}
 
-	//==========01_영화 관리_영화목록==========//
+	//====================01_영화 관리_영화목록====================//
 	//01_1_등록 폼 호출
 	@RequestMapping(value="/admin/admin_movieWrite.do", method=RequestMethod.GET)
 	public String admin_movieForm(HttpSession session, Model model) {
@@ -199,10 +200,10 @@ public class AdminController {
 		if(log.isDebugEnabled()) {
 			log.debug("<<MovieCommand>>: " + movieCommand);
 		}
-
+		
 		movieService.insertMovie(movieCommand);
 
-		return "redirect:/admin/movieList.do";
+		return "redirect:/admin/admin_movieList.do";
 	}
 
 	//01_3_영화 상세&수정
@@ -221,17 +222,24 @@ public class AdminController {
 	}
 	
 	//이미지 출력
-	@RequestMapping("/admin/movie_imgView.do")
-	public ModelAndView viewImage2(@RequestParam("movie_num") int movie_num) {
+	@RequestMapping("/admin/image_View.do")
+	public ModelAndView viewImage2(@RequestParam("movie_num") int movie_num,
+								   @RequestParam("type") String type) {
 		//한 건의 데이터를 받아 객체 생성
 		MovieCommand movie = movieService.selectMovie(movie_num);
-				
+		if(log.isDebugEnabled()) {
+			log.debug("[[movie_num]] : " + movie_num);
+		}
 		//데이터를 ModelAndView객체에 차곡차곡 저장
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("movie_imgView");
+		mav.setViewName("imageView");
 						//속성명		속성값(byte[]의 데이터)
-		mav.addObject("imageFile", movie.getPoster_img());
-		mav.addObject("imageFile2", movie.getBanner_img());
+		mav.addObject("filename","poster.jpg");
+		if(type.equals("banner")) {
+			mav.addObject("imageFile", movie.getBanner_img());
+		}else {
+			mav.addObject("imageFile", movie.getPoster_img());
+		}
 				
 		return mav;
 	}
@@ -247,7 +255,7 @@ public class AdminController {
 		//영화 정보 수정
 		movieService.updateMovie(movieCommand);
 		
-		return "redirect:/admin/movieList.do";
+		return "redirect:/admin/admin_movieList.do";
 	}
 	
 	//01_4_영화 정보 삭제
@@ -261,9 +269,9 @@ public class AdminController {
 		//글 삭제
 		movieService.deleteMovie(movie_num);
 		
-		return "redirect:/admin/movieList.do";
+		return "redirect:/admin/admin_movieList.do";
 	}
-	//==========02_영화 관리_영화 관계자==========//
+	//====================02_영화 관리_영화 관계자====================//
 	//02_1_목록, 등록 폼
 	@RequestMapping("/admin/officialList.do")
 	public ModelAndView official_list(@RequestParam(value="pageNum", defaultValue="1") int currentPage,
@@ -379,7 +387,7 @@ public class AdminController {
 		return "redirect:/admin/officialList.do";
 	}
 
-	//==========03_영화 관리_영화 장르==========//
+	//====================03_영화 관리_영화 장르====================//
 	//03_1_장르 목록(페이징&검색)
 	@RequestMapping("/admin/genreList.do")
 	public ModelAndView genre_list(@RequestParam(value="pageNum", defaultValue="1") int currentPage,
@@ -480,14 +488,25 @@ public class AdminController {
 		return "redirect:/admin/genreList.do";
 	}
 	
-	//==========04_영화 관리_영화 별점==========//
+	//장르 선택 삭제
+	/*@RequestMapping(value="/admin/genreDelete.do", method=RequestMethod.POST)
+	public ModelAndView check_genreDel(@RequestParam Map<String, Object> map) {
+		ModelAndView mav = new ModelAndView();
+		System.out.println(map.get("delSeqNo"));
+		mav.addAllObjects(genreService.deleteGenre();
+		mav.setViewName("JSON");
+		return mav;
+	}*/
+
+	
+	//====================04_영화 관리_영화 별점====================//
 	@RequestMapping("/admin/movieRating.do")
 	public String process3() {
 
 		return "movieRating";
 	}
 
-	//==========05_회원 관리_회원 목록==========//
+	//====================05_회원 관리_회원 목록====================//
 	//05_1_회원목록&검색
 	@RequestMapping("/admin/userList.do")
 	public ModelAndView user_list(@RequestParam(value="pageNum", defaultValue="1") int currentPage,
@@ -532,17 +551,19 @@ public class AdminController {
 		return mav;
 	}
 	
-	//==========06_회원 관리_신고 회원==========//
+	//====================06_회원 관리_신고 회원====================//
 	@RequestMapping("/admin/reportedUser.do")
 	public String process5() {
 
 		return "reportedUser";
 	}
 
-	//==========07_고객 지원_고객 문의==========//
+	//====================07_고객 지원_고객 문의====================//
 	@RequestMapping("/admin/support.do")
 	public String process6() {
 
 		return "support";
 	}
+	
+	//======이미지 뷰====///
 }

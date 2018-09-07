@@ -35,7 +35,12 @@ public class MovieServiceImpl implements MovieService {
 	@Override
 	public void deleteMovie(Integer movie_num) {
 		movieMapper.deleteMovie(movie_num);
-		
+	}
+	
+	@Override
+	//영화 삭제 시 코멘트 삭제
+	public void delComment(Integer movie_num) {
+		movieMapper.delComment(movie_num);
 	}
 
 	@Override

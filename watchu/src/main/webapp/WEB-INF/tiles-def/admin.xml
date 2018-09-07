@@ -14,7 +14,7 @@
 	</definition>
 	<!-- 영화목록페이지를 admin페이지 main으로 설정함(08/23) -->
 	
-	<definition name="adminMovieList" extends="admin">
+	<definition name="admin_movieList" extends="admin">
 		<put-attribute name="title" value="왓츄 -영화 목록"/>
 		<put-attribute name="body" value="/WEB-INF/views/admin/admin_movieList.jsp"/>
 	</definition>
@@ -45,10 +45,16 @@
 		<put-attribute name="title" value="왓츄 -영화 별점 관리"/>
 		<put-attribute name="body" value="/WEB-INF/views/admin/movieRating.jsp"/>
 	</definition>
+	
 	<definition name="userList" extends="admin">
 		<put-attribute name="title" value="왓츄 -회원 목록"/>
 		<put-attribute name="body" value="/WEB-INF/views/admin/userList.jsp"/>
 	</definition>
+	<definition name="userDetail" extends="admin">
+		<put-attribute name="title" value="왓츄 -회원 상세/수정 및 삭제"/>
+		<put-attribute name="body" value="/WEB-INF/views/admin/userDetail.jsp"/>
+	</definition>
+	
 	<definition name="reportedUser" extends="admin">
 		<put-attribute name="title" value="왓츄 -신고 회원 내역"/>
 		<put-attribute name="body" value="/WEB-INF/views/admin/reportedUser.jsp"/>
@@ -57,6 +63,7 @@
 		<put-attribute name="title" value="왓츄 -고객 문의"/>
 		<put-attribute name="body" value="/WEB-INF/views/user/userSupportList.jsp"/>
 	</definition>
+	
 	<!-- 관리자 로그인 -->
 	<definition name="adminLogin" template="/WEB-INF/views/admin/adminLogin.jsp">
 		<put-attribute name="title" value="왓츄 -관리자 로그인"/>

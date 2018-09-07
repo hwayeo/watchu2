@@ -9,7 +9,7 @@
 		<br>
 		<div class="content-header">
 			<!-- 검색 -->
-			<form action="movieList.do" id="movie_search" method="get">
+			<form action="admin_movieList.do" id="movie_search" method="get">
 			<select name="keyfield">
 				<option value="title">영화명</option>
 				<option value="director">감독명</option>

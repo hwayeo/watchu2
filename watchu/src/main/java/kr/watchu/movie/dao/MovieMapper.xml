@@ -41,7 +41,8 @@
 				country like '%' || #{keyword} || '%'
 			</if>
 			<if test="keyword != '' and keyfield == 'genre'" >
-				main_genre like '%' || #{keyword} || '%'
+				main_genre like '%' || #{keyword} || '%' or
+				sub_genre like '%' || #{keyword} || '%'
 			</if>
 			<!-- <if test="keyword != '' and keyfield.equals('all')" >
 				title like '%' || #{keyword} || '%' or
@@ -52,7 +53,7 @@
 	</select>
 	
 	<!-- 글 수정 -->
-	<!-- <update id="update">
+<!--  <update id="updateMovie">
 		<if test="poster_img == '' and banner_img == ''">
 			UPDATE movie_info SET title=#{title}, country=#{country}, released=#{released}, director=${director}, summary=#{summary}, main_genre=#{main_genre}, sub_genre=#{sub_genre}, trailer=#{trailer} WHERE movie_num=#{movie_num}
 		</if>
@@ -97,7 +98,8 @@
 				country like '%' || #{keyword} || '%'
 			</if>
 			<if test="keyword != '' and keyfield == 'genre'" >
-				main_genre like '%' || #{keyword} || '%'
+				main_genre like '%' || #{keyword} || '%' or
+				sub_genre like '%' || #{keyword} || '%'
 			</if>
 		</where>
 	</select>
@@ -138,7 +140,8 @@
 				country like '%' || #{keyword} || '%'
 			</if>
 			<if test="keyword != '' and keyfield == 'genre'" >
-				main_genre like '%' || #{keyword} || '%'
+				main_genre like '%' || #{keyword} || '%' or
+				sub_genre like '%' || #{keyword} || '%'
 			</if>
 		</where>
 	</select>

@@ -10,7 +10,7 @@
         <span class="icon-bar custom-icon"></span>
         <span class="icon-bar custom-icon"></span>
       </button>
-      <a class="navbar-brand" href="${pageContext.request.contextPath}/admin/main.do" id="brand_text"><b>WATCHU</b></a>
+      <a class="navbar-brand" href="${pageContext.request.contextPath}/admin/admin_movieList.do" id="brand_text"><b>WATCHU</b></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->

@@ -16,7 +16,7 @@
     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body">
       <ul>
-         <li class='last'><a href='${pageContext.request.contextPath}/admin/movieList.do'><span>영화 등록 및 수정</span></a></li>
+         <li class='last'><a href='${pageContext.request.contextPath}/admin/admin_movieList.do'><span>영화 등록 및 수정</span></a></li>
          <li class='last'><a href='${pageContext.request.contextPath}/admin/officialList.do'><span>관계자 등록 및 수정</span></a></li>
          <li class='last'><a href='${pageContext.request.contextPath}/admin/genreList.do'><span>장르 등록 및 수정</span></a></li>
          <li class='last'><a href='${pageContext.request.contextPath}/admin/movieRating.do'><span>영화 별점 관리</span></a></li>
@@ -36,7 +36,7 @@
     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
       <div class="panel-body">
       <ul>
-         <li class='last'><a href='${pageContext.request.contextPath}/admin/userList.do'><span>회원 등급 관리</span></a></li>
+         <li class='last'><a href='${pageContext.request.contextPath}/admin/userList.do'><span>회원 목록</span></a></li>
          <li class='last'><a href='${pageContext.request.contextPath}/admin/reportedUser.do'><span>신고 회원 관리</span></a></li>
       </ul>
       </div>

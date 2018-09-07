@@ -21,16 +21,17 @@
 		</li>
 		<li>
 			<label for="released">개봉연도</label>
-			<input type="date" name="released" id="released">
+			<form:input path="released" placeholder="YYYY-MM-DD"/>
+			<form:errors path="released" cssClass="error-color" />
 		</li>
 		<li>
 			<label for="main_genre">메인 장르</label>
-			<form:input path="main_genre" />
+			<form:input path="main_genre" class="auto_genre"/>
 			<form:errors path="main_genre" cssClass="error-color" />
 		</li>
 		<li>
 			<label for="sub_genre">서브 장르</label>
-			<form:input path="sub_genre" />
+			<form:input path="sub_genre" class="auto_genre" />
 			<form:errors path="sub_genre" cssClass="error-color" />
 		</li>
 		<li>
@@ -41,16 +42,20 @@
 		<hr size="1" noshade>
 		<li>
 			<label for="director">감독</label>
-			<form:input path="director" id="auto_director" class="tm-input"/>
+			<input class="auto_director" type="text" name="director" >
+			<form:input path="director" class="input_director"/>
+			<form:errors path="director" cssClass="error-color" />
+			<%-- <form:input path="director" class="auto_director"/> --%>
 		</li>
 		<li>
 			<label for="actors">배우</label>
-			<input id="auto_actor" type="text" name="actors" onKeyDown="pressEnter()" />
-			<div class="actor_list"></div>
+			<input class="auto_actor" type="text" name="actors"/>
+			<form:input path="actors" size="80" class="input_actor"/>
+			<form:errors path="actors" cssClass="error-color" />
 		</li>
 		<li>
 			<label for="summary">줄거리</label>
-			<form:textarea path="summary" cols="50" rows="5" />
+			<form:textarea path="summary" cols="80" rows="10" />
 			<form:errors path="summary" cssClass="error-color" />
 		</li>
 		<hr size="1" noshade>
@@ -65,7 +70,7 @@
 	</ul>
 
 	<div class="edit_btn" align="right">
-		<input type="button" value="목록" onclick="location.href='movieList.do'">
+		<input type="button" value="목록" onclick="location.href='admin_movieList.do'">
 		<input type="submit" value="등록">
 	</div>
 	</form:form>

@@ -9,19 +9,19 @@
 		<form:errors element="div" cssClass="error-color"/>
 	<div class="banner_img">
 	<c:if test="${!empty movie.banner_img}">
-    	<img src="movie_imgView.do?num=${movie.movie_num}">
+    	<img src="image_View.do?movie_num=${movie.movie_num}&type=banner" width="100%">
     </c:if>
 	<c:if test="${empty movie.banner_img}">
 	등록된 배너 이미지 없음
 	</c:if>
 	</div>
-	<ul></ul>
+	
 	<table>
 		<tr>
 			<td>
 			<div class="poster_img">
         	<c:if test="${!empty movie.poster_img}">
-        		<img src="movie_imgView.do?num=${movie.movie_num}">
+        		<img src="image_View.do?movie_num=${movie.movie_num}&type=poster" width="200px">
         	</c:if>
         	<c:if test="${empty movie.poster_img}">
         	등록된 포스터 없음
@@ -36,19 +36,21 @@
 					<form:input path="title" />
 					<form:errors path="title" cssClass="error-color" /> |
 					<label for="released">개봉연도: </label>
-					<input type="date" name="released" id="released"></li>
+					<form:input path="released" />
+					<form:errors path="released" cssClass="error-color" /></li>
 				<li><label for="main_genre">메인 장르: </label>
-        			<form:input path="main_genre" />
+        			<form:input path="main_genre" class="auto_genre"/>
         			<form:errors path="main_genre" cssClass="error-color" /> |
         			<label for="sub_genre">서브 장르: </label>
-        			<form:input path="sub_genre" />
+        			<form:input path="sub_genre" class="auto_genre"/>
         			<form:errors path="sub_genre" cssClass="error-color" /> |
         			<label for="country">제작국가: </label>
         			<form:input path="country" />
         			<form:errors path="country" cssClass="error-color" /></li>
-        		<li><div class="form-group ui-widget">
-					<label for="director">감독: </label>
-					<input type="text" name="director" class="auto" id="auto_director"></div></li>
+        		<li><label for="director">감독: </label>
+        			<input class="auto_director" type="text" name="actors"/>
+					<form:input path="director"  size="50" class="input_director"/>
+					<form:errors path="director" cssClass="error-color" /></li>
 				<li><label for="trailer">예고편 코드: </label>
 					<form:input path="trailer" />
 					<form:errors path="trailer" cssClass="error-color" /></li>
@@ -63,18 +65,15 @@
 					<label for="actors">출연배우</label>
 					<div class="actors">
 					<c:if test="${!empty movie.actors}">
-					${movie.actors}
-					<div class="form-group ui-widget">
-					<input type="text" name="actors" class="auto" id="auto_actor">
+					<form:textarea path="actors" cols="80" class="input_actor"/>
 					<form:errors path="actors" cssClass="error-color" />
-					</div>
+					<br>수정 입력: <input class="auto_actor" type="text" name="actors"/>
 					</c:if>
 					<c:if test="${movie.actors == null}">
 					등록된 출연배우 없음
-					<div class="form-group ui-widget">
-					<input type="text" name="actors" class="auto" id="auto_actor">
+					<form:textarea path="actors" cols="80" class="input_actor"/>
 					<form:errors path="actors" cssClass="error-color" />
-					</div>
+					<br>배우 입력: <input class="auto_actor" type="text" name="actors"/>
 					</c:if>
 					</div>
 				</li>
@@ -188,7 +187,7 @@
 	<div class="edit_btn" align="right">
 		<input type="button" value="삭제" onclick="location.href='admin_movieDelete.do?movie_num=${movie.movie_num}'">
 		<input type="submit" value="수정">
-		<input type="button" onclick="location.href='movieList.do'" value="목록">
+		<input type="button" onclick="location.href='admin_movieList.do'" value="목록">
 	</div>
 	</form:form>
 </div> 
