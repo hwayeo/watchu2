@@ -1,24 +1,28 @@
-$(document).ready(function(){
-	
-	$(window).on('resize',function(){
-		width = $(document).width();
-		selectEva(1,$('#movie_num').val(),keyword,keyfield);
-	});
-	//브라우저 창 넓이
-	
+$(document).ready(function(){	
  	var currentPage;
 	var count;
 	var rowCount;
 	var keyfield = $('#ajx_keyfield').val();
-	var keyword = $('#ajx_keyword').val();;
+	var keyword = $('#ajx_keyword').val();
 	var width = $(document).width();
 	
- 	$("select").change(function(){
-		var list = $(this).find('option:selected');
- 		console.log(list.text());
-		console.log(keyfield);
-		console.log(keyword);
+	//header-list 검색 폼에 추가한 ajax
+	$('.moviebutton').on('click',function(){
+		$('#movieSearch').submit();
 	});
+	$('.moviebutton2').on('click',function(){
+		$('#movieSearch2').submit();
+	});
+	$(".glist").on('change',function(){
+		$('#movieCategory').submit();
+	});
+ 	
+ 	//브라우저 창 넓이
+ 	$(window).on('resize',function(){
+		width = $(document).width();
+		selectEva(1,$('#movie_num').val(),keyword,keyfield);
+	});
+	//브라우저 창 넓이
  	
  	//영화 홈 화면 출력
 	function selectHome(pageNum,movie_num){
@@ -42,6 +46,7 @@ $(document).ready(function(){
  				if(count < 0 || list == null){
 				}else{
 					$(list).each(function(index,item){
+						
 						var mlist = '<div class="col-sm-6 col-md-3 col-xs-6" id="main-category">';
 						mlist += '<div class="thumbnail" onclick="location.href=\'movieDetail.do?movie_num='+item.movie_num+'\'"><img src="../resources/images/img4.jpg"></div>';
 						mlist += '<div class="sub-category caption">';

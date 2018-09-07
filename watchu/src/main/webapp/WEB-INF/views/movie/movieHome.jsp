@@ -21,8 +21,3 @@
 	<a href="movieList.do?keyfield=genre&keyword=공포" class="home-text2">무섭다</a></div>
 	<div class="mlist3"></div>
 </div>
-
-<c:forEach var="ml" items="${list}">
-	<input type="hidden" id="movie_num" name="movie_num" value="${ml.movie_num}">
-	<input type="hidden" id="country" name="country" value="${ml.country}">
-</c:forEach>
