@@ -18,8 +18,8 @@ import kr.watchu.movie.domain.MovieCommand;
 import kr.watchu.movie.service.MovieService;
 import kr.watchu.util.PagingUtil;
 
-@Controller
-public class MovieControllerAjax {
+	@Controller
+	public class MovieControllerAjax {
 	private Logger log = Logger.getLogger(this.getClass());
 	
 	@Resource 
@@ -63,7 +63,7 @@ public class MovieControllerAjax {
 		if(count > 0) {
 			list = movieService.selectMovieAjaxList(map);
 		}
-		 
+		
 		Map<String,Object> mapJson = new HashMap<String,Object>();
 		mapJson.put("count", count);
 		mapJson.put("rowCount", rowCount);

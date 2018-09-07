@@ -38,6 +38,11 @@ public interface CommentMapper {
 	@Select("SELECT COUNT(*) FROM movie_comment WHERE movie_num=#{movie_num}")
 	public int selectCommentCnt(Integer movie_num);
 	
+	//마이페이지에서 내가 쓴 코멘트를 반환하는 메서드
+	@Select("SELECT * FROM movie_comment WHERE id=#{id} ORDER BY comment_num DESC")
+	public List<CommentCommand> selectMyCommentList(String id);
+	@Select("SELECT COUNT(*) FROM movie_comment WHERE id=#{id}")
+	public int selectMyCommentCnt(String id);
 	//======= 코멘트 댓글
 	//코멘트 쓰기
 	public void insertRecomment(RecommentCommand recomment);

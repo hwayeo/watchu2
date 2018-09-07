@@ -17,5 +17,8 @@ public class GenreCommand {
 		this.genre = genre;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "GenreCommand [genre_num=" + genre_num + ", genre=" + genre + "]";
+	}	
 }
