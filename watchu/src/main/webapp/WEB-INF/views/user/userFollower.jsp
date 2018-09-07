@@ -37,8 +37,7 @@
 				<div class="panel panel-default">
                 <div class="panel-heading">팔로워 목록</div>
                 
-                
-                <input type="hidden" id="loginUser_id" name="loginUser_id" value="${loginUser.id}">
+                <input type="hidden" id="user_id" name="user_id" value="${user.id}"><!-- ajax에서 사용할 데이터 -->
                 
                  <ul class="list-group">
                  	
@@ -76,6 +75,7 @@
 											<input type="button" class="btn btn-success unfollow" data-id="${article.id}" name="unfollow" value="팔로잉">
 										</div> 
 									</div>
+									</c:if>
 									
 									<c:if test="${follow.contains(article.id) == false}">
 									<div class="pull-right">
@@ -86,7 +86,7 @@
 									</div>
 									</c:if>
 									
-									</c:if>
+									
 									
 								</c:if>
 						</li>
