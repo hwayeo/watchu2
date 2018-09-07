@@ -28,27 +28,22 @@
 					<th class="col-md-8">글 제목</th>
 					<th class="">작성자</th>
 				</tr>
+				<c:forEach var="user" items="${user_list}">
 				<tr>
-					<td>1</td>
-					<td>스포일러</td>
-					<td>홍길동</td>
+					<%-- <td onclick="location.href='userDetail.do?id=${user.id}'" style="cursor:pointer;">${user.id}</td>
+					<td onclick="location.href='userDetail.do?id=${user.id}'" style="cursor:pointer;">${user.name}</td>
+					<td>${user.phone}</td>
+					<td>${user.email}</td>
+					<td>${user.reg_date}</td>
+					<td><input type="checkbox" name="checked"></td> --%>
 				</tr>
+				</c:forEach>
 			</table>
 			<br>
 
 			<!-- 페이지버튼 -->
-<<<<<<< HEAD
 			<div align="center">${pagingHtml}</div>
-			
-=======
-		<!-- 	<nav align="center">
-				<ul class="pagination pagination-sm">
-					<li class="disabled"><a href="#" aria-label="Previous"><span
-							aria-hidden="true">&laquo;</span></a></li>
-					<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-				</ul>
-			</nav> -->
->>>>>>> branch 'master' of https://github.com/hwayeo/watchu2.git
+		
 			<br>
 		</div>
 	</div>

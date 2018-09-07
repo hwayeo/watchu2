@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import kr.watchu.user.dao.ContactMapper;
 import kr.watchu.user.dao.ReportMapper;
 import kr.watchu.user.domain.ReportCommand;
 
