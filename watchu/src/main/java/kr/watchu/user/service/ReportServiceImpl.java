@@ -23,26 +23,22 @@ public class ReportServiceImpl implements ReportService {
 
 	@Override
 	public ReportCommand selectReport(Integer report_num) {
-		// TODO Auto-generated method stub
-		return null;
+		return reportMapper.selectReport(report_num);
 	}
 
 	@Override
 	public void deleteReport(Integer report_num) {
-		// TODO Auto-generated method stub
-		
+		reportMapper.deleteReport(report_num);
 	}
 
 	@Override
 	public List<ReportCommand> selectReportList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+		return reportMapper.selectReportList(map);
 	}
 
 	@Override
 	public int selectReportCnt(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return reportMapper.selectReportCnt(map);
 	}
 
 }

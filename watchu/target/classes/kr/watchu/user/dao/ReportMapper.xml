@@ -3,7 +3,7 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="kr.watchu.user.dao.reportMapper">
+<mapper namespace="kr.watchu.user.dao.ReportMapper">
 	<select id="selectReportList" parameterType="map" resultType="reportCommand">
 		SELECT
 		*
@@ -16,14 +16,14 @@
 						FROM user_report c 
 						JOIN user_info i 
 						ON c.id=i.id
-		<where>
+		<!-- <where>
 			<if test="keyword != '' and keyfield == 'id'">
 			 	c.id like '%' || #{keyword} || '%'
 			</if>
 			<if test="keyword != '' and keyfield == 'report_content'">
 				c.report_content like '%' || #{keyword} || '%'
 			</if>
-		</where>
+		</where> -->
 		ORDER BY c.reg_date DESC)a)
  	<![CDATA[
  		WHERE rnum >= #{start} AND rnum <= #{end}
@@ -36,13 +36,13 @@
 		SELECT
 		count(*)
 		FROM user_report
-		<where>
+		<!-- <where>
 			<if test="keyword != '' and keyfield == 'id'">
-			 	c.id like '%' || #{keyword} || '%'
+			 	id like '%' || #{keyword} || '%'
 			</if>
 			<if test="keyword != '' and keyfield == 'report_content'">
-				c.report_content like '%' || #{keyword} || '%'
+				report_content like '%' || #{keyword} || '%'
 			</if>
-		</where>
+		</where> -->
 	</select>
 </mapper> 
