@@ -21,7 +21,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.watchu.movie.domain.CommentCommand;
+import kr.watchu.movie.domain.MovieCommand;
 import kr.watchu.movie.service.CommentService;
+import kr.watchu.movie.service.MovieService;
 import kr.watchu.user.domain.UserCommand;
 import kr.watchu.user.service.UserService;
 import kr.watchu.util.PagingUtil;
@@ -39,6 +41,8 @@ public class MyPageController {
 	private UserService userService;
 	@Resource
 	private CommentService commentService;
+	@Resource
+	private MovieService movieService;
 	
 	//ÀÚ¹Ùºó ÃÊ±âÈ­
 	@ModelAttribute("userCommand")
@@ -121,7 +125,7 @@ public class MyPageController {
 	public String mypage_movielist() {
 		return "userMypage_movielist";
 	}
-	
+	 
 	//ÄÚ¸àÆ®
 	@RequestMapping("/user/userComment.do")
 	public ModelAndView comment(HttpSession session) {
@@ -136,13 +140,16 @@ public class MyPageController {
 		int count = commentService.selectMyCommentCnt(id);
 		
 		List<CommentCommand> list = null;
+		
 		if(count >0) {
 			list = commentService.selectMyCommentList(id);
 		}
 		
+		
 		mav.setViewName("userComment");
 		mav.addObject("commentList",list);
 		mav.addObject("count",count);
+		
 		return mav;
 	}
 	
